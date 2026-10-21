@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Otimização - NHOOF</title>
+    <title>Meu Setup - NHOOF</title>
     <!-- Ícone da aba do navegador (Favicon) -->
     <link rel="icon" type="image/png" href="../imagens/logo.png">
     <style>
@@ -219,7 +219,7 @@
             flex: 1;
             padding: 2.5rem 3rem;
             overflow-y: auto;
-            max-width: 1000px;
+            max-width: 1400px;
         }
 
         .page-title {
@@ -229,33 +229,46 @@
             margin-bottom: 2rem;
         }
 
-        /* Caixa de Alerta com largura controlada e texto justificado */
-        .alert-box {
+        /* Grid de Especificações do Setup */
+        .setup-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .setup-card {
             background-color: #222229;
             border: 1px solid #2f2f38;
-            border-left: 4px solid #5865f2;
             border-radius: 6px;
             padding: 1.25rem 1.5rem;
+        }
+
+        .setup-card h3 {
+            font-size: 1.05rem;
+            color: #ffffff;
+            margin-bottom: 0.75rem;
             display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            max-width: 750px;
+            align-items: center;
+            gap: 8px;
         }
 
-        .alert-icon {
-            font-size: 1.2rem;
-            line-height: 1;
+        .setup-card ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
         }
 
-        .alert-text {
+        .setup-card ul li {
+            font-size: 0.9rem;
+            color: #949ba4;
+            display: flex;
+            gap: 6px;
+        }
+
+        .setup-card ul li strong {
             color: #dbdee1;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            text-align: justify;
-        }
-
-        .alert-text p + p {
-            margin-top: 0.75rem;
+            font-weight: 500;
         }
     </style>
 </head>
@@ -271,7 +284,7 @@
         
         <nav>
             <ul>
-                <li><a href="index.html" class="active">Otimização</a></li>
+                <li><a href="index.html">Otimização</a></li>
                 <li><a href="#">Projeto 2</a></li>
                 <li><a href="#">Projeto 3</a></li>
                 <li><a href="#">Projeto 4</a></li>
@@ -298,8 +311,8 @@
                     <span class="category-arrow">▼</span> [BEM VINDO]
                 </div>
                 <div class="category-content">
-                    <a href="index.html" class="channel-item active"><span>#</span> importante</a>
-                    <a href="meu-setup.html" class="channel-item"><span>#</span> meu setup</a>
+                    <a href="index.html" class="channel-item"><span>#</span> importante</a>
+                    <a href="meu-setup.html" class="channel-item active"><span>#</span> meu setup</a>
                 </div>
 
                 <!-- Categoria PEN DRIVE -->
@@ -317,19 +330,52 @@
         <div class="main-chat">
             <div class="chat-header">
                 <span class="channel-symbol">#</span>
-                <span>importante</span>
+                <span>meu setup</span>
                 <span class="channel-divider">|</span>
-                <span class="channel-topic">Recomendações antes de iniciar os procedimentos.</span>
+                <span class="channel-topic">Hardware, periféricos e estrutura.</span>
             </div>
 
             <div class="chat-content">
-                <h1 class="page-title">Informações Importantes</h1>
+                <h1 class="page-title">Especificações do Setup</h1>
 
-                <div class="alert-box">
-                    <div class="alert-icon">⚠️</div>
-                    <div class="alert-text">
-                        <p>Todas as otimizações e modificações apresentadas foram testadas, personalizadas e ajustadas por mim, de acordo com a configuração da minha própria máquina. Os resultados podem variar dependendo do hardware e do sistema de cada usuário.</p>
-                        <p>Antes de aplicar qualquer alteração, certifique-se de entender o que ela faz e como revertê-la. Se não souber o que está fazendo, recomendo que não mexa. <strong>Atenção: faça por sua conta e risco!</strong></p>
+                <div class="setup-grid">
+                    <!-- Hardware Principal -->
+                    <div class="setup-card">
+                        <h3>💻 Hardware Principal</h3>
+                        <ul>
+                            <li>Processador: <strong>AMD Ryzen 7 9800X3D</strong></li>
+                            <li>Placa de Vídeo: <strong>RTX 4070 Galaxy</strong></li>
+                            <li>Placa Mãe: <strong>Gigabyte B650 Aero G</strong></li>
+                            <li>Memória RAM: <strong>Kingston Fury Beast 6000MT/s</strong></li>
+                            <li>Armazenamento: <strong>KC3000 (512GB) + Renegade (1TB)</strong></li>
+                            <li>Fonte: <strong>Pcyes Electro V2 750W</strong></li>
+                            <li>Water Cooler: <strong>Galahad II Trinity 360mm</strong></li>
+                            <li>Gabinete: <strong>Rise Mode Galaxy Glass White</strong></li>
+                        </ul>
+                    </div>
+
+                    <!-- Periféricos -->
+                    <div class="setup-card">
+                        <h3>🖱️ Periféricos & Monitores</h3>
+                        <ul>
+                            <li>Monitor 1: <strong>Alienware 360Hz AW2523HF</strong></li>
+                            <li>Monitor 2: <strong>Asus TUF 165Hz VG249Q1A</strong></li>
+                            <li>Teclado: <strong>HyperX Alloy Origins 65 (Red)</strong></li>
+                            <li>Mouse: <strong>Zowie EC3-CW</strong></li>
+                            <li>Mousepad: <strong>Fallen Medusa Speed++ (90x40cm)</strong></li>
+                            <li>Headset: <strong>Astro A50 X Wireless Branco</strong></li>
+                            <li>Microfone: <strong>Blue Yeticaster</strong></li>
+                        </ul>
+                    </div>
+
+                    <!-- Mesa e Estrutura -->
+                    <div class="setup-card">
+                        <h3>🛠️ Mesa & Estrutura</h3>
+                        <ul>
+                            <li>Tampo: <strong>Teca Maciça 180x70x3cm (Verniz Mel)</strong></li>
+                            <li>Base: <strong>Aço Reforçado 180x70x72cm (300 Kg)</strong></li>
+                            <li>Cadeira: <strong>Elements Astra Pro</strong></li>
+                        </ul>
                     </div>
                 </div>
             </div>
