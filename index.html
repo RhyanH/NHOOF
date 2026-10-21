@@ -96,7 +96,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            pointer-events: none; /* Permite interagir com as partículas por cima do texto se necessário */
+            pointer-events: none;
         }
 
         .texto-nhoof {
@@ -145,35 +145,35 @@
         <div class="texto-nhoof">NHOOF</div>
     </div>
 
-    <!-- Script do Particles.js via CDN -->
+    <!-- Script do Particles.js via CDN com mais partículas e velocidade suave -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
         particlesJS("particles-js", {
             "particles": {
                 "number": {
-                    "value": 75,
+                    "value": 110, /* Aumentado para 110 para ter um pouco mais de partículas preenchendo o fundo */
                     "density": { "enable": true, "value_area": 800 }
                 },
                 "color": { "value": "#ffffff" },
                 "shape": { "type": "circle" },
                 "opacity": {
-                    "value": 0.5,
+                    "value": 0.4,
                     "random": true
                 },
                 "size": {
-                    "value": 3,
+                    "value": 2.5,
                     "random": true
                 },
                 "line_linked": {
                     "enable": true,
                     "distance": 150,
                     "color": "#ffffff",
-                    "opacity": 0.3,
+                    "opacity": 0.25,
                     "width": 1
                 },
                 "move": {
                     "enable": true,
-                    "speed": 1.5,
+                    "speed": 0.7,
                     "direction": "none",
                     "random": false,
                     "straight": false,
@@ -189,8 +189,8 @@
                     "resize": true
                 },
                 "modes": {
-                    "grab": { "distance": 140, "line_linked": { "opacity": 0.6 } },
-                    "push": { "particles_nb": 4 }
+                    "grab": { "distance": 160, "line_linked": { "opacity": 0.5 } },
+                    "push": { "particles_nb": 3 }
                 }
             },
             "retina_detect": true
