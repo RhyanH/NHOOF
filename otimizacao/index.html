@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otimização - NHOOF</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #0b0b0b;
+            color: #ffffff;
+        }
+
+        /* Cabeçalho Flutuante */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 1.5rem 2.5rem;
+            z-index: 10;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%);
+        }
+
+        .logo-container a {
+            display: inline-block;
+        }
+
+        .logo-container img {
+            height: 2.8rem;
+            width: auto;
+            display: block;
+        }
+
+        nav {
+            margin-left: 2.5rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #a0a0a0;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: #ffffff;
+        }
+
+        /* Conteúdo Principal da Página de Otimização */
+        .container-conteudo {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 10rem 2rem 5rem 2rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        p {
+            color: #b0b0b0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        /* Caixa de seções / guias */
+        .secao-guia {
+            background: #141414;
+            border: 1px solid #222222;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .secao-guia h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: #ffffff;
+        }
+
+        .secao-guia p {
+            margin-bottom: 0;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho (Com caminho absoluto para a raiz ../ para a logo e home funcionarem de dentro da pasta) -->
+    <header>
+        <div class="logo-container">
+            <a href="../index.html">
+                <img src="../imagens/logo.png" alt="Logo">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="index.html" class="active">Otimização</a></li>
+                <li><a href="#">Projeto 2</a></li>
+                <li><a href="#">Projeto 3</a></li>
+                <li><a href="#">Projeto 4</a></li>
+                <li><a href="#">Projeto 5</a></li>
+                <li><a href="#">Projeto 6</a></li>
+                <li><a href="#">Projeto 7</a></li>
+                <li><a href="#">Projeto 8</a></li>
+                <li><a href="#">Projeto 9</a></li>
+                <li><a href="#">Projeto 10</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Conteúdo da Otimização -->
+    <main class="container-conteudo">
+        <h1>Otimização</h1>
+        <p>Guia completo de ajustes de sistema, melhorias de desempenho e remoção de gargalos para máxima performance no Windows.</p>
+
+        <div class="secao-guia">
+            <h2>1. Configurações Iniciais</h2>
+            <p>Aqui você poderá adicionar em breve os primeiros passos de otimização, como limpeza de temporários, ajuste de plano de energia e prioridades.</p>
+        </div>
+
+        <div class="secao-guia">
+            <h2>2. Ajustes Avançados</h2>
+            <p>Espaço reservado para tweaks de registro, melhorias de latência e gerenciamento de processos em segundo plano.</p>
+        </div>
+    </main>
+
+</body>
+</html>
