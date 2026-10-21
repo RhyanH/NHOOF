@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criando Pen Drive - NHOOF</title>
+    <title>Chipset AMD - NHOOF</title>
     <!-- Ícone da aba do navegador (Favicon) -->
     <link rel="icon" type="image/png" href="../imagens/logo.png">
     <style>
@@ -229,12 +229,12 @@
             margin-bottom: 2rem;
         }
 
-        /* Grid Superior (Download e Requisitos) */
+        /* Grid de Conteúdo */
         .setup-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 1.25rem;
-            margin-bottom: 2.5rem;
+            margin-bottom: 1.5rem;
         }
 
         .setup-card {
@@ -287,63 +287,29 @@
             text-decoration: underline;
         }
 
-        /* Seção do Passo a Passo */
-        .section-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #ffffff;
-            margin-bottom: 1.25rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .steps-container {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            max-width: 900px;
-        }
-
-        .step-card {
+        /* Caixa de Alerta / Dica */
+        .alert-box {
             background-color: #222229;
             border: 1px solid #2f2f38;
+            border-left: 4px solid #5865f2;
             border-radius: 6px;
             padding: 1.25rem 1.5rem;
             display: flex;
-            gap: 1rem;
             align-items: flex-start;
+            gap: 12px;
+            max-width: 100%;
         }
 
-        .step-number {
-            background-color: #5865f2;
-            color: #ffffff;
-            font-weight: 700;
-            font-size: 0.9rem;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            margin-top: 2px;
+        .alert-icon {
+            font-size: 1.2rem;
+            line-height: 1;
         }
 
-        .step-content h4 {
-            color: #ffffff;
-            font-size: 1rem;
-            margin-bottom: 0.35rem;
-        }
-
-        .step-content p {
-            color: #949ba4;
-            font-size: 0.9rem;
-            line-height: 1.5;
-        }
-
-        .step-content p strong {
+        .alert-text {
             color: #dbdee1;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            text-align: justify;
         }
     </style>
 </head>
@@ -395,8 +361,8 @@
                     <span class="category-arrow">▼</span> [PEN DRIVE]
                 </div>
                 <div class="category-content">
-                    <a href="criando-pendrive.html" class="channel-item active"><span>#</span> criando pendrive</a>
-                    <a href="#" class="channel-item"><span>#</span> instalador chipset amd</a>
+                    <a href="criando-pendrive.html" class="channel-item"><span>#</span> criando pendrive</a>
+                    <a href="chipset-amd.html" class="channel-item active"><span>#</span> chipset amd</a>
                 </div>
             </div>
         </div>
@@ -405,88 +371,33 @@
         <div class="main-chat">
             <div class="chat-header">
                 <span class="channel-symbol">#</span>
-                <span>criando pendrive</span>
+                <span>chipset amd</span>
                 <span class="channel-divider">|</span>
-                <span class="channel-topic">Passo a passo e requisitos para o Windows 11.</span>
+                <span class="channel-topic">Drivers essenciais para placas-mãe AMD B650.</span>
             </div>
 
             <div class="chat-content">
-                <h1 class="page-title">Criando Pen Drive Windows 11</h1>
+                <h1 class="page-title">Instalador Chipset AMD</h1>
 
-                <!-- Bloco Superior: Onde Baixar e Requisitos -->
                 <div class="setup-grid">
+                    <!-- Onde Baixar -->
                     <div class="setup-card">
                         <h3>📥 Onde Baixar</h3>
                         <ul>
-                            <li><span>Plataforma</span> <strong>Microsoft</strong></li>
-                            <li><span>Ferramenta</span> <strong>Criar mídia de instalação do Windows 11</strong></li>
-                            <li><span>Acesso</span> <a href="https://www.microsoft.com/software-download/windows11" target="_blank">Baixar Agora ↗</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="setup-card">
-                        <h3>⚡ Requisitos do Pen Drive</h3>
-                        <ul>
-                            <li><span>Capacidade Mínima</span> <strong>8 GB</strong></li>
-                            <li><span>Recomendação</span> <strong>USB 3.0 ou superior</strong></li>
-                            <li><span>Atenção</span> <strong>Todos os dados serão apagados</strong></li>
+                            <li><span>Plataforma</span> <strong>AMD Drivers & Support</strong></li>
+                            <li><span>Compatibilidade</span> <strong>Placas-mãe Socket AM5 (B650)</strong></li>
+                            <li><span>Acesso</span> <a href="https://www.amd.com/en/support/downloads/drivers.html/chipsets/am5/b650.html" target="_blank">B650 Drivers ↗</a></li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Bloco Inferior: Passo a Passo Detalhado -->
-                <h3 class="section-title">⚙️ Passo a Passo na Ferramenta</h3>
-                
-                <div class="steps-container">
-                    <div class="step-card">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h4>Executar a Ferramenta</h4>
-                            <p>Abra o arquivo baixado da Microsoft (MediaCreationTool) como <strong>Administrador</strong> e clique em <strong>Aceitar</strong> nos termos de aviso iniciais.</p>
-                        </div>
-                    </div>
-
-                    <div class="step-card">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h4>Idioma e Versão</h4>
-                            <p>A ferramenta vai detetar automaticamente as definições recomendadas para o seu sistema. Basta clicar em <strong>Avançar</strong>.</p>
-                        </div>
-                    </div>
-
-                    <div class="step-card">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <h4>Escolher a Mídia</h4>
-                            <p>Selecione a opção <strong>Unidade flash USB</strong> e clique em <strong>Avançar</strong> (certifique-se de que o pen drive de pelo menos 8GB já está conectado).</p>
-                        </div>
-                    </div>
-
-                    <div class="step-card">
-                        <div class="step-number">4</div>
-                        <div class="step-content">
-                            <h4>Selecionar a Unidade Correta</h4>
-                            <p>Escolha a letra exata correspondente ao seu pen drive na lista exibida. <strong>Atenção:</strong> verifique duas vezes para não apagar o disco errado, pois tudo nele será formatado!</p>
-                        </div>
-                    </div>
-
-                    <div class="step-card">
-                        <div class="step-number">5</div>
-                        <div class="step-content">
-                            <h4>Download e Gravação</h4>
-                            <p>A ferramenta fará o download do Windows 11 diretamente dos servidores da Microsoft e efetuará a gravação automática. Aguarde o processo finalizar.</p>
-                        </div>
-                    </div>
-
-                    <div class="step-card">
-                        <div class="step-number">6</div>
-                        <div class="step-content">
-                            <h4>Conclusão</h4>
-                            <p>Assim que aparecer a mensagem <em>"Sua unidade flash USB está pronta"</em>, clique em <strong>Concluir</strong>. O teu pen drive bootável está pronto para uso!</p>
-                        </div>
+                <!-- Dica de Instalação -->
+                <div class="alert-box">
+                    <div class="alert-icon">💡</div>
+                    <div class="alert-text">
+                        <p>Recomendo baixar e colocar dentro da pasta do pen drive com o Win 11. Assim que o computador ligar pela primeira vez após a formatação, você já pode instalar!</p>
                     </div>
                 </div>
-
             </div>
         </div>
 
