@@ -221,13 +221,13 @@
             margin-bottom: 2rem;
         }
 
-        /* Caixa de Alerta com frases bem coladinhas */
+        /* Caixa de Alerta com frases extremamente coladinhas */
         .alert-box {
             background-color: #222229;
             border: 1px solid #2f2f38;
             border-left: 4px solid #5865f2;
             border-radius: 6px;
-            padding: 1rem 1.25rem;
+            padding: 0.75rem 1.25rem; /* Padding vertical reduzido */
         }
 
         .alert-item {
@@ -239,9 +239,9 @@
             line-height: 1.4;
         }
 
-        /* Adiciona margem mínima apenas na primeira linha para colar a segunda */
+        /* Sem margem inferior para colar as frases perfeitamente */
         .alert-item:not(:last-child) {
-            margin-bottom: 0.15rem; 
+            margin-bottom: 0px; 
         }
 
         .alert-item span {
