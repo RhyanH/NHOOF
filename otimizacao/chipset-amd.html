@@ -287,7 +287,14 @@
             text-decoration: underline;
         }
 
-        /* Caixa de Alerta / Dica */
+        /* Container de Alertas / Dicas */
+        .alerts-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 100%;
+        }
+
         .alert-box {
             background-color: #222229;
             border: 1px solid #2f2f38;
@@ -297,7 +304,10 @@
             display: flex;
             align-items: flex-start;
             gap: 12px;
-            max-width: 100%;
+        }
+
+        .alert-box.warning {
+            border-left-color: #f0b232;
         }
 
         .alert-icon {
@@ -310,6 +320,10 @@
             font-size: 0.95rem;
             line-height: 1.6;
             text-align: justify;
+        }
+
+        .alert-text p + p {
+            margin-top: 0.5rem;
         }
     </style>
 </head>
@@ -391,11 +405,22 @@
                     </div>
                 </div>
 
-                <!-- Dica de Instalação -->
-                <div class="alert-box">
-                    <div class="alert-icon">💡</div>
-                    <div class="alert-text">
-                        <p>Recomendo baixar e colocar dentro da pasta do pen drive com o Win 11. Assim que o computador ligar pela primeira vez após a formatação, você já pode instalar!</p>
+                <!-- Alertas e Dicas -->
+                <div class="alerts-container">
+                    <!-- Dica de Instalação -->
+                    <div class="alert-box">
+                        <div class="alert-icon">💡</div>
+                        <div class="alert-text">
+                            <p>Recomendo baixar e colocar dentro da pasta do pen drive com o Win 11. Assim que o computador ligar pela primeira vez após a formatação, você já pode instalar!</p>
+                        </div>
+                    </div>
+
+                    <!-- Aviso de Compatibilidade -->
+                    <div class="alert-box warning">
+                        <div class="alert-icon">⚠️</div>
+                        <div class="alert-text">
+                            <p><strong>Atenção à compatibilidade:</strong> O link acima é específico para placas-mãe com chipset <strong>AMD B650</strong> (utilizado no meu setup). Se o seu hardware for diferente, procure no site oficial da AMD selecionando o seu modelo exato de chipset ou entre diretamente na página de suporte da fabricante da sua placa-mãe (Gigabyte, ASUS, MSI, ASRock) na seção de drivers.</p>
+                        </div>
                     </div>
                 </div>
             </div>
