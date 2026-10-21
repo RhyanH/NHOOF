@@ -229,13 +229,61 @@
             margin-bottom: 2rem;
         }
 
-        /* Estilo base para os tutoriais que vamos montar */
-        .tutorial-box {
+        /* Grid de Conteúdo do Pen Drive */
+        .setup-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.25rem;
+        }
+
+        .setup-card {
             background-color: #222229;
             border: 1px solid #2f2f38;
             border-radius: 6px;
-            padding: 1.5rem;
+            padding: 1.25rem 1.5rem;
+        }
+
+        .setup-card h3 {
+            font-size: 1.05rem;
+            color: #ffffff;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .setup-card ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .setup-card ul li {
+            font-size: 0.9rem;
+            color: #949ba4;
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .setup-card ul li strong {
             color: #dbdee1;
+            font-weight: 500;
+            text-align: right;
+        }
+
+        .setup-card ul li a {
+            color: #5865f2;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.15s;
+        }
+
+        .setup-card ul li a:hover {
+            color: #7983f5;
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -251,7 +299,7 @@
         
         <nav>
             <ul>
-                <li><a href="index.html" class="active">Otimização</a></li>
+                <li><a href="index.html">Otimização</a></li>
                 <li><a href="#">Projeto 2</a></li>
                 <li><a href="#">Projeto 3</a></li>
                 <li><a href="#">Projeto 4</a></li>
@@ -299,14 +347,32 @@
                 <span class="channel-symbol">#</span>
                 <span>criando pendrive</span>
                 <span class="channel-divider">|</span>
-                <span class="channel-topic">Passo a passo para criação do instalador bootável.</span>
+                <span class="channel-topic">Passo a passo e requisitos para o Windows 11.</span>
             </div>
 
             <div class="chat-content">
-                <h1 class="page-title">Criando Pen Drive Bootável</h1>
+                <h1 class="page-title">Criando Pen Drive Windows 11</h1>
 
-                <div class="tutorial-box">
-                    <p>Conteúdo do tutorial será preenchido aqui...</p>
+                <div class="setup-grid">
+                    <!-- Onde Baixar -->
+                    <div class="setup-card">
+                        <h3>📥 Onde Baixar</h3>
+                        <ul>
+                            <li><span>Plataforma</span> <strong>Microsoft</strong></li>
+                            <li><span>Ferramenta</span> <strong>Criar mídia de instalação do Windows 11</strong></li>
+                            <li><span>Acesso</span> <a href="https://www.microsoft.com/software-download/windows11" target="_blank">Baixar Agora ↗</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Requisitos -->
+                    <div class="setup-card">
+                        <h3>⚡ Requisitos do Pen Drive</h3>
+                        <ul>
+                            <li><span>Capacidade Mínima</span> <strong>8 GB</strong></li>
+                            <li><span>Recomendação</span> <strong>USB 3.0 ou superior</strong></li>
+                            <li><span>Atenção</span> <strong>Todos os dados serão apagados</strong></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
