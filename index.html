@@ -27,7 +27,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-color: #0b0b0b; /* Fundo preto elegante */
+            background-color: #0b0b0b;
             z-index: 1;
         }
 
@@ -87,7 +87,7 @@
             width: 3.8rem;
         }
 
-        /* Texto Centralizado da Vitrine */
+        /* Texto Centralizado da Vitrine com tom ajustado e efeito de brilho (glow) */
         .conteudo-centro {
             position: relative;
             z-index: 2;
@@ -102,10 +102,11 @@
         .texto-nhoof {
             font-size: 6rem;
             font-weight: 900;
-            letter-spacing: 4px;
-            color: #ffffff;
-            text-shadow: 0px 0px 35px rgba(0,0,0,0.95);
+            letter-spacing: 6px;
+            color: #dcdcdc; /* Cinza claro elegante (menos agressivo que o branco puro) */
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.15), 0 0 40px rgba(0, 0, 0, 0.9); /* Brilho suave difuso */
             text-transform: uppercase;
+            transition: all 0.3s ease;
         }
     </style>
 </head>
@@ -145,13 +146,13 @@
         <div class="texto-nhoof">NHOOF</div>
     </div>
 
-    <!-- Script do Particles.js via CDN com mais partículas e velocidade suave -->
+    <!-- Script do Particles.js via CDN -->
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
     <script>
         particlesJS("particles-js", {
             "particles": {
                 "number": {
-                    "value": 110, /* Aumentado para 110 para ter um pouco mais de partículas preenchendo o fundo */
+                    "value": 110,
                     "density": { "enable": true, "value_area": 800 }
                 },
                 "color": { "value": "#ffffff" },
