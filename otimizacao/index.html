@@ -15,7 +15,7 @@
             width: 100%;
             height: 100vh;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #313338;
+            background-color: #0b0b0b; /* Tema black igual à vitrine */
             color: #dbdee1;
             overflow: hidden;
         }
@@ -25,27 +25,29 @@
             display: flex;
             width: 100vw;
             height: 100vh;
-            padding-top: 70px; /* Espaço para o cabeçalho global do site */
+            padding-top: 70px;
         }
 
-        /* Cabeçalho Global Fixo do NHOOF */
+        /* Cabeçalho Global Fixo (Idêntico à Vitrine) */
         header.global-header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 70px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 2.5rem;
+            padding: 1.8rem 3.5rem;
             z-index: 100;
-            background: #111214;
-            border-bottom: 1px solid #1f2023;
+            background: linear-gradient(to bottom, rgba(11,11,11,0.9) 0%, rgba(11,11,11,0) 100%);
+        }
+
+        .logo-container a {
+            display: inline-block;
         }
 
         .logo-container img {
-            height: 2.8rem;
+            height: 3.8rem; /* Tamanho exato da vitrine */
             width: auto;
             display: block;
         }
@@ -59,13 +61,13 @@
         nav ul {
             list-style: none;
             display: flex;
-            gap: 1.5rem;
+            gap: 1.8rem;
             align-items: center;
         }
 
         nav ul li a {
             text-decoration: none;
-            color: #949ba4;
+            color: #a0a0a0;
             font-size: 0.95rem;
             font-weight: 500;
             transition: color 0.2s ease;
@@ -76,25 +78,25 @@
         }
 
         .header-spacer {
-            width: 2.8rem;
+            width: 3.8rem;
         }
 
-        /* 1. Barra Lateral de Canais (Esquerda) */
+        /* 1. Barra Lateral de Canais (Esquerda) com tema Black */
         .sidebar-channels {
             width: 260px;
-            background-color: #2b2d31;
+            background-color: #0b0b0b;
             display: flex;
             flex-direction: column;
-            border-right: 1px solid #1f2023;
+            border-right: 1px solid #1a1a1a;
             height: calc(100vh - 70px);
         }
 
         .server-header {
             padding: 1rem;
             font-weight: bold;
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: #f2f3f5;
-            border-bottom: 2px solid #1f2023;
+            border-bottom: 1px solid #1a1a1a;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -107,54 +109,81 @@
         }
 
         .channels-list::-webkit-scrollbar {
-            width: 6px;
+            width: 4px;
         }
         .channels-list::-webkit-scrollbar-thumb {
-            background-color: #1a1b1e;
-            border-radius: 3px;
+            background-color: #222;
+            border-radius: 2px;
         }
 
-        .category-title {
+        /* Categorias Ocultáveis */
+        .category-header {
             font-size: 0.75rem;
             font-weight: bold;
-            color: #949ba4;
+            color: #80848e;
             text-transform: uppercase;
-            padding: 0.75rem 0.5rem 0.25rem 0.5rem;
+            padding: 0.5rem 0.2rem 0.2rem 0.2rem;
             letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            gap: 4px;
+        }
+
+        .category-header:hover {
+            color: #dbdee1;
+        }
+
+        .category-arrow {
+            font-size: 0.65rem;
+            transition: transform 0.2s ease;
+        }
+
+        .category-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1px; /* Espaçamento bem pequeno e compacto entre os chats */
+            overflow: hidden;
+            transition: max-height 0.25s ease;
+        }
+
+        .category-content.collapsed {
+            max-height: 0 !important;
         }
 
         .channel-item {
             display: flex;
             align-items: center;
-            padding: 0.5rem;
+            padding: 0.35rem 0.5rem;
             border-radius: 4px;
             color: #949ba4;
             text-decoration: none;
-            font-size: 0.95rem;
-            margin-bottom: 2px;
+            font-size: 0.9rem;
             transition: background 0.15s, color 0.15s;
         }
 
         .channel-item:hover {
-            background-color: #35373c;
+            background-color: #161616;
             color: #dbdee1;
         }
 
         .channel-item.active {
-            background-color: #404249;
+            background-color: #1f1f1f;
             color: #ffffff;
             font-weight: 500;
         }
 
         .channel-item span {
             margin-right: 6px;
-            font-size: 1.1rem;
+            font-size: 1rem;
+            color: #6d6f78;
         }
 
-        /* 2. Área Principal do Chat / Tutorial (Centro) */
+        /* 2. Área Principal do Chat (Centro) com tema Black */
         .main-chat {
             flex: 1;
-            background-color: #313338;
+            background-color: #0b0b0b;
             display: flex;
             flex-direction: column;
             height: calc(100vh - 70px);
@@ -162,14 +191,14 @@
 
         .chat-header {
             height: 48px;
-            padding: 0 1rem;
+            padding: 0 1.5rem;
             display: flex;
             align-items: center;
-            border-bottom: 1px solid #1f2023;
+            border-bottom: 1px solid #1a1a1a;
             font-weight: bold;
             color: #f2f3f5;
             gap: 8px;
-            background-color: #313338;
+            background-color: #0b0b0b;
         }
 
         .chat-content {
@@ -182,8 +211,8 @@
         }
 
         .welcome-message {
-            margin-top: 2rem;
-            border-bottom: 1px solid #3f4147;
+            margin-top: 1rem;
+            border-bottom: 1px solid #1a1a1a;
             padding-bottom: 1.5rem;
             margin-bottom: 1.5rem;
         }
@@ -200,8 +229,8 @@
         }
 
         .tutorial-card {
-            background-color: #2b2d31;
-            border: 1px solid #1f2023;
+            background-color: #121212;
+            border: 1px solid #1a1a1a;
             border-radius: 8px;
             padding: 1.5rem;
             margin-bottom: 1rem;
@@ -218,11 +247,11 @@
             line-height: 1.5;
         }
 
-        /* 3. Lista de Membros (Direita) */
+        /* 3. Lista de Membros (Direita) com tema Black */
         .sidebar-members {
             width: 240px;
-            background-color: #2b2d31;
-            border-left: 1px solid #1f2023;
+            background-color: #0b0b0b;
+            border-left: 1px solid #1a1a1a;
             padding: 1rem;
             height: calc(100vh - 70px);
             overflow-y: auto;
@@ -231,7 +260,7 @@
         .member-category {
             font-size: 0.75rem;
             font-weight: bold;
-            color: #949ba4;
+            color: #80848e;
             text-transform: uppercase;
             margin-bottom: 0.5rem;
         }
@@ -249,7 +278,7 @@
         .member-avatar {
             width: 32px;
             height: 32px;
-            background-color: #5865f2;
+            background-color: #222;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -257,13 +286,14 @@
             font-weight: bold;
             color: white;
             font-size: 0.85rem;
+            border: 1px solid #333;
         }
     </style>
 </head>
 <body>
 
     <!-- Cabeçalho Global do Site -->
-    <header.global-header header>
+    <header class="global-header">
         <div class="logo-container">
             <a href="../index.html">
                 <img src="../imagens/logo.png" alt="Logo">
@@ -291,7 +321,7 @@
     <!-- App Estilo Discord -->
     <div class="discord-app">
         
-        <!-- Barra Lateral Esquerda (Categorias e Canais) -->
+        <!-- Barra Lateral Esquerda -->
         <div class="sidebar-channels">
             <div class="server-header">
                 Otimizações ▾
@@ -299,30 +329,42 @@
             
             <div class="channels-list">
                 <!-- Categoria WELCOME -->
-                <div class="category-title">[WELCOME]</div>
-                <a href="index.html" class="channel-item active"><span>#</span> importante</a>
-                <a href="#" class="channel-item"><span>#</span> meu-setup</a>
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <span class="category-arrow">▼</span> [WELCOME]
+                </div>
+                <div class="category-content">
+                    <a href="index.html" class="channel-item active"><span>#</span> importante</a>
+                    <a href="#" class="channel-item"><span>#</span> meu-setup</a>
+                </div>
 
                 <!-- Categoria BIOS -->
-                <div class="category-title" style="margin-top: 1rem;">[BIOS]</div>
-                <a href="#" class="channel-item"><span>#</span> atualizacao-de-bios</a>
-                <a href="#" class="channel-item"><span>#</span> secure-boot-tpm</a>
-                <a href="#" class="channel-item"><span>#</span> fast-boot</a>
-                <a href="#" class="channel-item"><span>#</span> expo</a>
-                <a href="#" class="channel-item"><span>#</span> resizebar</a>
-                <a href="#" class="channel-item"><span>#</span> pbo</a>
+                <div class="category-header" onclick="toggleCategory(this)" style="margin-top: 0.75rem;">
+                    <span class="category-arrow">▼</span> [BIOS]
+                </div>
+                <div class="category-content">
+                    <a href="#" class="channel-item"><span>#</span> atualizacao-de-bios</a>
+                    <a href="#" class="channel-item"><span>#</span> secure-boot-tpm</a>
+                    <a href="#" class="channel-item"><span>#</span> fast-boot</a>
+                    <a href="#" class="channel-item"><span>#</span> expo</a>
+                    <a href="#" class="channel-item"><span>#</span> resizebar</a>
+                    <a href="#" class="channel-item"><span>#</span> pbo</a>
+                </div>
 
                 <!-- Categoria PÓS-FORMATAÇÃO -->
-                <div class="category-title" style="margin-top: 1rem;">[PÓS-FORMATAÇÃO]</div>
-                <a href="#" class="channel-item"><span>#</span> drivers-essenciais</a>
-                <a href="#" class="channel-item"><span>#</span> remocao-bloatware</a>
+                <div class="category-header" onclick="toggleCategory(this)" style="margin-top: 0.75rem;">
+                    <span class="category-arrow">▼</span> [PÓS-FORMATAÇÃO]
+                </div>
+                <div class="category-content">
+                    <a href="#" class="channel-item"><span>#</span> drivers-essenciais</a>
+                    <a href="#" class="channel-item"><span>#</span> remocao-bloatware</a>
+                </div>
             </div>
         </div>
 
-        <!-- Painel Central (O Chat / Tutorial do Canal Ativo) -->
+        <!-- Painel Central -->
         <div class="main-chat">
             <div class="chat-header">
-                <span style="font-size: 1.2rem; color: #80848e;">#</span> importante
+                <span style="font-size: 1.2rem; color: #6d6f78;">#</span> importante
             </div>
 
             <div class="chat-content">
@@ -333,12 +375,12 @@
 
                 <div class="tutorial-card">
                     <h3>Como usar este guia</h3>
-                    <p>Navegue pelos canais à esquerda divididos por categorias (BIOS, Pós-Formatação, Drivers). Cada canal trará o passo a passo detalhado e direto ao ponto para extrair a máxima performance do seu setup.</p>
+                    <p>Navegue pelos canais à esquerda divididos por categorias. Clique nas setinhas das categorias para recolher ou expandir os chats.</p>
                 </div>
             </div>
         </div>
 
-        <!-- Painel Lateral Direito (Membros) -->
+        <!-- Painel Lateral Direito -->
         <div class="sidebar-members">
             <div class="member-category">Online — 1</div>
             <div class="member-item">
@@ -349,5 +391,19 @@
 
     </div>
 
+    <!-- Script simples para recolher/expandir as categorias ao clicar -->
+    <script>
+        function toggleCategory(header) {
+            const content = header.nextElementSibling;
+            const arrow = header.querySelector('.category-arrow');
+            
+            content.classList.toggle('collapsed');
+            if (content.classList.contains('collapsed')) {
+                arrow.style.transform = 'rotate(-90deg)';
+            } else {
+                arrow.style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
 </body>
 </html>
