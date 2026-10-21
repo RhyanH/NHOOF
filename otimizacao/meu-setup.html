@@ -190,15 +190,29 @@
             border-bottom: 1px solid #2f2f38;
             font-weight: 600;
             color: #f2f3f5;
-            gap: 8px;
+            gap: 10px;
             background-color: #1a1a1f;
             font-size: 0.95rem;
         }
 
-        .chat-header span {
+        .chat-header .channel-symbol {
             font-size: 1.2rem;
             color: #80848e;
             font-weight: normal;
+        }
+
+        .chat-header .channel-divider {
+            color: #4e5058;
+            font-weight: 300;
+        }
+
+        .chat-header .channel-topic {
+            font-size: 0.85rem;
+            color: #949ba4;
+            font-weight: normal;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .chat-content {
@@ -212,12 +226,6 @@
             font-size: 1.75rem;
             font-weight: 700;
             color: #ffffff;
-            margin-bottom: 0.5rem;
-        }
-
-        .page-subtitle {
-            font-size: 0.95rem;
-            color: #949ba4;
             margin-bottom: 2rem;
         }
 
@@ -256,10 +264,16 @@
             color: #a0a4ae;
             display: flex;
             justify-content: space-between;
+            gap: 10px;
+        }
+
+        .setup-card ul li span {
+            color: #949ba4;
         }
 
         .setup-card ul li strong {
             color: #dbdee1;
+            text-align: right;
         }
     </style>
 </head>
@@ -320,22 +334,28 @@
         <!-- Painel Central -->
         <div class="main-chat">
             <div class="chat-header">
-                <span>#</span> meu setup
+                <span class="channel-symbol">#</span>
+                <span>meu setup</span>
+                <span class="channel-divider">|</span>
+                <span class="channel-topic">Hardware, periféricos e estrutura da minha máquina.</span>
             </div>
 
             <div class="chat-content">
                 <h1 class="page-title">Especificações do Setup</h1>
-                <p class="page-subtitle">Hardware, periféricos e estrutura da minha máquina.</p>
 
                 <div class="setup-grid">
                     <!-- Hardware Principal -->
                     <div class="setup-card">
                         <h3>💻 Hardware Principal</h3>
                         <ul>
-                            <li><span>Processador</span> <strong>[Seu CPU]</strong></li>
-                            <li><span>Placa de Vídeo</span> <strong>[Sua GPU]</strong></li>
-                            <li><span>Memória RAM</span> <strong>[Sua RAM]</strong></li>
-                            <li><span>Armazenamento</span> <strong>[Seus SSDs]</strong></li>
+                            <li><span>Processador</span> <strong>AMD Ryzen 7 9800X3D</strong></li>
+                            <li><span>Placa de Vídeo</span> <strong>RTX 4070 Galaxy</strong></li>
+                            <li><span>Placa Mãe</span> <strong>Gigabyte B650 Aero G</strong></li>
+                            <li><span>Memória RAM</span> <strong>Kingston Fury Beast 6000MT/s</strong></li>
+                            <li><span>Armazenamento</span> <strong>KC3000 (512GB) + Renegade (1TB)</strong></li>
+                            <li><span>Fonte</span> <strong>Pcyes Electro V2 750W</strong></li>
+                            <li><span>Water Cooler</span> <strong>Galahad II Trinity 360mm</strong></li>
+                            <li><span>Gabinete</span> <strong>Rise Mode Galaxy Glass White</strong></li>
                         </ul>
                     </div>
 
@@ -343,20 +363,23 @@
                     <div class="setup-card">
                         <h3>🖱️ Periféricos & Monitores</h3>
                         <ul>
-                            <li><span>Monitor Principal</span> <strong>Alienware AW2523HF</strong></li>
-                            <li><span>Monitor Secundário</span> <strong>[Modelo]</strong></li>
-                            <li><span>Teclado / Mouse</span> <strong>[Modelos]</strong></li>
-                            <li><span>Áudio</span> <strong>Voicemeeter Potato</strong></li>
+                            <li><span>Monitor 1</span> <strong>Alienware 360Hz AW2523HF</strong></li>
+                            <li><span>Monitor 2</span> <strong>Asus TUF 165Hz VG249Q1A</strong></li>
+                            <li><span>Teclado</span> <strong>HyperX Alloy Origins 65 (Red)</strong></li>
+                            <li><span>Mouse</span> <strong>Zowie EC3-CW</strong></li>
+                            <li><span>Mousepad</span> <strong>HyperX Pulsefire Mat</strong></li>
+                            <li><span>Headset</span> <strong>HyperX Cloud II Black</strong></li>
+                            <li><span>Microfone</span> <strong>Blue Yeticaster</strong></li>
                         </ul>
                     </div>
 
-                    <!-- Mesa e Ambiente -->
+                    <!-- Mesa e Estrutura -->
                     <div class="setup-card">
                         <h3>🛠️ Mesa & Estrutura</h3>
                         <ul>
-                            <li><span>Tampo</span> <strong>Madeira Teca Maciça (Meligna)</strong></li>
-                            <li><span>Suporte de Monitores</span> <strong>Braço Articulado Duplo</strong></li>
-                            <li><span>Estrutura / Base</span> <strong>Aço Pesado</strong></li>
+                            <li><span>Mesa</span> <strong>SouDesign</strong></li>
+                            <li><span>Cadeira</span> <strong>Elements Astra Pro</strong></li>
+                            <li><span>Áudio (Software)</span> <strong>Voicemeeter Potato</strong></li>
                         </ul>
                     </div>
                 </div>
