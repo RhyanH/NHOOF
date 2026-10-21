@@ -193,48 +193,51 @@
 
         .chat-content {
             flex: 1;
-            padding: 2rem;
+            padding: 2.5rem;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            max-width: 900px;
         }
 
-        .welcome-message {
-            margin-top: 1rem;
-            border-bottom: 1px solid #1a1a1a;
-            padding-bottom: 1.5rem;
+        /* Estilo de Documentação Limpo (Sem cara de chat de mensagem) */
+        .doc-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #ffffff;
             margin-bottom: 1.5rem;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
         }
 
-        .welcome-message h1 {
-            font-size: 2rem;
+        .doc-section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
             color: #f2f3f5;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .welcome-message p {
-            color: #949ba4;
-            font-size: 1rem;
-        }
-
-        .tutorial-card {
+        .doc-card {
             background-color: #121212;
             border: 1px solid #1a1a1a;
-            border-radius: 8px;
+            border-left: 4px solid #5865f2; /* Detalhe moderno na lateral */
+            border-radius: 6px;
             padding: 1.5rem;
             margin-bottom: 1rem;
         }
 
-        .tutorial-card h3 {
-            color: #f2f3f5;
-            margin-bottom: 0.5rem;
+        .doc-card p {
+            color: #b0b0b0;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 0.75rem;
         }
 
-        .tutorial-card p {
-            color: #949ba4;
-            font-size: 0.95rem;
-            line-height: 1.5;
+        .doc-card p:last-child {
+            margin-bottom: 0;
         }
     </style>
 </head>
@@ -269,7 +272,7 @@
     <!-- App Estilo Discord -->
     <div class="discord-app">
         
-        <!-- Barra Lateral Esquerda -->
+        <!-- Barra Lateral Esquerda (Nomes limpos sem hífens e com categorias ajustadas) -->
         <div class="sidebar-channels">
             <div class="channels-list">
                 <!-- Categoria WELCOME -->
@@ -278,7 +281,7 @@
                 </div>
                 <div class="category-content">
                     <a href="index.html" class="channel-item active"><span>#</span> importante</a>
-                    <a href="#" class="channel-item"><span>#</span> meu-setup</a>
+                    <a href="#" class="channel-item"><span>#</span> meu setup</a>
                 </div>
 
                 <!-- Categoria PEN DRIVE -->
@@ -286,27 +289,28 @@
                     <span class="category-arrow">▼</span> [PEN DRIVE]
                 </div>
                 <div class="category-content">
-                    <a href="#" class="channel-item"><span>#</span> criando-pendrive</a>
-                    <a href="#" class="channel-item"><span>#</span> instalador-chipset-amd</a>
+                    <a href="#" class="channel-item"><span>#</span> criando pendrive</a>
+                    <a href="#" class="channel-item"><span>#</span> instalador chipset amd</a>
                 </div>
             </div>
         </div>
 
-        <!-- Painel Central -->
+        <!-- Painel Central (Conteúdo do Canal Importante) -->
         <div class="main-chat">
             <div class="chat-header">
                 <span style="font-size: 1.2rem; color: #6d6f78;">#</span> importante
             </div>
 
             <div class="chat-content">
-                <div class="welcome-message">
-                    <h1>Bem-vindo(a) ao canal #importante!</h1>
-                    <p>Este é o começo do canal de diretrizes e avisos gerais para as otimizações do Windows.</p>
+                <h1 class="doc-title">Importante</h1>
+
+                <div class="doc-section-title">
+                    <span>→</span> AVISOS GERAIS:
                 </div>
 
-                <div class="tutorial-card">
-                    <h3>Como usar este guia</h3>
-                    <p>Navegue pelos canais à esquerda divididos por categorias. Clique nas setinhas das categorias para recolher ou expandir os chats.</p>
+                <div class="doc-card">
+                    <p>🚨 As otimizações foram feitas e ajustadas por mim 🚨</p>
+                    <p>🚨 É fundamental que você entenda o impacto de cada ajuste antes de aplicá-lo em seu computador 🚨</p>
                 </div>
             </div>
         </div>
