@@ -15,7 +15,7 @@
             width: 100%;
             height: 100vh;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #0b0b0b; /* Tema black igual à vitrine */
+            background-color: #0b0b0b;
             color: #dbdee1;
             overflow: hidden;
         }
@@ -47,7 +47,7 @@
         }
 
         .logo-container img {
-            height: 3.8rem; /* Tamanho exato da vitrine */
+            height: 3.8rem;
             width: auto;
             display: block;
         }
@@ -81,7 +81,7 @@
             width: 3.8rem;
         }
 
-        /* 1. Barra Lateral de Canais (Esquerda) com tema Black */
+        /* 1. Barra Lateral de Canais (Esquerda) */
         .sidebar-channels {
             width: 260px;
             background-color: #0b0b0b;
@@ -89,17 +89,7 @@
             flex-direction: column;
             border-right: 1px solid #1a1a1a;
             height: calc(100vh - 70px);
-        }
-
-        .server-header {
-            padding: 1rem;
-            font-weight: bold;
-            font-size: 0.95rem;
-            color: #f2f3f5;
-            border-bottom: 1px solid #1a1a1a;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            padding-top: 0.5rem; /* Respiro superior já que removemos o título do servidor */
         }
 
         .channels-list {
@@ -143,7 +133,7 @@
         .category-content {
             display: flex;
             flex-direction: column;
-            gap: 1px; /* Espaçamento bem pequeno e compacto entre os chats */
+            gap: 1px;
             overflow: hidden;
             transition: max-height 0.25s ease;
         }
@@ -180,7 +170,7 @@
             color: #6d6f78;
         }
 
-        /* 2. Área Principal do Chat (Centro) com tema Black */
+        /* 2. Área Principal do Chat (Centro - agora ocupa todo o espaço restante) */
         .main-chat {
             flex: 1;
             background-color: #0b0b0b;
@@ -246,48 +236,6 @@
             font-size: 0.95rem;
             line-height: 1.5;
         }
-
-        /* 3. Lista de Membros (Direita) com tema Black */
-        .sidebar-members {
-            width: 240px;
-            background-color: #0b0b0b;
-            border-left: 1px solid #1a1a1a;
-            padding: 1rem;
-            height: calc(100vh - 70px);
-            overflow-y: auto;
-        }
-
-        .member-category {
-            font-size: 0.75rem;
-            font-weight: bold;
-            color: #80848e;
-            text-transform: uppercase;
-            margin-bottom: 0.5rem;
-        }
-
-        .member-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 6px;
-            border-radius: 4px;
-            color: #dbdee1;
-            font-size: 0.9rem;
-        }
-
-        .member-avatar {
-            width: 32px;
-            height: 32px;
-            background-color: #222;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: white;
-            font-size: 0.85rem;
-            border: 1px solid #333;
-        }
     </style>
 </head>
 <body>
@@ -321,12 +269,8 @@
     <!-- App Estilo Discord -->
     <div class="discord-app">
         
-        <!-- Barra Lateral Esquerda -->
+        <!-- Barra Lateral Esquerda (Sem o título do servidor no topo) -->
         <div class="sidebar-channels">
-            <div class="server-header">
-                Otimizações ▾
-            </div>
-            
             <div class="channels-list">
                 <!-- Categoria WELCOME -->
                 <div class="category-header" onclick="toggleCategory(this)">
@@ -361,7 +305,7 @@
             </div>
         </div>
 
-        <!-- Painel Central -->
+        <!-- Painel Central (Agora expandido ocupando o espaço da direita) -->
         <div class="main-chat">
             <div class="chat-header">
                 <span style="font-size: 1.2rem; color: #6d6f78;">#</span> importante
@@ -380,18 +324,9 @@
             </div>
         </div>
 
-        <!-- Painel Lateral Direito -->
-        <div class="sidebar-members">
-            <div class="member-category">Online — 1</div>
-            <div class="member-item">
-                <div class="member-avatar">N</div>
-                <span>NHOOF</span>
-            </div>
-        </div>
-
     </div>
 
-    <!-- Script simples para recolher/expandir as categorias ao clicar -->
+    <!-- Script para recolher/expandir as categorias -->
     <script>
         function toggleCategory(header) {
             const content = header.nextElementSibling;
