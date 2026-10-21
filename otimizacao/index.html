@@ -221,7 +221,7 @@
             margin-bottom: 2rem;
         }
 
-        /* Caixa de Alerta com largura máxima elegante e texto justificado */
+        /* Caixa de Alerta com largura controlada e texto justificado */
         .alert-box {
             background-color: #222229;
             border: 1px solid #2f2f38;
@@ -231,7 +231,7 @@
             display: flex;
             align-items: flex-start;
             gap: 12px;
-            max-width: 750px; /* Limita o tamanho para não esticar demais na tela */
+            max-width: 750px;
         }
 
         .alert-icon {
@@ -243,7 +243,12 @@
             color: #dbdee1;
             font-size: 0.95rem;
             line-height: 1.6;
-            text-align: justify; /* Alinha as margens de ambos os lados */
+            text-align: justify;
+        }
+
+        /* Espaçamento confortável entre os parágrafos do aviso */
+        .alert-text p + p {
+            margin-top: 0.75rem;
         }
     </style>
 </head>
@@ -314,7 +319,8 @@
                 <div class="alert-box">
                     <div class="alert-icon">⚠️</div>
                     <div class="alert-text">
-                        Todas as otimizações e modificações apresentadas foram testadas, personalizadas e ajustadas por mim, de acordo com a configuração da minha própria máquina. Os resultados podem variar dependendo do hardware e do sistema de cada usuário. Se você não souber o que uma alteração faz ou como revertê-la, recomendo que não mexa antes de entender o que ela realmente altera.
+                        <p>Todas as otimizações e modificações apresentadas foram testadas, personalizadas e ajustadas por mim, de acordo com a configuração da minha própria máquina. Os resultados podem variar dependendo do hardware e do sistema de cada usuário.</p>
+                        <p>Antes de aplicar qualquer alteração, certifique-se de entender o que ela faz e como revertê-la. Se não souber o que está fazendo, recomendo que não mexa. <strong>Atenção: faça por sua conta e risco!</strong></p>
                     </div>
                 </div>
             </div>
