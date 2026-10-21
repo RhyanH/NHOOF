@@ -205,7 +205,7 @@
             flex: 1;
             padding: 2.5rem 3rem;
             overflow-y: auto;
-            max-width: 900px;
+            max-width: 1000px;
         }
 
         .page-title {
@@ -221,7 +221,7 @@
             margin-bottom: 2rem;
         }
 
-        /* Caixa de Alerta com o novo texto unificado */
+        /* Caixa de Alerta com largura máxima elegante e texto justificado */
         .alert-box {
             background-color: #222229;
             border: 1px solid #2f2f38;
@@ -231,6 +231,7 @@
             display: flex;
             align-items: flex-start;
             gap: 12px;
+            max-width: 750px; /* Limita o tamanho para não esticar demais na tela */
         }
 
         .alert-icon {
@@ -242,6 +243,7 @@
             color: #dbdee1;
             font-size: 0.95rem;
             line-height: 1.6;
+            text-align: justify; /* Alinha as margens de ambos os lados */
         }
     </style>
 </head>
