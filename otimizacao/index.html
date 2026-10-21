@@ -221,32 +221,27 @@
             margin-bottom: 2rem;
         }
 
-        /* Caixa de Alerta com frases extremamente coladinhas */
+        /* Caixa de Alerta com o novo texto unificado */
         .alert-box {
             background-color: #222229;
             border: 1px solid #2f2f38;
             border-left: 4px solid #5865f2;
             border-radius: 6px;
-            padding: 0.75rem 1.25rem; /* Padding vertical reduzido */
-        }
-
-        .alert-item {
+            padding: 1.25rem 1.5rem;
             display: flex;
             align-items: flex-start;
-            gap: 10px;
+            gap: 12px;
+        }
+
+        .alert-icon {
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .alert-text {
             color: #dbdee1;
             font-size: 0.95rem;
-            line-height: 1.4;
-        }
-
-        /* Sem margem inferior para colar as frases perfeitamente */
-        .alert-item:not(:last-child) {
-            margin-bottom: 0px; 
-        }
-
-        .alert-item span {
-            font-size: 1.1rem;
-            line-height: 1;
+            line-height: 1.6;
         }
     </style>
 </head>
@@ -315,13 +310,9 @@
                 <p class="page-subtitle">Diretrizes gerais e recomendações antes de iniciar os procedimentos.</p>
 
                 <div class="alert-box">
-                    <div class="alert-item">
-                        <span>⚠️</span>
-                        <div>Todas as otimizações apresentadas foram testadas, customizadas e ajustadas pessoalmente por mim.</div>
-                    </div>
-                    <div class="alert-item">
-                        <span>⚠️</span>
-                        <div>É fundamental que você compreenda o impacto de cada alteração antes de aplicá-la no seu sistema.</div>
+                    <div class="alert-icon">⚠️</div>
+                    <div class="alert-text">
+                        Todas as otimizações e modificações apresentadas foram testadas, personalizadas e ajustadas por mim, de acordo com a configuração da minha própria máquina. Os resultados podem variar dependendo do hardware e do sistema de cada usuário. Se você não souber o que uma alteração faz ou como revertê-la, recomendo que não mexa antes de entender o que ela realmente altera.
                     </div>
                 </div>
             </div>
