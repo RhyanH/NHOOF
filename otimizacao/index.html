@@ -179,28 +179,16 @@
             height: calc(100vh - 70px);
         }
 
-        .chat-header {
-            height: 48px;
-            padding: 0 1.5rem;
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid #1a1a1a;
-            font-weight: bold;
-            color: #f2f3f5;
-            gap: 8px;
-            background-color: #0b0b0b;
-        }
-
         .chat-content {
             flex: 1;
-            padding: 2.5rem;
+            padding: 3rem;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
-            max-width: 900px;
+            max-width: 950px;
         }
 
-        /* Estilo de Documentação Limpo (Sem cara de chat de mensagem) */
+        /* Estilo de Documentação Limpo */
         .doc-title {
             font-size: 2.2rem;
             font-weight: 800;
@@ -223,7 +211,7 @@
         .doc-card {
             background-color: #121212;
             border: 1px solid #1a1a1a;
-            border-left: 4px solid #5865f2; /* Detalhe moderno na lateral */
+            border-left: 4px solid #5865f2;
             border-radius: 6px;
             padding: 1.5rem;
             margin-bottom: 1rem;
@@ -272,7 +260,7 @@
     <!-- App Estilo Discord -->
     <div class="discord-app">
         
-        <!-- Barra Lateral Esquerda (Nomes limpos sem hífens e com categorias ajustadas) -->
+        <!-- Barra Lateral Esquerda -->
         <div class="sidebar-channels">
             <div class="channels-list">
                 <!-- Categoria WELCOME -->
@@ -295,12 +283,8 @@
             </div>
         </div>
 
-        <!-- Painel Central (Conteúdo do Canal Importante) -->
+        <!-- Painel Central (Sem a barra superior do chat, direto para o conteúdo) -->
         <div class="main-chat">
-            <div class="chat-header">
-                <span style="font-size: 1.2rem; color: #6d6f78;">#</span> importante
-            </div>
-
             <div class="chat-content">
                 <h1 class="doc-title">Importante</h1>
 
