@@ -246,7 +246,6 @@
             text-align: justify;
         }
 
-        /* Espaçamento confortável entre os parágrafos do aviso */
         .alert-text p + p {
             margin-top: 0.75rem;
         }
@@ -296,51 +295,4 @@
                 </div>
 
                 <!-- Categoria PEN DRIVE -->
-                <div class="category-header" onclick="toggleCategory(this)" style="margin-top: 0.75rem;">
-                    <span class="category-arrow">▼</span> [PEN DRIVE]
-                </div>
-                <div class="category-content">
-                    <a href="#" class="channel-item"><span>#</span> criando pendrive</a>
-                    <a href="#" class="channel-item"><span>#</span> instalador chipset amd</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Painel Central -->
-        <div class="main-chat">
-            <div class="chat-header">
-                <span>#</span> importante
-            </div>
-
-            <div class="chat-content">
-                <h1 class="page-title">Informações Importantes</h1>
-                <p class="page-subtitle">Diretrizes gerais e recomendações antes de iniciar os procedimentos.</p>
-
-                <div class="alert-box">
-                    <div class="alert-icon">⚠️</div>
-                    <div class="alert-text">
-                        <p>Todas as otimizações e modificações apresentadas foram testadas, personalizadas e ajustadas por mim, de acordo com a configuração da minha própria máquina. Os resultados podem variar dependendo do hardware e do sistema de cada usuário.</p>
-                        <p>Antes de aplicar qualquer alteração, certifique-se de entender o que ela faz e como revertê-la. Se não souber o que está fazendo, recomendo que não mexa. <strong>Atenção: faça por sua conta e risco!</strong></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- Script para recolher/expandir as categorias -->
-    <script>
-        function toggleCategory(header) {
-            const content = header.nextElementSibling;
-            const arrow = header.querySelector('.category-arrow');
-            
-            content.classList.toggle('collapsed');
-            if (content.classList.contains('collapsed')) {
-                arrow.style.transform = 'rotate(-90deg)';
-            } else {
-                arrow.style.transform = 'rotate(0deg)';
-            }
-        }
-    </script>
-</body>
-</html>
+                <div class="category-header" onclick
