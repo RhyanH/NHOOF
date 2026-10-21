@@ -190,15 +190,29 @@
             border-bottom: 1px solid #2f2f38;
             font-weight: 600;
             color: #f2f3f5;
-            gap: 8px;
+            gap: 10px;
             background-color: #1a1a1f;
             font-size: 0.95rem;
         }
 
-        .chat-header span {
+        .chat-header .channel-symbol {
             font-size: 1.2rem;
             color: #80848e;
             font-weight: normal;
+        }
+
+        .chat-header .channel-divider {
+            color: #4e5058;
+            font-weight: 300;
+        }
+
+        .chat-header .channel-topic {
+            font-size: 0.85rem;
+            color: #949ba4;
+            font-weight: normal;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .chat-content {
@@ -212,13 +226,7 @@
             font-size: 1.75rem;
             font-weight: 700;
             color: #ffffff;
-            margin-bottom: 0.5rem;
-        }
-
-        .page-subtitle {
-            font-size: 0.95rem;
-            color: #949ba4;
-            margin-bottom: 2rem;
+            margin-bottom: 2rem; /* Espaço direto para a caixa já que removemos o subtítulo */
         }
 
         /* Caixa de Alerta com largura controlada e texto justificado */
@@ -308,12 +316,14 @@
         <!-- Painel Central -->
         <div class="main-chat">
             <div class="chat-header">
-                <span>#</span> importante
+                <span class="channel-symbol">#</span>
+                <span>importante</span>
+                <span class="channel-divider">|</span>
+                <span class="channel-topic">Recomendações antes de iniciar os procedimentos.</span>
             </div>
 
             <div class="chat-content">
                 <h1 class="page-title">Informações Importantes</h1>
-                <p class="page-subtitle">Recomendações antes de iniciar os procedimentos.</p>
 
                 <div class="alert-box">
                     <div class="alert-icon">⚠️</div>
