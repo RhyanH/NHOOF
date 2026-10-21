@@ -179,7 +179,6 @@
             height: calc(100vh - 70px);
         }
 
-        /* Cabeçalho do canal no topo do chat (Estilo Discord Restaurado) */
         .chat-header {
             height: 48px;
             padding: 0 1.5rem;
@@ -201,50 +200,49 @@
 
         .chat-content {
             flex: 1;
-            padding: 2.5rem;
+            padding: 2.5rem 3rem;
             overflow-y: auto;
+            max-width: 900px;
+        }
+
+        /* Estilo de Documentação Profissional */
+        .page-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
+        }
+
+        .page-subtitle {
+            font-size: 0.95rem;
+            color: #80848e;
+            margin-bottom: 2rem;
+        }
+
+        /* Caixa de Alerta Estilo Documentação (Callout) */
+        .alert-box {
+            background-color: rgba(239, 68, 68, 0.08); /* Vermelho bem suave de fundo */
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-left: 4px solid #ef4444; /* Detalhe lateral elegante */
+            border-radius: 6px;
+            padding: 1.25rem 1.5rem;
             display: flex;
             flex-direction: column;
-            max-width: 950px;
+            gap: 0.75rem;
         }
 
-        /* Estilo de Documentação Limpo */
-        .doc-title {
-            font-size: 2.2rem;
-            font-weight: 800;
-            color: #ffffff;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.5px;
-            text-transform: uppercase;
-        }
-
-        .doc-section-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #f2f3f5;
-            margin-bottom: 1rem;
+        .alert-item {
             display: flex;
-            align-items: center;
-            gap: 8px;
+            align-items: flex-start;
+            gap: 10px;
+            color: #d1d5db;
+            font-size: 0.95rem;
+            line-height: 1.5;
         }
 
-        .doc-card {
-            background-color: #121212;
-            border: 1px solid #1a1a1a; /* Removido o risco azul, agora é neutro e limpo */
-            border-radius: 6px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .doc-card p {
-            color: #b0b0b0;
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 0.75rem;
-        }
-
-        .doc-card p:last-child {
-            margin-bottom: 0;
+        .alert-item span {
+            font-size: 1.1rem;
+            line-height: 1;
         }
     </style>
 </head>
@@ -297,46 +295,4 @@
                 </div>
                 <div class="category-content">
                     <a href="#" class="channel-item"><span>#</span> criando pendrive</a>
-                    <a href="#" class="channel-item"><span>#</span> instalador chipset amd</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Painel Central (Com o cabeçalho do canal restaurado e cartão limpo) -->
-        <div class="main-chat">
-            <div class="chat-header">
-                <span>#</span> importante
-            </div>
-
-            <div class="chat-content">
-                <h1 class="doc-title">Importante</h1>
-
-                <div class="doc-section-title">
-                    <span>→</span> AVISOS GERAIS:
-                </div>
-
-                <div class="doc-card">
-                    <p>🚨 As otimizações foram feitas e ajustadas por mim 🚨</p>
-                    <p>🚨 É fundamental que você entenda o impacto de cada ajuste antes de aplicá-lo em seu computador 🚨</p>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- Script para recolher/expandir as categorias -->
-    <script>
-        function toggleCategory(header) {
-            const content = header.nextElementSibling;
-            const arrow = header.querySelector('.category-arrow');
-            
-            content.classList.toggle('collapsed');
-            if (content.classList.contains('collapsed')) {
-                arrow.style.transform = 'rotate(-90deg)';
-            } else {
-                arrow.style.transform = 'rotate(0deg)';
-            }
-        }
-    </script>
-</body>
-</html>
+                    <a href="#" class="channel-item"><span>#</span>
