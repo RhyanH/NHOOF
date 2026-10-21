@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Otimização - NHOOF</title>
+    <!-- Ícone da aba do navegador (Favicon) -->
+    <link rel="icon" type="image/png" href="../imagens/logo.png">
     <style>
         * {
             margin: 0;
@@ -225,10 +227,10 @@
             border: 1px solid #2f2f38;
             border-left: 4px solid #5865f2;
             border-radius: 6px;
-            padding: 1rem 1.25rem; /* Padding mais enxuto */
+            padding: 1rem 1.25rem;
             display: flex;
             flex-direction: column;
-            gap: 0.35rem; /* Espaço bem reduzido entre as linhas, igual à referência */
+            gap: 0.35rem;
         }
 
         .alert-item {
@@ -294,4 +296,50 @@
                     <span class="category-arrow">▼</span> [PEN DRIVE]
                 </div>
                 <div class="category-content">
-                    <a href="#" class="channel-item"><span>#</span>
+                    <a href="#" class="channel-item"><span>#</span> criando pendrive</a>
+                    <a href="#" class="channel-item"><span>#</span> instalador chipset amd</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Painel Central -->
+        <div class="main-chat">
+            <div class="chat-header">
+                <span>#</span> importante
+            </div>
+
+            <div class="chat-content">
+                <h1 class="page-title">Informações Importantes</h1>
+                <p class="page-subtitle">Diretrizes gerais e recomendações antes de iniciar os procedimentos.</p>
+
+                <div class="alert-box">
+                    <div class="alert-item">
+                        <span>⚠️</span>
+                        <div>Todas as otimizações apresentadas foram testadas, customizadas e ajustadas pessoalmente por mim.</div>
+                    </div>
+                    <div class="alert-item">
+                        <span>⚠️</span>
+                        <div>É fundamental que você compreenda o impacto de cada alteração antes de aplicá-la no seu sistema.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Script para recolher/expandir as categorias -->
+    <script>
+        function toggleCategory(header) {
+            const content = header.nextElementSibling;
+            const arrow = header.querySelector('.category-arrow');
+            
+            content.classList.toggle('collapsed');
+            if (content.classList.contains('collapsed')) {
+                arrow.style.transform = 'rotate(-90deg)';
+            } else {
+                arrow.style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
+</body>
+</html>
