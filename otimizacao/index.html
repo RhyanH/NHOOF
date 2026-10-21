@@ -89,7 +89,7 @@
             flex-direction: column;
             border-right: 1px solid #1a1a1a;
             height: calc(100vh - 70px);
-            padding-top: 0.5rem; /* Respiro superior já que removemos o título do servidor */
+            padding-top: 0.5rem;
         }
 
         .channels-list {
@@ -170,7 +170,7 @@
             color: #6d6f78;
         }
 
-        /* 2. Área Principal do Chat (Centro - agora ocupa todo o espaço restante) */
+        /* 2. Área Principal do Chat (Centro) */
         .main-chat {
             flex: 1;
             background-color: #0b0b0b;
@@ -269,7 +269,7 @@
     <!-- App Estilo Discord -->
     <div class="discord-app">
         
-        <!-- Barra Lateral Esquerda (Sem o título do servidor no topo) -->
+        <!-- Barra Lateral Esquerda -->
         <div class="sidebar-channels">
             <div class="channels-list">
                 <!-- Categoria WELCOME -->
@@ -281,31 +281,18 @@
                     <a href="#" class="channel-item"><span>#</span> meu-setup</a>
                 </div>
 
-                <!-- Categoria BIOS -->
+                <!-- Categoria PEN DRIVE -->
                 <div class="category-header" onclick="toggleCategory(this)" style="margin-top: 0.75rem;">
-                    <span class="category-arrow">▼</span> [BIOS]
+                    <span class="category-arrow">▼</span> [PEN DRIVE]
                 </div>
                 <div class="category-content">
-                    <a href="#" class="channel-item"><span>#</span> atualizacao-de-bios</a>
-                    <a href="#" class="channel-item"><span>#</span> secure-boot-tpm</a>
-                    <a href="#" class="channel-item"><span>#</span> fast-boot</a>
-                    <a href="#" class="channel-item"><span>#</span> expo</a>
-                    <a href="#" class="channel-item"><span>#</span> resizebar</a>
-                    <a href="#" class="channel-item"><span>#</span> pbo</a>
-                </div>
-
-                <!-- Categoria PÓS-FORMATAÇÃO -->
-                <div class="category-header" onclick="toggleCategory(this)" style="margin-top: 0.75rem;">
-                    <span class="category-arrow">▼</span> [PÓS-FORMATAÇÃO]
-                </div>
-                <div class="category-content">
-                    <a href="#" class="channel-item"><span>#</span> drivers-essenciais</a>
-                    <a href="#" class="channel-item"><span>#</span> remocao-bloatware</a>
+                    <a href="#" class="channel-item"><span>#</span> criando-pendrive</a>
+                    <a href="#" class="channel-item"><span>#</span> instalador-chipset-amd</a>
                 </div>
             </div>
         </div>
 
-        <!-- Painel Central (Agora expandido ocupando o espaço da direita) -->
+        <!-- Painel Central -->
         <div class="main-chat">
             <div class="chat-header">
                 <span style="font-size: 1.2rem; color: #6d6f78;">#</span> importante
