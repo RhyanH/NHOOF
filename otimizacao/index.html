@@ -221,9 +221,9 @@
 
         /* Caixa de Alerta Estilo Documentação (Callout) */
         .alert-box {
-            background-color: rgba(239, 68, 68, 0.08); /* Vermelho bem suave de fundo */
+            background-color: rgba(239, 68, 68, 0.08);
             border: 1px solid rgba(239, 68, 68, 0.2);
-            border-left: 4px solid #ef4444; /* Detalhe lateral elegante */
+            border-left: 4px solid #ef4444;
             border-radius: 6px;
             padding: 1.25rem 1.5rem;
             display: flex;
@@ -295,4 +295,49 @@
                 </div>
                 <div class="category-content">
                     <a href="#" class="channel-item"><span>#</span> criando pendrive</a>
-                    <a href="#" class="channel-item"><span>#</span>
+                    <a href="#" class="channel-item"><span>#</span> instalador chipset amd</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Painel Central -->
+        <div class="main-chat">
+            <div class="chat-header">
+                <span>#</span> importante
+            </div>
+
+            <div class="chat-content">
+                <h1 class="page-title">Informações Importantes</h1>
+                <p class="page-subtitle">Diretrizes gerais e recomendações antes de iniciar os procedimentos.</p>
+
+                <div class="alert-box">
+                    <div class="alert-item">
+                        <span>⚠️</span>
+                        <div>Todas as otimizações apresentadas foram testadas, customizadas e ajustadas pessoalmente por mim.</div>
+                    </div>
+                    <div class="alert-item">
+                        <span>⚠️</span>
+                        <div>É fundamental que você compreenda o impacto de cada alteração antes de aplicá-la no seu sistema.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Script para recolher/expandir as categorias -->
+    <script>
+        function toggleCategory(header) {
+            const content = header.nextElementSibling;
+            const arrow = header.querySelector('.category-arrow');
+            
+            content.classList.toggle('collapsed');
+            if (content.classList.contains('collapsed')) {
+                arrow.style.transform = 'rotate(-90deg)';
+            } else {
+                arrow.style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
+</body>
+</html>
