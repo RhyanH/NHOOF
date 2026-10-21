@@ -15,7 +15,7 @@
             width: 100%;
             height: 100vh;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #0b0b0d; /* Cinza super escuro e elegante (não é o preto chapado) */
+            background-color: #0e0e11; /* Grafite escuro e discreto (pouco acima do preto puro) */
             color: #dbdee1;
             overflow: hidden;
         }
@@ -31,7 +31,7 @@
             justify-content: space-between;
             padding: 1.8rem 3.5rem;
             z-index: 100;
-            background: linear-gradient(to bottom, rgba(11,11,13,0.95) 0%, rgba(11,11,13,0) 100%);
+            background: linear-gradient(to bottom, rgba(14,14,17,0.95) 0%, rgba(14,14,17,0) 100%);
         }
 
         .logo-container a {
@@ -84,10 +84,10 @@
         /* Barra Lateral Esquerda */
         .sidebar-channels {
             width: 260px;
-            background-color: #0e0e10; /* Levemente diferenciado para dar profundidade */
+            background-color: #121216; /* Tom sutilmente destacado da base */
             display: flex;
             flex-direction: column;
-            border-right: 1px solid #1f1f23;
+            border-right: 1px solid #1c1c21;
             height: calc(100vh - 70px);
             padding-top: 0.5rem;
         }
@@ -102,7 +102,7 @@
             width: 4px;
         }
         .channels-list::-webkit-scrollbar-thumb {
-            background-color: #232328;
+            background-color: #23232b;
             border-radius: 2px;
         }
 
@@ -110,7 +110,7 @@
         .category-header {
             font-size: 0.75rem;
             font-weight: bold;
-            color: #80848e;
+            color: #72767d;
             text-transform: uppercase;
             padding: 0.5rem 0.2rem 0.2rem 0.2rem;
             letter-spacing: 0.5px;
@@ -154,12 +154,12 @@
         }
 
         .channel-item:hover {
-            background-color: #161619;
+            background-color: #1a1a20;
             color: #dbdee1;
         }
 
         .channel-item.active {
-            background-color: #1a1a1e;
+            background-color: #202026;
             color: #ffffff;
             font-weight: 500;
         }
@@ -173,7 +173,7 @@
         /* Painel Central */
         .main-chat {
             flex: 1;
-            background-color: #0b0b0d;
+            background-color: #0e0e11;
             display: flex;
             flex-direction: column;
             height: calc(100vh - 70px);
@@ -184,11 +184,11 @@
             padding: 0 1.5rem;
             display: flex;
             align-items: center;
-            border-bottom: 1px solid #1f1f23;
+            border-bottom: 1px solid #1c1c21;
             font-weight: 600;
             color: #f2f3f5;
             gap: 8px;
-            background-color: #0b0b0d;
+            background-color: #0e0e11;
             font-size: 0.95rem;
         }
 
@@ -214,15 +214,15 @@
 
         .page-subtitle {
             font-size: 0.95rem;
-            color: #949ba4;
+            color: #80848e;
             margin-bottom: 2rem;
         }
 
-        /* Caixa de Alerta (Callout) com destaque sutil */
+        /* Caixa de Alerta (Callout) */
         .alert-box {
-            background-color: #121215;
-            border: 1px solid #1f1f23;
-            border-left: 4px solid #5865f2; /* Azul Discord corporativo/limpo ou tom neutro */
+            background-color: #141419;
+            border: 1px solid #1c1c21;
+            border-left: 4px solid #5865f2;
             border-radius: 6px;
             padding: 1.25rem 1.5rem;
             display: flex;
@@ -277,66 +277,4 @@
     <div class="discord-app">
         
         <!-- Barra Lateral Esquerda -->
-        <div class="sidebar-channels">
-            <div class="channels-list">
-                <!-- Categoria WELCOME -->
-                <div class="category-header" onclick="toggleCategory(this)">
-                    <span class="category-arrow">▼</span> [WELCOME]
-                </div>
-                <div class="category-content">
-                    <a href="index.html" class="channel-item active"><span>#</span> importante</a>
-                    <a href="#" class="channel-item"><span>#</span> meu setup</a>
-                </div>
-
-                <!-- Categoria PEN DRIVE -->
-                <div class="category-header" onclick="toggleCategory(this)" style="margin-top: 0.75rem;">
-                    <span class="category-arrow">▼</span> [PEN DRIVE]
-                </div>
-                <div class="category-content">
-                    <a href="#" class="channel-item"><span>#</span> criando pendrive</a>
-                    <a href="#" class="channel-item"><span>#</span> instalador chipset amd</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Painel Central -->
-        <div class="main-chat">
-            <div class="chat-header">
-                <span>#</span> importante
-            </div>
-
-            <div class="chat-content">
-                <h1 class="page-title">Informações Importantes</h1>
-                <p class="page-subtitle">Diretrizes gerais e recomendações antes de iniciar os procedimentos.</p>
-
-                <div class="alert-box">
-                    <div class="alert-item">
-                        <span>⚠️</span>
-                        <div>Todas as otimizações apresentadas foram testadas, customizadas e ajustadas pessoalmente por mim.</div>
-                    </div>
-                    <div class="alert-item">
-                        <span>⚠️</span>
-                        <div>É fundamental que você compreenda o impacto de cada alteração antes de aplicá-la no seu sistema.</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- Script para recolher/expandir as categorias -->
-    <script>
-        function toggleCategory(header) {
-            const content = header.nextElementSibling;
-            const arrow = header.querySelector('.category-arrow');
-            
-            content.classList.toggle('collapsed');
-            if (content.classList.contains('collapsed')) {
-                arrow.style.transform = 'rotate(-90deg)';
-            } else {
-                arrow.style.transform = 'rotate(0deg)';
-            }
-        }
-    </script>
-</body>
-</html>
+        <div class="
