@@ -15,12 +15,12 @@
             width: 100%;
             height: 100vh;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #1a1a1f; /* Grafite escuro bem perceptível, diferenciando do preto dos projetos */
+            background-color: #1a1a1f;
             color: #dbdee1;
             overflow: hidden;
         }
 
-        /* Cabeçalho Global */
+        /* Cabeçalho Global (Barra preta pura preservada, sem alterar tamanhos/posições) */
         header.global-header {
             position: fixed;
             top: 0;
@@ -31,7 +31,7 @@
             justify-content: space-between;
             padding: 1.8rem 3.5rem;
             z-index: 100;
-            background: linear-gradient(to bottom, rgba(26,26,31,0.95) 0%, rgba(26,26,31,0) 100%);
+            background: #000000; /* Preto puro exato na barra superior */
         }
 
         .logo-container a {
@@ -73,22 +73,22 @@
             width: 3.8rem;
         }
 
-        /* Layout Principal */
+        /* Layout Principal com espaçamento correto para o conteúdo não ser engolido */
         .discord-app {
             display: flex;
             width: 100vw;
             height: 100vh;
-            padding-top: 70px;
+            padding-top: 85px; /* Altura exata para o conteúdo respeitar a barra superior */
         }
 
         /* Barra Lateral Esquerda */
         .sidebar-channels {
             width: 260px;
-            background-color: #212128; /* Um tom acima para destacar bem a coluna de canais */
+            background-color: #212128;
             display: flex;
             flex-direction: column;
             border-right: 1px solid #2f2f38;
-            height: calc(100vh - 70px);
+            height: calc(100vh - 85px);
             padding-top: 0.5rem;
         }
 
@@ -176,7 +176,7 @@
             background-color: #1a1a1f;
             display: flex;
             flex-direction: column;
-            height: calc(100vh - 70px);
+            height: calc(100vh - 85px);
         }
 
         .chat-header {
