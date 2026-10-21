@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criando Pen Drive - NHOOF</title>
+    <!-- Ícone da aba do navegador (Favicon) -->
+    <link rel="icon" type="image/png" href="../imagens/logo.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #1a1a1f;
+            color: #dbdee1;
+            overflow: hidden;
+        }
+
+        /* Cabeçalho Global Fixo */
+        header.global-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 85px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 3.5rem;
+            z-index: 100;
+            background: #000000;
+        }
+
+        .logo-container a {
+            display: inline-block;
+        }
+
+        .logo-container img {
+            height: 3.8rem;
+            width: auto;
+            display: block;
+        }
+
+        nav {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.8rem;
+            align-items: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #a0a0a0;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: #ffffff;
+        }
+
+        .header-spacer {
+            width: 3.8rem;
+        }
+
+        /* Layout Principal */
+        .discord-app {
+            display: flex;
+            width: 100vw;
+            height: calc(100vh - 85px);
+            margin-top: 85px;
+        }
+
+        /* Barra Lateral Esquerda */
+        .sidebar-channels {
+            width: 260px;
+            background-color: #212128;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #2f2f38;
+            height: 100%;
+            padding-top: 0.5rem;
+        }
+
+        .channels-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0.5rem;
+        }
+
+        .channels-list::-webkit-scrollbar {
+            width: 4px;
+        }
+        .channels-list::-webkit-scrollbar-thumb {
+            background-color: #353540;
+            border-radius: 2px;
+        }
+
+        /* Categorias Ocultáveis */
+        .category-header {
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: #949ba4;
+            text-transform: uppercase;
+            padding: 0.5rem 0.2rem 0.2rem 0.2rem;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            gap: 4px;
+        }
+
+        .category-header:hover {
+            color: #ffffff;
+        }
+
+        .category-arrow {
+            font-size: 0.65rem;
+            transition: transform 0.2s ease;
+        }
+
+        .category-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            overflow: hidden;
+            transition: max-height 0.25s ease;
+        }
+
+        .category-content.collapsed {
+            max-height: 0 !important;
+        }
+
+        .channel-item {
+            display: flex;
+            align-items: center;
+            padding: 0.35rem 0.5rem;
+            border-radius: 4px;
+            color: #a0a4ae;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background 0.15s, color 0.15s;
+        }
+
+        .channel-item:hover {
+            background-color: #2a2a33;
+            color: #ffffff;
+        }
+
+        .channel-item.active {
+            background-color: #32323d;
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        .channel-item span {
+            margin-right: 6px;
+            font-size: 1rem;
+            color: #80848e;
+        }
+
+        /* Painel Central */
+        .main-chat {
+            flex: 1;
+            background-color: #1a1a1f;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .chat-header {
+            height: 48px;
+            padding: 0 1.5rem;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #2f2f38;
+            font-weight: 600;
+            color: #f2f3f5;
+            gap: 10px;
+            background-color: #1a1a1f;
+            font-size: 0.95rem;
+        }
+
+        .chat-header .channel-symbol {
+            font-size: 1.2rem;
+            color: #80848e;
+            font-weight: normal;
+        }
+
+        .chat-header .channel-divider {
+            color: #4e5058;
+            font-weight: 300;
+        }
+
+        .chat-header .channel-topic {
+            font-size: 0.85rem;
+            color: #949ba4;
+            font-weight: normal;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .chat-content {
+            flex: 1;
+            padding: 2.5rem 3rem;
+            overflow-y: auto;
+            max-width: 1400px;
+        }
+
+        .page-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 2rem;
+        }
+
+        /* Estilo base para os tutoriais que vamos montar */
+        .tutorial-box {
+            background-color: #222229;
+            border: 1px solid #2f2f38;
+            border-radius: 6px;
+            padding: 1.5rem;
+            color: #dbdee1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho Global do Site -->
+    <header class="global-header">
+        <div class="logo-container">
+            <a href="../index.html">
+                <img src="../imagens/logo.png" alt="Logo">
+            </a>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Otimização</a></li>
+                <li><a href="#">Projeto 2</a></li>
+                <li><a href="#">Projeto 3</a></li>
+                <li><a href="#">Projeto 4</a></li>
+                <li><a href="#">Projeto 5</a></li>
+                <li><a href="#">Projeto 6</a></li>
+                <li><a href="#">Projeto 7</a></li>
+                <li><a href="#">Projeto 8</a></li>
+                <li><a href="#">Projeto 9</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-spacer"></div>
+    </header>
+
+    <!-- App Estilo Painel -->
+    <div class="discord-app">
+        
+        <!-- Barra Lateral Esquerda -->
+        <div class="sidebar-channels">
+            <div class="channels-list">
+                <!-- Categoria BEM VINDO -->
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <span class="category-arrow">▼</span> [BEM VINDO]
+                </div>
+                <div class="category-content">
+                    <a href="index.html" class="channel-item"><span>#</span> importante</a>
+                    <a href="meu-setup.html" class="channel-item"><span>#</span> meu setup</a>
+                </div>
+
+                <!-- Categoria PEN DRIVE -->
+                <div class="category-header" onclick="toggleCategory(this)" style="margin-top: 0.75rem;">
+                    <span class="category-arrow">▼</span> [PEN DRIVE]
+                </div>
+                <div class="category-content">
+                    <a href="criando-pendrive.html" class="channel-item active"><span>#</span> criando pendrive</a>
+                    <a href="#" class="channel-item"><span>#</span> instalador chipset amd</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Painel Central -->
+        <div class="main-chat">
+            <div class="chat-header">
+                <span class="channel-symbol">#</span>
+                <span>criando pendrive</span>
+                <span class="channel-divider">|</span>
+                <span class="channel-topic">Passo a passo para criação do instalador bootável.</span>
+            </div>
+
+            <div class="chat-content">
+                <h1 class="page-title">Criando Pen Drive Bootável</h1>
+
+                <div class="tutorial-box">
+                    <p>Conteúdo do tutorial será preenchido aqui...</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Script para recolher/expandir as categorias -->
+    <script>
+        function toggleCategory(header) {
+            const content = header.nextElementSibling;
+            const arrow = header.querySelector('.category-arrow');
+            
+            content.classList.toggle('collapsed');
+            if (content.classList.contains('collapsed')) {
+                arrow.style.transform = 'rotate(-90deg)';
+            } else {
+                arrow.style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
+</body>
+</html>
