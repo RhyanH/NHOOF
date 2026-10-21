@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Otimização - NHOOF</title>
-    <!-- Fonte moderna do Google Fonts para dar um visual profissional e limpo -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -16,175 +14,234 @@
         body, html {
             width: 100%;
             height: 100vh;
-            font-family: 'Inter', sans-serif;
-            background-color: #000000; /* Preto absoluto */
-            color: #ededed;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #000000; /* Tema Black puro */
+            color: #dbdee1;
             overflow: hidden;
         }
 
-        /* Layout Principal de Duas Colunas */
-        .app-container {
+        /* CABEÇALHO GLOBAL - INTACTO E IMEXÍVEL */
+        header.global-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.8rem 3.5rem;
+            z-index: 100;
+            background: linear-gradient(to bottom, rgba(11,11,11,0.9) 0%, rgba(11,11,11,0) 100%);
+        }
+
+        .logo-container a {
+            display: inline-block;
+        }
+
+        .logo-container img {
+            height: 3.8rem;
+            width: auto;
+            display: block;
+        }
+
+        nav {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.8rem;
+            align-items: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #a0a0a0;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: #ffffff;
+        }
+
+        .header-spacer {
+            width: 3.8rem;
+        }
+
+        /* LAYOUT PRINCIPAL ABAIXO DO CABEÇALHO */
+        .discord-app {
             display: flex;
             width: 100vw;
             height: 100vh;
+            padding-top: 70px; /* Mantém o espaço exato para o cabeçalho fixo */
         }
 
-        /* 1. Sidebar de Navegação (Esquerda) */
-        .sidebar {
-            width: 270px;
-            background-color: #050505;
+        /* 1. Barra Lateral de Canais (Esquerda) - Tema Black */
+        .sidebar-channels {
+            width: 260px;
+            background-color: #000000;
             display: flex;
             flex-direction: column;
-            height: 100vh;
             border-right: 1px solid #141414;
+            height: calc(100vh - 70px);
+            padding-top: 0.5rem;
         }
 
-        .sidebar-header {
-            height: 56px;
-            padding: 0 1.25rem;
-            display: flex;
-            align-items: center;
-            font-weight: 700;
-            color: #ffffff;
-            border-bottom: 1px solid #141414;
-            font-size: 1rem;
-            letter-spacing: 0.5px;
-        }
-
-        .sidebar-nav {
+        .channels-list {
             flex: 1;
             overflow-y: auto;
-            padding: 1rem 0.75rem;
+            padding: 0.5rem;
         }
 
-        .sidebar-nav::-webkit-scrollbar {
+        .channels-list::-webkit-scrollbar {
             width: 4px;
         }
-        .sidebar-nav::-webkit-scrollbar-thumb {
+        .channels-list::-webkit-scrollbar-thumb {
             background-color: #1a1a1a;
             border-radius: 2px;
         }
 
-        /* Seções / Grupos do Menu */
-        .nav-group-title {
-            font-size: 0.7rem;
-            font-weight: 700;
+        /* Categorias Ocultáveis */
+        .category-header {
+            font-size: 0.75rem;
+            font-weight: bold;
             color: #666666;
             text-transform: uppercase;
-            padding: 0.75rem 0.5rem 0.35rem 0.5rem;
-            letter-spacing: 1px;
-        }
-
-        .nav-items {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-            margin-bottom: 0.5rem;
-        }
-
-        .nav-link {
+            padding: 0.5rem 0.2rem 0.2rem 0.2rem;
+            letter-spacing: 0.5px;
             display: flex;
             align-items: center;
-            padding: 0.55rem 0.75rem;
-            border-radius: 6px;
-            color: #999999;
+            cursor: pointer;
+            user-select: none;
+            gap: 4px;
+        }
+
+        .category-header:hover {
+            color: #ffffff;
+        }
+
+        .category-arrow {
+            font-size: 0.65rem;
+            transition: transform 0.2s ease;
+        }
+
+        .category-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            overflow: hidden;
+            transition: max-height 0.25s ease;
+        }
+
+        .category-content.collapsed {
+            max-height: 0 !important;
+        }
+
+        .channel-item {
+            display: flex;
+            align-items: center;
+            padding: 0.35rem 0.5rem;
+            border-radius: 4px;
+            color: #888888;
             text-decoration: none;
             font-size: 0.9rem;
-            transition: all 0.15s ease;
-            gap: 8px;
+            transition: background 0.15s, color 0.15s;
         }
 
-        .nav-link:hover {
-            background-color: #0f0f0f;
+        .channel-item:hover {
+            background-color: #0a0a0a;
             color: #ffffff;
         }
 
-        .nav-link.active {
-            background-color: #141414;
+        .channel-item.active {
+            background-color: #121212;
             color: #ffffff;
             font-weight: 500;
-            border-left: 2px solid #ffffff; /* Detalhe minimalista de destaque */
+            border-left: 2px solid #ffffff;
         }
 
-        .nav-link svg {
-            width: 16px;
-            height: 16px;
-            fill: currentColor;
-            opacity: 0.6;
+        .channel-item span {
+            margin-right: 6px;
+            font-size: 1rem;
+            color: #555555;
         }
 
-        /* 2. Área de Conteúdo Principal (Direita) */
-        .main-content-area {
+        /* 2. Área Principal do Chat (Direita) - Tema Black */
+        .main-chat {
             flex: 1;
             background-color: #000000;
             display: flex;
             flex-direction: column;
-            height: 100vh;
+            height: calc(100vh - 70px);
         }
 
-        .top-bar {
-            height: 56px;
-            padding: 0 2rem;
+        .chat-header {
+            height: 48px;
+            padding: 0 1.5rem;
             display: flex;
             align-items: center;
             border-bottom: 1px solid #141414;
-            font-weight: 500;
-            color: #a1a1a1;
-            font-size: 0.9rem;
-            background-color: #000000;
-        }
-
-        .top-bar span {
-            color: #ffffff;
             font-weight: 600;
-            margin-left: 6px;
+            color: #f2f3f5;
+            gap: 8px;
+            background-color: #000000;
+            font-size: 0.95rem;
         }
 
-        .content-scroll {
+        .chat-header span {
+            font-size: 1.2rem;
+            color: #666666;
+            font-weight: normal;
+        }
+
+        .chat-content {
             flex: 1;
-            padding: 3rem;
+            padding: 2.5rem 3rem;
             overflow-y: auto;
-            max-width: 950px;
+            max-width: 900px;
         }
 
-        /* Tipografia e Estilo do Conteúdo */
+        /* Estilo de Documentação Profissional */
         .page-title {
-            font-size: 2rem;
+            font-size: 1.75rem;
             font-weight: 700;
             color: #ffffff;
             margin-bottom: 0.5rem;
-            letter-spacing: -0.5px;
         }
 
         .page-subtitle {
             font-size: 0.95rem;
-            color: #888888;
-            margin-bottom: 2.5rem;
-            line-height: 1.6;
+            color: #777777;
+            margin-bottom: 2rem;
         }
 
-        /* Caixa de Alerta / Aviso minimalista Black */
-        .notice-box {
-            background-color: #080808;
-            border: 1px solid #1a1a1a;
-            border-left: 3px solid #3b82f6; /* Azul sutil de destaque técnico */
+        /* Caixa de Alerta (Callout) no Tema Black */
+        .alert-box {
+            background-color: #050505;
+            border: 1px solid #141414;
+            border-left: 4px solid #3b82f6; /* Detalhe técnico limpo */
             border-radius: 6px;
             padding: 1.25rem 1.5rem;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
+            gap: 0.75rem;
         }
 
-        .notice-item {
+        .alert-item {
             display: flex;
             align-items: flex-start;
-            gap: 12px;
+            gap: 10px;
             color: #cccccc;
             font-size: 0.95rem;
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
-        .notice-item .icon {
+        .alert-item span {
             font-size: 1.1rem;
             line-height: 1;
         }
@@ -192,63 +249,96 @@
 </head>
 <body>
 
-    <div class="app-container">
+    <!-- Cabeçalho Global do Site - INTACTO -->
+    <header class="global-header">
+        <div class="logo-container">
+            <a href="../index.html">
+                <img src="../imagens/logo.png" alt="Logo">
+            </a>
+        </div>
         
-        <!-- Sidebar Esquerda -->
-        <aside class="sidebar">
-            <div class="sidebar-header">
-                NHOOF // Hub
-            </div>
-            
-            <div class="sidebar-nav">
-                <!-- Seção 1 -->
-                <div class="nav-group-title">Geral</div>
-                <div class="nav-items">
-                    <a href="index.html" class="nav-link active">
-                        <span>#</span> importante
-                    </a>
-                    <a href="#" class="nav-link">
-                        <span>#</span> meu setup
-                    </a>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Otimização</a></li>
+                <li><a href="#">Projeto 2</a></li>
+                <li><a href="#">Projeto 3</a></li>
+                <li><a href="#">Projeto 4</a></li>
+                <li><a href="#">Projeto 5</a></li>
+                <li><a href="#">Projeto 6</a></li>
+                <li><a href="#">Projeto 7</a></li>
+                <li><a href="#">Projeto 8</a></li>
+                <li><a href="#">Projeto 9</a></li>
+                <li><a href="#">Projeto 10</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-spacer"></div>
+    </header>
+
+    <!-- App Estilo Painel / Duas Colunas -->
+    <div class="discord-app">
+        
+        <!-- Barra Lateral Esquerda -->
+        <div class="sidebar-channels">
+            <div class="channels-list">
+                <!-- Categoria WELCOME -->
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <span class="category-arrow">▼</span> [WELCOME]
+                </div>
+                <div class="category-content">
+                    <a href="index.html" class="channel-item active"><span>#</span> importante</a>
+                    <a href="#" class="channel-item"><span>#</span> meu setup</a>
                 </div>
 
-                <!-- Seção 2 -->
-                <div class="nav-group-title" style="margin-top: 1rem;">Procedimentos</div>
-                <div class="nav-items">
-                    <a href="#" class="nav-link">
-                        <span>#</span> criando pendrive
-                    </a>
-                    <a href="#" class="nav-link">
-                        <span>#</span> instalador chipset amd
-                    </a>
+                <!-- Categoria PEN DRIVE -->
+                <div class="category-header" onclick="toggleCategory(this)" style="margin-top: 0.75rem;">
+                    <span class="category-arrow">▼</span> [PEN DRIVE]
+                </div>
+                <div class="category-content">
+                    <a href="#" class="channel-item"><span>#</span> criando pendrive</a>
+                    <a href="#" class="channel-item"><span>#</span> instalador chipset amd</a>
                 </div>
             </div>
-        </aside>
+        </div>
 
-        <!-- Painel Principal à Direita -->
-        <main class="main-content-area">
-            <header class="top-bar">
-                Localização atual: <span>/ otimização / importante</span>
-            </header>
+        <!-- Painel Central -->
+        <div class="main-chat">
+            <div class="chat-header">
+                <span>#</span> importante
+            </div>
 
-            <div class="content-scroll">
+            <div class="chat-content">
                 <h1 class="page-title">Informações Importantes</h1>
-                <p class="page-subtitle">Diretrizes gerais, avisos e recomendações essenciais antes de iniciar qualquer procedimento de otimização no sistema.</p>
+                <p class="page-subtitle">Diretrizes gerais e recomendações antes de iniciar os procedimentos.</p>
 
-                <div class="notice-box">
-                    <div class="notice-item">
-                        <span class="icon">⚠️</span>
-                        <div>Todas as otimizações apresentadas foram testadas, customizadas e ajustadas pessoalmente por mim para garantir máxima estabilidade.</div>
+                <div class="alert-box">
+                    <div class="alert-item">
+                        <span>⚠️</span>
+                        <div>Todas as otimizações apresentadas foram testadas, customizadas e ajustadas pessoalmente por mim.</div>
                     </div>
-                    <div class="notice-item">
-                        <span class="icon">💡</span>
-                        <div>É fundamental que você compreenda o impacto técnico de cada alteração antes de aplicá-la no seu sistema operacional.</div>
+                    <div class="alert-item">
+                        <span>⚠️</span>
+                        <div>É fundamental que você compreenda o impacto de cada alteração antes de aplicá-la no seu sistema.</div>
                     </div>
                 </div>
             </div>
-        </main>
+        </div>
 
     </div>
 
+    <!-- Script para recolher/expandir as categorias -->
+    <script>
+        function toggleCategory(header) {
+            const content = header.nextElementSibling;
+            const arrow = header.querySelector('.category-arrow');
+            
+            content.classList.toggle('collapsed');
+            if (content.classList.contains('collapsed')) {
+                arrow.style.transform = 'rotate(-90deg)';
+            } else {
+                arrow.style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
 </body>
 </html>
