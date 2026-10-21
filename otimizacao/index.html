@@ -15,104 +15,62 @@
             width: 100%;
             height: 100vh;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #0b0b0b;
+            background-color: #313338; /* Cor de fundo padrão do Discord */
             color: #dbdee1;
             overflow: hidden;
         }
 
-        /* Layout Principal do Estilo Discord */
+        /* Layout Principal do Aplicativo */
         .discord-app {
             display: flex;
             width: 100vw;
             height: 100vh;
-            padding-top: 70px;
         }
 
-        /* Cabeçalho Global Fixo (Idêntico à Vitrine) */
-        header.global-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
+        /* 1. Barra Lateral de Servidores / Canais (Esquerda) */
+        .sidebar-channels {
+            width: 260px;
+            background-color: #2b2d31;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            border-right: 1px solid #1f2023;
+        }
+
+        /* Topo da Barra Lateral (Nome do Projeto/Servidor) */
+        .server-header {
+            height: 48px;
+            padding: 0 16px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 1.8rem 3.5rem;
-            z-index: 100;
-            background: linear-gradient(to bottom, rgba(11,11,11,0.9) 0%, rgba(11,11,11,0) 100%);
-        }
-
-        .logo-container a {
-            display: inline-block;
-        }
-
-        .logo-container img {
-            height: 3.8rem;
-            width: auto;
-            display: block;
-        }
-
-        nav {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 1.8rem;
-            align-items: center;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: #a0a0a0;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: color 0.2s ease;
-        }
-
-        nav ul li a:hover, nav ul li a.active {
+            font-weight: 600;
             color: #ffffff;
-        }
-
-        .header-spacer {
-            width: 3.8rem;
-        }
-
-        /* 1. Barra Lateral de Canais (Esquerda) */
-        .sidebar-channels {
-            width: 260px;
-            background-color: #0b0b0b;
-            display: flex;
-            flex-direction: column;
-            border-right: 1px solid #1a1a1a;
-            height: calc(100vh - 70px);
-            padding-top: 0.5rem;
+            border-bottom: 1px solid #1f2023;
+            font-size: 0.95rem;
         }
 
         .channels-list {
             flex: 1;
             overflow-y: auto;
-            padding: 0.5rem;
+            padding: 12px 8px;
         }
 
         .channels-list::-webkit-scrollbar {
             width: 4px;
         }
         .channels-list::-webkit-scrollbar-thumb {
-            background-color: #222;
+            background-color: #1a1b1e;
             border-radius: 2px;
         }
 
-        /* Categorias Ocultáveis */
+        /* Categorias */
         .category-header {
             font-size: 0.75rem;
-            font-weight: bold;
-            color: #80848e;
+            font-weight: 700;
+            color: #949ba4;
             text-transform: uppercase;
-            padding: 0.5rem 0.2rem 0.2rem 0.2rem;
+            padding: 6px 4px 4px 4px;
             letter-spacing: 0.5px;
             display: flex;
             align-items: center;
@@ -133,68 +91,64 @@
         .category-content {
             display: flex;
             flex-direction: column;
-            gap: 1px;
-            overflow: hidden;
-            transition: max-height 0.25s ease;
-        }
-
-        .category-content.collapsed {
-            max-height: 0 !important;
+            gap: 2px;
+            margin-top: 2px;
+            margin-bottom: 8px;
         }
 
         .channel-item {
             display: flex;
             align-items: center;
-            padding: 0.35rem 0.5rem;
+            padding: 8px 10px;
             border-radius: 4px;
             color: #949ba4;
             text-decoration: none;
             font-size: 0.9rem;
             transition: background 0.15s, color 0.15s;
+            gap: 6px;
         }
 
         .channel-item:hover {
-            background-color: #161616;
+            background-color: #35373c;
             color: #dbdee1;
         }
 
         .channel-item.active {
-            background-color: #1f1f1f;
+            background-color: #404249;
             color: #ffffff;
             font-weight: 500;
         }
 
         .channel-item span {
-            margin-right: 6px;
             font-size: 1rem;
-            color: #6d6f78;
+            color: #80848e;
         }
 
-        /* 2. Área Principal do Chat (Centro) */
+        /* 2. Área Principal (Direita) */
         .main-chat {
             flex: 1;
-            background-color: #0b0b0b;
+            background-color: #313338;
             display: flex;
             flex-direction: column;
-            height: calc(100vh - 70px);
+            height: 100vh;
         }
 
         .chat-header {
             height: 48px;
-            padding: 0 1.5rem;
+            padding: 0 16px;
             display: flex;
             align-items: center;
-            border-bottom: 1px solid #1a1a1a;
+            border-bottom: 1px solid #1f2023;
             font-weight: 600;
             color: #f2f3f5;
             gap: 8px;
-            background-color: #0b0b0b;
             font-size: 0.95rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.2);
         }
 
         .chat-header span {
             font-size: 1.2rem;
-            color: #6d6f78;
+            color: #80848e;
             font-weight: normal;
         }
 
@@ -205,9 +159,9 @@
             max-width: 900px;
         }
 
-        /* Estilo de Documentação Profissional */
+        /* Estilo do Conteúdo e Texto */
         .page-title {
-            font-size: 1.75rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: #ffffff;
             margin-bottom: 0.5rem;
@@ -215,74 +169,51 @@
 
         .page-subtitle {
             font-size: 0.95rem;
-            color: #80848e;
+            color: #949ba4;
             margin-bottom: 2rem;
+            line-height: 1.5;
         }
 
-        /* Caixa de Alerta Estilo Documentação (Callout) */
+        /* Caixa de Alerta (Estilo Embed do Discord) */
         .alert-box {
-            background-color: rgba(239, 68, 68, 0.08);
-            border: 1px solid rgba(239, 68, 68, 0.2);
-            border-left: 4px solid #ef4444;
-            border-radius: 6px;
-            padding: 1.25rem 1.5rem;
+            background-color: #2b2d31;
+            border-left: 4px solid #f0b232; /* Amarelo aviso ou vermelho */
+            border-radius: 4px;
+            padding: 1rem 1.25rem;
             display: flex;
             flex-direction: column;
             gap: 0.75rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
 
         .alert-item {
             display: flex;
             align-items: flex-start;
-            gap: 10px;
-            color: #d1d5db;
+            gap: 12px;
+            color: #dbdee1;
             font-size: 0.95rem;
             line-height: 1.5;
         }
 
         .alert-item span {
             font-size: 1.1rem;
-            line-height: 1;
         }
     </style>
 </head>
 <body>
 
-    <!-- Cabeçalho Global do Site -->
-    <header class="global-header">
-        <div class="logo-container">
-            <a href="../index.html">
-                <img src="../imagens/logo.png" alt="Logo">
-            </a>
-        </div>
-        
-        <nav>
-            <ul>
-                <li><a href="index.html" class="active">Otimização</a></li>
-                <li><a href="#">Projeto 2</a></li>
-                <li><a href="#">Projeto 3</a></li>
-                <li><a href="#">Projeto 4</a></li>
-                <li><a href="#">Projeto 5</a></li>
-                <li><a href="#">Projeto 6</a></li>
-                <li><a href="#">Projeto 7</a></li>
-                <li><a href="#">Projeto 8</a></li>
-                <li><a href="#">Projeto 9</a></li>
-                <li><a href="#">Projeto 10</a></li>
-            </ul>
-        </nav>
-
-        <div class="header-spacer"></div>
-    </header>
-
-    <!-- App Estilo Discord -->
+    <!-- App Estilo Discord Único -->
     <div class="discord-app">
         
         <!-- Barra Lateral Esquerda -->
         <div class="sidebar-channels">
+            <div class="server-header">
+                NHOOF Hub
+            </div>
             <div class="channels-list">
                 <!-- Categoria WELCOME -->
                 <div class="category-header" onclick="toggleCategory(this)">
-                    <span class="category-arrow">▼</span> [WELCOME]
+                    <span class="category-arrow">▼</span> WELCOME
                 </div>
                 <div class="category-content">
                     <a href="index.html" class="channel-item active"><span>#</span> importante</a>
@@ -290,8 +221,8 @@
                 </div>
 
                 <!-- Categoria PEN DRIVE -->
-                <div class="category-header" onclick="toggleCategory(this)" style="margin-top: 0.75rem;">
-                    <span class="category-arrow">▼</span> [PEN DRIVE]
+                <div class="category-header" onclick="toggleCategory(this)" style="margin-top: 1rem;">
+                    <span class="category-arrow">▼</span> PEN DRIVE
                 </div>
                 <div class="category-content">
                     <a href="#" class="channel-item"><span>#</span> criando pendrive</a>
@@ -300,7 +231,7 @@
             </div>
         </div>
 
-        <!-- Painel Central -->
+        <!-- Painel Central / Informações -->
         <div class="main-chat">
             <div class="chat-header">
                 <span>#</span> importante
@@ -308,16 +239,16 @@
 
             <div class="chat-content">
                 <h1 class="page-title">Informações Importantes</h1>
-                <p class="page-subtitle">Diretrizes gerais e recomendações antes de iniciar os procedimentos.</p>
+                <p class="page-subtitle">Diretrizes gerais e recomendações essenciais antes de iniciar qualquer procedimento de otimização no sistema.</p>
 
                 <div class="alert-box">
                     <div class="alert-item">
                         <span>⚠️</span>
-                        <div>Todas as otimizações apresentadas foram testadas, customizadas e ajustadas pessoalmente por mim.</div>
+                        <div>Todas as otimizações apresentadas foram testadas, customizadas e ajustadas pessoalmente por mim para garantir estabilidade.</div>
                     </div>
                     <div class="alert-item">
-                        <span>⚠️</span>
-                        <div>É fundamental que você compreenda o impacto de cada alteração antes de aplicá-la no seu sistema.</div>
+                        <span>💡</span>
+                        <div>É fundamental que você compreenda o impacto de cada alteração antes de aplicá-la no seu sistema operacional.</div>
                     </div>
                 </div>
             </div>
@@ -325,7 +256,6 @@
 
     </div>
 
-    <!-- Script para recolher/expandir as categorias -->
     <script>
         function toggleCategory(header) {
             const content = header.nextElementSibling;
@@ -334,8 +264,10 @@
             content.classList.toggle('collapsed');
             if (content.classList.contains('collapsed')) {
                 arrow.style.transform = 'rotate(-90deg)';
+                content.style.display = 'none';
             } else {
                 arrow.style.transform = 'rotate(0deg)';
+                content.style.display = 'flex';
             }
         }
     </script>
