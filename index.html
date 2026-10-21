@@ -45,7 +45,7 @@
             z-index: 1;
         }
 
-        /* Cabeçalho Flutuante com espaçamento inteligente */
+        /* Cabeçalho Flutuante com respiro lateral maior */
         header {
             position: fixed;
             top: 0;
@@ -54,18 +54,18 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 1.5rem 2.5rem;
+            padding: 1.8rem 3.5rem; /* Mais espaçamento lateral e vertical */
             z-index: 10;
             background: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%);
         }
 
-        /* Logo no topo esquerdo */
+        /* Logo com tamanho maior e mais presença */
         .logo-container a {
             display: inline-block;
         }
 
         .logo-container img {
-            height: 2.8rem;
+            height: 3.8rem; /* Aumentado para dar destaque e corrigir a sensação de "perdida" */
             width: auto;
             display: block;
         }
@@ -80,7 +80,7 @@
         nav ul {
             list-style: none;
             display: flex;
-            gap: 1.5rem;
+            gap: 1.8rem;
             align-items: center;
         }
 
@@ -96,9 +96,9 @@
             color: #ffffff;
         }
 
-        /* Bloco fantasma à direita para equilibrar o layout perfeitamente */
+        /* Bloco fantasma à direita ajustado proporcionalmente à nova logo */
         .header-spacer {
-            width: 2.8rem;
+            width: 3.8rem;
         }
 
         /* Texto Centralizado da Vitrine */
@@ -120,7 +120,7 @@
 </head>
 <body>
 
-    <!-- Cabeçalho com Logo na Esquerda e Menu Centralizado -->
+    <!-- Cabeçalho com Logo Maior e Menu Centralizado -->
     <header>
         <div class="logo-container">
             <a href="index.html">
@@ -143,10 +143,17 @@
             </ul>
         </nav>
 
-        <!-- Espaçador invisível para manter o menu matematicamente centralizado -->
+        <!-- Espaçador invisível para manter o equilíbrio matemático -->
         <div class="header-spacer"></div>
     </header>
 
     <!-- Vitrine Central -->
     <div class="fundo-vitrine">
-        <img src="
+        <img src="https://images.unsplash.com/photo-1614624532983-4ce03382d63d?q=80&w=2000" alt="Background">
+        <div class="conteudo-centro">
+            <div class="texto-nhoof">NHOOF</div>
+        </div>
+    </div>
+
+</body>
+</html>
