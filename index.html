@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NHOOF</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #0b0b0b;
+            color: #ffffff;
+            overflow: hidden;
+        }
+
+        /* Fundo de vitrine com imagem escura e desfoque */
+        .fundo-vitrine {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #000;
+            z-index: 1;
+        }
+
+        .fundo-vitrine img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.35;
+            z-index: 1;
+        }
+
+        /* Cabeçalho Flutuante (Menu e Logo) */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 1.5rem 2.5rem;
+            z-index: 10;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+        }
+
+        /* Logo no topo esquerdo */
+        .logo-container img {
+            height: 2.8rem;
+            width: auto;
+            display: block;
+        }
+
+        /* Menu de Navegação logo ao lado da logo */
+        nav {
+            margin-left: 2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #b3b3b3;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: #ffffff;
+        }
+
+        /* Texto Centralizado da Vitrine */
+        .conteudo-centro {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .texto-nhoof {
+            font-size: 6rem;
+            font-weight: 900;
+            letter-spacing: 4px;
+            color: #ffffff;
+            text-shadow: 0px 0px 35px rgba(0,0,0,0.95);
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho com Logo e Menus -->
+    <header>
+        <div class="logo-container">
+            <!-- Certifique-se de enviar a sua imagem de logo com o nome logo.png -->
+            <img src="logo.png" alt="NHOOF Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="projeto-1.html">Projeto 1</a></li>
+                <li><a href="#">Projeto 2</a></li>
+                <li><a href="#">Projeto 3</a></li>
+                <li><a href="#">Projeto 4</a></li>
+                <li><a href="#">Projeto 5</a></li>
+                <li><a href="#">Projeto 6</a></li>
+                <li><a href="#">Projeto 7</a></li>
+                <li><a href="#">Projeto 8</a></li>
+                <li><a href="#">Projeto 9</a></li>
+                <li><a href="#">Projeto 10</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Vitrine Central -->
+    <div class="fundo-vitrine">
+        <img src="https://images.unsplash.com/photo-1614624532983-4ce03382d63d?q=80&w=2000" alt="Background">
+        <div class="conteudo-centro">
+            <div class="texto-nhoof">NHOOF</div>
+        </div>
+    </div>
+
+</body>
+</html>
