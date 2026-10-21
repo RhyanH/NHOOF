@@ -45,7 +45,7 @@
             z-index: 1;
         }
 
-        /* Cabeçalho Flutuante (Menu e Logo) */
+        /* Cabeçalho Flutuante com espaçamento inteligente */
         header {
             position: fixed;
             top: 0;
@@ -53,12 +53,13 @@
             width: 100%;
             display: flex;
             align-items: center;
+            justify-content: space-between;
             padding: 1.5rem 2.5rem;
             z-index: 10;
             background: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0) 100%);
         }
 
-        /* Logo no topo esquerdo (clicável para voltar à Home) */
+        /* Logo no topo esquerdo */
         .logo-container a {
             display: inline-block;
         }
@@ -69,9 +70,11 @@
             display: block;
         }
 
-        /* Menu de Navegação logo ao lado da logo */
+        /* Menu centralizado perfeitamente */
         nav {
-            margin-left: 2.5rem;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         nav ul {
@@ -93,6 +96,11 @@
             color: #ffffff;
         }
 
+        /* Bloco fantasma à direita para equilibrar o layout perfeitamente */
+        .header-spacer {
+            width: 2.8rem;
+        }
+
         /* Texto Centralizado da Vitrine */
         .conteudo-centro {
             position: relative;
@@ -112,13 +120,14 @@
 </head>
 <body>
 
-    <!-- Cabeçalho com Logo e Menus -->
+    <!-- Cabeçalho com Logo na Esquerda e Menu Centralizado -->
     <header>
         <div class="logo-container">
             <a href="index.html">
                 <img src="imagens/logo.png" alt="Logo">
             </a>
         </div>
+        
         <nav>
             <ul>
                 <li><a href="otimizacao/">Otimização</a></li>
@@ -133,15 +142,11 @@
                 <li><a href="#">Projeto 10</a></li>
             </ul>
         </nav>
+
+        <!-- Espaçador invisível para manter o menu matematicamente centralizado -->
+        <div class="header-spacer"></div>
     </header>
 
     <!-- Vitrine Central -->
     <div class="fundo-vitrine">
-        <img src="https://images.unsplash.com/photo-1614624532983-4ce03382d63d?q=80&w=2000" alt="Background">
-        <div class="conteudo-centro">
-            <div class="texto-nhoof">NHOOF</div>
-        </div>
-    </div>
-
-</body>
-</html>
+        <img src="
