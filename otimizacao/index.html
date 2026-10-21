@@ -179,9 +179,29 @@
             height: calc(100vh - 70px);
         }
 
+        /* Cabeçalho do canal no topo do chat (Estilo Discord Restaurado) */
+        .chat-header {
+            height: 48px;
+            padding: 0 1.5rem;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #1a1a1a;
+            font-weight: 600;
+            color: #f2f3f5;
+            gap: 8px;
+            background-color: #0b0b0b;
+            font-size: 0.95rem;
+        }
+
+        .chat-header span {
+            font-size: 1.2rem;
+            color: #6d6f78;
+            font-weight: normal;
+        }
+
         .chat-content {
             flex: 1;
-            padding: 3rem;
+            padding: 2.5rem;
             overflow-y: auto;
             display: flex;
             flex-direction: column;
@@ -210,8 +230,7 @@
 
         .doc-card {
             background-color: #121212;
-            border: 1px solid #1a1a1a;
-            border-left: 4px solid #5865f2;
+            border: 1px solid #1a1a1a; /* Removido o risco azul, agora é neutro e limpo */
             border-radius: 6px;
             padding: 1.5rem;
             margin-bottom: 1rem;
@@ -283,8 +302,12 @@
             </div>
         </div>
 
-        <!-- Painel Central (Sem a barra superior do chat, direto para o conteúdo) -->
+        <!-- Painel Central (Com o cabeçalho do canal restaurado e cartão limpo) -->
         <div class="main-chat">
+            <div class="chat-header">
+                <span>#</span> importante
+            </div>
+
             <div class="chat-content">
                 <h1 class="doc-title">Importante</h1>
 
