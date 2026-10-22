@@ -274,6 +274,40 @@
             font-weight: 500;
             text-align: right;
         }
+
+        /* Container de Alertas / Instruções Extras */
+        .alerts-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 100%;
+        }
+
+        .alert-box {
+            background-color: #222229;
+            border: 1px solid #2f2f38;
+            border-left: 4px solid #5865f2;
+            border-radius: 6px;
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .alert-icon {
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .alert-text {
+            color: #dbdee1;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .alert-text strong {
+            color: #ffffff;
+        }
     </style>
 </head>
 <body>
@@ -472,20 +506,38 @@
                     <div class="setup-card">
                         <h3>🔒 Secure Boot</h3>
                         <ul>
-                            <li><span>Aba/Seção</span> <strong>Boot</strong></li>
-                            <li><span>Opção</span> <strong>Secure Boot</strong></li>
-                            <li><span>Ajuste</span> <strong>Enabled</strong></li>
+                            <li><span>Caminho</span> <strong>Advanced Mode (F2) → Boot → Inicialização Segura</strong></li>
+                            <li><span>Secure Boot</span> <strong>Ativado</strong></li>
+                            <li><span>Modo Secure Boot</span> <strong>Padrão</strong></li>
                         </ul>
                     </div>
 
-                    <!-- TPM 2.0 -->
+                    <!-- TPM -->
                     <div class="setup-card">
-                        <h3>🛡️ TPM 2.0 (AMD CPU fTPM)</h3>
+                        <h3>🛡️ TPM</h3>
                         <ul>
-                            <li><span>Aba/Seção</span> <strong>Settings → Trusted Computing</strong></li>
-                            <li><span>Opção</span> <strong>AMD fTPM switch</strong></li>
-                            <li><span>Ajuste</span> <strong>Enabled (Firmware TPM)</strong></li>
+                            <li><span>Caminho</span> <strong>Advanced Mode (F2) → Settings → Miscellaneous → AMD fTPM configuration</strong></li>
+                            <li><span>AMD CPU fTPM</span> <strong>Ativado</strong></li>
                         </ul>
+                    </div>
+                </div>
+
+                <!-- Explicação e Verificação -->
+                <div class="alerts-container">
+                    <div class="alert-box">
+                        <div class="alert-icon">💡</div>
+                        <div class="alert-text">
+                            <p><strong>O que isso faz:</strong> Ativa os protocolos obrigatórios de segurança do Windows 11 e libera o funcionamento dos sistemas anti-cheat dos jogos (como o Vanguard), impedindo que o seu jogo seja bloqueado ao abrir.</p>
+                        </div>
+                    </div>
+
+                    <div class="alert-box">
+                        <div class="alert-icon">🔍</div>
+                        <div class="alert-text">
+                            <p><strong>Como verificar se funcionou:</strong><br>
+                            • Pressione <code>Win + R</code> → digite <code>tpm.msc</code><br>
+                            • O campo Status deve exibir a mensagem: <strong>"O TPM está pronto para uso"</strong>.</p>
+                        </div>
                     </div>
                 </div>
             </div>
