@@ -530,7 +530,7 @@
                             </ul>
                         </div>
                         <div class="card-description">
-                            <strong>O que faz:</strong> Garante que o sistema operacional seja inicializado apenas com softwares e drivers confiáveis e assinados digitalmente. Funciona como uma barreira de segurança que impede a execução de códigos maliciosos antes mesmo de o Windows carregar, sendo também um requisito obrigatório para a compatibilidade do Windows 11 e dos sistemas de segurança (anti-cheat) dos jogos atuais.
+                            <strong>O que faz:</strong> Serve para garantir que o PC só inicie com programas e arquivos seguros. Ele funciona como uma barreira que impede que arquivos maliciosos sejam carregados antes mesmo de o Windows ligar. Além disso, é obrigatório para o Windows 11 e para rodar os sistemas anti-cheat dos jogos atuais.
                         </div>
                     </div>
 
@@ -544,7 +544,7 @@
                             </ul>
                         </div>
                         <div class="card-description">
-                            <strong>O que faz:</strong> Atua como um processador criptográfico integrado de segurança (fTPM) diretamente no hardware do processador. Sua principal função é armazenar de forma segura chaves de criptografia, credenciais e dados de autenticação, atendendo às exigências fundamentais de segurança do Windows 11.
+                            <strong>O que faz:</strong> É um chip de segurança que fica integrado no processador para guardar senhas e chaves de criptografia do sistema. O Windows 11 exige essa função ativa para garantir a segurança geral e permitir que vários jogos e aplicativos funcionem sem travamentos.
                         </div>
                     </div>
                 </div>
@@ -571,12 +571,8 @@
             const content = header.nextElementSibling;
             const arrow = header.querySelector('.category-arrow');
             
-            content.classList.toggle('collapsed');
-            if (content.classList.contains('collapsed')) {
-                arrow.style.transform = 'rotate(-90deg)';
-            } else {
-                arrow.style.transform = 'rotate(0deg)';
-            }
+            content.classList.contains('collapsed') ? content.classList.remove('collapsed') : content.classList.add('collapsed');
+            arrow.style.transform = content.classList.contains('collapsed') ? 'rotate(-90deg)' : 'rotate(0deg)';
         }
     </script>
 </body>
