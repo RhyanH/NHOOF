@@ -232,7 +232,7 @@
         /* Grid de Conteúdo */
         .setup-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 1.25rem;
             margin-bottom: 1.5rem;
         }
@@ -242,6 +242,9 @@
             border: 1px solid #2f2f38;
             border-radius: 6px;
             padding: 1.25rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .setup-card h3 {
@@ -258,6 +261,7 @@
             display: flex;
             flex-direction: column;
             gap: 0.6rem;
+            margin-bottom: 1rem;
         }
 
         .setup-card ul li {
@@ -273,6 +277,19 @@
             color: #dbdee1;
             font-weight: 500;
             text-align: right;
+        }
+
+        .card-description {
+            font-size: 0.88rem;
+            color: #949ba4;
+            line-height: 1.5;
+            border-top: 1px solid #2f2f38;
+            padding-top: 0.85rem;
+            margin-top: 0.2rem;
+        }
+
+        .card-description strong {
+            color: #dbdee1;
         }
 
         /* Container de Alertas / Instruções Extras */
@@ -504,33 +521,36 @@
                 <div class="setup-grid">
                     <!-- Secure Boot -->
                     <div class="setup-card">
-                        <h3>🔒 Secure Boot</h3>
-                        <ul>
-                            <li><span>Caminho</span> <strong>Advanced Mode (F2) → Boot → Inicialização Segura</strong></li>
-                            <li><span>Secure Boot</span> <strong>Ativado</strong></li>
-                            <li><span>Modo Secure Boot</span> <strong>Padrão</strong></li>
-                        </ul>
+                        <div>
+                            <h3>🔒 Secure Boot</h3>
+                            <ul>
+                                <li><span>Caminho</span> <strong>Advanced Mode (F2) → Boot → Inicialização Segura</strong></li>
+                                <li><span>Secure Boot</span> <strong>Ativado</strong></li>
+                                <li><span>Modo Secure Boot</span> <strong>Padrão</strong></li>
+                            </ul>
+                        </div>
+                        <div class="card-description">
+                            <strong>O que faz:</strong> Garante que o sistema inicialize apenas com softwares e assinaturas confiáveis pelo fabricante, bloqueando ameaças profundas de inicialização (rootkits) antes mesmo do Windows carregar.
+                        </div>
                     </div>
 
                     <!-- TPM -->
                     <div class="setup-card">
-                        <h3>🛡️ TPM</h3>
-                        <ul>
-                            <li><span>Caminho</span> <strong>Advanced Mode (F2) → Settings → Miscellaneous → AMD fTPM configuration</strong></li>
-                            <li><span>AMD CPU fTPM</span> <strong>Ativado</strong></li>
-                        </ul>
+                        <div>
+                            <h3>🛡️ TPM</h3>
+                            <ul>
+                                <li><span>Caminho</span> <strong>Advanced Mode (F2) → Settings → Miscellaneous → AMD fTPM configuration</strong></li>
+                                <li><span>AMD CPU fTPM</span> <strong>Ativado</strong></li>
+                            </ul>
+                        </div>
+                        <div class="card-description">
+                            <strong>O que faz:</strong> Armazena chaves de criptografia e credenciais com segurança por hardware. É um requisito obrigatório do Windows 11 e essencial para softwares e anti-cheats modernos.
+                        </div>
                     </div>
                 </div>
 
-                <!-- Explicação e Verificação -->
+                <!-- Verificação -->
                 <div class="alerts-container">
-                    <div class="alert-box">
-                        <div class="alert-icon">💡</div>
-                        <div class="alert-text">
-                            <p><strong>O que isso faz:</strong> Ativa os protocolos de segurança criptográfica e de inicialização exigidos pelo Windows 11 e por sistemas modernos do sistema. Além de proteger a integridade do sistema operacional contra ameaças profundas de inicialização, essas ferramentas de segurança são pré-requisitos obrigatórios para diversos softwares modernos, incluindo drivers avançados e sistemas de segurança em nível de kernel utilizados por jogos competitivos atuais.</p>
-                        </div>
-                    </div>
-
                     <div class="alert-box">
                         <div class="alert-icon">🔍</div>
                         <div class="alert-text">
