@@ -530,7 +530,7 @@
                             </ul>
                         </div>
                         <div class="card-description">
-                            <strong>O que faz:</strong> Serve para garantir que o PC só inicie com programas e arquivos seguros. Ele funciona como uma barreira que impede que arquivos maliciosos sejam carregados antes mesmo de o Windows ligar. Além disso, é obrigatório para o Windows 11 e para rodar os sistemas anti-cheat dos jogos atuais.
+                            <strong>O que faz:</strong> Serve para garantir que o PC só inicie com programas e arquivos seguros. Ele funciona como uma barreira que impede que arquivos maliciosos sejam carregados antes do Windows ligar. Além disso, é obrigatório para o Windows 11 e para rodar os sistemas anti-cheat dos jogos atuais.
                         </div>
                     </div>
 
@@ -571,8 +571,12 @@
             const content = header.nextElementSibling;
             const arrow = header.querySelector('.category-arrow');
             
-            content.classList.contains('collapsed') ? content.classList.remove('collapsed') : content.classList.add('collapsed');
-            arrow.style.transform = content.classList.contains('collapsed') ? 'rotate(-90deg)' : 'rotate(0deg)';
+            content.classList.toggle('collapsed');
+            if (content.classList.contains('collapsed')) {
+                arrow.style.transform = 'rotate(-90deg)';
+            } else {
+                arrow.style.transform = 'rotate(0deg)';
+            }
         }
     </script>
 </body>
