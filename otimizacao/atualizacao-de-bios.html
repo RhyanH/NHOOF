@@ -229,12 +229,11 @@
             margin-bottom: 2rem;
         }
 
-        /* Grid de Conteúdo */
+        /* Grid de Conteúdo Padrão */
         .setup-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 1.25rem;
-            margin-bottom: 1.5rem;
         }
 
         .setup-card {
@@ -285,40 +284,6 @@
         .setup-card ul li a:hover {
             color: #7983f5;
             text-decoration: underline;
-        }
-
-        /* Container de Alertas / Dicas / Passos Exatos do Print */
-        .alerts-container {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            max-width: 100%;
-        }
-
-        .alert-box {
-            background-color: #222229;
-            border: 1px solid #2f2f38;
-            border-left: 4px solid #5865f2;
-            border-radius: 6px;
-            padding: 1.25rem 1.5rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-
-        .alert-icon {
-            font-size: 1.2rem;
-            line-height: 1;
-        }
-
-        .alert-text {
-            color: #dbdee1;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .alert-text strong {
-            color: #ffffff;
         }
     </style>
 </head>
@@ -513,32 +478,32 @@
             <div class="chat-content">
                 <h1 class="page-title">Atualização de BIOS</h1>
 
-                <div class="alerts-container">
+                <div class="setup-grid">
                     <!-- Onde Baixar -->
-                    <div class="alert-box">
-                        <div class="alert-icon">📥</div>
-                        <div class="alert-text">
-                            <p><strong>Onde Baixar:</strong><br>
-                            GIGABYTE → Suporte → BIOS → F36</p>
-                        </div>
+                    <div class="setup-card">
+                        <h3>📥 Onde Baixar</h3>
+                        <ul>
+                            <li><span>Plataforma</span> <strong>GIGABYTE</strong></li>
+                            <li><span>Caminho</span> <strong>Suporte → BIOS → F36</strong></li>
+                        </ul>
                     </div>
 
                     <!-- Como Preparar -->
-                    <div class="alert-box">
-                        <div class="alert-icon">⚡</div>
-                        <div class="alert-text">
-                            <p><strong>Como Preparar:</strong><br>
-                            Coloque o arquivo B650AEROG.F36 extraído no seu pendrive</p>
-                        </div>
+                    <div class="setup-card">
+                        <h3>⚡ Como Preparar</h3>
+                        <ul>
+                            <li><span>Arquivo</span> <strong>B650AEROG.F36</strong></li>
+                            <li><span>Ação</span> <strong>Extraído no seu pendrive</strong></li>
+                        </ul>
                     </div>
 
                     <!-- Como Instalar -->
-                    <div class="alert-box">
-                        <div class="alert-icon">🛠️</div>
-                        <div class="alert-text">
-                            <p><strong>Como Instalar:</strong><br>
-                            BIOS → F8 (Q-Flash) → Arquivo no pendrive</p>
-                        </div>
+                    <div class="setup-card">
+                        <h3>🛠️ Como Instalar</h3>
+                        <ul>
+                            <li><span>Ferramenta</span> <strong>BIOS → F8 (Q-Flash)</strong></li>
+                            <li><span>Origem</span> <strong>Arquivo no pendrive</strong></li>
+                        </ul>
                     </div>
                 </div>
             </div>
