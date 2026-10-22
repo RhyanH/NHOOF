@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Injetar o CSS Responsivo universal para qualquer cabeçalho (vitrine e páginas)
+    // 1. Injetar o CSS Responsivo universal com ajuste correto de altura para o telemóvel
     const style = document.createElement('style');
     style.innerHTML = `
         .mobile-menu-btn {
@@ -18,10 +18,10 @@ document.addEventListener("DOMContentLoaded", () => {
         .sidebar-overlay {
             display: none;
             position: fixed;
-            top: 85px;
+            top: 125px;
             left: 0;
             width: 100vw;
-            height: calc(100vh - 85px);
+            height: calc(100vh - 125px);
             background: rgba(0, 0, 0, 0.6);
             z-index: 99;
         }
@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 top: 0 !important;
                 left: 0 !important;
                 width: 100% !important;
+                z-index: 101 !important;
             }
             .logo-container {
                 display: flex;
@@ -55,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 padding: 0.2rem 0;
             }
             header nav::-webkit-scrollbar, header.global-header nav::-webkit-scrollbar {
-                display: none; /* Esconde a barra de scroll */
+                display: none;
             }
             header nav ul, header.global-header nav ul {
                 display: inline-flex !important;
@@ -66,21 +67,21 @@ document.addEventListener("DOMContentLoaded", () => {
             header .header-spacer, header.global-header .header-spacer {
                 display: none !important;
             }
-        }
 
-        /* Layout Estilo Discord no Telemóvel (Páginas internas) */
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: flex !important;
+            /* Descer o app para compensar o cabeçalho duplo e evitar cortes */
+            .discord-app {
+                margin-top: 125px !important;
+                height: calc(100vh - 125px) !important;
             }
             .sidebar-channels {
                 position: fixed !important;
                 left: -260px;
-                top: 110px;
-                height: calc(100vh - 110px);
+                top: 125px !important;
+                height: calc(100vh - 125px) !important;
                 z-index: 100;
                 transition: left 0.3s ease;
                 box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+                background-color: #212128 !important;
             }
             .sidebar-channels.mobile-open {
                 left: 0 !important;
@@ -90,6 +91,12 @@ document.addEventListener("DOMContentLoaded", () => {
             }
             .chat-content {
                 padding: 1.5rem 1rem !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: flex !important;
             }
         }
     `;
