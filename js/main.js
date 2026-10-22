@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Injetar o CSS Responsivo e do Botão Hamburger dinamicamente
+    // 1. Injetar o CSS Responsivo (Botão Hamburger, Overlay e Menu Superior Deslizante)
     const style = document.createElement('style');
     style.innerHTML = `
         .mobile-menu-btn {
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
             justify-content: center;
         }
         
-        /* Overlay escuro quando o menu abre no telemóvel */
+        /* Overlay escuro quando o menu do Discord abre no telemóvel */
         .sidebar-overlay {
             display: none;
             position: fixed;
@@ -26,6 +26,33 @@ document.addEventListener("DOMContentLoaded", () => {
             z-index: 99;
         }
 
+        /* Menu Superior Responsivo (Vitrine / Index) */
+        @media (max-width: 900px) {
+            header.global-header {
+                padding: 0 1rem !important;
+                justify-content: space-between !important;
+            }
+            nav {
+                position: static !important;
+                transform: none !important;
+                flex: 1;
+                overflow-x: auto;
+                white-space: nowrap;
+                margin: 0 10px;
+                -webkit-overflow-scrolling: touch;
+            }
+            nav::-webkit-scrollbar {
+                display: none; /* Esconde a barra de rolagem para ficar limpo */
+            }
+            nav ul {
+                gap: 1.2rem !important;
+            }
+            .header-spacer {
+                display: none;
+            }
+        }
+
+        /* Layout Estilo Discord no Telemóvel */
         @media (max-width: 768px) {
             .mobile-menu-btn {
                 display: flex !important;
@@ -52,29 +79,25 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
     document.head.appendChild(style);
 
-    // 2. Criar o Botão Hamburger e o Overlay no HTML automaticamente
+    // 2. Criar o Botão Hamburger e o Overlay no HTML automaticamente (se houver chat-header)
     const chatHeader = document.querySelector('.chat-header');
     if (chatHeader) {
-        // Criar botão
         const menuBtn = document.createElement('button');
         menuBtn.className = 'mobile-menu-btn';
         menuBtn.innerHTML = '☰';
         chatHeader.insertBefore(menuBtn, chatHeader.firstChild);
 
-        // Criar overlay
         const overlay = document.createElement('div');
         overlay.className = 'sidebar-overlay';
         document.body.appendChild(overlay);
 
         const sidebar = document.querySelector('.sidebar-channels');
 
-        // Ação de abrir/fechar ao clicar no botão
         menuBtn.addEventListener('click', () => {
             sidebar.classList.toggle('mobile-open');
             overlay.classList.toggle('active');
         });
 
-        // Fechar menu ao clicar fora (no overlay)
         overlay.addEventListener('click', () => {
             sidebar.classList.remove('mobile-open');
             overlay.classList.remove('active');
@@ -92,13 +115,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const arrow = header.querySelector('.category-arrow');
         const savedState = localStorage.getItem('sidebar_cat_' + catName);
 
-        // Restaurar estado salvo
         if (savedState === 'true') {
             if (content) content.classList.add('collapsed');
             if (arrow) arrow.style.transform = 'rotate(-90deg)';
         }
 
-        // Evento de clique para recolher/expandir
         header.addEventListener('click', () => {
             if (!content) return;
             content.classList.toggle('collapsed');
