@@ -269,14 +269,15 @@
             color: #949ba4;
             display: flex;
             justify-content: space-between;
-            gap: 10px;
-            align-items: center;
+            gap: 15px;
+            align-items: flex-start;
         }
 
         .setup-card ul li strong {
             color: #dbdee1;
             font-weight: 500;
             text-align: right;
+            word-break: break-word;
         }
 
         .card-description {
@@ -519,28 +520,17 @@
                 <h1 class="page-title">Integrated Graphics</h1>
 
                 <div class="setup-grid">
-                    <!-- Integrated Graphics Card -->
-                    <div class="setup-card" style="grid-column: 1 / -1; max-width: 650px;">
+                    <!-- Integrated Graphics -->
+                    <div class="setup-card">
                         <div>
                             <h3>🎮 Integrated Graphics</h3>
                             <ul>
                                 <li><span>Caminho</span> <strong>Advanced Mode (F2) → Settings → IO Ports</strong></li>
-                                <li><span>Integrated Graphics</span> <strong>Desativado</strong></li>
+                                <li><span>Integrated Graphics</span> <strong>Disabled</strong></li>
                             </ul>
                         </div>
                         <div class="card-description">
-                            <strong>O que faz:</strong> Desliga o chip gráfico embutido no processador, liberando memória RAM e evitando conflitos de drivers de vídeo no sistema.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Alerta do porquê desativar -->
-                <div class="alerts-container">
-                    <div class="alert-box">
-                        <div class="alert-icon">💡</div>
-                        <div class="alert-text">
-                            <p><strong>Por que desativar:</strong><br>
-                            Não há necessidade de manter o vídeo integrado do processador ativado se você tiver uma placa de vídeo dedicada.</p>
+                            <strong>O que faz:</strong> Desativa o processador gráfico embutido do processador. <strong>Aviso importante:</strong> Só desligue esta opção caso você utilize uma placa de vídeo dedicada (GPU). Ao desativar o vídeo integrado, o sistema evita conflitos de drivers e libera o uso completo de recursos para o seu hardware principal.
                         </div>
                     </div>
                 </div>
