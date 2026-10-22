@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Injetar o CSS Responsivo Completo para Telemóveis (Cards fluidos e sem corte lateral)
+    // 1. Injetar o CSS Responsivo Definitivo para Telemóveis
     const style = document.createElement('style');
     style.innerHTML = `
         .mobile-menu-btn {
@@ -22,15 +22,16 @@ document.addEventListener("DOMContentLoaded", () => {
             left: 0;
             width: 100vw;
             height: calc(100vh - 125px);
-            background: rgba(0, 0, 0, 0.6);
+            background: rgba(0, 0, 0, 0.7);
             z-index: 99;
         }
 
-        /* Adaptações profundas para ecrãs de telemóvel (<= 900px) */
+        /* Adaptações para ecrãs de telemóvel (<= 900px) */
         @media (max-width: 900px) {
             body, html {
                 overflow-x: hidden !important;
                 width: 100% !important;
+                max-width: 100% !important;
             }
             header, header.global-header {
                 height: auto !important;
@@ -77,17 +78,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 height: calc(100vh - 125px) !important;
                 width: 100vw !important;
                 position: relative;
+                overflow-x: hidden !important;
             }
             .sidebar-channels {
                 position: fixed !important;
-                left: -260px;
+                left: -280px;
                 top: 125px !important;
                 height: calc(100vh - 125px) !important;
                 z-index: 100;
                 transition: left 0.3s ease;
                 box-shadow: 5px 0 15px rgba(0,0,0,0.5);
                 background-color: #212128 !important;
-                width: 260px !important;
+                width: 280px !important;
             }
             .sidebar-channels.mobile-open {
                 left: 0 !important;
@@ -96,40 +98,45 @@ document.addEventListener("DOMContentLoaded", () => {
                 display: block;
             }
             
-            /* Correção crítica da área de conteúdo para não cortar à direita */
+            /* Correção total da área de conteúdo e caixas para nunca cortarem à direita */
             .main-chat {
                 width: 100% !important;
                 max-width: 100% !important;
+                flex: 1 !important;
                 overflow-x: hidden !important;
             }
             .chat-content {
-                padding: 1rem !important;
+                padding: 1rem 0.8rem !important;
                 width: 100% !important;
                 max-width: 100% !important;
                 box-sizing: border-box !important;
                 overflow-x: hidden !important;
             }
             .setup-grid {
-                grid-template-columns: 1fr !important;
+                display: flex !important;
+                flex-direction: column !important;
                 width: 100% !important;
                 max-width: 100% !important;
                 gap: 1rem !important;
             }
-            .setup-card {
+            .setup-card, .alert-box, .profile-box {
                 width: 100% !important;
                 max-width: 100% !important;
                 min-width: 0 !important;
-                padding: 1rem !important;
                 box-sizing: border-box !important;
+                margin-left: 0 !important;
+                margin-right: 0 !important;
             }
             .setup-card ul li {
                 flex-direction: column !important;
                 align-items: flex-start !important;
                 gap: 4px !important;
+                width: 100% !important;
             }
             .setup-card ul li strong {
                 text-align: left !important;
                 word-break: break-word !important;
+                width: 100% !important;
             }
         }
 
