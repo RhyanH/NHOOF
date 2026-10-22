@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Injetar o CSS Responsivo (Botão Hamburger, Overlay e Menu Superior Deslizante Corrigido)
+    // 1. Injetar o CSS Responsivo otimizado (Cabeçalho em duas linhas no telemóvel)
     const style = document.createElement('style');
     style.innerHTML = `
         .mobile-menu-btn {
@@ -26,37 +26,45 @@ document.addEventListener("DOMContentLoaded", () => {
             z-index: 99;
         }
 
-        /* Menu Superior Responsivo (Vitrine / Index) para Telemóvel */
+        /* Cabeçalho Responsivo em Ecrãs Pequenos (Telemóvel) */
         @media (max-width: 900px) {
             header.global-header {
-                padding: 0 1rem !important;
-                justify-content: flex-start !important;
-                gap: 1rem !important;
+                height: auto !important;
+                flex-direction: column !important;
+                padding: 0.8rem 1rem !important;
+                gap: 0.5rem !important;
+                justify-content: center !important;
+                background: #000000 !important;
+            }
+            .logo-container {
+                display: flex;
+                justify-content: center;
+                width: 100%;
             }
             header.global-header nav {
                 position: static !important;
                 transform: none !important;
-                flex: 1 !important;
+                width: 100% !important;
                 overflow-x: auto !important;
                 white-space: nowrap !important;
-                margin: 0 !important;
                 -webkit-overflow-scrolling: touch;
+                padding: 0.2rem 0;
             }
             header.global-header nav::-webkit-scrollbar {
-                display: none; /* Esconde a barra de rolagem */
+                display: none; /* Esconde a barra de scroll para ficar estético */
             }
             header.global-header nav ul {
-                gap: 1.2rem !important;
+                display: inline-flex !important;
+                gap: 1.5rem !important;
+                justify-content: flex-start;
+                padding: 0 0.5rem;
             }
             header.global-header .header-spacer {
                 display: none !important;
             }
-            .logo-container {
-                flex-shrink: 0;
-            }
         }
 
-        /* Layout Estilo Discord no Telemóvel */
+        /* Layout Estilo Discord no Telemóvel (Páginas de Guias) */
         @media (max-width: 768px) {
             .mobile-menu-btn {
                 display: flex !important;
@@ -64,8 +72,8 @@ document.addEventListener("DOMContentLoaded", () => {
             .sidebar-channels {
                 position: fixed !important;
                 left: -260px;
-                top: 85px;
-                height: calc(100vh - 85px);
+                top: 110px;
+                height: calc(100vh - 110px);
                 z-index: 100;
                 transition: left 0.3s ease;
                 box-shadow: 5px 0 15px rgba(0,0,0,0.5);
