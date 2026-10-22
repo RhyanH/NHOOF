@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curve Optimizer - NHOOF</title>
+    <!-- Ícone da aba do navegador (Favicon) -->
+    <link rel="icon" type="image/png" href="../imagens/logo.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #1a1a1f;
+            color: #dbdee1;
+            overflow: hidden;
+        }
+
+        /* Cabeçalho Global Fixo */
+        header.global-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 85px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 3.5rem;
+            z-index: 100;
+            background: #000000;
+        }
+
+        .logo-container a {
+            display: inline-block;
+        }
+
+        .logo-container img {
+            height: 3.8rem;
+            width: auto;
+            display: block;
+        }
+
+        nav {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.8rem;
+            align-items: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #a0a0a0;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: #ffffff;
+        }
+
+        .header-spacer {
+            width: 3.8rem;
+        }
+
+        /* Layout Principal */
+        .discord-app {
+            display: flex;
+            width: 100vw;
+            height: calc(100vh - 85px);
+            margin-top: 85px;
+        }
+
+        /* Barra Lateral Esquerda */
+        .sidebar-channels {
+            width: 260px;
+            background-color: #212128;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #2f2f38;
+            height: 100%;
+            padding-top: 0.5rem;
+        }
+
+        .channels-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0.5rem;
+        }
+
+        .channels-list::-webkit-scrollbar {
+            width: 4px;
+        }
+        .channels-list::-webkit-scrollbar-thumb {
+            background-color: #353540;
+            border-radius: 2px;
+        }
+
+        /* Categorias Ocultáveis */
+        .category-header {
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: #949ba4;
+            text-transform: uppercase;
+            padding: 0.5rem 0.2rem 0.2rem 0.2rem;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+            gap: 4px;
+        }
+
+        .category-header:hover {
+            color: #ffffff;
+        }
+
+        .category-arrow {
+            font-size: 0.65rem;
+            transition: transform 0.2s ease;
+        }
+
+        .category-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            overflow: hidden;
+            transition: max-height 0.25s ease;
+        }
+
+        .category-content.collapsed {
+            max-height: 0 !important;
+        }
+
+        .channel-item {
+            display: flex;
+            align-items: center;
+            padding: 0.35rem 0.5rem;
+            border-radius: 4px;
+            color: #a0a4ae;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background 0.15s, color 0.15s;
+        }
+
+        .channel-item:hover {
+            background-color: #2a2a33;
+            color: #ffffff;
+        }
+
+        .channel-item.active {
+            background-color: #32323d;
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        .channel-item span {
+            margin-right: 6px;
+            font-size: 1rem;
+            color: #80848e;
+        }
+
+        /* Painel Central */
+        .main-chat {
+            flex: 1;
+            background-color: #1a1a1f;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .chat-header {
+            height: 48px;
+            padding: 0 1.5rem;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #2f2f38;
+            font-weight: 600;
+            color: #f2f3f5;
+            gap: 10px;
+            background-color: #1a1a1f;
+            font-size: 0.95rem;
+        }
+
+        .chat-header .channel-symbol {
+            font-size: 1.2rem;
+            color: #80848e;
+            font-weight: normal;
+        }
+
+        .chat-header .channel-divider {
+            color: #4e5058;
+            font-weight: 300;
+        }
+
+        .chat-header .channel-topic {
+            font-size: 0.85rem;
+            color: #949ba4;
+            font-weight: normal;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .chat-content {
+            flex: 1;
+            padding: 2.5rem 3rem;
+            overflow-y: auto;
+            max-width: 1400px;
+        }
+
+        .page-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 2rem;
+        }
+
+        /* Grid de Conteúdo */
+        .setup-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .setup-card {
+            background-color: #222229;
+            border: 1px solid #2f2f38;
+            border-radius: 6px;
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .setup-card h3 {
+            font-size: 1.05rem;
+            color: #ffffff;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .setup-card ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            margin-bottom: 1rem;
+        }
+
+        .setup-card ul li {
+            font-size: 0.9rem;
+            color: #949ba4;
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .setup-card ul li strong {
+            color: #dbdee1;
+            font-weight: 500;
+            text-align: right;
+        }
+
+        .card-description {
+            font-size: 0.88rem;
+            color: #949ba4;
+            line-height: 1.5;
+            border-top: 1px solid #2f2f38;
+            padding-top: 0.85rem;
+            margin-top: 0.2rem;
+        }
+
+        .card-description strong {
+            color: #dbdee1;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Cabeçalho Global do Site -->
+    <header class="global-header">
+        <div class="logo-container">
+            <a href="../index.html">
+                <img src="../imagens/logo.png" alt="Logo">
+            </a>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Otimização</a></li>
+                <li><a href="#">Projeto 2</a></li>
+                <li><a href="#">Projeto 3</a></li>
+                <li><a href="#">Projeto 4</a></li>
+                <li><a href="#">Projeto 5</a></li>
+                <li><a href="#">Projeto 6</a></li>
+                <li><a href="#">Projeto 7</a></li>
+                <li><a href="#">Projeto 8</a></li>
+                <li><a href="#">Projeto 9</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-spacer"></div>
+    </header>
+
+    <!-- App Estilo Painel -->
+    <div class="discord-app">
+        
+        <!-- Barra Lateral Esquerda -->
+        <div class="sidebar-channels">
+            <div class="channels-list">
+                <!-- Categoria BEM VINDO -->
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <span class="category-arrow">▼</span> [BEM VINDO]
+                </div>
+                <div class="category-content">
+                    <a href="index.html" class="channel-item"><span>#</span> importante</a>
+                    <a href="meu-setup.html" class="channel-item"><span>#</span> meu setup</a>
+                </div>
+
+                <!-- Categoria PEN DRIVE -->
+                <div class="category-header" onclick="toggleCategory(this)" style="margin-top: 0.75rem;">
+                    <span class="category-arrow">▼</span> [PEN DRIVE]
+                </div>
+                <div class="category-content">
+                    <a href="criando-pendrive.html" class="channel-item"><span>#</span> criando pendrive</a>
+                    <a href="chipset-amd.html" class="channel-item"><span>#</span> chipset amd</a>
+                </div>
+
+                <!-- Categoria BIOS -->
+                <div class="category-header" onclick="toggleCategory(this)" style="margin-top: 0.75rem;">
+                    <span class="category-arrow">▼</span> [BIOS]
+                </div>
+                <div class="category-content">
+                    <a href="atualizacao-de-bios.html" class="channel-item"><span>#</span> atualização de bios</a>
+                    <a href="secure-boot-e-tpm.html" class="channel-item"><span>#</span> secure boot e tpm</a>
+                    <a href="fast-boot.html" class="channel-item"><span>#</span> fast boot</a>
+                    <a href="expo.html" class="channel-item"><span>#</span> expo</a>
+                    <a href="memory-context-restore.html" class="channel-item"><span>#</span> memory context restore</a>
+                    <a href="re-size-bar.html" class="channel-item"><span>#</span> re-size bar</a>
+                    <a href="pbo.html" class="channel-item"><span>#</span> pbo</a>
+                    <a href="curve-optimizer.html" class="channel-item active"><span>#</span> curve optimizer</a>
+                    <a href="platform-thermal-limit.html" class="channel-item"><span>#</span> platform thermal limit</a>
+                    <a href="integrated-graphics.html" class="channel-item"><span>#</span> integrated graphics</a>
+                    <a href="bios-profiles.html" class="channel-item"><span>#</span> bios profiles</a>
+                </div>
+
+                <!-- Categoria PÓS-FORMATAÇÃO -->
+                <div class="category-header" onclick="toggleCategory(this)" style="margin-top: 0.75rem;">
+                    <span class="category-arrow">▼</span> [PÓS-FORMATAÇÃO]
+                </div>
+                <div class="category-content">
+                    <a href="windows-update.html" class="channel-item"><span>#</span> windows update</a>
+                    <a href="ordem-de-instalacao.html" class="channel-item"><span>#</span> ordem de instalação</a>
+                    <a href="l-connect-3.html" class="channel-item"><span>#</span> l-connect-3</a>
+                    <a href="g-hub.html" class="channel-item"><span>#</span> g-hub</a>
+                    <a href="signalrgb.html" class="channel-item"><span>#</span> signalrgb</a>
+                </div>
+
+                <!-- Categoria WINDOWS 11 -->
+                <div class="category-header" onclick="toggleCategory(this)" style="margin-top: 0.75rem;">
+                    <span class="category-arrow">▼</span> [WINDOWS 11]
+                </div>
+                <div class="category-content">
+                    <a href="debloat-e-limpeza.html" class="channel-item"><span>#</span> debloat e limpeza</a>
+                    <a href="apps-inicializacao.html" class="channel-item"><span>#</span> apps inicialização</a>
+                    <a href="desativar-efeitos-visuais.html" class="channel-item"><span>#</span> desativar efeitos visuais</a>
+                    <a href="plano-de-energia.html" class="channel-item"><span>#</span> plano de energia</a>
+                    <a href="agendamento-de-gpu.html" class="channel-item"><span>#</span> agendamento de gpu</a>
+                    <a href="modo-de-jogo.html" class="channel-item"><span>#</span> modo de jogo</a>
+                    <a href="temporizador-do-sistema.html" class="channel-item"><span>#</span> temporizador do sistema</a>
+                    <a href="hibernacao.html" class="channel-item"><span>#</span> hibernação</a>
+                    <a href="aceleração-do-windows.html" class="channel-item"><span>#</span> aceleração do windows</a>
+                    <a href="ajuste-de-teclado.html" class="channel-item"><span>#</span> ajuste de teclado</a>
+                </div>
+
+                <!-- Categoria NVIDIA -->
+                <div class="category-header" onclick="toggleCategory(this)" style="margin-top: 0.75rem;">
+                    <span class="category-arrow">▼</span> [NVIDIA]
+                </div>
+                <div class="category-content">
+                    <a href="configuracoes-3d.html" class="channel-item"><span>#</span> configurações 3d</a>
+                    <a href="cores-e-tela.html" class="channel-item"><span>#</span> cores e tela</a>
+                    <a href="msi-utility.html" class="channel-item"><span>#</span> msi utility</a>
+                    <a href="msi-afterburner.html" class="channel-item"><span>#</span> msi afterburner</a>
+                </div>
+
+                <!-- Categoria REDE -->
+                <div class="category-header" onclick="toggleCategory(this)" style="margin-top: 0.75rem;">
+                    <span class="category-arrow">▼</span> [REDE]
+                </div>
+                <div class="category-content">
+                    <a href="ajustar-dns.html" class="channel-item"><span>#</span> ajustar dns</a>
+                    <a href="otimizacao-do-adaptador.html" class="channel-item"><span>#</span> otimização do adaptador</a>
+                    <a href="backup-wi-fi.html" class="channel-item"><span>#</span> backup wi-fi</a>
+                </div>
+
+                <!-- Categoria AUDIO -->
+                <div class="category-header" onclick="toggleCategory(this)" style="margin-top: 0.75rem;">
+                    <span class="category-arrow">▼</span> [AUDIO]
+                </div>
+                <div class="category-content">
+                    <a href="a50x.html" class="channel-item"><span>#</span> a50x</a>
+                    <a href="dolby-access.html" class="channel-item"><span>#</span> dolby access</a>
+                </div>
+
+                <!-- Categoria MONITOR -->
+                <div class="category-header" onclick="toggleCategory(this)" style="margin-top: 0.75rem;">
+                    <span class="category-arrow">▼</span> [MONITOR]
+                </div>
+                <div class="category-content">
+                    <a href="aw2523hf.html" class="channel-item"><span>#</span> aw2523hf</a>
+                    <a href="vg248qg.html" class="channel-item"><span>#</span> vg248qg</a>
+                </div>
+
+                <!-- Categoria OTIMIZAÇÃO -->
+                <div class="category-header" onclick="toggleCategory(this)" style="margin-top: 0.75rem;">
+                    <span class="category-arrow">▼</span> [OTIMIZAÇÃO]
+                </div>
+                <div class="category-content">
+                    <a href="ponto-de-restauracao.html" class="channel-item"><span>#</span> ponto de restauração</a>
+                    <a href="politicas-de-grupo.html" class="channel-item"><span>#</span> politicas de grupo</a>
+                    <a href="servicos.html" class="channel-item"><span>#</span> serviços</a>
+                    <a href="regedit.html" class="channel-item"><span>#</span> regedit</a>
+                    <a href="tweaks-de-sistema.html" class="channel-item"><span>#</span> tweaks de sistema</a>
+                </div>
+
+                <!-- Categoria MEMÓRIA RAM -->
+                <div class="category-header" onclick="toggleCategory(this)" style="margin-top: 0.75rem;">
+                    <span class="category-arrow">▼</span> [MEMÓRIA RAM]
+                </div>
+                <div class="category-content">
+                    <a href="descompressao-memoria-ram.html" class="channel-item"><span>#</span> descompressão memória ram</a>
+                    <a href="disable-paging-executive.html" class="channel-item"><span>#</span> disable paging executive</a>
+                    <a href="islc.html" class="channel-item"><span>#</span> islc</a>
+                </div>
+
+                <!-- Categoria ESTÉTICA -->
+                <div class="category-header" onclick="toggleCategory(this)" style="margin-top: 0.75rem;">
+                    <span class="category-arrow">▼</span> [ESTÉTICA]
+                </div>
+                <div class="category-content">
+                    <a href="cursor.html" class="channel-item"><span>#</span> cursor</a>
+                </div>
+
+                <!-- Categoria CORREÇÃO DE BUGS -->
+                <div class="category-header" onclick="toggleCategory(this)" style="margin-top: 0.75rem;">
+                    <span class="category-arrow">▼</span> [CORREÇÃO DE BUGS]
+                </div>
+                <div class="category-content">
+                    <a href="data-e-hora.html" class="channel-item"><span>#</span> data e hora</a>
+                    <a href="chrome.html" class="channel-item"><span>#</span> chrome</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Painel Central -->
+        <div class="main-chat">
+            <div class="chat-header">
+                <span class="channel-symbol">#</span>
+                <span>curve optimizer</span>
+                <span class="channel-divider">|</span>
+                <span class="channel-topic">Redução inteligente de tensão para abaixar a temperatura e manter mais desempenho.</span>
+            </div>
+
+            <div class="chat-content">
+                <h1 class="page-title">Curve Optimizer</h1>
+
+                <div class="setup-grid">
+                    <!-- Curve Optimizer Card -->
+                    <div class="setup-card" style="grid-column: 1 / -1; max-width: 650px;">
+                        <div>
+                            <h3>📈 Curve Optimizer</h3>
+                            <ul>
+                                <li><span>Caminho</span> <strong>Advanced Mode (F2) → Settings → AMD Overclocking → AMD Overclocking → Precision Boost Overdrive → Curve Optimizer</strong></li>
+                                <li><span>Curve Optimizer</span> <strong>All Cores</strong></li>
+                                <li><span>All Core Curve Optimizer Sign</span> <strong>Negative</strong></li>
+                                <li><span>All Core Curve Optimizer Magnitude</span> <strong>25</strong></li>
+                            </ul>
+                        </div>
+                        <div class="card-description">
+                            <strong>O que faz:</strong> Aplica uma redução inteligente de tensão (undervolt) em todos os núcleos do processador, diminuindo o aquecimento e o consumo de energia enquanto permite que ele mantenha frequências altas por mais tempo[cite: 14].
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Script para recolher/expandir as categorias -->
+    <script>
+        function toggleCategory(header) {
+            const content = header.nextElementSibling;
+            const arrow = header.querySelector('.category-arrow');
+            
+            content.classList.toggle('collapsed');
+            if (content.classList.contains('collapsed')) {
+                arrow.style.transform = 'rotate(-90deg)';
+            } else {
+                arrow.style.transform = 'rotate(0deg)';
+            }
+        }
+    </script>
+</body>
+</html>
