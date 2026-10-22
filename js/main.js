@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Injetar o CSS Responsivo universal com ajuste correto de altura para o telemóvel
+    // 1. Injetar o CSS Responsivo Completo para Telemóveis (Cards fluidos e sem corte lateral)
     const style = document.createElement('style');
     style.innerHTML = `
         .mobile-menu-btn {
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
             justify-content: center;
         }
         
-        /* Overlay escuro quando o menu do Discord abre no telemóvel */
+        /* Overlay escuro quando o menu lateral abre no telemóvel */
         .sidebar-overlay {
             display: none;
             position: fixed;
@@ -26,8 +26,12 @@ document.addEventListener("DOMContentLoaded", () => {
             z-index: 99;
         }
 
-        /* Forçar compatibilidade e menu deslizante em ecrãs de telemóvel (<= 900px) */
+        /* Adaptações profundas para ecrãs de telemóvel (<= 900px) */
         @media (max-width: 900px) {
+            body, html {
+                overflow-x: hidden !important;
+                width: 100% !important;
+            }
             header, header.global-header {
                 height: auto !important;
                 flex-direction: column !important;
@@ -68,10 +72,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 display: none !important;
             }
 
-            /* Descer o app para compensar o cabeçalho duplo e evitar cortes */
             .discord-app {
                 margin-top: 125px !important;
                 height: calc(100vh - 125px) !important;
+                width: 100vw !important;
+                position: relative;
             }
             .sidebar-channels {
                 position: fixed !important;
@@ -82,6 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 transition: left 0.3s ease;
                 box-shadow: 5px 0 15px rgba(0,0,0,0.5);
                 background-color: #212128 !important;
+                width: 260px !important;
             }
             .sidebar-channels.mobile-open {
                 left: 0 !important;
@@ -89,8 +95,41 @@ document.addEventListener("DOMContentLoaded", () => {
             .sidebar-overlay.active {
                 display: block;
             }
+            
+            /* Correção crítica da área de conteúdo para não cortar à direita */
+            .main-chat {
+                width: 100% !important;
+                max-width: 100% !important;
+                overflow-x: hidden !important;
+            }
             .chat-content {
-                padding: 1.5rem 1rem !important;
+                padding: 1rem !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                box-sizing: border-box !important;
+                overflow-x: hidden !important;
+            }
+            .setup-grid {
+                grid-template-columns: 1fr !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                gap: 1rem !important;
+            }
+            .setup-card {
+                width: 100% !important;
+                max-width: 100% !important;
+                min-width: 0 !important;
+                padding: 1rem !important;
+                box-sizing: border-box !important;
+            }
+            .setup-card ul li {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 4px !important;
+            }
+            .setup-card ul li strong {
+                text-align: left !important;
+                word-break: break-word !important;
             }
         }
 
