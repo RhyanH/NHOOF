@@ -260,7 +260,7 @@
             list-style: none;
             display: flex;
             flex-direction: column;
-            gap: 0.8rem;
+            gap: 0.6rem;
             margin-bottom: 1rem;
         }
 
@@ -270,36 +270,36 @@
             display: flex;
             justify-content: space-between;
             gap: 15px;
-            align-items: center;
+            align-items: flex-start;
         }
 
         .setup-card ul li strong {
             color: #dbdee1;
             font-weight: 500;
             text-align: right;
+            word-break: break-word;
         }
 
-        /* Estilo específico para o item longo do Perfil Safe */
-        .setup-card ul li.profile-item {
-            flex-direction: column;
-            align-items: flex-start;
+        /* Caixa de Perfil Estilizada */
+        .profile-box {
             background-color: #1a1a1f;
-            padding: 0.75rem 1rem;
-            border-radius: 4px;
             border: 1px solid #2f2f38;
-            gap: 4px;
+            border-radius: 4px;
+            padding: 1rem;
+            margin-bottom: 1rem;
         }
 
-        .setup-card ul li.profile-item span {
-            color: #949ba4;
+        .profile-title {
+            font-size: 0.95rem;
             font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.5rem;
         }
 
-        .setup-card ul li.profile-item strong {
-            text-align: left;
-            color: #ffffff;
-            font-size: 0.88rem;
-            line-height: 1.4;
+        .profile-desc {
+            font-size: 0.85rem;
+            color: #949ba4;
+            line-height: 1.6;
         }
 
         .card-description {
@@ -508,18 +508,32 @@
                 <h1 class="page-title">BIOS Profiles</h1>
 
                 <div class="setup-grid">
-                    <!-- BIOS Profiles Card -->
-                    <div class="setup-card" style="grid-column: 1 / -1; max-width: 650px;">
+                    <!-- BIOS Profiles -->
+                    <div class="setup-card">
                         <div>
                             <h3>💾 BIOS Profiles</h3>
                             <ul>
                                 <li><span>Caminho</span> <strong>Advanced Mode (F2) → Save & Exit → BIOS Profiles</strong></li>
-                                <li class="profile-item">
-                                    <span>Perfil 1: SAFE</span>
-                                    <strong>Configuração 100% estável (EXPO 1, PBO On, CO -15, Limite 85°C, Re-Size BAR)</strong>
-                                </li>
                             </ul>
+                            
+                            <!-- Caixa do Perfil Detalhada -->
+                            <div class="profile-box">
+                                <div class="profile-title">Perfil 1: SAFE</div>
+                                <div class="profile-desc">
+                                    • Secure Boot: Enabled<br>
+                                    • fTPM: Enable ASP fTPM<br>
+                                    • Fast Boot: Disabled<br>
+                                    • EXPO Profile: EXPO 1 (High Bandwidth: Enable)<br>
+                                    • Memory Context Restore & Power Down: Enabled<br>
+                                    • Above 4G Decoding & Re-Size BAR: Enabled<br>
+                                    • PBO: Advanced (Limits: Motherboard)<br>
+                                    • Curve Optimizer: All Cores (Negative 25)<br>
+                                    • Platform Thermal Limit: Manual (85ºC)<br>
+                                    • Integrated Graphics: Disabled
+                                </div>
+                            </div>
                         </div>
+
                         <div class="card-description">
                             <strong>O que faz:</strong> Permite salvar as suas configurações personalizadas diretamente na memória da placa-mãe, facilitando a restauração rápida de todos os seus ajustes caso a BIOS seja atualizada ou resetada.
                         </div>
