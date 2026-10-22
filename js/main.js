@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Injetar o CSS Responsivo (Botão Hamburger, Overlay e Menu Superior Deslizante)
+    // 1. Injetar o CSS Responsivo (Botão Hamburger, Overlay e Menu Superior Deslizante Corrigido)
     const style = document.createElement('style');
     style.innerHTML = `
         .mobile-menu-btn {
@@ -26,29 +26,33 @@ document.addEventListener("DOMContentLoaded", () => {
             z-index: 99;
         }
 
-        /* Menu Superior Responsivo (Vitrine / Index) */
+        /* Menu Superior Responsivo (Vitrine / Index) para Telemóvel */
         @media (max-width: 900px) {
             header.global-header {
                 padding: 0 1rem !important;
-                justify-content: space-between !important;
+                justify-content: flex-start !important;
+                gap: 1rem !important;
             }
-            nav {
+            header.global-header nav {
                 position: static !important;
                 transform: none !important;
-                flex: 1;
-                overflow-x: auto;
-                white-space: nowrap;
-                margin: 0 10px;
+                flex: 1 !important;
+                overflow-x: auto !important;
+                white-space: nowrap !important;
+                margin: 0 !important;
                 -webkit-overflow-scrolling: touch;
             }
-            nav::-webkit-scrollbar {
-                display: none; /* Esconde a barra de rolagem para ficar limpo */
+            header.global-header nav::-webkit-scrollbar {
+                display: none; /* Esconde a barra de rolagem */
             }
-            nav ul {
+            header.global-header nav ul {
                 gap: 1.2rem !important;
             }
-            .header-spacer {
-                display: none;
+            header.global-header .header-spacer {
+                display: none !important;
+            }
+            .logo-container {
+                flex-shrink: 0;
             }
         }
 
