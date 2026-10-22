@@ -328,7 +328,7 @@
         <div class="sidebar-channels">
             <div class="channels-list">
                 <!-- Categoria BEM VINDO -->
-                <div class="category-header" onclick="toggleCategory(this)">
+                <div class="category-header">
                     <span class="category-arrow">▼</span> [BEM VINDO]
                 </div>
                 <div class="category-content">
@@ -337,7 +337,7 @@
                 </div>
 
                 <!-- Categoria PEN DRIVE -->
-                <div class="category-header" onclick="toggleCategory(this)" style="margin-top: 0.75rem;">
+                <div class="category-header" style="margin-top: 0.75rem;">
                     <span class="category-arrow">▼</span> [PEN DRIVE]
                 </div>
                 <div class="category-content">
@@ -346,7 +346,7 @@
                 </div>
 
                 <!-- Categoria BIOS -->
-                <div class="category-header" onclick="toggleCategory(this)" style="margin-top: 0.75rem;">
+                <div class="category-header" style="margin-top: 0.75rem;">
                     <span class="category-arrow">▼</span> [BIOS]
                 </div>
                 <div class="category-content">
@@ -364,7 +364,7 @@
                 </div>
 
                 <!-- Categoria PÓS-FORMATAÇÃO -->
-                <div class="category-header" onclick="toggleCategory(this)" style="margin-top: 0.75rem;">
+                <div class="category-header" style="margin-top: 0.75rem;">
                     <span class="category-arrow">▼</span> [PÓS-FORMATAÇÃO]
                 </div>
                 <div class="category-content">
@@ -376,7 +376,7 @@
                 </div>
 
                 <!-- Categoria WINDOWS 11 -->
-                <div class="category-header" onclick="toggleCategory(this)" style="margin-top: 0.75rem;">
+                <div class="category-header" style="margin-top: 0.75rem;">
                     <span class="category-arrow">▼</span> [WINDOWS 11]
                 </div>
                 <div class="category-content">
@@ -393,7 +393,7 @@
                 </div>
 
                 <!-- Categoria NVIDIA -->
-                <div class="category-header" onclick="toggleCategory(this)" style="margin-top: 0.75rem;">
+                <div class="category-header" style="margin-top: 0.75rem;">
                     <span class="category-arrow">▼</span> [NVIDIA]
                 </div>
                 <div class="category-content">
@@ -404,7 +404,7 @@
                 </div>
 
                 <!-- Categoria REDE -->
-                <div class="category-header" onclick="toggleCategory(this)" style="margin-top: 0.75rem;">
+                <div class="category-header" style="margin-top: 0.75rem;">
                     <span class="category-arrow">▼</span> [REDE]
                 </div>
                 <div class="category-content">
@@ -414,7 +414,7 @@
                 </div>
 
                 <!-- Categoria AUDIO -->
-                <div class="category-header" onclick="toggleCategory(this)" style="margin-top: 0.75rem;">
+                <div class="category-header" style="margin-top: 0.75rem;">
                     <span class="category-arrow">▼</span> [AUDIO]
                 </div>
                 <div class="category-content">
@@ -423,7 +423,7 @@
                 </div>
 
                 <!-- Categoria MONITOR -->
-                <div class="category-header" onclick="toggleCategory(this)" style="margin-top: 0.75rem;">
+                <div class="category-header" style="margin-top: 0.75rem;">
                     <span class="category-arrow">▼</span> [MONITOR]
                 </div>
                 <div class="category-content">
@@ -432,7 +432,7 @@
                 </div>
 
                 <!-- Categoria OTIMIZAÇÃO -->
-                <div class="category-header" onclick="toggleCategory(this)" style="margin-top: 0.75rem;">
+                <div class="category-header" style="margin-top: 0.75rem;">
                     <span class="category-arrow">▼</span> [OTIMIZAÇÃO]
                 </div>
                 <div class="category-content">
@@ -444,7 +444,7 @@
                 </div>
 
                 <!-- Categoria MEMÓRIA RAM -->
-                <div class="category-header" onclick="toggleCategory(this)" style="margin-top: 0.75rem;">
+                <div class="category-header" style="margin-top: 0.75rem;">
                     <span class="category-arrow">▼</span> [MEMÓRIA RAM]
                 </div>
                 <div class="category-content">
@@ -454,7 +454,7 @@
                 </div>
 
                 <!-- Categoria ESTÉTICA -->
-                <div class="category-header" onclick="toggleCategory(this)" style="margin-top: 0.75rem;">
+                <div class="category-header" style="margin-top: 0.75rem;">
                     <span class="category-arrow">▼</span> [ESTÉTICA]
                 </div>
                 <div class="category-content">
@@ -462,7 +462,7 @@
                 </div>
 
                 <!-- Categoria CORREÇÃO DE BUGS e outros -->
-                <div class="category-header" onclick="toggleCategory(this)" style="margin-top: 0.75rem;">
+                <div class="category-header" style="margin-top: 0.75rem;">
                     <span class="category-arrow">▼</span> [CORREÇÃO DE BUGS]
                 </div>
                 <div class="category-content">
@@ -504,19 +504,7 @@
 
     </div>
 
-    <!-- Script para recolher/expandir as categorias -->
-    <script>
-        function toggleCategory(header) {
-            const content = header.nextElementSibling;
-            const arrow = header.querySelector('.category-arrow');
-            
-            content.classList.toggle('collapsed');
-            if (content.classList.contains('collapsed')) {
-                arrow.style.transform = 'rotate(-90deg)';
-            } else {
-                arrow.style.transform = 'rotate(0deg)';
-            }
-        }
-    </script>
+    <!-- Script Centralizado do Site (Responsivo + Memória de Categorias) -->
+    <script src="../js/main.js"></script>
 </body>
 </html>
