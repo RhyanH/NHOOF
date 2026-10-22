@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Injetar o CSS Responsivo Definitivo para Telemóveis
+    // 1. Injetar o CSS Responsivo Completo para Telemóveis e Desktops
     const style = document.createElement('style');
     style.innerHTML = `
         .mobile-menu-btn {
@@ -98,7 +98,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 display: block;
             }
             
-            /* Correção total da área de conteúdo e caixas para nunca cortarem à direita */
             .main-chat {
                 width: 100% !important;
                 max-width: 100% !important;
@@ -173,7 +172,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 3. Sistema de Memória das Categorias (localStorage)
+    // 3. Sistema de Memória das Categorias (localStorage) com proteção para o chat ativo
     const categoryHeaders = document.querySelectorAll('.category-header');
     
     categoryHeaders.forEach((header) => {
@@ -184,11 +183,19 @@ document.addEventListener("DOMContentLoaded", () => {
         const arrow = header.querySelector('.category-arrow');
         const savedState = localStorage.getItem('sidebar_cat_' + catName);
 
-        if (savedState === 'true') {
+        // Verificar se esta categoria contém o chat/canal ativo atual
+        const hasActiveChild = content && content.querySelector('.channel-item.active');
+
+        if (hasActiveChild) {
+            // Se tem o chat ativo, força a categoria a ficar aberta para o utilizador ver onde está
+            if (content) content.classList.remove('collapsed');
+            if (arrow) arrow.style.transform = 'rotate(0deg)';
+        } else if (savedState === 'true') {
             if (content) content.classList.add('collapsed');
             if (arrow) arrow.style.transform = 'rotate(-90deg)';
         }
 
+        // Evento de clique para recolher/expandir
         header.addEventListener('click', () => {
             if (!content) return;
             content.classList.toggle('collapsed');
