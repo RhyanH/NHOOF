@@ -304,7 +304,7 @@
         .alert-box {
             background-color: #222229;
             border: 1px solid #2f2f38;
-            border-left: 4px solid #5865f2;
+            border-left: 4px solid #faa61a;
             border-radius: 6px;
             padding: 1.25rem 1.5rem;
             display: flex;
@@ -530,7 +530,17 @@
                             </ul>
                         </div>
                         <div class="card-description">
-                            <strong>O que faz:</strong> Desativa o processador gráfico embutido do processador. <strong>Aviso importante:</strong> Só desligue esta opção caso você utilize uma placa de vídeo dedicada (GPU). Ao desativar o vídeo integrado, o sistema evita conflitos de drivers e libera o uso completo de recursos para o seu hardware principal.
+                            <strong>O que faz:</strong> Desativa o processador gráfico embutido do processador, liberando recursos do sistema e evitando conflitos indesejados de drivers de vídeo.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aviso de Compatibilidade -->
+                <div class="alerts-container">
+                    <div class="alert-box">
+                        <div class="alert-icon">⚠️</div>
+                        <div class="alert-text">
+                            <p><strong>Aviso importante:</strong> Só desative esta opção caso você utilize uma placa de vídeo dedicada (GPU offboard). Caso contrário, você perderá o sinal de vídeo ao iniciar o computador.</p>
                         </div>
                     </div>
                 </div>
