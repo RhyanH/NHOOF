@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Injetar o CSS Responsivo Completo para Telemóveis e Desktops
+    // 1. Injetar o CSS Responsivo e o comportamento do Chat Ativo em Categorias Ocultas
     const style = document.createElement('style');
     style.innerHTML = `
         .mobile-menu-btn {
@@ -24,6 +24,17 @@ document.addEventListener("DOMContentLoaded", () => {
             height: calc(100vh - 125px);
             background: rgba(0, 0, 0, 0.7);
             z-index: 99;
+        }
+
+        /* Comportamento Discord: Categoria colapsada mas com chat ativo visível */
+        .category-content.collapsed.has-active {
+            max-height: 50px !important;
+        }
+        .category-content.collapsed.has-active .channel-item:not(.active) {
+            display: none !important;
+        }
+        .category-content.collapsed.has-active .channel-item.active {
+            display: flex !important;
         }
 
         /* Adaptações para ecrãs de telemóvel (<= 900px) */
@@ -172,7 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 3. Sistema de Memória das Categorias (localStorage) com proteção para o chat ativo
+    // 3. Sistema de Memória das Categorias com o comportamento do chat ativo visível
     const categoryHeaders = document.querySelectorAll('.category-header');
     
     categoryHeaders.forEach((header) => {
@@ -182,29 +193,42 @@ document.addEventListener("DOMContentLoaded", () => {
         const content = header.nextElementSibling;
         const arrow = header.querySelector('.category-arrow');
         const savedState = localStorage.getItem('sidebar_cat_' + catName);
-
-        // Verificar se esta categoria contém o chat/canal ativo atual
         const hasActiveChild = content && content.querySelector('.channel-item.active');
 
-        if (hasActiveChild) {
-            // Se tem o chat ativo, força a categoria a ficar aberta para o utilizador ver onde está
-            if (content) content.classList.remove('collapsed');
-            if (arrow) arrow.style.transform = 'rotate(0deg)';
-        } else if (savedState === 'true') {
-            if (content) content.classList.add('collapsed');
-            if (arrow) arrow.style.transform = 'rotate(-90deg)';
+        function setCategoryState(isCollapsed) {
+            if (!content) return;
+            if (hasActiveChild) {
+                if (isCollapsed) {
+                    content.classList.add('collapsed', 'has-active');
+                    if (arrow) arrow.style.transform = 'rotate(-90deg)';
+                } else {
+                    content.classList.remove('collapsed', 'has-active');
+                    if (arrow) arrow.style.transform = 'rotate(0deg)';
+                }
+            } else {
+                content.classList.remove('has-active');
+                if (isCollapsed) {
+                    content.classList.add('collapsed');
+                    if (arrow) arrow.style.transform = 'rotate(-90deg)';
+                } else {
+                    content.classList.remove('collapsed');
+                    if (arrow) arrow.style.transform = 'rotate(0deg)';
+                }
+            }
         }
 
-        // Evento de clique para recolher/expandir
+        // Estado inicial
+        let initialCollapsed = savedState === 'true';
+        setCategoryState(initialCollapsed);
+
+        // Evento de clique na categoria
         header.addEventListener('click', () => {
             if (!content) return;
-            content.classList.toggle('collapsed');
-            const isCollapsed = content.classList.contains('collapsed');
+            const isCurrentlyCollapsed = content.classList.contains('collapsed');
+            const newState = !isCurrentlyCollapsed;
             
-            if (arrow) {
-                arrow.style.transform = isCollapsed ? 'rotate(-90deg)' : 'rotate(0deg)';
-            }
-            localStorage.setItem('sidebar_cat_' + catName, isCollapsed);
+            setCategoryState(newState);
+            localStorage.setItem('sidebar_cat_' + catName, newState);
         });
     });
 });
