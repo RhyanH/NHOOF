@@ -238,7 +238,12 @@ document.addEventListener("DOMContentLoaded", () => {
     if (channelsList) {
         const savedScroll = localStorage.getItem('sidebarScrollTop');
         if (savedScroll !== null) {
-            channelsList.scrollTop = savedScroll;
+            requestAnimationFrame(() => {
+                channelsList.scrollTop = savedScroll;
+            });
+            setTimeout(() => {
+                channelsList.scrollTop = savedScroll;
+            }, 50);
         }
 
         channelsList.addEventListener('scroll', () => {
