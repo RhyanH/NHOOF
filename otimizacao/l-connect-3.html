@@ -280,7 +280,7 @@
             word-break: break-word;
         }
 
-        /* Estilo do Gráfico com Zoom Focado */
+        /* Estilo do Gráfico com Zoom Focado e Centralizado */
         .curve-graph-container {
             background-color: #121216;
             border: 1px solid #2f2f38;
@@ -501,37 +501,22 @@
                 <h1 class="page-title">L-Connect 3 (AWS)</h1>
 
                 <div class="setup-grid">
-                    <!-- Curva de Ventoinhas com Zoom Focado e Sem Tabela Repetida -->
+                    <!-- Curva de Ventoinhas com Zoom Focado e Centralizado -->
                     <div class="setup-card">
                         <div>
                             <h3>💨 Curva de Ventoinhas</h3>
                             
-                            <!-- Gráfico SVG com zoom focado na região ativa -->
+                            <!-- Gráfico SVG com zoom focado na região central da curva -->
                             <div class="curve-graph-container">
-                                <svg viewBox="100 0 420 260">
-                                    <!-- Linhas de grade horizontais -->
-                                    <line x1="45" y1="20" x2="500" y2="20" stroke="#2f2f38" stroke-dasharray="4"/>
-                                    <line x1="45" y1="65" x2="500" y2="65" stroke="#2f2f38" stroke-dasharray="4"/>
-                                    <line x1="45" y1="110" x2="500" y2="110" stroke="#2f2f38" stroke-dasharray="4"/>
-                                    <line x1="45" y1="155" x2="500" y2="155" stroke="#2f2f38" stroke-dasharray="4"/>
-                                    <line x1="45" y1="200" x2="500" y2="200" stroke="#2f2f38" stroke-dasharray="4"/>
+                                <svg viewBox="220 15 265 175">
+                                    <!-- Linhas de grade horizontais limpas -->
+                                    <line x1="220" y1="20" x2="485" y2="20" stroke="#2f2f38" stroke-dasharray="4"/>
+                                    <line x1="220" y1="65" x2="485" y2="65" stroke="#2f2f38" stroke-dasharray="4"/>
+                                    <line x1="220" y1="110" x2="485" y2="110" stroke="#2f2f38" stroke-dasharray="4"/>
+                                    <line x1="220" y1="155" x2="485" y2="155" stroke="#2f2f38" stroke-dasharray="4"/>
                                     
-                                    <!-- Rótulos de Porcentagem (Y) -->
-                                    <text x="105" y="24" fill="#949ba4" font-size="10">100%</text>
-                                    <text x="105" y="69" fill="#949ba4" font-size="10">80%</text>
-                                    <text x="105" y="114" fill="#949ba4" font-size="10">60%</text>
-                                    <text x="105" y="159" fill="#949ba4" font-size="10">40%</text>
-                                    <text x="105" y="204" fill="#949ba4" font-size="10">20%</text>
-                                    <text x="115" y="235" fill="#949ba4" font-size="10">0%</text>
-
-                                    <!-- Rótulos de Temperatura (X) -->
-                                    <text x="135" y="255" fill="#949ba4" font-size="10">0°C</text>
-                                    <text x="250" y="255" fill="#949ba4" font-size="10">25°C</text>
-                                    <text x="365" y="255" fill="#949ba4" font-size="10">50°C</text>
-                                    <text x="480" y="255" fill="#949ba4" font-size="10">75°C</text>
-
                                     <!-- Linha da Curva (Azul) -->
-                                    <path d="M 45 220 L 282 150 L 326 130 L 370 100 L 414 50 L 436 20 L 500 20" fill="none" stroke="#00b0f4" stroke-width="3"/>
+                                    <path d="M 230 170 L 282 150 L 326 130 L 370 100 L 414 50 L 436 20 L 485 20" fill="none" stroke="#00b0f4" stroke-width="3"/>
 
                                     <!-- Pontos e Rótulos Exatos em cima de cada bolinha -->
                                     <circle cx="282" cy="150" r="6" fill="#ffffff" stroke="#00b0f4" stroke-width="3"/>
