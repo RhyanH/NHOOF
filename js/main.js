@@ -232,18 +232,19 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // 4. Salvar e restaurar a posição do scroll da barra lateral
+    // 4. Salvar e restaurar a posição do scroll da barra lateral (Blindado contra resets de página)
     const channelsList = document.querySelector('.channels-list');
     
     if (channelsList) {
         const savedScroll = localStorage.getItem('sidebarScrollTop');
         if (savedScroll !== null) {
-            requestAnimationFrame(() => {
+            // Aplica o scroll repetidas vezes nos primeiros instantes para vencer o foco automático do navegador
+            let attempts = 0;
+            const restoreScroll = setInterval(() => {
                 channelsList.scrollTop = savedScroll;
-            });
-            setTimeout(() => {
-                channelsList.scrollTop = savedScroll;
-            }, 50);
+                attempts++;
+                if (attempts > 10) clearInterval(restoreScroll);
+            }, 20);
         }
 
         channelsList.addEventListener('scroll', () => {
