@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ordem de Instalação - NHOOF</title>
+    <title>L-Connect 3 - NHOOF</title>
     <!-- Ícone da aba do navegador (Favicon) -->
     <link rel="icon" type="image/png" href="../imagens/logo.png">
     <style>
@@ -232,9 +232,9 @@
         /* Grid de Conteúdo */
         .setup-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
             gap: 1.25rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
 
         .setup-card {
@@ -270,25 +270,29 @@
             display: flex;
             justify-content: space-between;
             gap: 15px;
-            align-items: flex-start;
+            align-items: center;
         }
 
         .setup-card ul li strong {
             color: #dbdee1;
             font-weight: 500;
             text-align: right;
-            word-break: break-word;
+            white-space: nowrap;
         }
 
-        .setup-card ul li strong a {
-            color: #5865f2;
-            text-decoration: none;
-            transition: color 0.15s;
+        /* Estilo do Gráfico */
+        .curve-graph-container {
+            background-color: #121216;
+            border: 1px solid #2f2f38;
+            border-radius: 4px;
+            padding: 12px;
+            margin-bottom: 1rem;
         }
 
-        .setup-card ul li strong a:hover {
-            color: #7983f5;
-            text-decoration: underline;
+        .curve-graph-container svg {
+            width: 100%;
+            height: auto;
+            display: block;
         }
 
         .card-description {
@@ -381,8 +385,8 @@
                 </div>
                 <div class="category-content">
                     <a href="windows-update.html" class="channel-item"><span>#</span> windows update</a>
-                    <a href="ordem-de-instalacao.html" class="channel-item active"><span>#</span> ordem de instalação</a>
-                    <a href="l-connect-3.html" class="channel-item"><span>#</span> l-connect-3</a>
+                    <a href="ordem-de-instalacao.html" class="channel-item"><span>#</span> ordem de instalação</a>
+                    <a href="l-connect-3.html" class="channel-item active"><span>#</span> l-connect-3</a>
                     <a href="g-hub.html" class="channel-item"><span>#</span> g-hub</a>
                     <a href="signalrgb.html" class="channel-item"><span>#</span> signalrgb</a>
                 </div>
@@ -488,47 +492,78 @@
         <div class="main-chat">
             <div class="chat-header">
                 <span class="channel-symbol">#</span>
-                <span>ordem de instalação</span>
+                <span>l-connect-3</span>
                 <span class="channel-divider">|</span>
-                <span class="channel-topic">Sequência correta para instalar drivers e programas essenciais pós-formatação.</span>
+                <span class="channel-topic">Curva de ventoinhas otimizada, configuração da bomba e ajustes gerais.</span>
             </div>
 
             <div class="chat-content">
-                <h1 class="page-title">Ordem de Instalação</h1>
+                <h1 class="page-title">L-Connect 3 (AWS)</h1>
 
                 <div class="setup-grid">
-                    <!-- Sequência de Instalação -->
+                    <!-- Fan Profile -->
                     <div class="setup-card">
                         <div>
-                            <h3>⚙️ Sequência de Instalação</h3>
-                            <ul>
-                                <li><span>Chipset AMD</span> <strong><a href="https://www.amd.com/pt/support/downloads/drivers.html/chipsets/am5/b650.html" target="_blank">Drivers B650</a></strong></li>
-                                <li><span>Windows Update</span> <strong>Atualizar tudo</strong></li>
-                                <li><span>LAN / Wi-Fi / Bluetooth</span> <strong><a href="https://www.intel.com.br/content/www/br/pt/products/sku/184676/intel-ethernet-controller-i225v/downloads.html" target="_blank">Intel i225 LAN</a> | <a href="https://www.gigabyte.com/br/Motherboard/B650-AERO-G-rev-10/support#dl" target="_blank">AMD Wi-Fi</a> | <a href="https://www.gigabyte.com/br/Motherboard/B650-AERO-G-rev-10/support#dl" target="_blank">AMD Bluetooth</a></strong></li>
-                                <li><span>Driver NVIDIA</span> <strong><a href="https://www.nvidia.com/pt-br/drivers/" target="_blank">NVIDIA Driver</a></strong></li>
-                                <li><span>Driver de Áudio</span> <strong><a href="https://www.gigabyte.com/br/Motherboard/B650-AERO-G-rev-10/support#dl" target="_blank">Realtek HD Audio</a></strong></li>
-                            </ul>
+                            <h3>💨 Fan Profile</h3>
+                            
+                            <div class="curve-graph-container">
+                                <svg viewBox="200 -12 300 205">
+                                    <line x1="200" y1="20" x2="500" y2="20" stroke="#2f2f38" stroke-dasharray="4"/>
+                                    <line x1="200" y1="65" x2="500" y2="65" stroke="#2f2f38" stroke-dasharray="4"/>
+                                    <line x1="200" y1="110" x2="500" y2="110" stroke="#2f2f38" stroke-dasharray="4"/>
+                                    <line x1="200" y1="155" x2="500" y2="155" stroke="#2f2f38" stroke-dasharray="4"/>
+                                    
+                                    <path d="M 210 170 L 282 150 L 326 130 L 370 100 L 414 50 L 436 20 L 500 20" fill="none" stroke="#00b0f4" stroke-width="3"/>
+
+                                    <circle cx="282" cy="150" r="6" fill="#ffffff" stroke="#00b0f4" stroke-width="3"/>
+                                    <text x="245" y="132" fill="#ffffff" font-size="11" font-weight="bold">50°C / 35%</text>
+
+                                    <circle cx="326" cy="130" r="6" fill="#ffffff" stroke="#00b0f4" stroke-width="3"/>
+                                    <text x="290" y="112" fill="#ffffff" font-size="11" font-weight="bold">65°C / 45%</text>
+
+                                    <circle cx="370" cy="100" r="6" fill="#ffffff" stroke="#00b0f4" stroke-width="3"/>
+                                    <text x="335" y="82" fill="#ffffff" font-size="11" font-weight="bold">75°C / 60%</text>
+
+                                    <circle cx="414" cy="50" r="6" fill="#ffffff" stroke="#00b0f4" stroke-width="3"/>
+                                    <text x="375" y="32" fill="#ffffff" font-size="11" font-weight="bold">85°C / 85%</text>
+
+                                    <circle cx="436" cy="20" r="6" fill="#ffffff" stroke="#00b0f4" stroke-width="3"/>
+                                    <text x="395" y="8" fill="#ffffff" font-size="11" font-weight="bold">90°C / 100%</text>
+                                </svg>
+                            </div>
                         </div>
                         <div class="card-description">
-                            <strong>O que faz:</strong> Garante que os componentes essenciais do sistema se comuniquem corretamente logo após a formatação, evitando bugs de reconhecimento de hardware, telas azuis e perda de desempenho por falta de drivers atualizados.
+                            <strong>O que faz:</strong> Curva progressiva otimizada para manter silêncio absoluto em uso leve e refrigeração máxima sob carga.
                         </div>
                     </div>
 
-                    <!-- Programas Essenciais -->
+                    <!-- Pump Profile -->
                     <div class="setup-card">
                         <div>
-                            <h3>📦 Programas Essenciais</h3>
+                            <h3>💧 Pump Profile</h3>
                             <ul>
-                                <li><span>Chrome</span> <strong><a href="https://www.google.com/intl/pt-BR/chrome/" target="_blank">Baixar</a></strong></li>
-                                <li><span>L-Connect 3</span> <strong><a href="https://lian-li.com/l-connect3/" target="_blank">Baixar</a></strong></li>
-                                <li><span>G HUB</span> <strong><a href="https://www.logitechg.com/pt-br/software/ghub" target="_blank">Baixar</a></strong></li>
-                                <li><span>SignalRGB</span> <strong><a href="https://signalrgb.com/" target="_blank">Baixar</a></strong></li>
-                                <li><span>Discord</span> <strong><a href="https://discord.com/download" target="_blank">Baixar</a></strong></li>
-                                <li><span>Steam</span> <strong><a href="https://store.steampowered.com/about/download" target="_blank">Baixar</a></strong></li>
+                                <li><span>Modo</span> <strong>FixRPM</strong></li>
+                                <li><span>Velocidade</span> <strong>3200 RPM</strong></li>
                             </ul>
                         </div>
                         <div class="card-description">
-                            <strong>O que faz:</strong> Instalação dos softwares básicos e utilitários de monitoramento necessários para o uso diário e controle térmico/estético do PC.
+                            <strong>O que faz:</strong> Mantém fluxo de líquido constante sem variação incômoda de ruído do motor.
+                        </div>
+                    </div>
+
+                    <!-- Settings (General) -->
+                    <div class="setup-card">
+                        <div>
+                            <h3>⚙️ Settings (General)</h3>
+                            <ul>
+                                <li><span>Auto-Run on boot</span> <strong>ON</strong></li>
+                                <li><span>Hide on system tray when auto run on boot</span> <strong>ON</strong></li>
+                                <li><span>Minimize L-Connect 3 to system tray at close</span> <strong>ON</strong></li>
+                                <li><span>Displays a floating system information window</span> <strong>OFF</strong></li>
+                            </ul>
+                        </div>
+                        <div class="card-description">
+                            <strong>O que faz:</strong> Otimiza o comportamento do software em segundo plano de forma discreta.
                         </div>
                     </div>
                 </div>
