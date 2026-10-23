@@ -231,4 +231,18 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem('sidebar_cat_' + catName, newState);
         });
     });
+
+    // 4. Salvar e restaurar a posição do scroll da barra lateral
+    const channelsList = document.querySelector('.channels-list');
+    
+    if (channelsList) {
+        const savedScroll = localStorage.getItem('sidebarScrollTop');
+        if (savedScroll !== null) {
+            channelsList.scrollTop = savedScroll;
+        }
+
+        channelsList.addEventListener('scroll', () => {
+            localStorage.setItem('sidebarScrollTop', channelsList.scrollTop);
+        });
+    }
 });
