@@ -280,6 +280,17 @@
             word-break: break-word;
         }
 
+        .setup-card ul li strong a {
+            color: #5865f2;
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+
+        .setup-card ul li strong a:hover {
+            color: #7983f5;
+            text-decoration: underline;
+        }
+
         .card-description {
             font-size: 0.88rem;
             color: #949ba4;
@@ -291,40 +302,6 @@
 
         .card-description strong {
             color: #dbdee1;
-        }
-
-        /* Container de Alertas / Instruções Extras */
-        .alerts-container {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            max-width: 100%;
-        }
-
-        .alert-box {
-            background-color: #222229;
-            border: 1px solid #2f2f38;
-            border-left: 4px solid #5865f2;
-            border-radius: 6px;
-            padding: 1.25rem 1.5rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-
-        .alert-icon {
-            font-size: 1.2rem;
-            line-height: 1;
-        }
-
-        .alert-text {
-            color: #dbdee1;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        .alert-text strong {
-            color: #ffffff;
         }
     </style>
 </head>
@@ -525,15 +502,15 @@
                         <div>
                             <h3>⚙️ Sequência de Instalação</h3>
                             <ul>
-                                <li><span>Chipset AMD</span> <strong>Drivers B650</strong>[cite: 4]</li>
-                                <li><span>Windows Update</span> <strong>Atualizar tudo</strong>[cite: 4]</li>
-                                <li><span>LAN / Wi-Fi / Bluetooth</span> <strong>Intel i225 LAN | AMD Wi-Fi | AMD Bluetooth</strong>[cite: 4]</li>
-                                <li><span>Driver NVIDIA</span> <strong>NVIDIA Driver</strong>[cite: 4]</li>
-                                <li><span>Driver de Áudio</span> <strong>Realtek HD Audio</strong>[cite: 4]</li>
+                                <li><span>Chipset AMD</span> <strong><a href="https://www.amd.com/pt/support/downloads/drivers.html/chipsets/am5/b650.html" target="_blank">Drivers B650</a></strong></li>
+                                <li><span>Windows Update</span> <strong>Atualizar tudo</strong></li>
+                                <li><span>LAN / Wi-Fi / Bluetooth</span> <strong><a href="https://www.intel.com.br/content/www/br/pt/products/sku/184676/intel-ethernet-controller-i225v/downloads.html" target="_blank">Intel i225 LAN</a> | <a href="https://www.gigabyte.com/br/Motherboard/B650-AERO-G-rev-10/support#dl" target="_blank">AMD Wi-Fi</a> | <a href="https://www.gigabyte.com/br/Motherboard/B650-AERO-G-rev-10/support#dl" target="_blank">AMD Bluetooth</a></strong></li>
+                                <li><span>Driver NVIDIA</span> <strong><a href="https://www.nvidia.com/pt-br/drivers/" target="_blank">NVIDIA Driver</a></strong></li>
+                                <li><span>Driver de Áudio</span> <strong><a href="https://www.gigabyte.com/br/Motherboard/B650-AERO-G-rev-10/support#dl" target="_blank">Realtek HD Audio</a></strong></li>
                             </ul>
                         </div>
                         <div class="card-description">
-                            <strong>O que faz:</strong> Garante que os componentes essenciais do sistema se comuniquem corretamente logo após a formatação, evitando bugs de reconhecimento de hardware, telas azuis e perda de desempenho por falta de drivers atualizados[cite: 4].
+                            <strong>O que faz:</strong> Garante que os componentes essenciais do sistema se comuniquem corretamente logo após a formatação, evitando bugs de reconhecimento de hardware, telas azuis e perda de desempenho por falta de drivers atualizados.
                         </div>
                     </div>
 
@@ -542,11 +519,11 @@
                         <div>
                             <h3>📦 Programas Essenciais</h3>
                             <ul>
-                                <li><span>L-Connect 3</span> <strong>Controlador de Fans/RGB</strong>[cite: 4]</li>
-                                <li><span>HWInfo64</span> <strong>Monitoramento</strong>[cite: 4]</li>
-                                <li><span>Steam</span> <strong>Jogos</strong>[cite: 4]</li>
-                                <li><span>Discord</span> <strong>Comunicação</strong>[cite: 4]</li>
-                                <li><span>Chrome</span> <strong>Navegador</strong>[cite: 4]</li>
+                                <li><span>L-Connect 3</span> <strong><a href="https://lian-li.com/l-connect3/" target="_blank">Baixar</a></strong></li>
+                                <li><span>HWInfo64</span> <strong><a href="https://www.hwinfo.com/download/" target="_blank">Baixar</a></strong></li>
+                                <li><span>Steam</span> <strong><a href="https://store.steampowered.com/about/download" target="_blank">Baixar</a></strong></li>
+                                <li><span>Discord</span> <strong><a href="https://discord.com/download" target="_blank">Baixar</a></strong></li>
+                                <li><span>Chrome</span> <strong><a href="https://www.google.com/intl/pt-BR/chrome/" target="_blank">Baixar</a></strong></li>
                             </ul>
                         </div>
                         <div class="card-description">
