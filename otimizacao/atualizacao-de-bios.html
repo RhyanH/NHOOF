@@ -286,6 +286,49 @@
             color: #7983f5;
             text-decoration: underline;
         }
+
+        /* Container de Alertas / Dicas */
+        .alerts-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 100%;
+        }
+
+        .alert-box {
+            background-color: #222229;
+            border: 1px solid #2f2f38;
+            border-left: 4px solid #5865f2;
+            border-radius: 6px;
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .alert-box.danger {
+            border-left-color: #ed4245; /* Cor vermelha para alertas críticos */
+        }
+
+        .alert-box.warning {
+            border-left-color: #f0b232;
+        }
+
+        .alert-icon {
+            font-size: 1.2rem;
+            line-height: 1;
+        }
+
+        .alert-text {
+            color: #dbdee1;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .alert-text p + p {
+            margin-top: 0.5rem;
+        }
     </style>
 </head>
 <body>
@@ -506,6 +549,22 @@
                             <li><span>Ferramenta</span> <strong>BIOS → F8 (Q-Flash)</strong></li>
                             <li><span>Origem</span> <strong>Arquivo no pendrive</strong></li>
                         </ul>
+                    </div>
+                </div>
+                
+                <!-- Alertas e Dicas (Adicionado para Segurança) -->
+                <div class="alerts-container">
+                    <div class="alert-box danger">
+                        <div class="alert-icon">⚠️</div>
+                        <div class="alert-text">
+                            <p><strong>ALERTA CRÍTICO:</strong> Jamais desligue o computador, retire o pen drive da porta USB ou reinicie a máquina durante o processo de atualização (barra de progresso no Q-Flash). Uma interrupção de energia neste momento pode inutilizar permanentemente a sua placa-mãe. Faça por sua conta e risco.</p>
+                        </div>
+                    </div>
+                    <div class="alert-box warning">
+                        <div class="alert-icon">💡</div>
+                        <div class="alert-text">
+                            <p>O arquivo indicado (versão F41) é específico para a placa <strong>Gigabyte B650 AERO G</strong>. Se a sua placa for de outro modelo ou marca (ASUS, MSI, ASRock), baixe o arquivo correspondente no site oficial da fabricante e siga as instruções do manual, pois o nome da ferramenta (Q-Flash, EZ Flash, M-Flash) será diferente.</p>
+                        </div>
                     </div>
                 </div>
             </div>
