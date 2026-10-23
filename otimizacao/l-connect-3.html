@@ -280,7 +280,7 @@
             word-break: break-word;
         }
 
-        /* Estilo do Gráfico com Margem Superior Ajustada */
+        /* Estilo do Gráfico Ajustado */
         .curve-graph-container {
             background-color: #121216;
             border: 1px solid #2f2f38;
@@ -501,24 +501,20 @@
                 <h1 class="page-title">L-Connect 3 (AWS)</h1>
 
                 <div class="setup-grid">
-                    <!-- Curva de Ventoinhas com viewBox ajustado para mostrar todos os pontos -->
+                    <!-- Curva de Ventoinhas com Zoom Focado -->
                     <div class="setup-card">
                         <div>
                             <h3>💨 Curva de Ventoinhas</h3>
                             
-                            <!-- Gráfico SVG com margem superior alargada para exibir o rótulo de 90°C -->
                             <div class="curve-graph-container">
                                 <svg viewBox="200 -12 300 205">
-                                    <!-- Linhas de grade horizontais -->
                                     <line x1="200" y1="20" x2="500" y2="20" stroke="#2f2f38" stroke-dasharray="4"/>
                                     <line x1="200" y1="65" x2="500" y2="65" stroke="#2f2f38" stroke-dasharray="4"/>
                                     <line x1="200" y1="110" x2="500" y2="110" stroke="#2f2f38" stroke-dasharray="4"/>
                                     <line x1="200" y1="155" x2="500" y2="155" stroke="#2f2f38" stroke-dasharray="4"/>
                                     
-                                    <!-- Linha da Curva (Azul) -->
                                     <path d="M 210 170 L 282 150 L 326 130 L 370 100 L 414 50 L 436 20 L 500 20" fill="none" stroke="#00b0f4" stroke-width="3"/>
 
-                                    <!-- Pontos e Rótulos Exatos em cima de cada bolinha -->
                                     <circle cx="282" cy="150" r="6" fill="#ffffff" stroke="#00b0f4" stroke-width="3"/>
                                     <text x="245" y="132" fill="#ffffff" font-size="11" font-weight="bold">55°C / 35%</text>
 
@@ -555,15 +551,15 @@
                         </div>
                     </div>
 
-                    <!-- Ajustes Gerais (Settings) -->
+                    <!-- Ajustes Gerais (Settings) Corrigidos conforme o print -->
                     <div class="setup-card">
                         <div>
                             <h3>⚙️ Ajustes Gerais (Settings)</h3>
                             <ul>
-                                <li><span>Auto-Run on boot</span> <strong>ON</strong></li>
-                                <li><span>Hide on system tray (auto run)</span> <strong>ON</strong></li>
-                                <li><span>Minimize to system tray at close</span> <strong>ON</strong></li>
-                                <li><span>Floating system info window</span> <strong>OFF</strong></li>
+                                <li><span>Auto-Run on boot</span> <strong>ON</strong>[cite: 8]</li>
+                                <li><span>Hide on system tray when auto run on boot</span> <strong>ON</strong>[cite: 8]</li>
+                                <li><span>Minimize L-Connect 3 to system tray at close</span> <strong>ON</strong>[cite: 8]</li>
+                                <li><span>Displays a floating system information window</span> <strong>OFF</strong>[cite: 8]</li>
                             </ul>
                         </div>
                         <div class="card-description">
