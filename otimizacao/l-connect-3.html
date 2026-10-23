@@ -280,7 +280,7 @@
             word-break: break-word;
         }
 
-        /* Estilo do Gráfico com Zoom Focado e Centralizado */
+        /* Estilo do Gráfico Ajustado */
         .curve-graph-container {
             background-color: #121216;
             border: 1px solid #2f2f38;
@@ -501,38 +501,38 @@
                 <h1 class="page-title">L-Connect 3 (AWS)</h1>
 
                 <div class="setup-grid">
-                    <!-- Curva de Ventoinhas com Zoom Focado e Centralizado -->
+                    <!-- Curva de Ventoinhas com viewBox ajustado para mostrar todos os pontos -->
                     <div class="setup-card">
                         <div>
                             <h3>💨 Curva de Ventoinhas</h3>
                             
-                            <!-- Gráfico SVG com zoom focado na região central da curva -->
+                            <!-- Gráfico SVG com margem direita expandida para exibir o ponto de 90°C -->
                             <div class="curve-graph-container">
-                                <svg viewBox="220 15 265 175">
-                                    <!-- Linhas de grade horizontais limpas -->
-                                    <line x1="220" y1="20" x2="485" y2="20" stroke="#2f2f38" stroke-dasharray="4"/>
-                                    <line x1="220" y1="65" x2="485" y2="65" stroke="#2f2f38" stroke-dasharray="4"/>
-                                    <line x1="220" y1="110" x2="485" y2="110" stroke="#2f2f38" stroke-dasharray="4"/>
-                                    <line x1="220" y1="155" x2="485" y2="155" stroke="#2f2f38" stroke-dasharray="4"/>
+                                <svg viewBox="210 5 285 190">
+                                    <!-- Linhas de grade horizontais -->
+                                    <line x1="210" y1="20" x2="500" y2="20" stroke="#2f2f38" stroke-dasharray="4"/>
+                                    <line x1="210" y1="65" x2="500" y2="65" stroke="#2f2f38" stroke-dasharray="4"/>
+                                    <line x1="210" y1="110" x2="500" y2="110" stroke="#2f2f38" stroke-dasharray="4"/>
+                                    <line x1="210" y1="155" x2="500" y2="155" stroke="#2f2f38" stroke-dasharray="4"/>
                                     
                                     <!-- Linha da Curva (Azul) -->
-                                    <path d="M 230 170 L 282 150 L 326 130 L 370 100 L 414 50 L 436 20 L 485 20" fill="none" stroke="#00b0f4" stroke-width="3"/>
+                                    <path d="M 220 170 L 282 150 L 326 130 L 370 100 L 414 50 L 436 20 L 500 20" fill="none" stroke="#00b0f4" stroke-width="3"/>
 
                                     <!-- Pontos e Rótulos Exatos em cima de cada bolinha -->
                                     <circle cx="282" cy="150" r="6" fill="#ffffff" stroke="#00b0f4" stroke-width="3"/>
-                                    <text x="250" y="135" fill="#ffffff" font-size="11" font-weight="bold">55°C / 35%</text>
+                                    <text x="245" y="135" fill="#ffffff" font-size="11" font-weight="bold">55°C / 35%</text>
 
                                     <circle cx="326" cy="130" r="6" fill="#ffffff" stroke="#00b0f4" stroke-width="3"/>
-                                    <text x="295" y="115" fill="#ffffff" font-size="11" font-weight="bold">65°C / 45%</text>
+                                    <text x="290" y="115" fill="#ffffff" font-size="11" font-weight="bold">65°C / 45%</text>
 
                                     <circle cx="370" cy="100" r="6" fill="#ffffff" stroke="#00b0f4" stroke-width="3"/>
-                                    <text x="340" y="85" fill="#ffffff" font-size="11" font-weight="bold">75°C / 60%</text>
+                                    <text x="335" y="85" fill="#ffffff" font-size="11" font-weight="bold">75°C / 60%</text>
 
                                     <circle cx="414" cy="50" r="6" fill="#ffffff" stroke="#00b0f4" stroke-width="3"/>
-                                    <text x="380" y="35" fill="#ffffff" font-size="11" font-weight="bold">85°C / 85%</text>
+                                    <text x="375" y="35" fill="#ffffff" font-size="11" font-weight="bold">85°C / 85%</text>
 
                                     <circle cx="436" cy="20" r="6" fill="#ffffff" stroke="#00b0f4" stroke-width="3"/>
-                                    <text x="405" y="12" fill="#ffffff" font-size="11" font-weight="bold">90°C / 100%</text>
+                                    <text x="400" y="8" fill="#ffffff" font-size="11" font-weight="bold">90°C / 100%</text>
                                 </svg>
                             </div>
                         </div>
