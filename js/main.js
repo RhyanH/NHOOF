@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
     document.head.appendChild(style);
 
-    // 2. Criar o Botão Hamburger e o Overlay no HTML automaticamente (se houver chat-header)
+    // 2. Criar o Botão Hamburger e o Overlay no HTML automaticamente
     const chatHeader = document.querySelector('.chat-header');
     if (chatHeader) {
         const menuBtn = document.createElement('button');
@@ -183,72 +183,71 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 3. Sistema de Memória das Categorias com o comportamento do chat ativo visível
+    // 3. Sistema de Memória Definitivo para Categorias
     const categoryHeaders = document.querySelectorAll('.category-header');
     
-    categoryHeaders.forEach((header) => {
-        const catName = 'cat_' + header.textContent.trim().replace(/\s+/g, '_');
-        header.setAttribute('data-category', catName);
-
+    categoryHeaders.forEach((header, index) => {
+        // Chave limpa e única para cada categoria
+        const storageKey = 'nhoof_category_' + index;
         const content = header.nextElementSibling;
         const arrow = header.querySelector('.category-arrow');
-        const savedState = localStorage.getItem('sidebar_cat_' + catName);
-        const hasActiveChild = content && content.querySelector('.channel-item.active');
+        
+        if (!content) return;
 
-        function setCategoryState(isCollapsed) {
-            if (!content) return;
-            if (hasActiveChild) {
-                if (isCollapsed) {
-                    content.classList.add('collapsed', 'has-active');
-                    if (arrow) arrow.style.transform = 'rotate(-90deg)';
-                } else {
-                    content.classList.remove('collapsed', 'has-active');
-                    if (arrow) arrow.style.transform = 'rotate(0deg)';
-                }
+        const hasActiveChild = content.querySelector('.channel-item.active');
+        const savedState = localStorage.getItem(storageKey);
+
+        // Função que aplica o estilo dependendo do estado
+        function applyState(isCollapsed) {
+            if (isCollapsed) {
+                content.classList.add('collapsed');
+                if (hasActiveChild) content.classList.add('has-active'); // Mantém o item ativo visível se fechado
+                if (arrow) arrow.style.transform = 'rotate(-90deg)';
             } else {
-                content.classList.remove('has-active');
-                if (isCollapsed) {
-                    content.classList.add('collapsed');
-                    if (arrow) arrow.style.transform = 'rotate(-90deg)';
-                } else {
-                    content.classList.remove('collapsed');
-                    if (arrow) arrow.style.transform = 'rotate(0deg)';
-                }
+                content.classList.remove('collapsed', 'has-active');
+                if (arrow) arrow.style.transform = 'rotate(0deg)';
             }
         }
 
-        // Estado inicial
-        let initialCollapsed = savedState === 'true';
-        setCategoryState(initialCollapsed);
+        // Lê a memória ao carregar a página
+        if (savedState === 'collapsed') {
+            applyState(true);
+        } else if (savedState === 'open') {
+            applyState(false);
+        } else {
+            // Padrão se nunca clicou: deixa aberto
+            applyState(false);
+        }
 
-        // Evento de clique na categoria
+        // Atualiza a memória ao clicar
         header.addEventListener('click', () => {
-            if (!content) return;
             const isCurrentlyCollapsed = content.classList.contains('collapsed');
-            const newState = !isCurrentlyCollapsed;
+            const newState = !isCurrentlyCollapsed; // Inverte o estado
             
-            setCategoryState(newState);
-            localStorage.setItem('sidebar_cat_' + catName, newState);
+            applyState(newState);
+            localStorage.setItem(storageKey, newState ? 'collapsed' : 'open');
         });
     });
 
-    // 4. Salvar e restaurar a posição do scroll da barra lateral (Blindado contra resets de página)
+    // 4. Salvar e restaurar a posição do scroll da barra lateral
     const channelsList = document.querySelector('.channels-list');
     
     if (channelsList) {
-        const savedScroll = localStorage.getItem('sidebarScrollTop');
+        const savedScroll = localStorage.getItem('nhoof_sidebar_scroll');
+        
         if (savedScroll !== null) {
-            // Aplica o scroll repetidas vezes nos primeiros instantes para vencer o foco automático do navegador
+            // Intervalo rápido para evitar que o navegador jogue o scroll pro topo automaticamente no load
             let attempts = 0;
             const restoreScroll = setInterval(() => {
-                channelsList.scrollTop = savedScroll;
+                channelsList.scrollTop = parseInt(savedScroll, 10);
                 attempts++;
-                if (attempts > 10) clearInterval(restoreScroll);
-            }, 20);
+                if (attempts > 5) clearInterval(restoreScroll);
+            }, 30);
         }
 
+        // Salva a altura do scroll em tempo real
         channelsList.addEventListener('scroll', () => {
-            localStorage.setItem('sidebarScrollTop', channelsList.scrollTop);
+            localStorage.setItem('nhoof_sidebar_scroll', channelsList.scrollTop);
         });
     }
 });
