@@ -280,6 +280,17 @@
             white-space: nowrap;
         }
 
+        /* Destaque para linha de comando */
+        .code-line {
+            font-family: Consolas, monospace;
+            background: #111115;
+            padding: 3px 8px;
+            border-radius: 4px;
+            border: 1px solid #353540;
+            color: #00b0f4;
+            letter-spacing: 0.5px;
+        }
+
         .card-description {
             font-size: 0.88rem;
             color: #949ba4;
@@ -480,70 +491,73 @@
                 <span class="channel-symbol">#</span>
                 <span>debloat-e-limpeza</span>
                 <span class="channel-divider">|</span>
-                <span class="channel-topic">Remoção de bloatwares, telemetria e otimização de arquivos temporários do sistema.</span>
+                <span class="channel-topic">Uso de ferramentas avançadas para debloat, bloqueio de telemetria e limpeza profunda.</span>
             </div>
 
             <div class="chat-content">
                 <h1 class="page-title">DEBLOAT WINDOWS (LIMPEZA)</h1>
 
                 <div class="setup-grid">
-                    <!-- Remover Apps Inúteis (Sua Imagem) -->
+                    
+                    <!-- Winutil -->
                     <div class="setup-card">
                         <div>
-                            <h3>🗑️ Remover Apps Inúteis</h3>
+                            <h3>🛠️ Winutil (Chris Titus)</h3>
                             <ul>
-                                <li><span>Pelo Iniciar</span> <strong>Botão direito no app ➔ Desinstalar</strong></li>
-                                <li><span>Pelas Configurações</span> <strong>Aplicativos ➔ Aplicativos Instalados</strong></li>
+                                <li><span>Terminal</span> <strong>PowerShell (Admin)</strong></li>
+                                <li><span>Comando</span> <strong class="code-line">irm christitus.com/win | iex</strong></li>
+                                <li><span>Recomendação</span> <strong>Aba "Tweaks" ➔ Desktop</strong></li>
                             </ul>
                         </div>
                         <div class="card-description">
-                            <strong>O que faz:</strong> Remove aplicativos de fábrica desnecessários que ocupam espaço e consomem memória RAM.
+                            <strong>O que faz:</strong> Utilitário definitivo em código aberto. Desinstala bloatwares, desativa widgets e aplica otimizações profundas no sistema com um único clique.
                         </div>
                     </div>
 
-                    <!-- Desativar Widgets (Sua Imagem) -->
+                    <!-- O&O ShutUp10++ -->
                     <div class="setup-card">
                         <div>
-                            <h3>🚫 Desativar Widgets</h3>
+                            <h3>🕵️ O&O ShutUp10++</h3>
                             <ul>
-                                <li><span>Caminho</span> <strong>Configurações ➔ Personalização ➔ Barra de tarefas</strong></li>
-                                <li><span>Widgets</span> <strong>Desativado</strong></li>
+                                <li><span>Instalação</span> <strong>Portátil (Não requer)</strong></li>
+                                <li><span>Perfil de uso</span> <strong>Apply only recommended settings</strong></li>
+                                <li><span>Manutenção</span> <strong>Reaplicar após grandes updates do Win</strong></li>
                             </ul>
                         </div>
                         <div class="card-description">
-                            <strong>O que faz:</strong> Desativa os painéis de notícias e clima (widgets) que pesam no processador em segundo plano.
+                            <strong>O que faz:</strong> Bloqueia a telemetria invasiva do Windows, cortando o envio oculto de dados de uso para os servidores da Microsoft em segundo plano.
                         </div>
                     </div>
 
-                    <!-- Ferramenta de Debloat (Dica Extra) -->
+                    <!-- Revo Uninstaller -->
                     <div class="setup-card">
                         <div>
-                            <h3>🧹 Ferramentas Avançadas</h3>
+                            <h3>🧹 Revo Uninstaller</h3>
                             <ul>
-                                <li><span>Revo Uninstaller</span> <strong>Remoção profunda</strong></li>
-                                <li><span>O&O ShutUp10++</span> <strong>Desativar Telemetria</strong></li>
-                                <li><span>Winutil (Chris Titus)</span> <strong>Script PowerShell</strong></li>
+                                <li><span>Uso ideal</span> <strong>Desinstalar softwares de fábrica</strong></li>
+                                <li><span>Modo de Varredura</span> <strong>Avançado</strong></li>
                             </ul>
                         </div>
                         <div class="card-description">
-                            <strong>O que faz:</strong> Corta serviços escondidos de envio de dados, apaga rastros no registro e libera muita CPU e RAM em segundo plano.
+                            <strong>O que faz:</strong> Substitui o desinstalador padrão. Remove os programas forçando a limpeza de todas as sobras (pastas ocultas, arquivos temporários e chaves de registro) que o Windows sempre esquece.
                         </div>
                     </div>
 
-                    <!-- Limpeza de Disco e Temp (Dica Extra) -->
+                    <!-- Limpeza Profunda -->
                     <div class="setup-card">
                         <div>
-                            <h3>🧽 Limpeza Profunda</h3>
+                            <h3>🧽 Limpeza do Sistema</h3>
                             <ul>
                                 <li><span>Sensor de Armazenamento</span> <strong>Ativado (Semanal)</strong></li>
                                 <li><span>Pasta Temp (Win+R)</span> <strong>Limpar manualmente</strong></li>
-                                <li><span>Limpeza de Disco</span> <strong>Arquivos do Sistema</strong></li>
+                                <li><span>Limpeza de Disco</span> <strong>Limpar Arquivos do Sistema</strong></li>
                             </ul>
                         </div>
                         <div class="card-description">
-                            <strong>O que faz:</strong> Elimina arquivos de cache, registros antigos do Windows Update e lixo gerado pelo sistema para desocupar espaço vital no SSD.
+                            <strong>O que faz:</strong> Elimina caches residuais, registros antigos do Windows Update e lixo de uso contínuo para desocupar espaço vital no SSD.
                         </div>
                     </div>
+
                 </div>
 
             </div>
