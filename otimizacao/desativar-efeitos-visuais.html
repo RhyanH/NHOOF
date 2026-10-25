@@ -286,6 +286,17 @@
             white-space: normal;
         }
 
+        /* Destaque para linha de comando */
+        .code-line {
+            font-family: Consolas, monospace;
+            background: #111115;
+            padding: 3px 8px;
+            border-radius: 4px;
+            border: 1px solid #353540;
+            color: #00b0f4;
+            letter-spacing: 0.5px;
+        }
+
         .card-description {
             font-size: 0.88rem;
             color: #949ba4;
@@ -499,12 +510,14 @@
                         <div>
                             <h3>✨ 1. Ajustar Desempenho do Sistema</h3>
                             <ul>
-                                <li><span>Pesquisar</span> <strong>Ajustar a aparência e o desempenho do Windows</strong></li>
+                                <li><span>Atalho (Win + R)</span> <strong class="code-line">SystemPropertiesPerformance</strong></li>
+                                <li><span>Pesquisar</span> <strong class="text-left-normal">Ajustar a aparência e o desempenho do Windows</strong></li>
                                 <li><span>Ativar</span> <strong class="text-left-normal">Ajustar para obter o melhor desempenho</strong></li>
                             </ul>
                         </div>
                         <div class="card-description">
                             <strong>O que faz:</strong> Remove animações de janelas, transparências e sombras, deixando a resposta do Windows muito mais instantânea e economizando recursos de hardware.<br><br>
+                            <strong>Como usar:</strong> Pressione <strong class="code-line">Win + R</strong> e digite <strong class="code-line">SystemPropertiesPerformance</strong> (ou pesquise por <em>Ajustar a aparência e o desempenho do Windows</em> no menu iniciar). Depois, selecione <em>Ajustar para obter o melhor desempenho</em>.<br><br>
                             💡 <strong>Recomendação:</strong> Após marcar a opção de melhor desempenho, deixe marcada apenas a caixinha <em>"Usar fontes de tela com bordas suaves"</em> para evitar que as letras fiquem serrilhadas.
                         </div>
                     </div>
