@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajustar DNS - NHOOF</title>
+    <!-- Ícone da aba do navegador (Favicon) -->
+    <link rel="icon" type="image/png" href="../imagens/logo.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsivo.css">
+</head>
+<body>
+
+    <!-- Cabeçalho Global do Site -->
+    <header class="global-header">
+        <div class="logo-container">
+            <a href="../index.html">
+                <img src="../imagens/logo.png" alt="Logo">
+            </a>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Otimização</a></li>
+                <li><a href="#">Projeto 2</a></li>
+                <li><a href="#">Projeto 3</a></li>
+                <li><a href="#">Projeto 4</a></li>
+                <li><a href="#">Projeto 5</a></li>
+                <li><a href="#">Projeto 6</a></li>
+                <li><a href="#">Projeto 7</a></li>
+                <li><a href="#">Projeto 8</a></li>
+                <li><a href="#">Projeto 9</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-spacer"></div>
+    </header>
+
+    <!-- Contêiner principal: barra lateral e painel de conteúdo -->
+    <div class="discord-app">
+        
+        <!-- Barra Lateral Esquerda (montada por ../js/sidebar.js; para mudar canais, edite js/sidebar.js) -->
+        <div class="sidebar-channels" data-projeto="otimizacao"></div>
+        <script src="../js/sidebar.js"></script>
+
+        <!-- Painel Central -->
+        <div class="main-chat">
+            <div class="chat-header">
+                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu">☰</button>
+                <span class="channel-symbol">#</span>
+                <span>ajustar dns</span>
+                <span class="channel-divider">|</span>
+                <span class="channel-topic">DNS da Cloudflare configurado no adaptador de rede para reduzir a latência de rota.</span>
+            </div>
+
+            <div class="chat-content">
+                <h1 class="page-title">AJUSTAR DNS (LATÊNCIA DE ROTA)</h1>
+
+                <div class="setup-grid">
+                    <div class="setup-card">
+                        <div>
+                            <h3>⚙️ 1. Configuração</h3>
+                            <ul>
+                                <li><span>Win + R</span> <strong class="code-line">ncpa.cpl</strong></li>
+                                <li><span>Intel(R) Ethernet Controller I225-V</span> <strong>Propriedades</strong></li>
+                                <li><span>Protocolo IP Versão 4 (TCP/IPv4)</span> <strong>Propriedades</strong></li>
+                                <li><span>Selecione</span> <strong>Usar os seguintes endereços de servidor DNS</strong></li>
+                                <li><span>Servidor preferencial</span> <strong class="code-line">1.1.1.1</strong></li>
+                                <li><span>Servidor alternativo</span> <strong class="code-line">1.0.0.1</strong></li>
+                            </ul>
+                            <h3 style="margin-top: 1.25rem;">💾 2. Para salvar e ativar</h3>
+                            <ul>
+                                <li><span>Janelas</span> <strong>OK → Fechar</strong></li>
+                                <li><span>Prompt de Comando (CMD)</span> <strong class="code-line">ipconfig /flushdns</strong></li>
+                            </ul>
+                            <h3 style="margin-top: 1.25rem;">🔎 3. Como testar</h3>
+                            <ul>
+                                <li><span>Prompt de Comando (CMD)</span> <strong class="code-line">ping 1.1.1.1</strong></li>
+                                <li><span>Verifique a linha final</span> <strong>O resultado ideal deve apresentar 0% de perda e a menor Média em ms possível para a sua região</strong></li>
+                            </ul>
+                            <h3 style="margin-top: 1.25rem;">✅ 4. Como verificar se funcionou após aplicar</h3>
+                            <ul>
+                                <li><span>Prompt de Comando (CMD)</span> <strong class="code-line">nslookup google.com 1.1.1.1</strong></li>
+                                <li><span>Resultado</span> <strong>Se nas primeiras linhas aparecer Server: one.one.one.one e Address: 1.1.1.1, o Windows já está navegando e jogando com a rota otimizada da Cloudflare</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Camada escura exibida atrás do menu lateral aberto em telas pequenas -->
+    <div class="sidebar-overlay"></div>
+
+    <!-- Scripts compartilhados (menu em telas pequenas e navegação sem recarregar) -->
+    <script src="../js/main.js"></script>
+    <script src="../js/navegacao.js"></script>
+</body>
+</html>

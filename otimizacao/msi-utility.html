@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSI Utility - NHOOF</title>
+    <!-- Ícone da aba do navegador (Favicon) -->
+    <link rel="icon" type="image/png" href="../imagens/logo.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsivo.css">
+</head>
+<body>
+
+    <!-- Cabeçalho Global do Site -->
+    <header class="global-header">
+        <div class="logo-container">
+            <a href="../index.html">
+                <img src="../imagens/logo.png" alt="Logo">
+            </a>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Otimização</a></li>
+                <li><a href="#">Projeto 2</a></li>
+                <li><a href="#">Projeto 3</a></li>
+                <li><a href="#">Projeto 4</a></li>
+                <li><a href="#">Projeto 5</a></li>
+                <li><a href="#">Projeto 6</a></li>
+                <li><a href="#">Projeto 7</a></li>
+                <li><a href="#">Projeto 8</a></li>
+                <li><a href="#">Projeto 9</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-spacer"></div>
+    </header>
+
+    <!-- Contêiner principal: barra lateral e painel de conteúdo -->
+    <div class="discord-app">
+        
+        <!-- Barra Lateral Esquerda (montada por ../js/sidebar.js; para mudar canais, edite js/sidebar.js) -->
+        <div class="sidebar-channels" data-projeto="otimizacao"></div>
+        <script src="../js/sidebar.js"></script>
+
+        <!-- Painel Central -->
+        <div class="main-chat">
+            <div class="chat-header">
+                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu">☰</button>
+                <span class="channel-symbol">#</span>
+                <span>msi utility</span>
+                <span class="channel-divider">|</span>
+                <span class="channel-topic">MSI Utility V3 para ativar o modo MSI nos principais dispositivos e reduzir o input lag.</span>
+            </div>
+
+            <div class="chat-content">
+                <h1 class="page-title">MSI UTILITY V3</h1>
+
+                <div class="setup-grid">
+                    <div class="setup-card">
+                        <div>
+                            <h3>🎮 1. Configurações da GPU (RTX 4070)</h3>
+                            <ul>
+                                <li><span>Caixa "msi"</span> <strong>Ativado</strong></li>
+                                <li><span>Coluna "Limit"</span> <strong>2</strong></li>
+                                <li><span>Coluna "Interrupt Priority"</span> <strong>High</strong></li>
+                            </ul>
+                            <h3 style="margin-top: 1.25rem;">🌐 2. Configurações de rede (Intel I225-V)</h3>
+                            <ul>
+                                <li><span>Caixa "msi"</span> <strong>Ativado</strong></li>
+                                <li><span>Coluna "Limit"</span> <strong>5</strong></li>
+                                <li><span>Coluna "Interrupt Priority"</span> <strong>Normal</strong></li>
+                            </ul>
+                            <h3 style="margin-top: 1.25rem;">💾 3. Configurações de armazenamento</h3>
+                            <ul>
+                                <li><span>Controlador Padrão NVM Express</span> <strong>Caixa "msi" Ativado (Prioridade: Undefined)</strong></li>
+                                <li><span>Controlador AHCI SATA Padrão</span> <strong>Caixa "msi" Desativado (Prioridade: Undefined)</strong></li>
+                            </ul>
+                            <h3 style="margin-top: 1.25rem;">✅ 4. Como salvar e aplicar</h3>
+                            <ul>
+                                <li><span>Botão Apply</span> <strong>Clicar no canto superior direito para salvar</strong></li>
+                                <li><span>Sistema</span> <strong>Reiniciar o computador para aplicar</strong></li>
+                            </ul>
+                        </div>
+                        <div class="card-description">
+                            <strong>O que faz:</strong> Altera a comunicação dos principais hardwares com o processador para o modo MSI (Message Signaled Interrupts), reorganizando a fila de tarefas do Windows para reduzir drasticamente o input lag do sistema e evitar microgaguejos de áudio ou vídeo.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nota / Explicação -->
+                <div class="alerts-container">
+                    <div class="alert-box warning">
+                        <div class="alert-icon">⚠️</div>
+                        <div class="alert-text">
+                            <p><strong>Nota importante:</strong><br>
+                            Atualizações de driver da NVIDIA resetam as chaves da GPU no Windows. Sempre reabra o programa após atualizar o driver de vídeo para refazer a configuração.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Camada escura exibida atrás do menu lateral aberto em telas pequenas -->
+    <div class="sidebar-overlay"></div>
+
+    <!-- Scripts compartilhados (menu em telas pequenas e navegação sem recarregar) -->
+    <script src="../js/main.js"></script>
+    <script src="../js/navegacao.js"></script>
+</body>
+</html>

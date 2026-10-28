@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VG248QG - NHOOF</title>
+    <!-- Ícone da aba do navegador (Favicon) -->
+    <link rel="icon" type="image/png" href="../imagens/logo.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsivo.css">
+</head>
+<body>
+
+    <!-- Cabeçalho Global do Site -->
+    <header class="global-header">
+        <div class="logo-container">
+            <a href="../index.html">
+                <img src="../imagens/logo.png" alt="Logo">
+            </a>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Otimização</a></li>
+                <li><a href="#">Projeto 2</a></li>
+                <li><a href="#">Projeto 3</a></li>
+                <li><a href="#">Projeto 4</a></li>
+                <li><a href="#">Projeto 5</a></li>
+                <li><a href="#">Projeto 6</a></li>
+                <li><a href="#">Projeto 7</a></li>
+                <li><a href="#">Projeto 8</a></li>
+                <li><a href="#">Projeto 9</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-spacer"></div>
+    </header>
+
+    <!-- Contêiner principal: barra lateral e painel de conteúdo -->
+    <div class="discord-app">
+        
+        <!-- Barra Lateral Esquerda (montada por ../js/sidebar.js; para mudar canais, edite js/sidebar.js) -->
+        <div class="sidebar-channels" data-projeto="otimizacao"></div>
+        <script src="../js/sidebar.js"></script>
+
+        <!-- Painel Central -->
+        <div class="main-chat">
+            <div class="chat-header">
+                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu">☰</button>
+                <span class="channel-symbol">#</span>
+                <span>vg248qg</span>
+                <span class="channel-divider">|</span>
+                <span class="channel-topic">Ajustes do menu do monitor ASUS VG248QG 165Hz: cor, imagem, entrada e sistema.</span>
+            </div>
+
+            <div class="chat-content">
+                <h1 class="page-title">ASUS VG248QG 165 HZ</h1>
+
+                <div class="setup-grid">
+                    <div class="setup-card">
+                        <div>
+                            <h3>🎮 1. Menu - GameVisual</h3>
+                            <ul>
+                                <li><span>Modo</span> <strong>Modo do Utilizador</strong></li>
+                            </ul>
+                            <h3 style="margin-top: 1.25rem;">🔵 2. Menu - Filtro de Luz Azul</h3>
+                            <ul>
+                                <li><span>Nível</span> <strong>0</strong></li>
+                            </ul>
+                            <h3 style="margin-top: 1.25rem;">🎨 3. Menu - Cor</h3>
+                            <ul>
+                                <li><span>Brilho</span> <strong>90 (Brilho ideal para dar vivacidade ao YouTube e Netflix)</strong></li>
+                                <li><span>Contraste</span> <strong>75</strong></li>
+                                <li><span>Saturação</span> <strong>50 (Liberado ao ativar o User Mode)</strong></li>
+                                <li><span>Temp. de cor</span> <strong>Modo do Utilizador (R96, G94, B88)</strong></li>
+                                <li><span>Tom de pele</span> <strong>Natural</strong></li>
+                                <li><span>Smart View</span> <strong>Deslig.</strong></li>
+                            </ul>
+                            <h3 style="margin-top: 1.25rem;">🖼️ 4. Menu - Imagem</h3>
+                            <ul>
+                                <li><span>Nitidez</span> <strong>50</strong></li>
+                                <li><span>Trace Free</span> <strong>60</strong></li>
+                                <li><span>VividPixel</span> <strong>0</strong></li>
+                                <li><span>ASCR</span> <strong>Deslig.</strong></li>
+                                <li><span>Adaptive-Sync (DP)</span> <strong>Deslig.</strong></li>
+                            </ul>
+                            <h3 style="margin-top: 1.25rem;">🔊 5. Menu - Som</h3>
+                            <ul>
+                                <li><span>Volume</span> <strong>0</strong></li>
+                                <li><span>Sem som</span> <strong>Lig.</strong></li>
+                            </ul>
+                            <h3 style="margin-top: 1.25rem;">🔌 6. Menu - Selecionar Entrada</h3>
+                            <ul>
+                                <li><span>Entrada</span> <strong>DisplayPort</strong></li>
+                            </ul>
+                            <h3 style="margin-top: 1.25rem;">⚙️ 7. Menu - Config. Sistema</h3>
+                            <ul>
+                                <li><span>GameVisual Demo Mode</span> <strong>Deslig.</strong></li>
+                                <li><span>ECO Mode</span> <strong>Deslig.</strong></li>
+                                <li><span>Config OSD</span> <strong>20</strong></li>
+                                <li><span>Idioma</span> <strong>Português</strong></li>
+                                <li><span>Bloqueio de teclas</span> <strong>Deslig.</strong></li>
+                                <li><span>Indicador de energia</span> <strong>Deslig. (Desligar luz do botão)</strong></li>
+                                <li><span>Bloq. botão de energia</span> <strong>Deslig.</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Camada escura exibida atrás do menu lateral aberto em telas pequenas -->
+    <div class="sidebar-overlay"></div>
+
+    <!-- Scripts compartilhados (menu em telas pequenas e navegação sem recarregar) -->
+    <script src="../js/main.js"></script>
+    <script src="../js/navegacao.js"></script>
+</body>
+</html>

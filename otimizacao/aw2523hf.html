@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AW2523HF - NHOOF</title>
+    <!-- Ícone da aba do navegador (Favicon) -->
+    <link rel="icon" type="image/png" href="../imagens/logo.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsivo.css">
+</head>
+<body>
+
+    <!-- Cabeçalho Global do Site -->
+    <header class="global-header">
+        <div class="logo-container">
+            <a href="../index.html">
+                <img src="../imagens/logo.png" alt="Logo">
+            </a>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Otimização</a></li>
+                <li><a href="#">Projeto 2</a></li>
+                <li><a href="#">Projeto 3</a></li>
+                <li><a href="#">Projeto 4</a></li>
+                <li><a href="#">Projeto 5</a></li>
+                <li><a href="#">Projeto 6</a></li>
+                <li><a href="#">Projeto 7</a></li>
+                <li><a href="#">Projeto 8</a></li>
+                <li><a href="#">Projeto 9</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-spacer"></div>
+    </header>
+
+    <!-- Contêiner principal: barra lateral e painel de conteúdo -->
+    <div class="discord-app">
+        
+        <!-- Barra Lateral Esquerda (montada por ../js/sidebar.js; para mudar canais, edite js/sidebar.js) -->
+        <div class="sidebar-channels" data-projeto="otimizacao"></div>
+        <script src="../js/sidebar.js"></script>
+
+        <!-- Painel Central -->
+        <div class="main-chat">
+            <div class="chat-header">
+                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu">☰</button>
+                <span class="channel-symbol">#</span>
+                <span>aw2523hf</span>
+                <span class="channel-divider">|</span>
+                <span class="channel-topic">Ajustes do menu do monitor Alienware AW2523HF 360Hz para o cenário competitivo.</span>
+            </div>
+
+            <div class="chat-content">
+                <h1 class="page-title">ALIENWARE AW2523HF 360HZ</h1>
+
+                <div class="setup-grid">
+                    <div class="setup-card">
+                        <div>
+                            <h3>🎮 1. Menu - Jogo</h3>
+                            <ul>
+                                <li><span>Modos predefinidos</span> <strong>Padrão</strong></li>
+                                <li><span>Modo aprim jogo</span> <strong>Des.</strong></li>
+                                <li><span>Tempo de Resposta</span> <strong>Super Rápido</strong></li>
+                                <li><span>Estab escuro</span> <strong>1</strong></li>
+                                <li><span>Modo Console</span> <strong>Des.</strong></li>
+                                <li><span>AlienVision</span> <strong>Des.</strong></li>
+                            </ul>
+                            <h3 style="margin-top: 1.25rem;">☀️ 2. Menu - Brilho / Contraste</h3>
+                            <ul>
+                                <li><span>Brilho</span> <strong>100%</strong></li>
+                                <li><span>Contraste</span> <strong>80%</strong></li>
+                            </ul>
+                            <h3 style="margin-top: 1.25rem;">🖥️ 3. Menu - Tela</h3>
+                            <ul>
+                                <li><span>Formato de Imagem</span> <strong>16:9</strong></li>
+                                <li><span>Formato de cor de entrada</span> <strong>RGB</strong></li>
+                                <li><span>Nitidez</span> <strong>70</strong></li>
+                                <li><span>Smart HDR</span> <strong>Des.</strong></li>
+                            </ul>
+                            <h3 style="margin-top: 1.25rem;">🔌 4. Menu - Personalizar</h3>
+                            <ul>
+                                <li><span>USB</span> <strong>Lig. no modo de espera</strong></li>
+                            </ul>
+                        </div>
+                        <div class="card-description">
+                            <strong>O que faz:</strong> Ajusta os parâmetros físicos do monitor para o cenário competitivo, ativando o tempo de resposta ideal para eliminar rastros de imagem (ghosting) sem gerar distorções (overshoot), calibra a nitidez para facilitar a identificação de alvos e mantém as portas USB do monitor energizadas mesmo em modo de repouso.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Camada escura exibida atrás do menu lateral aberto em telas pequenas -->
+    <div class="sidebar-overlay"></div>
+
+    <!-- Scripts compartilhados (menu em telas pequenas e navegação sem recarregar) -->
+    <script src="../js/main.js"></script>
+    <script src="../js/navegacao.js"></script>
+</body>
+</html>

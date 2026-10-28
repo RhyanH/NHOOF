@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unigine Superposition - NHOOF</title>
+    <!-- Ícone da aba do navegador (Favicon) -->
+    <link rel="icon" type="image/png" href="../imagens/logo.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsivo.css">
+</head>
+<body>
+
+    <!-- Cabeçalho Global do Site -->
+    <header class="global-header">
+        <div class="logo-container">
+            <a href="../index.html">
+                <img src="../imagens/logo.png" alt="Logo">
+            </a>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Otimização</a></li>
+                <li><a href="#">Projeto 2</a></li>
+                <li><a href="#">Projeto 3</a></li>
+                <li><a href="#">Projeto 4</a></li>
+                <li><a href="#">Projeto 5</a></li>
+                <li><a href="#">Projeto 6</a></li>
+                <li><a href="#">Projeto 7</a></li>
+                <li><a href="#">Projeto 8</a></li>
+                <li><a href="#">Projeto 9</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-spacer"></div>
+    </header>
+
+    <!-- Contêiner principal: barra lateral e painel de conteúdo -->
+    <div class="discord-app">
+        
+        <!-- Barra Lateral Esquerda (montada por ../js/sidebar.js; para mudar canais, edite js/sidebar.js) -->
+        <div class="sidebar-channels" data-projeto="otimizacao"></div>
+        <script src="../js/sidebar.js"></script>
+
+        <!-- Painel Central -->
+        <div class="main-chat">
+            <div class="chat-header">
+                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu">☰</button>
+                <span class="channel-symbol">#</span>
+                <span>unigine superposition</span>
+                <span class="channel-divider">|</span>
+                <span class="channel-topic">Benchmark gráfico para testar a estabilidade da placa de vídeo e da memória VRAM.</span>
+            </div>
+
+            <div class="chat-content">
+                <h1 class="page-title">UNIGINE SUPERPOSITION</h1>
+
+                <div class="setup-grid">
+                    <div class="setup-card">
+                        <div>
+                            <h3>📌 1. Instruções</h3>
+                            <ul>
+                                <li><span>Aplicativo</span> <strong>Executar como Administrador</strong></li>
+                            </ul>
+                            <h3 style="margin-top: 1.25rem;">⚙️ 2. Configuração</h3>
+                            <ul>
+                                <li><span>Modo Principal</span> <strong>BENCHMARK (Papel Laranja) → PERFORMANCE</strong></li>
+                                <li><span>Preset</span> <strong>1080p Extreme ou 4K Optimized</strong></li>
+                                <li><span>Graphics API</span> <strong>DirectX</strong></li>
+                            </ul>
+                        </div>
+                        <div class="card-description">
+                            <strong>O que faz:</strong> Renderiza cenas tridimensionais extremamente pesadas mantendo a placa de vídeo cravada em 100% de uso contínuo. Sob essa forte pressão térmica e elétrica, funciona como a ferramenta ideal para testar a estabilidade do chip gráfico e da memória VRAM, expondo instabilidades, artefatos visuais, fechamentos abruptos ou congelamentos no sistema.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Camada escura exibida atrás do menu lateral aberto em telas pequenas -->
+    <div class="sidebar-overlay"></div>
+
+    <!-- Scripts compartilhados (menu em telas pequenas e navegação sem recarregar) -->
+    <script src="../js/main.js"></script>
+    <script src="../js/navegacao.js"></script>
+</body>
+</html>

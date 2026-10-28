@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinebench R23 - NHOOF</title>
+    <!-- Ícone da aba do navegador (Favicon) -->
+    <link rel="icon" type="image/png" href="../imagens/logo.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsivo.css">
+</head>
+<body>
+
+    <!-- Cabeçalho Global do Site -->
+    <header class="global-header">
+        <div class="logo-container">
+            <a href="../index.html">
+                <img src="../imagens/logo.png" alt="Logo">
+            </a>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Otimização</a></li>
+                <li><a href="#">Projeto 2</a></li>
+                <li><a href="#">Projeto 3</a></li>
+                <li><a href="#">Projeto 4</a></li>
+                <li><a href="#">Projeto 5</a></li>
+                <li><a href="#">Projeto 6</a></li>
+                <li><a href="#">Projeto 7</a></li>
+                <li><a href="#">Projeto 8</a></li>
+                <li><a href="#">Projeto 9</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-spacer"></div>
+    </header>
+
+    <!-- Contêiner principal: barra lateral e painel de conteúdo -->
+    <div class="discord-app">
+        
+        <!-- Barra Lateral Esquerda (montada por ../js/sidebar.js; para mudar canais, edite js/sidebar.js) -->
+        <div class="sidebar-channels" data-projeto="otimizacao"></div>
+        <script src="../js/sidebar.js"></script>
+
+        <!-- Painel Central -->
+        <div class="main-chat">
+            <div class="chat-header">
+                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu">☰</button>
+                <span class="channel-symbol">#</span>
+                <span>cinebench r23</span>
+                <span class="channel-divider">|</span>
+                <span class="channel-topic">Teste de renderização de 10 minutos para validar a estabilidade e a temperatura do processador.</span>
+            </div>
+
+            <div class="chat-content">
+                <h1 class="page-title">CINEBENCH R23</h1>
+
+                <div class="setup-grid">
+                    <div class="setup-card">
+                        <div>
+                            <h3>📌 1. Instruções</h3>
+                            <ul>
+                                <li><span>Aplicativo (Cinebench)</span> <strong>Extrair o arquivo e abrir o executável</strong></li>
+                            </ul>
+                            <h3 style="margin-top: 1.25rem;">⚙️ 2. Configuração</h3>
+                            <ul>
+                                <li><span>Menu</span> <strong>Vá em File → Advanced Benchmark (Ativar esta opção)</strong></li>
+                                <li><span>CPU (Multi Core)</span> <strong>Mudar o tempo de Minimum Test Duration para 10 minutes</strong></li>
+                                <li><span>Iniciar</span> <strong>Clique em Start ao lado de CPU (Multi Core)</strong></li>
+                            </ul>
+                            <h3 style="margin-top: 1.25rem;">🌡️ 3. Monitoramento de fundo</h3>
+                            <ul>
+                                <li><span>HWiNFO64</span> <strong>Acompanhar se o processador vai cravar no limite térmico estipulado na BIOS (85°C) e se as frequências vão se manter altas</strong></li>
+                            </ul>
+                            <h3 style="margin-top: 1.25rem;">✅ 4. Resultado esperado</h3>
+                            <ul>
+                                <li><span>Estabilidade</span> <strong>O teste deve rodar por 10 minutos sem congelar o computador e gerar uma pontuação final estável</strong></li>
+                                <li><span>Comparação</span> <strong>Validar o score obtido online com outros Ryzen 7 9800X3D para garantir que o Curve Optimizer trouxe ganho real de desempenho</strong></li>
+                            </ul>
+                        </div>
+                        <div class="card-description">
+                            <strong>O que faz:</strong> Executa um teste de renderização intensivo e contínuo em todos os núcleos do processador para estressar o silício ao máximo, servindo como a ferramenta padrão ouro para certificar a estabilidade de tensões e sub-tensões (Curve Optimizer) e aferir o limite térmico do cooler.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Camada escura exibida atrás do menu lateral aberto em telas pequenas -->
+    <div class="sidebar-overlay"></div>
+
+    <!-- Scripts compartilhados (menu em telas pequenas e navegação sem recarregar) -->
+    <script src="../js/main.js"></script>
+    <script src="../js/navegacao.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TestMem5 - NHOOF</title>
+    <!-- Ícone da aba do navegador (Favicon) -->
+    <link rel="icon" type="image/png" href="../imagens/logo.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsivo.css">
+</head>
+<body>
+
+    <!-- Cabeçalho Global do Site -->
+    <header class="global-header">
+        <div class="logo-container">
+            <a href="../index.html">
+                <img src="../imagens/logo.png" alt="Logo">
+            </a>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Otimização</a></li>
+                <li><a href="#">Projeto 2</a></li>
+                <li><a href="#">Projeto 3</a></li>
+                <li><a href="#">Projeto 4</a></li>
+                <li><a href="#">Projeto 5</a></li>
+                <li><a href="#">Projeto 6</a></li>
+                <li><a href="#">Projeto 7</a></li>
+                <li><a href="#">Projeto 8</a></li>
+                <li><a href="#">Projeto 9</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-spacer"></div>
+    </header>
+
+    <!-- Contêiner principal: barra lateral e painel de conteúdo -->
+    <div class="discord-app">
+        
+        <!-- Barra Lateral Esquerda (montada por ../js/sidebar.js; para mudar canais, edite js/sidebar.js) -->
+        <div class="sidebar-channels" data-projeto="otimizacao"></div>
+        <script src="../js/sidebar.js"></script>
+
+        <!-- Painel Central -->
+        <div class="main-chat">
+            <div class="chat-header">
+                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu">☰</button>
+                <span class="channel-symbol">#</span>
+                <span>testmem5</span>
+                <span class="channel-divider">|</span>
+                <span class="channel-topic">Teste de estresse da memória RAM com perfil para Ryzen no TestMem5.</span>
+            </div>
+
+            <div class="chat-content">
+                <h1 class="page-title">TESTMEM5</h1>
+
+                <div class="setup-grid">
+                    <div class="setup-card">
+                        <div>
+                            <h3>📌 1. Instruções</h3>
+                            <ul>
+                                <li><span>Aplicativo (TM5)</span> <strong>Executar como Administrador</strong></li>
+                            </ul>
+                            <h3 style="margin-top: 1.25rem;">⚙️ 2. Configuração</h3>
+                            <ul>
+                                <li><span>Settings → Testing → Configuration</span> <strong>Selecionar o perfil DDR 5 Ryzen3D @ anta777 → OK</strong></li>
+                            </ul>
+                            <h3 style="margin-top: 1.25rem;">✅ 3. Resultado esperado</h3>
+                            <ul>
+                                <li><span>Teste de 1 hora</span> <strong>0 erros</strong></li>
+                            </ul>
+                        </div>
+                        <div class="card-description">
+                            <strong>O que faz:</strong> Executa um teste de estresse isolado e intensivo nos pentes de memória RAM utilizando um perfil especializado para plataformas Ryzen, identificando instabilidades ocultas de frequências ou sub-timings para garantir estabilidade absoluta contra telas azuis (BSOD) e corrupção de arquivos.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Camada escura exibida atrás do menu lateral aberto em telas pequenas -->
+    <div class="sidebar-overlay"></div>
+
+    <!-- Scripts compartilhados (menu em telas pequenas e navegação sem recarregar) -->
+    <script src="../js/main.js"></script>
+    <script src="../js/navegacao.js"></script>
+</body>
+</html>

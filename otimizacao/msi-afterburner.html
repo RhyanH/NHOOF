@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSI Afterburner - NHOOF</title>
+    <!-- Ícone da aba do navegador (Favicon) -->
+    <link rel="icon" type="image/png" href="../imagens/logo.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsivo.css">
+</head>
+<body>
+
+    <!-- Cabeçalho Global do Site -->
+    <header class="global-header">
+        <div class="logo-container">
+            <a href="../index.html">
+                <img src="../imagens/logo.png" alt="Logo">
+            </a>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Otimização</a></li>
+                <li><a href="#">Projeto 2</a></li>
+                <li><a href="#">Projeto 3</a></li>
+                <li><a href="#">Projeto 4</a></li>
+                <li><a href="#">Projeto 5</a></li>
+                <li><a href="#">Projeto 6</a></li>
+                <li><a href="#">Projeto 7</a></li>
+                <li><a href="#">Projeto 8</a></li>
+                <li><a href="#">Projeto 9</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-spacer"></div>
+    </header>
+
+    <!-- Contêiner principal: barra lateral e painel de conteúdo -->
+    <div class="discord-app">
+        
+        <!-- Barra Lateral Esquerda (montada por ../js/sidebar.js; para mudar canais, edite js/sidebar.js) -->
+        <div class="sidebar-channels" data-projeto="otimizacao"></div>
+        <script src="../js/sidebar.js"></script>
+
+        <!-- Painel Central -->
+        <div class="main-chat">
+            <div class="chat-header">
+                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu">☰</button>
+                <span class="channel-symbol">#</span>
+                <span>msi afterburner</span>
+                <span class="channel-divider">|</span>
+                <span class="channel-topic">Undervolt da GPU, curva automática das ventoinhas e perfil salvo no MSI Afterburner.</span>
+            </div>
+
+            <div class="chat-content">
+                <h1 class="page-title">MSI AFTERBURNER</h1>
+
+                <div class="setup-grid">
+                    <div class="setup-card">
+                        <div>
+                            <h3>⚡ 1. Curva de Undervolt (RTX 4070)</h3>
+                            <ul>
+                                <li><span>Redefinir padrões</span> <strong>Clicar no botão Reset (Seta circular na tela principal)</strong></li>
+                                <li><span>Core Clock (MHz)</span> <strong>-200</strong></li>
+                                <li><span>Editor de Curva</span> <strong>Pressionar Ctrl + F</strong></li>
+                                <li><span>Ponto de Tensão (Eixo Horizontal)</span> <strong>950mV</strong></li>
+                                <li><span>Frequência do Ponto (Eixo Vertical)</span> <strong>Subir até 2600 MHz</strong></li>
+                                <li><span>Aplicar alterações</span> <strong>Fechar a janela da curva e clicar no botão Apply (✓)</strong></li>
+                            </ul>
+                            <h3 style="margin-top: 1.25rem;">🌀 2. Configuração Automática da Ventoinha (Fan Curve)</h3>
+                            <ul>
+                                <li><span>Configurações (Engrenagem) → Aba Ventoinha</span> <strong>Ativar</strong></li>
+                                <li><span>Habilitar perfil para controle automático da ventoinha</span> <strong>Marcar (Deixar o check ativo)</strong></li>
+                                <li><span>Usar modo de controle por firmware</span> <strong>Desmarcar</strong></li>
+                                <li><span>Ponto 1</span> <strong>Até 40°C em 30% de velocidade</strong></li>
+                                <li><span>Ponto 2</span> <strong>Em 55°C em 45% de velocidade</strong></li>
+                                <li><span>Ponto 3</span> <strong>Em 65°C em 60% de velocidade</strong></li>
+                                <li><span>Ponto 4</span> <strong>Em 75°C em 80% de velocidade</strong></li>
+                                <li><span>Ponto 5</span> <strong>Em 85°C em 100% de velocidade</strong></li>
+                                <li><span>Atualização da velocidade da ventoinha (ms)</span> <strong>5000</strong></li>
+                                <li><span>Substituir velocidade zero da ventoinha por curva do hardware</span> <strong>Desmarcar</strong></li>
+                            </ul>
+                            <h3 style="margin-top: 1.25rem;">💾 3. Salvamento e Inicialização Automática</h3>
+                            <ul>
+                                <li><span>Salvar Perfil</span> <strong>Clicar no botão de Disquete e selecionar o Slot 1</strong></li>
+                                <li><span>Botão Startup (Logotipo do Windows)</span> <strong>Ativado (Iluminado)</strong></li>
+                                <li><span>Configurações → Aba Geral → Iniciar com o Windows</span> <strong>Marcar</strong></li>
+                                <li><span>Configurações → Aba Geral → Iniciar minimizado</span> <strong>Marcar</strong></li>
+                            </ul>
+                            <h3 style="margin-top: 1.25rem;">📊 4. Dados Comparativos (Benchmark Superposition - Preset 4K Optimized)</h3>
+                            <ul>
+                                <li><span>Perfil Stock (Fábrica)</span> <strong>13802 pontos | 71.0°C | 103.2 FPS</strong></li>
+                                <li><span>Perfil Estável (950mV @ 2600MHz)</span> <strong>13260 pontos | 65.0°C | 99.1 FPS</strong></li>
+                                <li><span>Perfil Eficiência (925mV @ 2600MHz)</span> <strong>13168 pontos | 64.0°C | 98.4 FPS</strong></li>
+                                <li><span>Perfil Limite (900mV @ 2600MHz)</span> <strong>13033 pontos | 63.0°C | 97.4 FPS</strong></li>
+                            </ul>
+                        </div>
+                        <div class="card-description">
+                            <strong>Notas importantes:</strong><br>• Travar a curva de frequência em 950mV @ 2600MHz elimina o excesso de tensão injetado automaticamente pelo GPU Boost de fábrica, reduzindo o estresse térmico em até 6°C com perda imperceptível de quadros.<br>• Manter a rotação mínima em 30% constantes até os 40°C assegura um fluxo de ar permanente no ambiente de desktop, mantendo a GPU fria em repouso (32°C~35°C) e eliminando o desgaste mecânico no motor pelo ciclo de liga-desliga.<br>• O tempo de atualização das ventoinhas fixado em 5000ms suaviza a transição de rotação das ventoinhas, impedindo picos abruptos de ruído acústico durante oscilações rápidas de carga do sistema.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Camada escura exibida atrás do menu lateral aberto em telas pequenas -->
+    <div class="sidebar-overlay"></div>
+
+    <!-- Scripts compartilhados (menu em telas pequenas e navegação sem recarregar) -->
+    <script src="../js/main.js"></script>
+    <script src="../js/navegacao.js"></script>
+</body>
+</html>

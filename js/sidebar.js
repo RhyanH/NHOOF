@@ -97,6 +97,14 @@
                 ['vg248qg.html', 'vg248qg'],
             ] },
 
+            { titulo: '[MONITORAMENTO]', canais: [
+                ['testmem5.html', 'testmem5'],
+                ['cinebench-r23.html', 'cinebench r23'],
+                ['occt.html', 'occt'],
+                ['unigine-superposition.html', 'unigine superposition'],
+                ['crystaldiskmark.html', 'crystaldiskmark'],
+            ] },
+
             { titulo: '[OTIMIZAÇÃO]', canais: [
                 ['ponto-de-restauracao.html', 'ponto de restauração'],
                 ['politicas-de-grupo.html', 'politicas de grupo'],

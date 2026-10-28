@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Otimização do Adaptador - NHOOF</title>
+    <!-- Ícone da aba do navegador (Favicon) -->
+    <link rel="icon" type="image/png" href="../imagens/logo.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsivo.css">
+</head>
+<body>
+
+    <!-- Cabeçalho Global do Site -->
+    <header class="global-header">
+        <div class="logo-container">
+            <a href="../index.html">
+                <img src="../imagens/logo.png" alt="Logo">
+            </a>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Otimização</a></li>
+                <li><a href="#">Projeto 2</a></li>
+                <li><a href="#">Projeto 3</a></li>
+                <li><a href="#">Projeto 4</a></li>
+                <li><a href="#">Projeto 5</a></li>
+                <li><a href="#">Projeto 6</a></li>
+                <li><a href="#">Projeto 7</a></li>
+                <li><a href="#">Projeto 8</a></li>
+                <li><a href="#">Projeto 9</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-spacer"></div>
+    </header>
+
+    <!-- Contêiner principal: barra lateral e painel de conteúdo -->
+    <div class="discord-app">
+        
+        <!-- Barra Lateral Esquerda (montada por ../js/sidebar.js; para mudar canais, edite js/sidebar.js) -->
+        <div class="sidebar-channels" data-projeto="otimizacao"></div>
+        <script src="../js/sidebar.js"></script>
+
+        <!-- Painel Central -->
+        <div class="main-chat">
+            <div class="chat-header">
+                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu">☰</button>
+                <span class="channel-symbol">#</span>
+                <span>otimização do adaptador</span>
+                <span class="channel-divider">|</span>
+                <span class="channel-topic">Moderação de interrupções e economia de energia desativadas no adaptador de rede do cabo.</span>
+            </div>
+
+            <div class="chat-content">
+                <h1 class="page-title">OTIMIZAÇÃO DO ADAPTADOR (CABO DE REDE)</h1>
+
+                <div class="setup-grid">
+                    <div class="setup-card">
+                        <div>
+                            <h3>⚙️ 1. Configuração</h3>
+                            <ul>
+                                <li><span>Win + R</span> <strong class="code-line">ncpa.cpl</strong></li>
+                                <li><span>Intel(R) Ethernet Controller I225-V</span> <strong>Propriedades</strong></li>
+                                <li><span>Configurar</span> <strong>Avançado</strong></li>
+                            </ul>
+                            <h3 style="margin-top: 1.25rem;">🛠️ 2. Aba Avançado</h3>
+                            <ul>
+                                <li><span>Moderação de interrupções</span> <strong>Desativado</strong></li>
+                            </ul>
+                            <h3 style="margin-top: 1.25rem;">🔋 3. Aba Gerenciamento de Energia</h3>
+                            <ul>
+                                <li><span>Desmarque</span> <strong>O computador pode desligar o dispositivo para economizar energia</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Camada escura exibida atrás do menu lateral aberto em telas pequenas -->
+    <div class="sidebar-overlay"></div>
+
+    <!-- Scripts compartilhados (menu em telas pequenas e navegação sem recarregar) -->
+    <script src="../js/main.js"></script>
+    <script src="../js/navegacao.js"></script>
+</body>
+</html>
