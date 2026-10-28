@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. Injetar o CSS Responsivo e o comportamento do Chat Ativo em Categorias Ocultas
+    // Injeta o CSS responsivo e o estilo da categoria recolhida com canal ativo
     const style = document.createElement('style');
     style.innerHTML = `
         .mobile-menu-btn {
@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
             justify-content: center;
         }
         
-        /* Overlay escuro quando o menu lateral abre no telemóvel */
+        /* Camada escura sobre o conteúdo quando o menu lateral está aberto no celular */
         .sidebar-overlay {
             display: none;
             position: fixed;
@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
             z-index: 99;
         }
 
-        /* Comportamento Discord: Categoria colapsada mas com chat ativo visível */
+        /* Categoria recolhida com o canal ativo visível */
         .category-content.collapsed.has-active {
             max-height: 50px !important;
         }
@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
             display: flex !important;
         }
 
-        /* Adaptações para ecrãs de telemóvel (<= 900px) */
+        /* Ajustes para telas pequenas (<= 900px) */
         @media (max-width: 900px) {
             body, html {
                 overflow-x: hidden !important;
@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
     document.head.appendChild(style);
 
-    // 2. Criar o Botão Hamburger e o Overlay no HTML automaticamente (se houver chat-header)
+    // Cria o botão do menu e a camada escura (se houver .chat-header)
     const chatHeader = document.querySelector('.chat-header');
     if (chatHeader) {
         const menuBtn = document.createElement('button');
@@ -183,7 +183,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 3. Sistema de Memória das Categorias com o comportamento do chat ativo visível
+    // Controla a expansão das categorias e guarda o estado no localStorage
     const categoryHeaders = document.querySelectorAll('.category-header');
     
     categoryHeaders.forEach((header) => {
@@ -217,11 +217,11 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        // Estado inicial
+        // Aplica o estado salvo da categoria
         let initialCollapsed = savedState === 'true';
         setCategoryState(initialCollapsed);
 
-        // Evento de clique na categoria
+        // Alterna a categoria ao clicar no cabeçalho
         header.addEventListener('click', () => {
             if (!content) return;
             const isCurrentlyCollapsed = content.classList.contains('collapsed');
@@ -232,13 +232,13 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // 4. Salvar e restaurar a posição do scroll da barra lateral (Blindado contra resets de página)
+    // Salva e restaura a posição de rolagem da barra lateral
     const channelsList = document.querySelector('.channels-list');
     
     if (channelsList) {
         const savedScroll = localStorage.getItem('sidebarScrollTop');
         if (savedScroll !== null) {
-            // Aplica o scroll repetidas vezes nos primeiros instantes para vencer o foco automático do navegador
+            // Reaplica a rolagem várias vezes no início para sobrepor o ajuste automático de foco do navegador
             let attempts = 0;
             const restoreScroll = setInterval(() => {
                 channelsList.scrollTop = savedScroll;

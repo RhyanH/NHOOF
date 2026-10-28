@@ -5,7 +5,7 @@
    espaço reservado:   <div class="sidebar-channels" data-projeto="otimizacao"></div>
    seguido de <script src="../js/sidebar.js"></script>, e este arquivo desenha o menu.
 
-   COMO MEXER (pelo site do GitHub, no lápis de editar este arquivo):
+   COMO MEXER (editando este arquivo):
      - Adicionar um canal: copie uma linha  ['arquivo.html', 'nome no menu'],
        cole na categoria desejada e troque os dois textos.
      - Renomear um canal: troque só o segundo texto da linha.
