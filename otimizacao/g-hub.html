@@ -26,6 +26,7 @@
             white-space: nowrap;
         }
     </style>
+    <link rel="stylesheet" href="../css/responsivo.css">
 </head>
 <body>
 
@@ -65,6 +66,7 @@
         <!-- Painel Central -->
         <div class="main-chat">
             <div class="chat-header">
+                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu">☰</button>
                 <span class="channel-symbol">#</span>
                 <span>g-hub</span>
                 <span class="channel-divider">|</span>
@@ -132,7 +134,11 @@
 
     </div>
 
-    <!-- Script Centralizado do Site (Responsivo + Memória de Categorias) -->
+    <!-- Camada escura exibida atrás do menu lateral aberto em telas pequenas -->
+    <div class="sidebar-overlay"></div>
+
+    <!-- Scripts compartilhados (menu em telas pequenas e navegação sem recarregar) -->
     <script src="../js/main.js"></script>
+    <script src="../js/navegacao.js"></script>
 </body>
 </html>

@@ -14,7 +14,9 @@
      - Cuidado: mantenha as aspas simples ' ', as vírgulas e os colchetes.
 
    A página que está aberta é marcada sozinha (pelo nome do arquivo na barra de
-   endereço). O abrir/fechar das categorias continua em js/main.js.
+   endereço). Este arquivo também cuida de abrir/fechar as categorias e de
+   lembrar a posição de rolagem do menu, ambos aplicados antes da primeira
+   exibição da página, para o menu não mudar de posição ao carregar.
 
    NOVO PROJETO (2 a 9): crie outro bloco ao lado de "otimizacao" (por exemplo
    projeto2: [ ... ]) e use data-projeto="projeto2" no espaço reservado das
@@ -140,11 +142,32 @@
     var atual = location.pathname.split('/').pop() || 'index.html';
     if (atual.indexOf('.') === -1) atual += '.html';
 
+    var PREFIXO = 'sidebar_cat_';
+    var CHAVE_ROLAGEM = 'sidebarScrollTop';
+
+    function ler(chave) {
+        try { return localStorage.getItem(chave); } catch (e) { return null; }
+    }
+    function gravar(chave, valor) {
+        try { localStorage.setItem(chave, valor); } catch (e) { /* armazenamento indisponível */ }
+    }
+
+    // identificador salvo de cada categoria (mesmo formato usado desde a primeira versão)
+    function idCategoria(titulo) {
+        return 'cat_' + ('▼ ' + titulo).trim().replace(/\s+/g, '_');
+    }
+
     var html = '<div class="channels-list">';
     menu.forEach(function (cat, i) {
-        html += '<div class="category-header"' + (i ? ' style="margin-top: 0.75rem;"' : '') +
-            '><span class="category-arrow">▼</span> ' + esc(cat.titulo) + '</div>';
-        html += '<div class="category-content">';
+        var id = idCategoria(cat.titulo);
+        var temAtivo = cat.canais.some(function (c) { return c[0] === atual; });
+        var recolhida = ler(PREFIXO + id) === 'true';
+        var classes = 'category-content' + (recolhida ? ' collapsed' + (temAtivo ? ' has-active' : '') : '');
+        html += '<div class="category-header" data-category="' + esc(id) + '"' +
+            (i ? ' style="margin-top: 0.75rem;"' : '') +
+            '><span class="category-arrow"' + (recolhida ? ' style="transform: rotate(-90deg);"' : '') +
+            '>▼</span> ' + esc(cat.titulo) + '</div>';
+        html += '<div class="' + classes + '">';
         cat.canais.forEach(function (c) {
             html += '<a href="' + esc(c[0]) + '" class="channel-item' + (c[0] === atual ? ' active' : '') +
                 '"><span>#</span> ' + esc(c[1]) + '</a>';
@@ -154,4 +177,59 @@
     html += '</div>';
 
     alvo.innerHTML = html;
+
+    var lista = alvo.querySelector('.channels-list');
+
+    // Restaura a rolagem salva já na montagem, antes da primeira exibição
+    var salva = parseInt(ler(CHAVE_ROLAGEM), 10);
+    if (lista && salva > 0) lista.scrollTop = salva;
+
+    // Guarda a rolagem a cada movimento (no máximo uma vez por quadro)
+    var agendado = false;
+    if (lista) {
+        lista.addEventListener('scroll', function () {
+            if (agendado) return;
+            agendado = true;
+            requestAnimationFrame(function () {
+                agendado = false;
+                gravar(CHAVE_ROLAGEM, Math.round(lista.scrollTop));
+            });
+        });
+    }
+
+    // Aplica o estado recolhido/aberto de uma categoria, mantendo visível o canal ativo
+    function definirEstado(cabecalho, recolhida) {
+        var conteudo = cabecalho.nextElementSibling;
+        var seta = cabecalho.querySelector('.category-arrow');
+        if (!conteudo) return;
+        var temAtivo = !!conteudo.querySelector('.channel-item.active');
+        conteudo.classList.toggle('collapsed', recolhida);
+        conteudo.classList.toggle('has-active', recolhida && temAtivo);
+        if (seta) seta.style.transform = recolhida ? 'rotate(-90deg)' : '';
+    }
+
+    // Abre/fecha a categoria ao clicar no cabeçalho
+    alvo.addEventListener('click', function (e) {
+        var cabecalho = e.target.closest ? e.target.closest('.category-header') : null;
+        if (!cabecalho || !alvo.contains(cabecalho)) return;
+        var conteudo = cabecalho.nextElementSibling;
+        if (!conteudo) return;
+        var recolher = !conteudo.classList.contains('collapsed');
+        definirEstado(cabecalho, recolher);
+        gravar(PREFIXO + cabecalho.getAttribute('data-category'), recolher);
+    });
+
+    // Usado por js/navegacao.js: marca o canal da página exibida e reaplica as categorias
+    window.nhoofMenu = {
+        marcarAtivo: function (arquivo) {
+            alvo.querySelectorAll('.channel-item').forEach(function (a) {
+                var nome = (a.getAttribute('href') || '');
+                a.classList.toggle('active', nome === arquivo);
+            });
+            alvo.querySelectorAll('.category-header').forEach(function (cab) {
+                var cont = cab.nextElementSibling;
+                if (cont) definirEstado(cab, cont.classList.contains('collapsed'));
+            });
+        }
+    };
 })();

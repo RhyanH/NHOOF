@@ -1,254 +1,30 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // Injeta o CSS responsivo e o estilo da categoria recolhida com canal ativo
-    const style = document.createElement('style');
-    style.innerHTML = `
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: #dbdee1;
-            font-size: 1.5rem;
-            cursor: pointer;
-            margin-right: 12px;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        /* Camada escura sobre o conteúdo quando o menu lateral está aberto no celular */
-        .sidebar-overlay {
-            display: none;
-            position: fixed;
-            top: 125px;
-            left: 0;
-            width: 100vw;
-            height: calc(100vh - 125px);
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 99;
-        }
+/* ============================================================================
+   Gaveta do menu lateral em telas pequenas.
 
-        /* Categoria recolhida com o canal ativo visível */
-        .category-content.collapsed.has-active {
-            max-height: 50px !important;
-        }
-        .category-content.collapsed.has-active .channel-item:not(.active) {
-            display: none !important;
-        }
-        .category-content.collapsed.has-active .channel-item.active {
-            display: flex !important;
-        }
+   O botão (.mobile-menu-btn) e a camada escura (.sidebar-overlay) já estão no
+   HTML de cada página; os estilos ficam em css/responsivo.css. Os cliques são
+   tratados no documento, então continuam valendo depois que a navegação sem
+   recarregar (js/navegacao.js) troca o cabeçalho da página.
+   ============================================================================ */
+(function () {
+    'use strict';
 
-        /* Ajustes para telas pequenas (<= 900px) */
-        @media (max-width: 900px) {
-            body, html {
-                overflow-x: hidden !important;
-                width: 100% !important;
-                max-width: 100% !important;
-            }
-            header, header.global-header {
-                height: auto !important;
-                flex-direction: column !important;
-                padding: 0.8rem 1rem !important;
-                gap: 0.5rem !important;
-                justify-content: center !important;
-                background: #000000 !important;
-                position: fixed !important;
-                top: 0 !important;
-                left: 0 !important;
-                width: 100% !important;
-                z-index: 101 !important;
-            }
-            .logo-container {
-                display: flex;
-                justify-content: center;
-                width: 100%;
-            }
-            header nav, header.global-header nav {
-                position: static !important;
-                transform: none !important;
-                width: 100% !important;
-                overflow-x: auto !important;
-                white-space: nowrap !important;
-                -webkit-overflow-scrolling: touch;
-                padding: 0.2rem 0;
-            }
-            header nav::-webkit-scrollbar, header.global-header nav::-webkit-scrollbar {
-                display: none;
-            }
-            header nav ul, header.global-header nav ul {
-                display: inline-flex !important;
-                gap: 1.5rem !important;
-                justify-content: flex-start;
-                padding: 0 0.5rem;
-            }
-            header .header-spacer, header.global-header .header-spacer {
-                display: none !important;
-            }
-
-            .discord-app {
-                margin-top: 125px !important;
-                height: calc(100vh - 125px) !important;
-                width: 100vw !important;
-                position: relative;
-                overflow-x: hidden !important;
-            }
-            .sidebar-channels {
-                position: fixed !important;
-                left: -280px;
-                top: 125px !important;
-                height: calc(100vh - 125px) !important;
-                z-index: 100;
-                transition: left 0.3s ease;
-                box-shadow: 5px 0 15px rgba(0,0,0,0.5);
-                background-color: #212128 !important;
-                width: 280px !important;
-            }
-            .sidebar-channels.mobile-open {
-                left: 0 !important;
-            }
-            .sidebar-overlay.active {
-                display: block;
-            }
-            
-            .main-chat {
-                width: 100% !important;
-                max-width: 100% !important;
-                flex: 1 !important;
-                overflow-x: hidden !important;
-            }
-            .chat-content {
-                padding: 1rem 0.8rem !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                box-sizing: border-box !important;
-                overflow-x: hidden !important;
-            }
-            .setup-grid {
-                display: flex !important;
-                flex-direction: column !important;
-                width: 100% !important;
-                max-width: 100% !important;
-                gap: 1rem !important;
-            }
-            .setup-card, .alert-box, .profile-box {
-                width: 100% !important;
-                max-width: 100% !important;
-                min-width: 0 !important;
-                box-sizing: border-box !important;
-                margin-left: 0 !important;
-                margin-right: 0 !important;
-            }
-            .setup-card ul li {
-                flex-direction: column !important;
-                align-items: flex-start !important;
-                gap: 4px !important;
-                width: 100% !important;
-            }
-            .setup-card ul li strong {
-                text-align: left !important;
-                word-break: break-word !important;
-                width: 100% !important;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: flex !important;
-            }
-        }
-    `;
-    document.head.appendChild(style);
-
-    // Cria o botão do menu e a camada escura (se houver .chat-header)
-    const chatHeader = document.querySelector('.chat-header');
-    if (chatHeader) {
-        const menuBtn = document.createElement('button');
-        menuBtn.className = 'mobile-menu-btn';
-        menuBtn.innerHTML = '☰';
-        chatHeader.insertBefore(menuBtn, chatHeader.firstChild);
-
-        const overlay = document.createElement('div');
-        overlay.className = 'sidebar-overlay';
-        document.body.appendChild(overlay);
-
-        const sidebar = document.querySelector('.sidebar-channels');
-
-        menuBtn.addEventListener('click', () => {
-            sidebar.classList.toggle('mobile-open');
-            overlay.classList.toggle('active');
-        });
-
-        overlay.addEventListener('click', () => {
-            sidebar.classList.remove('mobile-open');
-            overlay.classList.remove('active');
-        });
+    function alternarGaveta(abrir) {
+        var menu = document.querySelector('.sidebar-channels');
+        var camada = document.querySelector('.sidebar-overlay');
+        if (!menu) return;
+        var aberta = typeof abrir === 'boolean' ? abrir : !menu.classList.contains('mobile-open');
+        menu.classList.toggle('mobile-open', aberta);
+        if (camada) camada.classList.toggle('active', aberta);
     }
 
-    // Controla a expansão das categorias e guarda o estado no localStorage
-    const categoryHeaders = document.querySelectorAll('.category-header');
-    
-    categoryHeaders.forEach((header) => {
-        const catName = 'cat_' + header.textContent.trim().replace(/\s+/g, '_');
-        header.setAttribute('data-category', catName);
-
-        const content = header.nextElementSibling;
-        const arrow = header.querySelector('.category-arrow');
-        const savedState = localStorage.getItem('sidebar_cat_' + catName);
-        const hasActiveChild = content && content.querySelector('.channel-item.active');
-
-        function setCategoryState(isCollapsed) {
-            if (!content) return;
-            if (hasActiveChild) {
-                if (isCollapsed) {
-                    content.classList.add('collapsed', 'has-active');
-                    if (arrow) arrow.style.transform = 'rotate(-90deg)';
-                } else {
-                    content.classList.remove('collapsed', 'has-active');
-                    if (arrow) arrow.style.transform = 'rotate(0deg)';
-                }
-            } else {
-                content.classList.remove('has-active');
-                if (isCollapsed) {
-                    content.classList.add('collapsed');
-                    if (arrow) arrow.style.transform = 'rotate(-90deg)';
-                } else {
-                    content.classList.remove('collapsed');
-                    if (arrow) arrow.style.transform = 'rotate(0deg)';
-                }
-            }
+    document.addEventListener('click', function (e) {
+        var alvo = e.target && e.target.closest ? e.target : null;
+        if (!alvo) return;
+        if (alvo.closest('.mobile-menu-btn')) {
+            alternarGaveta();
+        } else if (alvo.closest('.sidebar-overlay')) {
+            alternarGaveta(false);
         }
-
-        // Aplica o estado salvo da categoria
-        let initialCollapsed = savedState === 'true';
-        setCategoryState(initialCollapsed);
-
-        // Alterna a categoria ao clicar no cabeçalho
-        header.addEventListener('click', () => {
-            if (!content) return;
-            const isCurrentlyCollapsed = content.classList.contains('collapsed');
-            const newState = !isCurrentlyCollapsed;
-            
-            setCategoryState(newState);
-            localStorage.setItem('sidebar_cat_' + catName, newState);
-        });
     });
-
-    // Salva e restaura a posição de rolagem da barra lateral
-    const channelsList = document.querySelector('.channels-list');
-    
-    if (channelsList) {
-        const savedScroll = localStorage.getItem('sidebarScrollTop');
-        if (savedScroll !== null) {
-            // Reaplica a rolagem várias vezes no início para sobrepor o ajuste automático de foco do navegador
-            let attempts = 0;
-            const restoreScroll = setInterval(() => {
-                channelsList.scrollTop = savedScroll;
-                attempts++;
-                if (attempts > 10) clearInterval(restoreScroll);
-            }, 20);
-        }
-
-        channelsList.addEventListener('scroll', () => {
-            localStorage.setItem('sidebarScrollTop', channelsList.scrollTop);
-        });
-    }
-});
+})();
