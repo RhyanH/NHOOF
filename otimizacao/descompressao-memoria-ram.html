@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Descompressão de Memória RAM - NHOOF</title>
+    <!-- Ícone da aba do navegador (Favicon) -->
+    <link rel="icon" type="image/png" href="../imagens/logo.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsivo.css">
+</head>
+<body>
+
+    <!-- Cabeçalho Global do Site -->
+    <header class="global-header">
+        <div class="logo-container">
+            <a href="../index.html">
+                <img src="../imagens/logo.png" alt="Logo">
+            </a>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Otimização</a></li>
+                <li><a href="#">Projeto 2</a></li>
+                <li><a href="#">Projeto 3</a></li>
+                <li><a href="#">Projeto 4</a></li>
+                <li><a href="#">Projeto 5</a></li>
+                <li><a href="#">Projeto 6</a></li>
+                <li><a href="#">Projeto 7</a></li>
+                <li><a href="#">Projeto 8</a></li>
+                <li><a href="#">Projeto 9</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-spacer"></div>
+    </header>
+
+    <!-- Contêiner principal: barra lateral e painel de conteúdo -->
+    <div class="discord-app">
+        
+        <!-- Barra Lateral Esquerda (montada por ../js/sidebar.js; para mudar canais, edite js/sidebar.js) -->
+        <div class="sidebar-channels" data-projeto="otimizacao"></div>
+        <script src="../js/sidebar.js"></script>
+
+        <!-- Painel Central -->
+        <div class="main-chat">
+            <div class="chat-header">
+                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu">☰</button>
+                <span class="channel-symbol">#</span>
+                <span>descompressão memória ram</span>
+                <span class="channel-divider">|</span>
+                <span class="channel-topic">Compressão de memória do Windows desativada para reduzir o uso da CPU e os microgaguejos.</span>
+            </div>
+
+            <div class="chat-content">
+                <h1 class="page-title">DESCOMPRESSÃO DE MEMÓRIA RAM</h1>
+
+                <div class="setup-grid">
+                    <div class="setup-card">
+                        <div>
+                            <h3>🔧 1. Como aplicar</h3>
+                            <ul>
+                                <li><span>Prompt</span> <strong>Abrir o PowerShell como Administrador</strong></li>
+                                <li><span>Comando</span> <strong>Copiar e colar o código abaixo</strong></li>
+                                <li><span>Código</span> <strong class="code-line">Disable-MMAgent -MemoryCompression</strong></li>
+                                <li><span>Execução</span> <strong>Pressione Enter</strong></li>
+                                <li><span>Sistema</span> <strong>Reinicie o computador após aplicar para ativar as alterações</strong></li>
+                            </ul>
+                        </div>
+                        <div class="card-description">
+                            <strong>O que isso faz:</strong><br>• Desativa o recurso nativo do Windows que compacta blocos de dados dentro da memória RAM para tentar economizar espaço físico (um recurso projetado originalmente para computadores antigos ou com pouca memória).<br>• Elimina o overhead (sobrecarga) de processamento da CPU que era desperdiçado compactando e descompactando dados em tempo real, o que reduz de forma drástica os picos latentes e os microgaguejos (stutterings) durante os jogos.<br>• Garante que o sistema e os jogos tenham acesso direto, bruto e sem atrasos digitais aos dados armazenados nos pentes de memória, otimizando a taxa de quadros e a estabilidade (altamente recomendado para setups modernos com 16GB, 32GB ou mais de RAM).
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Camada escura exibida atrás do menu lateral aberto em telas pequenas -->
+    <div class="sidebar-overlay"></div>
+
+    <!-- Scripts compartilhados (menu em telas pequenas e navegação sem recarregar) -->
+    <script src="../js/main.js"></script>
+    <script src="../js/navegacao.js"></script>
+</body>
+</html>

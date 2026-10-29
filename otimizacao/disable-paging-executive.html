@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disable Paging Executive - NHOOF</title>
+    <!-- Ícone da aba do navegador (Favicon) -->
+    <link rel="icon" type="image/png" href="../imagens/logo.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsivo.css">
+</head>
+<body>
+
+    <!-- Cabeçalho Global do Site -->
+    <header class="global-header">
+        <div class="logo-container">
+            <a href="../index.html">
+                <img src="../imagens/logo.png" alt="Logo">
+            </a>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Otimização</a></li>
+                <li><a href="#">Projeto 2</a></li>
+                <li><a href="#">Projeto 3</a></li>
+                <li><a href="#">Projeto 4</a></li>
+                <li><a href="#">Projeto 5</a></li>
+                <li><a href="#">Projeto 6</a></li>
+                <li><a href="#">Projeto 7</a></li>
+                <li><a href="#">Projeto 8</a></li>
+                <li><a href="#">Projeto 9</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-spacer"></div>
+    </header>
+
+    <!-- Contêiner principal: barra lateral e painel de conteúdo -->
+    <div class="discord-app">
+        
+        <!-- Barra Lateral Esquerda (montada por ../js/sidebar.js; para mudar canais, edite js/sidebar.js) -->
+        <div class="sidebar-channels" data-projeto="otimizacao"></div>
+        <script src="../js/sidebar.js"></script>
+
+        <!-- Painel Central -->
+        <div class="main-chat">
+            <div class="chat-header">
+                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu">☰</button>
+                <span class="channel-symbol">#</span>
+                <span>disable paging executive</span>
+                <span class="channel-divider">|</span>
+                <span class="channel-topic">Mantém o núcleo do sistema na memória RAM para respostas mais rápidas e menos microgaguejos.</span>
+            </div>
+
+            <div class="chat-content">
+                <h1 class="page-title">DESATIVAR PAGING EXECUTIVE</h1>
+
+                <div class="setup-grid">
+                    <div class="setup-card">
+                        <div>
+                            <h3>🔧 1. Como aplicar</h3>
+                            <ul>
+                                <li><span>Prompt</span> <strong>Abrir o PowerShell como Administrador</strong></li>
+                                <li><span>Comando</span> <strong>Copiar e colar o código abaixo</strong></li>
+                                <li><span>Código</span> <strong class="code-line">Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" -Name "DisablePagingExecutive" -Value 1</strong></li>
+                                <li><span>Execução</span> <strong>Pressione Enter</strong></li>
+                                <li><span>Sistema</span> <strong>Reinicie o computador após aplicar para ativar as alterações</strong></li>
+                            </ul>
+                        </div>
+                        <div class="card-description">
+                            <strong>O que isso faz:</strong><br>• Força o Windows a manter os drivers do sistema e o código executável do kernel (núcleo do sistema operacional) residentes diretamente na memória RAM física, impedindo que o sistema envie esses arquivos essenciais para o arquivo de paginação (pagefile.sys) no SSD ou HD quando estiverem ociosos.<br>• Elimina os atrasos de leitura e os chamados "page faults" (falhas de página), que ocorrem quando o Windows precisa resgatar uma rotina do sistema de volta do disco de armazenamento, resultando em respostas de sistema muito mais rápidas e sem gargalos de comunicação.<br>• Reduz de forma drástica os microgaguejos (stutterings) e oscilações de quadros durante a jogatina, garantindo que o sistema operacional responda com a velocidade de transferência bruta e imediata das memórias RAM (altamente recomendado para máquinas com 16GB ou mais de RAM).
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Camada escura exibida atrás do menu lateral aberto em telas pequenas -->
+    <div class="sidebar-overlay"></div>
+
+    <!-- Scripts compartilhados (menu em telas pequenas e navegação sem recarregar) -->
+    <script src="../js/main.js"></script>
+    <script src="../js/navegacao.js"></script>
+</body>
+</html>

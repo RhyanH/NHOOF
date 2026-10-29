@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tweaks de Sistema - NHOOF</title>
+    <!-- Ícone da aba do navegador (Favicon) -->
+    <link rel="icon" type="image/png" href="../imagens/logo.png">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsivo.css">
+</head>
+<body>
+
+    <!-- Cabeçalho Global do Site -->
+    <header class="global-header">
+        <div class="logo-container">
+            <a href="../index.html">
+                <img src="../imagens/logo.png" alt="Logo">
+            </a>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Otimização</a></li>
+                <li><a href="#">Projeto 2</a></li>
+                <li><a href="#">Projeto 3</a></li>
+                <li><a href="#">Projeto 4</a></li>
+                <li><a href="#">Projeto 5</a></li>
+                <li><a href="#">Projeto 6</a></li>
+                <li><a href="#">Projeto 7</a></li>
+                <li><a href="#">Projeto 8</a></li>
+                <li><a href="#">Projeto 9</a></li>
+                <li><a href="sobre.html">Sobre</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-spacer"></div>
+    </header>
+
+    <!-- Contêiner principal: barra lateral e painel de conteúdo -->
+    <div class="discord-app">
+        
+        <!-- Barra Lateral Esquerda (montada por ../js/sidebar.js; para mudar canais, edite js/sidebar.js) -->
+        <div class="sidebar-channels" data-projeto="otimizacao"></div>
+        <script src="../js/sidebar.js"></script>
+
+        <!-- Painel Central -->
+        <div class="main-chat">
+            <div class="chat-header">
+                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu">☰</button>
+                <span class="channel-symbol">#</span>
+                <span>tweaks de sistema</span>
+                <span class="channel-divider">|</span>
+                <span class="channel-topic">Comandos de terminal e ajustes de registro para reduzir latência de rede e dar prioridade ao jogo.</span>
+            </div>
+
+            <div class="chat-content">
+                <h1 class="page-title">OTIMIZAÇÕES AVANÇADAS DE REDE E SISTEMA</h1>
+
+                <div class="setup-grid">
+                    <div class="setup-card">
+                        <div>
+                            <h3>⌨️ 1. Passo 1: Comandos de terminal (PowerShell como Admin)</h3>
+                            <ul>
+                                <li><span>Armazenamento Reservado</span> <strong><span class="code-line">Set-WindowsReservedStorageState -State Disabled</span></strong></li>
+                                <li><span>Rastreamento de Uso de Dados (DusmSvc)</span> <strong><span class="code-line">sc.exe stop DusmSvc</span> → <span class="code-line">sc.exe config DusmSvc start= disabled</span></strong></li>
+                                <li><span>Assistente de Compatibilidade (PcaSvc)</span> <strong><span class="code-line">sc.exe stop PcaSvc</span> → <span class="code-line">sc.exe config PcaSvc start= disabled</span> <em>(Pular se joga FiveM)</em></strong></li>
+                                <li><span>Protocolo Teredo</span> <strong><span class="code-line">netsh interface teredo set state disabled</span> <em>(Pular se usa Party/Voice do Xbox App ou Game Pass)</em></strong></li>
+                                <li><span>Túneis IPv6 (ISATAP &amp; 6to4)</span> <strong><span class="code-line">netsh int isatap set state disabled</span> → <span class="code-line">netsh int ipv6 6to4 set state disabled</span></strong></li>
+                            </ul>
+                            <h3 style="margin-top: 1.25rem;">🧬 2. Passo 2: Ajustes no registro</h3>
+                            <ul>
+                                <li><span>Priorização de Threads da CPU (Win32PrioritySeparation)</span> <strong><span class="code-line">HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\PriorityControl</span></strong></li>
+                                <li><span>Alterar (DWORD 32 bits)</span> <strong><span class="code-line">Win32PrioritySeparation</span> = 26 <em>(Hexadecimal)</em> ou 38 <em>(Decimal)</em></strong></li>
+                                <li><span>Atraso de ACK &amp;amp; Algoritmo de Nagle (Rede sem Delay)</span> <strong><span class="code-line">HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\{ID-DA-SUA-PLACA-DE-REDE}</span></strong></li>
+                                <li><span>Criar/Alterar (DWORD 32 bits)</span> <strong><span class="code-line">TcpAckFrequency</span> = 1</strong></li>
+                                <li><span>Criar/Alterar (DWORD 32 bits)</span> <strong><span class="code-line">TCPNoDelay</span> = 1</strong></li>
+                                <li><span>Nota</span> <strong><em>Dentro da pasta Interfaces existem várias pastas com nome em código ({...}). Abra a que tiver o seu endereço de IP (campo IPAddress ou DhcpIPAddress) igual ao do seu computador: essa é a sua placa de rede ativa. O código é diferente em cada computador.</em></strong></li>
+                                <li><span>Otimização de Entrega (Windows Update em Segundo Plano)</span> <strong><span class="code-line">HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization</span></strong></li>
+                                <li><span>Criar/Alterar (DWORD 32 bits)</span> <strong><span class="code-line">DODownloadMode</span> = 0</strong></li>
+                            </ul>
+                        </div>
+                        <div class="card-description">
+                            <strong>O que essas alterações no registro fazem:</strong><br>• <strong>Priorização de Threads (Win32PrioritySeparation):</strong> Ajusta o agendador de tarefas do kernel do Windows para conceder fatias de tempo mais longas e prioridade máxima ao processo em primeiro plano.<br>• <strong>Atraso de ACK &amp; Algoritmo de Nagle (TcpAckFrequency &amp; TCPNoDelay):</strong> Desativa o enfileiramento e o agrupamento de pacotes TCP do Windows.<br>• <strong>Otimização de Entrega (DODownloadMode):</strong> Desativa o sistema de upload P2P do Windows Update.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Camada escura exibida atrás do menu lateral aberto em telas pequenas -->
+    <div class="sidebar-overlay"></div>
+
+    <!-- Scripts compartilhados (menu em telas pequenas e navegação sem recarregar) -->
+    <script src="../js/main.js"></script>
+    <script src="../js/navegacao.js"></script>
+</body>
+</html>
