@@ -105,7 +105,7 @@
         z-index: 100;
         transition: left 0.3s ease;
         box-shadow: 5px 0 15px rgba(0,0,0,0.5);
-        background-color: #212128 !important;
+        background-color: var(--lateral) !important;
         width: 280px !important;
     }
     .sidebar-channels.mobile-open {

@@ -8,11 +8,25 @@
     box-sizing: border-box;
 }
 
+/* Cores do tema (projeto Otimização). Para mudar o visual, altere só estes valores. */
+:root {
+    --fundo: #0d0d10;
+    --lateral: #111115;
+    --cartao: #15151a;
+    --borda: #23232b;
+    --borda-forte: #2d2d37;
+    --item-hover: #1a1a20;
+    --item-ativo: #22222b;
+    --fundo-inset: #08080a;
+    --rolagem: #3a3a46;
+    --rolagem-hover: #565664;
+}
+
 body, html {
     width: 100%;
     height: 100vh;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: #1a1a1f;
+    background-color: var(--fundo);
     color: #dbdee1;
     overflow: hidden;
 }
@@ -78,11 +92,12 @@ nav ul li a:hover, nav ul li a.active {
 }
 
 .sidebar-channels {
+    flex-shrink: 0;
     width: 260px;
-    background-color: #212128;
+    background-color: var(--lateral);
     display: flex;
     flex-direction: column;
-    border-right: 1px solid #2f2f38;
+    border-right: 1px solid var(--borda);
     height: 100%;
     padding-top: 0.5rem;
 }
@@ -93,14 +108,6 @@ nav ul li a:hover, nav ul li a.active {
     padding: 0.5rem;
 }
 
-.channels-list::-webkit-scrollbar {
-    width: 4px;
-}
-
-.channels-list::-webkit-scrollbar-thumb {
-    background-color: #353540;
-    border-radius: 2px;
-}
 
 .category-header {
     font-size: 0.75rem;
@@ -149,12 +156,12 @@ nav ul li a:hover, nav ul li a.active {
 }
 
 .channel-item:hover {
-    background-color: #2a2a33;
+    background-color: var(--item-hover);
     color: #ffffff;
 }
 
 .channel-item.active {
-    background-color: #32323d;
+    background-color: var(--item-ativo);
     color: #ffffff;
     font-weight: 500;
 }
@@ -167,7 +174,8 @@ nav ul li a:hover, nav ul li a.active {
 
 .main-chat {
     flex: 1;
-    background-color: #1a1a1f;
+    min-width: 0;
+    background-color: var(--fundo);
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -178,11 +186,11 @@ nav ul li a:hover, nav ul li a.active {
     padding: 0 1.5rem;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #2f2f38;
+    border-bottom: 1px solid var(--borda);
     font-weight: 600;
     color: #f2f3f5;
     gap: 10px;
-    background-color: #1a1a1f;
+    background-color: var(--fundo);
     font-size: 0.95rem;
 }
 
@@ -210,7 +218,10 @@ nav ul li a:hover, nav ul li a.active {
     flex: 1;
     padding: 2.5rem 3rem;
     overflow-y: auto;
-    max-width: 1400px;
+}
+
+.main-chat .chat-content > * {
+    max-width: 1304px;
 }
 
 .page-title {
@@ -228,8 +239,8 @@ nav ul li a:hover, nav ul li a.active {
 }
 
 .setup-card {
-    background-color: #222229;
-    border: 1px solid #2f2f38;
+    background-color: var(--cartao);
+    border: 1px solid var(--borda);
     border-radius: 6px;
     padding: 1.25rem 1.5rem;
     display: flex;
@@ -281,8 +292,8 @@ nav ul li a:hover, nav ul li a.active {
 }
 
 .curve-graph-container {
-    background-color: #121216;
-    border: 1px solid #2f2f38;
+    background-color: var(--fundo-inset);
+    border: 1px solid var(--borda);
     border-radius: 4px;
     padding: 12px;
     margin-bottom: 1rem;
@@ -301,16 +312,16 @@ nav ul li a:hover, nav ul li a.active {
 
 .code-line {
     font-family: Consolas, monospace;
-    background: #111115;
+    background: var(--fundo-inset);
     padding: 2px 6px;
     border-radius: 4px;
-    border: 1px solid #353540;
+    border: 1px solid var(--borda-forte);
     color: #00b0f4;
 }
 
 .profile-box {
-    background-color: #1a1a1f;
-    border: 1px solid #2f2f38;
+    background-color: var(--fundo);
+    border: 1px solid var(--borda);
     border-radius: 4px;
     padding: 1rem;
     margin-bottom: 1rem;
@@ -333,7 +344,7 @@ nav ul li a:hover, nav ul li a.active {
     font-size: 0.88rem;
     color: #949ba4;
     line-height: 1.5;
-    border-top: 1px solid #2f2f38;
+    border-top: 1px solid var(--borda);
     padding-top: 0.85rem;
     margin-top: 0.2rem;
 }
@@ -362,8 +373,8 @@ nav ul li a:hover, nav ul li a.active {
 }
 
 .alert-box {
-    background-color: #222229;
-    border: 1px solid #2f2f38;
+    background-color: var(--cartao);
+    border: 1px solid var(--borda);
     border-left: 4px solid #5865f2;
     border-radius: 6px;
     padding: 1.25rem 1.5rem;
@@ -397,4 +408,40 @@ nav ul li a:hover, nav ul li a.active {
 
 .alert-text p + p {
     margin-top: 0.5rem;
+}
+
+/* Barra de rolagem fina: aparece só enquanto o mouse está sobre a área rolável */
+.chat-content,
+.channels-list {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+
+.chat-content:hover,
+.channels-list:hover {
+    scrollbar-color: var(--rolagem) transparent;
+}
+
+/* Navegadores sem scrollbar-color: barra fina fixa */
+@supports not (scrollbar-color: auto) {
+    .chat-content::-webkit-scrollbar,
+    .channels-list::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .chat-content::-webkit-scrollbar-thumb,
+    .channels-list::-webkit-scrollbar-thumb {
+        background-color: var(--rolagem);
+        border-radius: 8px;
+    }
+}
+
+/* Imagem ilustrativa no topo de um cartão */
+.guia-imagem {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+    margin-bottom: 1.25rem;
 }
