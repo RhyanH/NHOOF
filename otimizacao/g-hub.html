@@ -7,25 +7,6 @@
     <!-- Ícone da aba do navegador (Favicon) -->
     <link rel="icon" type="image/png" href="../imagens/logo.png">
     <link rel="stylesheet" href="../css/style.css">
-    <style>
-        /* Ajustes específicos desta página */
-        .setup-grid {
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            margin-bottom: 2rem;
-        }
-
-        .setup-card ul {
-            margin-bottom: 0.75rem;
-        }
-
-        .setup-card ul li {
-            gap: 15px;
-        }
-
-        .setup-card ul li strong {
-            white-space: nowrap;
-        }
-    </style>
     <link rel="stylesheet" href="../css/responsivo.css">
 </head>
 <body>
@@ -66,7 +47,7 @@
         <!-- Painel Central -->
         <div class="main-chat">
             <div class="chat-header">
-                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu">☰</button>
+                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 4h11M2.5 8h11M2.5 12h11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
                 <span class="channel-symbol">#</span>
                 <span>g-hub</span>
                 <span class="channel-divider">|</span>
@@ -80,19 +61,19 @@
                     <!-- Configurações (Geral & Análise) -->
                     <div class="setup-card">
                         <div>
-                            <h3>⚙️ Configurações (Geral)</h3>
+                            <h3><span class="card-icon">⚙️</span>Configurações (Geral)</h3>
                             <ul>
-                                <li><span>Iniciar o aplicativo no login</span> <strong>ON</strong></li>
-                                <li><span>Desativar automaticamente a iluminação</span> <strong>OFF</strong></li>
-                                <li><span>Controle de iluminação do jogo</span> <strong>OFF</strong></li>
-                                <li><span>Notificações do sistema</span> <strong>OFF</strong></li>
-                                <li><span>Recomendações</span> <strong>OFF</strong></li>
+                                <li><span>Iniciar o aplicativo no login</span> <strong class="val val-on">ON</strong></li>
+                                <li><span>Desativar automaticamente a iluminação</span> <strong class="val val-off">OFF</strong></li>
+                                <li><span>Controle de iluminação do jogo</span> <strong class="val val-off">OFF</strong></li>
+                                <li><span>Notificações do sistema</span> <strong class="val val-off">OFF</strong></li>
+                                <li><span>Recomendações</span> <strong class="val val-off">OFF</strong></li>
                             </ul>
 
-                            <h3 style="font-size: 1.05rem; color: #ffffff; margin-top: 1.2rem; margin-bottom: 0.75rem; display: flex; align-items: center; gap: 8px;">📊 Configurações (Análise)</h3>
+                            <h3><span class="card-icon">📊</span>Configurações (Análise)</h3>
                             <ul>
-                                <li><span>Compartilhar meus dados de uso</span> <strong>OFF</strong></li>
-                                <li><span>Enviar logs de erros automaticamente quando o G HUB encontra problemas</span> <strong>OFF</strong></li>
+                                <li><span>Compartilhar meus dados de uso</span> <strong class="val val-off">OFF</strong></li>
+                                <li><span>Enviar logs de erros automaticamente quando o G HUB encontra problemas</span> <strong class="val val-off">OFF</strong></li>
                             </ul>
                         </div>
                         <div class="card-description">
@@ -103,7 +84,7 @@
                     <!-- Gerenciar Perfil -->
                     <div class="setup-card">
                         <div>
-                            <h3>🎯 Gerenciar Perfil</h3>
+                            <h3><span class="card-icon">🎯</span>Gerenciar Perfil</h3>
                             <ul>
                                 <li><span>Perfil de Jogos</span> <strong>GadgetryTech FPS Comp</strong></li>
                                 <li><span>Perfil de Mídia</span> <strong>BEST ALL-ROUND EQ (V3)</strong></li>
@@ -117,7 +98,7 @@
                     <!-- Equalização (EQ) -->
                     <div class="setup-card">
                         <div>
-                            <h3>🎛️ Equalização (EQ)</h3>
+                            <h3><span class="card-icon">🎛️</span>Equalização (EQ)</h3>
                             <ul>
                                 <li><span>Perfil Jogos</span> <strong>A50X GadgetryTech FPS Comp (GadgetryTech)</strong></li>
                                 <li><span>Perfil Mídia/Geral</span> <strong>BEST ALL-ROUND EQ (V3) (Knrauxx)</strong></li>

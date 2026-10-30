@@ -25,6 +25,24 @@
             alternarGaveta();
         } else if (alvo.closest('.sidebar-overlay')) {
             alternarGaveta(false);
+        } else if (alvo.closest('.code-line')) {
+            copiar(alvo.closest('.code-line'));
         }
+    });
+
+    // Clique num comando (.code-line) copia o texto e mostra "Copiado ✓"
+    function copiar(el) {
+        var texto = (el.textContent || '').trim();
+        if (!texto || !navigator.clipboard) return;
+        navigator.clipboard.writeText(texto).then(function () {
+            el.classList.add('copiado');
+            clearTimeout(el._copiadoTimer);
+            el._copiadoTimer = setTimeout(function () { el.classList.remove('copiado'); }, 1400);
+        }).catch(function () { /* sem permissão: ignora */ });
+    }
+
+    // Fecha a gaveta com Esc
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') alternarGaveta(false);
     });
 })();

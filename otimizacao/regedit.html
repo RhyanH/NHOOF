@@ -47,7 +47,7 @@
         <!-- Painel Central -->
         <div class="main-chat">
             <div class="chat-header">
-                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu">☰</button>
+                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 4h11M2.5 8h11M2.5 12h11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
                 <span class="channel-symbol">#</span>
                 <span>regedit</span>
                 <span class="channel-divider">|</span>
@@ -60,17 +60,17 @@
                 <div class="setup-grid">
                     <div class="setup-card">
                         <div>
-                            <h3>⚠️ Antes de aplicar</h3>
+                            <h3><span class="card-icon">⚠️</span>Antes de aplicar</h3>
                             <ul>
                                 <li><span>Aviso</span> <strong>Crie um ponto de restauração (veja o canal Ponto de Restauração). Mexer no registro errado pode quebrar o Windows. No fim da página estão os comandos para voltar aos valores padrão.</strong></li>
                             </ul>
-                            <h3 style="margin-top: 1.25rem;">🔧 1. Como aplicar</h3>
+                            <h3><span class="card-icon">🔧</span>1. Como aplicar</h3>
                             <ul>
                                 <li><span>Prompt</span> <strong>Abrir o PowerShell como Administrador</strong></li>
                                 <li><span>Execução</span> <strong>Escolha o ajuste abaixo, copie o comando completo, cole no PowerShell e aperte Enter</strong></li>
                                 <li><span>Sistema</span> <strong>Reinicie o computador após aplicar para ativar as alterações</strong></li>
                             </ul>
-                            <h3 style="margin-top: 1.25rem;">⌨️ 2. Comandos (otimizações de registro)</h3>
+                            <h3><span class="card-icon">⌨️</span>2. Comandos (otimizações de registro)</h3>
                             <ul>
                                 <li><span>Desativar Otimização de Entrega (DOSvc)</span> <strong class="code-line">Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\DOSvc" -Name "Start" -Value 4</strong></li>
                                 <li><span>Forçar Tela Inteira Nativa (FSE)</span> <strong class="code-line">Set-ItemProperty -Path "HKCU:\System\GameConfigStore" -Name "GameDVR_FSEBehavior" -Value 2</strong></li>
@@ -78,7 +78,7 @@
                                 <li><span>Reservar menos CPU para tarefas de segundo plano</span> <strong class="code-line">Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" -Name "SystemResponsiveness" -Value 10</strong></li>
                                 <li><span>Desativar Power Throttling da CPU</span> <strong><span class="code-line">New-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" -Force</span><br><span class="code-line">New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" -Name "PowerThrottlingOff" -PropertyType DWord -Value 1 -Force</span></strong></li>
                             </ul>
-                            <h3 style="margin-top: 1.25rem;">↩️ 3. Como voltar ao padrão</h3>
+                            <h3><span class="card-icon">↩️</span>3. Como voltar ao padrão</h3>
                             <ul>
                                 <li><span>Passos</span> <strong>Mesmos passos (PowerShell como Administrador, depois reiniciar)</strong></li>
                                 <li><span>DOSvc</span> <strong class="code-line">Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\DOSvc" -Name "Start" -Value 3</strong></li>

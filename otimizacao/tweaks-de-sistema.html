@@ -47,7 +47,7 @@
         <!-- Painel Central -->
         <div class="main-chat">
             <div class="chat-header">
-                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu">☰</button>
+                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 4h11M2.5 8h11M2.5 12h11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
                 <span class="channel-symbol">#</span>
                 <span>tweaks de sistema</span>
                 <span class="channel-divider">|</span>
@@ -60,11 +60,11 @@
                 <div class="setup-grid">
                     <div class="setup-card">
                         <div>
-                            <h3>⚠️ Antes de aplicar</h3>
+                            <h3><span class="card-icon">⚠️</span>Antes de aplicar</h3>
                             <ul>
                                 <li><span>Aviso</span> <strong>Crie um ponto de restauração (veja o canal Ponto de Restauração). Reversão de cada item no fim da página.</strong></li>
                             </ul>
-                            <h3 style="margin-top: 1.25rem;">⌨️ 1. Passo 1: Comandos de terminal (PowerShell como Admin)</h3>
+                            <h3><span class="card-icon">⌨️</span>1. Passo 1: Comandos de terminal (PowerShell como Admin)</h3>
                             <ul>
                                 <li><span>Armazenamento Reservado</span> <strong><span class="code-line">Set-WindowsReservedStorageState -State Disabled</span></strong></li>
                                 <li><span>Rastreamento de Uso de Dados (DusmSvc)</span> <strong><span class="code-line">sc.exe stop DusmSvc</span> → <span class="code-line">sc.exe config DusmSvc start= disabled</span></strong></li>
@@ -72,7 +72,7 @@
                                 <li><span>Protocolo Teredo</span> <strong><span class="code-line">netsh interface teredo set state disabled</span> <em>(Pular se usa Party/Voice do Xbox App ou Game Pass)</em></strong></li>
                                 <li><span>Túneis IPv6 (ISATAP &amp; 6to4)</span> <strong><span class="code-line">netsh int isatap set state disabled</span> → <span class="code-line">netsh int ipv6 6to4 set state disabled</span></strong></li>
                             </ul>
-                            <h3 style="margin-top: 1.25rem;">🧬 2. Passo 2: Ajustes no registro</h3>
+                            <h3><span class="card-icon">🧬</span>2. Passo 2: Ajustes no registro</h3>
                             <ul>
                                 <li><span>Priorização de Threads da CPU (Win32PrioritySeparation)</span> <strong><span class="code-line">HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\PriorityControl</span></strong></li>
                                 <li><span>Alterar (DWORD 32 bits)</span> <strong><span class="code-line">Win32PrioritySeparation</span> = 26 <em>(Hexadecimal)</em> ou 38 <em>(Decimal)</em></strong></li>
@@ -83,7 +83,7 @@
                                 <li><span>Otimização de Entrega (Windows Update em Segundo Plano)</span> <strong><span class="code-line">HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization</span></strong></li>
                                 <li><span>Criar/Alterar (DWORD 32 bits)</span> <strong><span class="code-line">DODownloadMode</span> = 0</strong></li>
                             </ul>
-                            <h3 style="margin-top: 1.25rem;">↩️ 3. Como reverter</h3>
+                            <h3><span class="card-icon">↩️</span>3. Como reverter</h3>
                             <ul>
                                 <li><span>Passo 1 (PowerShell como Admin)</span> <strong>Comandos abaixo</strong></li>
                                 <li><span>Armazenamento Reservado</span> <strong><span class="code-line">Set-WindowsReservedStorageState -State Enabled</span></strong></li>

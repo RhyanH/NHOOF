@@ -7,57 +7,6 @@
     <!-- Ícone da aba do navegador (Favicon) -->
     <link rel="icon" type="image/png" href="../imagens/logo.png">
     <link rel="stylesheet" href="../css/style.css">
-    <style>
-        /* Ajustes específicos desta página */
-        .setup-card ul li a {
-            color: unset;
-            text-decoration: unset;
-            font-weight: unset;
-            transition: unset;
-        }
-
-        .setup-card ul li a:hover {
-            color: unset;
-            text-decoration: unset;
-        }
-
-        .setup-card ul li strong a {
-            color: unset;
-            text-decoration: unset;
-            transition: unset;
-        }
-
-        .setup-card ul li strong a:hover {
-            color: unset;
-            text-decoration: unset;
-        }
-
-        .page-title {
-            text-transform: uppercase;
-        }
-
-        .setup-grid {
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            margin-bottom: 2rem;
-        }
-
-        .setup-card ul {
-            margin-bottom: 0.75rem;
-        }
-
-        .setup-card ul li {
-            gap: 15px;
-        }
-
-        .setup-card ul li strong {
-            white-space: nowrap;
-        }
-
-        .code-line {
-            padding: 3px 8px;
-            letter-spacing: 0.5px;
-        }
-    </style>
     <link rel="stylesheet" href="../css/responsivo.css">
 </head>
 <body>
@@ -98,7 +47,7 @@
         <!-- Painel Central -->
         <div class="main-chat">
             <div class="chat-header">
-                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu">☰</button>
+                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 4h11M2.5 8h11M2.5 12h11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
                 <span class="channel-symbol">#</span>
                 <span>debloat-e-limpeza</span>
                 <span class="channel-divider">|</span>
@@ -108,7 +57,7 @@
             <div class="chat-content">
                 <h1 class="page-title">DEBLOAT E LIMPEZA</h1>
                 <!-- Aviso inicial -->
-                <div class="alerts-container" style="margin-bottom: 1.5rem;">
+                <div class="alerts-container">
                     <div class="alert-box warning">
                         <div class="alert-icon">💡</div>
                         <div class="alert-text">
@@ -122,9 +71,9 @@
                     <!-- Passo 1: Desinstalador de programas -->
                     <div class="setup-card">
                         <div>
-                            <h3>🧹 1. Revo Uninstaller</h3>
+                            <h3><span class="card-icon">🧹</span>1. Revo Uninstaller</h3>
                             <ul>
-                                <li><span>Download</span> <strong><a href="https://www.revouninstaller.com/br/revo-uninstaller-free-download/" target="_blank" style="color: #00b0f4; text-decoration: none;">Free Portable</a></strong></li>
+                                <li><span>Download</span> <strong><a href="https://www.revouninstaller.com/br/revo-uninstaller-free-download/" target="_blank">Free Portable</a></strong></li>
                                 <li><span>Abas</span> <strong>Uninstaller / Windows Apps</strong></li>
                                 <li><span>Scan</span> <strong>Delete All</strong></li>
                             </ul>
@@ -139,7 +88,7 @@
                     <!-- Passo 2: Utilitário de ajustes do sistema -->
                     <div class="setup-card">
                         <div>
-                            <h3>🛠️ 2. Winutil (Chris Titus)</h3>
+                            <h3><span class="card-icon">🛠️</span>2. Winutil (Chris Titus)</h3>
                             <ul>
                                 <li><span>Terminal</span> <strong>PowerShell (Admin)</strong></li>
                                 <li><span>Comando</span> <strong class="code-line">irm christitus.com/win | iex</strong></li>
@@ -158,9 +107,9 @@
                     <!-- Passo 3: Ferramenta de privacidade -->
                     <div class="setup-card">
                         <div>
-                            <h3>🕵️ 3. O&O ShutUp10++</h3>
+                            <h3><span class="card-icon">🕵️</span>3. O&O ShutUp10++</h3>
                             <ul>
-                                <li><span>Download</span> <strong><a href="https://www.oo-software.com/en/download/current/ooshutup10" target="_blank" style="color: #00b0f4; text-decoration: none;">O&O ShutUp10 Free</a></strong></li>
+                                <li><span>Download</span> <strong><a href="https://www.oo-software.com/en/download/current/ooshutup10" target="_blank">O&O ShutUp10 Free</a></strong></li>
                                 <li><span>Instalação</span> <strong>Portátil (Admin)</strong></li>
                             </ul>
                         </div>

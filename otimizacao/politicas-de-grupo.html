@@ -47,7 +47,7 @@
         <!-- Painel Central -->
         <div class="main-chat">
             <div class="chat-header">
-                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu">☰</button>
+                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 4h11M2.5 8h11M2.5 12h11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
                 <span class="channel-symbol">#</span>
                 <span>politicas de grupo</span>
                 <span class="channel-divider">|</span>
@@ -60,93 +60,93 @@
                 <div class="setup-grid">
                     <div class="setup-card">
                         <div>
-                            <h3>⚠️ Antes de começar</h3>
+                            <h3><span class="card-icon">⚠️</span>Antes de começar</h3>
                             <ul>
                                 <li><span>Aviso</span> <strong>O gpedit.msc existe no Windows 11 Pro, Enterprise e Education. No Windows 11 Home ele não existe (o Windows diz que não encontra o arquivo). No Home, use o programa gratuito Policy Plus ou grave os mesmos valores direto no registro. Crie um ponto de restauração antes (veja o canal Ponto de Restauração) e anote o que alterou, para poder desfazer.</strong></li>
                             </ul>
-                            <h3 style="margin-top: 1.25rem;">🔧 1. Acessando o editor</h3>
+                            <h3><span class="card-icon">🔧</span>1. Acessando o editor</h3>
                             <ul>
                                 <li><span>Executar (Win + R)</span> <strong class="code-line">gpedit.msc</strong></li>
                             </ul>
-                            <h3 style="margin-top: 1.25rem;">📡 2. Coleta de Dados e Compilações de Visualização</h3>
+                            <h3><span class="card-icon">📡</span>2. Coleta de Dados e Compilações de Visualização</h3>
                             <ul>
                                 <li><span>Caminho</span> <strong>Configuração do Computador → Modelos Administrativos → Componentes do Windows → Coleta de Dados e Compilações de Visualização</strong></li>
-                                <li><span>Ativar/desativar o controle do usuário sobre compilações do Insider</span> <strong>Desativado</strong></li>
-                                <li><span>Permitir pipeline de dados comerciais</span> <strong>Desativado</strong></li>
-                                <li><span>Permitir Processamento da Análise de Área de Trabalho</span> <strong>Desativado</strong></li>
-                                <li><span>Permitir que o nome do dispositivo seja enviado nos dados de diagnóstico do Windows</span> <strong>Desativado</strong></li>
-                                <li><span>Permitir Dados de Diagnóstico</span> <strong>Desativado</strong></li>
-                                <li><span>Permitir Processamento de Conformidade da Atualização</span> <strong>Desativado</strong></li>
-                                <li><span>Permitir Processamento de Nuvem WUFB</span> <strong>Desativado</strong></li>
+                                <li><span>Ativar/desativar o controle do usuário sobre compilações do Insider</span> <strong class="val val-off">Desativado</strong></li>
+                                <li><span>Permitir pipeline de dados comerciais</span> <strong class="val val-off">Desativado</strong></li>
+                                <li><span>Permitir Processamento da Análise de Área de Trabalho</span> <strong class="val val-off">Desativado</strong></li>
+                                <li><span>Permitir que o nome do dispositivo seja enviado nos dados de diagnóstico do Windows</span> <strong class="val val-off">Desativado</strong></li>
+                                <li><span>Permitir Dados de Diagnóstico</span> <strong class="val val-off">Desativado</strong></li>
+                                <li><span>Permitir Processamento de Conformidade da Atualização</span> <strong class="val val-off">Desativado</strong></li>
+                                <li><span>Permitir Processamento de Nuvem WUFB</span> <strong class="val val-off">Desativado</strong></li>
                             </ul>
-                            <h3 style="margin-top: 1.25rem;">🧩 3. Compatibilidade de Aplicativos</h3>
+                            <h3><span class="card-icon">🧩</span>3. Compatibilidade de Aplicativos</h3>
                             <ul>
                                 <li><span>Caminho</span> <strong>Configuração do Computador → Modelos Administrativos → Componentes do Windows → Compatibilidade de Aplicativos</strong></li>
-                                <li><span>Desativar a Telemetria de Aplicativos</span> <strong>Habilitado</strong></li>
-                                <li><span>Desativar o Mecanismo de Compatibilidade de Aplicativos</span> <strong>Habilitado</strong></li>
+                                <li><span>Desativar a Telemetria de Aplicativos</span> <strong class="val val-on">Habilitado</strong></li>
+                                <li><span>Desativar o Mecanismo de Compatibilidade de Aplicativos</span> <strong class="val val-on">Habilitado</strong></li>
                                 <li><span>Desativar o Auxiliar de Compatibilidade de Programa</span> <strong>Habilitado <em>(Pular se joga FiveM)</em></strong></li>
-                                <li><span>Desativar o Coletor de Inventário</span> <strong>Habilitado</strong></li>
-                                <li><span>Desativar o Mecanismo de Compatibilidade de SwitchBack</span> <strong>Habilitado</strong></li>
-                                <li><span>Desativar o Gravador de Passos</span> <strong>Habilitado</strong></li>
+                                <li><span>Desativar o Coletor de Inventário</span> <strong class="val val-on">Habilitado</strong></li>
+                                <li><span>Desativar o Mecanismo de Compatibilidade de SwitchBack</span> <strong class="val val-on">Habilitado</strong></li>
+                                <li><span>Desativar o Gravador de Passos</span> <strong class="val val-on">Habilitado</strong></li>
                             </ul>
-                            <h3 style="margin-top: 1.25rem;">☁️ 4. Conteúdo de Nuvem</h3>
+                            <h3><span class="card-icon">☁️</span>4. Conteúdo de Nuvem</h3>
                             <ul>
                                 <li><span>Caminho</span> <strong>Configuração do Computador → Modelos Administrativos → Componentes do Windows → Conteúdo de Nuvem</strong></li>
-                                <li><span>Desativar o conteúdo otimizado em nuvem</span> <strong>Habilitado</strong></li>
-                                <li><span>Desligue o conteúdo do estado da conta do consumidor na nuvem</span> <strong>Habilitado</strong></li>
-                                <li><span>Não mostrar dicas do Windows</span> <strong>Habilitado</strong></li>
-                                <li><span>Desativar as experiências do cliente da Microsoft</span> <strong>Habilitado</strong></li>
+                                <li><span>Desativar o conteúdo otimizado em nuvem</span> <strong class="val val-on">Habilitado</strong></li>
+                                <li><span>Desligue o conteúdo do estado da conta do consumidor na nuvem</span> <strong class="val val-on">Habilitado</strong></li>
+                                <li><span>Não mostrar dicas do Windows</span> <strong class="val val-on">Habilitado</strong></li>
+                                <li><span>Desativar as experiências do cliente da Microsoft</span> <strong class="val val-on">Habilitado</strong></li>
                             </ul>
-                            <h3 style="margin-top: 1.25rem;">🎙️ 5. Controle por Voz</h3>
+                            <h3><span class="card-icon">🎙️</span>5. Controle por Voz</h3>
                             <ul>
                                 <li><span>Caminho</span> <strong>Configuração do Computador → Modelos Administrativos → Componentes do Windows → Controle por Voz</strong></li>
-                                <li><span>Permitir a Atualização Automática de Dados de Fala</span> <strong>Desativado</strong></li>
+                                <li><span>Permitir a Atualização Automática de Dados de Fala</span> <strong class="val val-off">Desativado</strong></li>
                             </ul>
-                            <h3 style="margin-top: 1.25rem;">🤖 6. IA do Windows</h3>
+                            <h3><span class="card-icon">🤖</span>6. IA do Windows</h3>
                             <ul>
                                 <li><span>Caminho</span> <strong>Configuração do Computador → Modelos Administrativos → Componentes do Windows → IA do Windows</strong></li>
-                                <li><span>Desabilitar Click to Do</span> <strong>Habilitado</strong></li>
-                                <li><span>Desabilitar a experiência de pesquisa agêntica de Configurações</span> <strong>Habilitado</strong></li>
+                                <li><span>Desabilitar Click to Do</span> <strong class="val val-on">Habilitado</strong></li>
+                                <li><span>Desabilitar a experiência de pesquisa agêntica de Configurações</span> <strong class="val val-on">Habilitado</strong></li>
                                 <li><span>Obs.</span> <strong><em>estes dois itens só aparecem em versões recentes do Windows 11 (24H2/25H2 com as últimas atualizações) e podem não ter efeito no Pro/Home.</em></strong></li>
                             </ul>
-                            <h3 style="margin-top: 1.25rem;">📁 7. Explorador de Arquivos</h3>
+                            <h3><span class="card-icon">📁</span>7. Explorador de Arquivos</h3>
                             <ul>
                                 <li><span>Caminho</span> <strong>Configuração do Computador → Modelos Administrativos → Componentes do Windows → Explorador de Arquivos</strong></li>
-                                <li><span>Mostrar arquivos com base na sua conta e na atividade do provedor de nuvem</span> <strong>Habilitado</strong></li>
+                                <li><span>Mostrar arquivos com base na sua conta e na atividade do provedor de nuvem</span> <strong class="val val-on">Habilitado</strong></li>
                             </ul>
-                            <h3 style="margin-top: 1.25rem;">🔎 8. Pesquisar</h3>
+                            <h3><span class="card-icon">🔎</span>8. Pesquisar</h3>
                             <ul>
                                 <li><span>Caminho</span> <strong>Configuração do Computador → Modelos Administrativos → Componentes do Windows → Pesquisar</strong></li>
-                                <li><span>Definir as informações que são compartilhadas na pesquisa</span> <strong>Habilitado</strong></li>
+                                <li><span>Definir as informações que são compartilhadas na pesquisa</span> <strong class="val val-on">Habilitado</strong></li>
                                 <li><span>Tipo de informações</span> <strong>Informações Anônimas</strong></li>
                             </ul>
-                            <h3 style="margin-top: 1.25rem;">📲 9. Instalação por Push</h3>
+                            <h3><span class="card-icon">📲</span>9. Instalação por Push</h3>
                             <ul>
                                 <li><span>Caminho</span> <strong>Configuração do Computador → Modelos Administrativos → Componentes do Windows → Instalação por Push</strong></li>
-                                <li><span>Desativar o serviço Instalação por Push</span> <strong>Habilitado</strong></li>
+                                <li><span>Desativar o serviço Instalação por Push</span> <strong class="val val-on">Habilitado</strong></li>
                             </ul>
-                            <h3 style="margin-top: 1.25rem;">📍 10. Local e Sensores → Localizador do Windows</h3>
+                            <h3><span class="card-icon">📍</span>10. Local e Sensores → Localizador do Windows</h3>
                             <ul>
                                 <li><span>Caminho</span> <strong>Configuração do Computador → Modelos Administrativos → Componentes do Windows → Local e Sensores → Localizador do Windows</strong></li>
-                                <li><span>Desativar fornecedor de local de Windows</span> <strong>Habilitado</strong></li>
+                                <li><span>Desativar fornecedor de local de Windows</span> <strong class="val val-on">Habilitado</strong></li>
                             </ul>
-                            <h3 style="margin-top: 1.25rem;">🧭 11. Localizar Meu Dispositivo</h3>
+                            <h3><span class="card-icon">🧭</span>11. Localizar Meu Dispositivo</h3>
                             <ul>
                                 <li><span>Caminho</span> <strong>Configuração do Computador → Modelos Administrativos → Componentes do Windows → Localizar Meu Dispositivo</strong></li>
-                                <li><span>Ativar/desativar Localizar Meu Dispositivo</span> <strong>Desativado</strong></li>
+                                <li><span>Ativar/desativar Localizar Meu Dispositivo</span> <strong class="val val-off">Desativado</strong></li>
                             </ul>
-                            <h3 style="margin-top: 1.25rem;">🛒 12. Loja</h3>
+                            <h3><span class="card-icon">🛒</span>12. Loja</h3>
                             <ul>
                                 <li><span>Caminho</span> <strong>Configuração do Computador → Modelos Administrativos → Componentes do Windows → Loja</strong></li>
-                                <li><span>Desabilitar Download e Instalação Automáticos de Atualizações</span> <strong>Habilitado</strong></li>
+                                <li><span>Desabilitar Download e Instalação Automáticos de Atualizações</span> <strong class="val val-on">Habilitado</strong></li>
                                 <li><span>Obs.</span> <strong><em>os aplicativos da Microsoft Store (inclusive Xbox App e jogos do Game Pass) deixam de atualizar sozinhos. Atualize-os manualmente pela própria Loja de vez em quando.</em></strong></li>
                             </ul>
-                            <h3 style="margin-top: 1.25rem;">🌐 13. Microsoft Edge</h3>
+                            <h3><span class="card-icon">🌐</span>13. Microsoft Edge</h3>
                             <ul>
                                 <li><span>Caminho</span> <strong>Configuração do Computador → Modelos Administrativos → Componentes do Windows → Microsoft Edge</strong></li>
-                                <li><span>Permitir que o Microsoft Edge inicie e carregue a página Inicial...</span> <strong>Habilitado</strong></li>
+                                <li><span>Permitir que o Microsoft Edge inicie e carregue a página Inicial...</span> <strong class="val val-on">Habilitado</strong></li>
                                 <li><span>Configurar o pré-carregamento de guia</span> <strong>Impedir o pré-carregamento de guia</strong></li>
-                                <li><span>Permitir a pré-inicialização do Microsoft Edge na inicialização do Windows...</span> <strong>Habilitado</strong></li>
+                                <li><span>Permitir a pré-inicialização do Microsoft Edge na inicialização do Windows...</span> <strong class="val val-on">Habilitado</strong></li>
                                 <li><span>Configurar pré-inicialização</span> <strong>Impedir a pré-inicialização</strong></li>
                                 <li><span>Edge atual</span> <strong><em>as quatro políticas acima são do Edge antigo (EdgeHTML) e não afetam o Edge atual. Para desligar o "Aumento de velocidade na inicialização" (Startup Boost) e a execução em segundo plano do Edge atual, abra o PowerShell como Administrador e cole os comandos abaixo.</em></strong></li>
                                 <li><span>Criar a chave</span> <strong class="code-line">New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Edge" -Force</strong></li>
@@ -156,39 +156,39 @@
                                 <li><span>Reverter</span> <strong class="code-line">Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Edge" -Name "StartupBoostEnabled"; Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Edge" -Name "BackgroundModeEnabled"</strong></li>
                                 <li><span>Obs.</span> <strong><em>estes comandos funcionam em qualquer edição do Windows (Home, Pro etc.).</em></strong></li>
                             </ul>
-                            <h3 style="margin-top: 1.25rem;">🐞 14. Relatórios de Erros do Windows</h3>
+                            <h3><span class="card-icon">🐞</span>14. Relatórios de Erros do Windows</h3>
                             <ul>
                                 <li><span>Caminho</span> <strong>Configuração do Computador → Modelos Administrativos → Componentes do Windows → Relatórios de Erros do Windows</strong></li>
-                                <li><span>Desabilitar Relatório de Erros do Windows</span> <strong>Habilitado</strong></li>
-                                <li><span>Desabilitar log</span> <strong>Habilitado</strong></li>
+                                <li><span>Desabilitar Relatório de Erros do Windows</span> <strong class="val val-on">Habilitado</strong></li>
+                                <li><span>Desabilitar log</span> <strong class="val val-on">Habilitado</strong></li>
                             </ul>
-                            <h3 style="margin-top: 1.25rem;">🧱 15. Widgets</h3>
+                            <h3><span class="card-icon">🧱</span>15. Widgets</h3>
                             <ul>
                                 <li><span>Caminho</span> <strong>Configuração do Computador → Modelos Administrativos → Componentes do Windows → Widgets</strong></li>
-                                <li><span>Desabilitar o Quadro de Widgets</span> <strong>Habilitado</strong></li>
+                                <li><span>Desabilitar o Quadro de Widgets</span> <strong class="val val-on">Habilitado</strong></li>
                             </ul>
-                            <h3 style="margin-top: 1.25rem;">📦 16. Otimização de Entrega</h3>
+                            <h3><span class="card-icon">📦</span>16. Otimização de Entrega</h3>
                             <ul>
                                 <li><span>Caminho</span> <strong>Configuração do Computador → Modelos Administrativos → Componentes do Windows → Otimização de Entrega</strong></li>
-                                <li><span>Modo de Download</span> <strong>Habilitado</strong></li>
+                                <li><span>Modo de Download</span> <strong class="val val-on">Habilitado</strong></li>
                                 <li><span>Modo de Download</span> <strong>Bypass (100)</strong></li>
                             </ul>
-                            <h3 style="margin-top: 1.25rem;">🔄 17. Windows Update → Gerenciar a Experiência do Usuário Final</h3>
+                            <h3><span class="card-icon">🔄</span>17. Windows Update → Gerenciar a Experiência do Usuário Final</h3>
                             <ul>
                                 <li><span>Caminho</span> <strong>Configuração do Computador → Modelos Administrativos → Componentes do Windows → Windows Update → Gerenciar a Experiência do Usuário Final</strong></li>
-                                <li><span>Configurar Atualizações Automáticas</span> <strong>Habilitado</strong></li>
+                                <li><span>Configurar Atualizações Automáticas</span> <strong class="val val-on">Habilitado</strong></li>
                                 <li><span>Configurar atualização automática</span> <strong>2 - Avisar antes de baixar e instalar automaticamente</strong></li>
                                 <li><span>Obs.</span> <strong><em>nesse modo o Windows não baixa nada sozinho. Verifique as atualizações do Windows de vez em quando (sugestão: uma vez por mês) para instalar as correções de segurança.</em></strong></li>
                             </ul>
-                            <h3 style="margin-top: 1.25rem;">🖥️ 18. Sistema → Políticas do SO</h3>
+                            <h3><span class="card-icon">🖥️</span>18. Sistema → Políticas do SO</h3>
                             <ul>
                                 <li><span>Caminho</span> <strong>Configuração do Computador → Modelos Administrativos → Sistema → Políticas do SO</strong></li>
-                                <li><span>Habilita o Feed de Atividades</span> <strong>Desativado</strong></li>
+                                <li><span>Habilita o Feed de Atividades</span> <strong class="val val-off">Desativado</strong></li>
                             </ul>
-                            <h3 style="margin-top: 1.25rem;">📶 19. Rede → Agendador de Pacotes QoS</h3>
+                            <h3><span class="card-icon">📶</span>19. Rede → Agendador de Pacotes QoS</h3>
                             <ul>
                                 <li><span>Caminho</span> <strong>Configuração do Computador → Modelos Administrativos → Rede → Agendador de Pacotes QoS</strong></li>
-                                <li><span>Limitar largura de banda reservável</span> <strong>Habilitado</strong></li>
+                                <li><span>Limitar largura de banda reservável</span> <strong class="val val-on">Habilitado</strong></li>
                                 <li><span>Limite de largura de banda</span> <strong>0%</strong></li>
                             </ul>
                         </div>

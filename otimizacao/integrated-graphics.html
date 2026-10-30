@@ -7,21 +7,6 @@
     <!-- Ícone da aba do navegador (Favicon) -->
     <link rel="icon" type="image/png" href="../imagens/logo.png">
     <link rel="stylesheet" href="../css/style.css">
-    <style>
-        /* Ajustes específicos desta página */
-        .setup-card ul li {
-            gap: 15px;
-            align-items: flex-start;
-        }
-
-        .setup-card ul li strong {
-            word-break: break-word;
-        }
-
-        .alert-box {
-            border-left: 4px solid #faa61a;
-        }
-    </style>
     <link rel="stylesheet" href="../css/responsivo.css">
 </head>
 <body>
@@ -62,7 +47,7 @@
         <!-- Painel Central -->
         <div class="main-chat">
             <div class="chat-header">
-                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu">☰</button>
+                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 4h11M2.5 8h11M2.5 12h11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
                 <span class="channel-symbol">#</span>
                 <span>integrated graphics</span>
                 <span class="channel-divider">|</span>
@@ -76,10 +61,10 @@
                     <!-- Integrated Graphics -->
                     <div class="setup-card">
                         <div>
-                            <h3>🎮 Integrated Graphics</h3>
+                            <h3><span class="card-icon">🎮</span>Integrated Graphics</h3>
                             <ul>
                                 <li><span>Caminho</span> <strong>Advanced Mode (F2) → Settings → IO Ports</strong></li>
-                                <li><span>Integrated Graphics</span> <strong>Disabled</strong></li>
+                                <li><span>Integrated Graphics</span> <strong class="val val-off">Disabled</strong></li>
                             </ul>
                         </div>
                         <div class="card-description">

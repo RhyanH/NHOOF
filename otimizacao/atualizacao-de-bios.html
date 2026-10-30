@@ -7,30 +7,6 @@
     <!-- Ícone da aba do navegador (Favicon) -->
     <link rel="icon" type="image/png" href="../imagens/logo.png">
     <link rel="stylesheet" href="../css/style.css">
-    <style>
-        /* Ajustes específicos desta página */
-        .alert-text strong {
-            color: unset;
-        }
-
-        .setup-grid {
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        }
-
-        .setup-card {
-            display: unset;
-            flex-direction: unset;
-            justify-content: unset;
-        }
-
-        .setup-card ul {
-            margin-bottom: unset;
-        }
-
-        .alert-text {
-            text-align: justify;
-        }
-    </style>
     <link rel="stylesheet" href="../css/responsivo.css">
 </head>
 <body>
@@ -71,7 +47,7 @@
         <!-- Painel Central -->
         <div class="main-chat">
             <div class="chat-header">
-                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu">☰</button>
+                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 4h11M2.5 8h11M2.5 12h11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
                 <span class="channel-symbol">#</span>
                 <span>atualização de bios</span>
                 <span class="channel-divider">|</span>
@@ -84,7 +60,7 @@
                 <div class="setup-grid">
                     <!-- Onde Baixar -->
                     <div class="setup-card">
-                        <h3>📥 Onde Baixar</h3>
+                        <h3><span class="card-icon">📥</span>Onde Baixar</h3>
                         <ul>
                             <li><span>Plataforma</span> <strong>GIGABYTE</strong></li>
                             <li><span>Caminho</span> <strong>Suporte → BIOS → F41</strong></li>
@@ -94,7 +70,7 @@
 
                     <!-- Como Preparar -->
                     <div class="setup-card">
-                        <h3>⚡ Como Preparar</h3>
+                        <h3><span class="card-icon">⚡</span>Como Preparar</h3>
                         <ul>
                             <li><span>Arquivo</span> <strong>B650AEROG.F41</strong></li>
                             <li><span>Ação</span> <strong>Extraído no seu pendrive</strong></li>
@@ -103,7 +79,7 @@
 
                     <!-- Como Instalar -->
                     <div class="setup-card">
-                        <h3>🛠️ Como Instalar</h3>
+                        <h3><span class="card-icon">🛠️</span>Como Instalar</h3>
                         <ul>
                             <li><span>Ferramenta</span> <strong>BIOS → F8 (Q-Flash)</strong></li>
                             <li><span>Origem</span> <strong>Arquivo no pendrive</strong></li>

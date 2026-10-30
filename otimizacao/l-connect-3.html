@@ -7,21 +7,6 @@
     <!-- Ícone da aba do navegador (Favicon) -->
     <link rel="icon" type="image/png" href="../imagens/logo.png">
     <link rel="stylesheet" href="../css/style.css">
-    <style>
-        /* Ajustes específicos desta página */
-        .setup-grid {
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            margin-bottom: 2rem;
-        }
-
-        .setup-card ul li {
-            gap: 15px;
-        }
-
-        .setup-card ul li strong {
-            white-space: nowrap;
-        }
-    </style>
     <link rel="stylesheet" href="../css/responsivo.css">
 </head>
 <body>
@@ -62,7 +47,7 @@
         <!-- Painel Central -->
         <div class="main-chat">
             <div class="chat-header">
-                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu">☰</button>
+                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 4h11M2.5 8h11M2.5 12h11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
                 <span class="channel-symbol">#</span>
                 <span>l-connect-3</span>
                 <span class="channel-divider">|</span>
@@ -76,7 +61,7 @@
                     <!-- Fan Profile -->
                     <div class="setup-card">
                         <div>
-                            <h3>💨 Fan Profile</h3>
+                            <h3><span class="card-icon">💨</span>Fan Profile</h3>
                             
                             <div class="curve-graph-container">
                                 <svg viewBox="200 -12 300 205">
@@ -112,7 +97,7 @@
                     <!-- Pump Profile -->
                     <div class="setup-card">
                         <div>
-                            <h3>💧 Pump Profile</h3>
+                            <h3><span class="card-icon">💧</span>Pump Profile</h3>
                             <ul>
                                 <li><span>Modo</span> <strong>FixRPM</strong></li>
                                 <li><span>Velocidade</span> <strong>3200 RPM</strong></li>
@@ -127,12 +112,12 @@
                     <!-- Settings (General) -->
                     <div class="setup-card">
                         <div>
-                            <h3>⚙️ Settings (General)</h3>
+                            <h3><span class="card-icon">⚙️</span>Settings (General)</h3>
                             <ul>
-                                <li><span>Auto-Run on boot</span> <strong>ON</strong></li>
-                                <li><span>Hide on system tray when auto run on boot</span> <strong>ON</strong></li>
-                                <li><span>Minimize L-Connect 3 to system tray at close</span> <strong>ON</strong></li>
-                                <li><span>Displays a floating system information window</span> <strong>OFF</strong></li>
+                                <li><span>Auto-Run on boot</span> <strong class="val val-on">ON</strong></li>
+                                <li><span>Hide on system tray when auto run on boot</span> <strong class="val val-on">ON</strong></li>
+                                <li><span>Minimize L-Connect 3 to system tray at close</span> <strong class="val val-on">ON</strong></li>
+                                <li><span>Displays a floating system information window</span> <strong class="val val-off">OFF</strong></li>
                             </ul>
                         </div>
                         <div class="card-description">

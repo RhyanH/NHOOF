@@ -7,34 +7,6 @@
     <!-- Ícone da aba do navegador (Favicon) -->
     <link rel="icon" type="image/png" href="../imagens/logo.png">
     <link rel="stylesheet" href="../css/style.css">
-    <style>
-        /* Ajustes específicos desta página */
-        .setup-grid {
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            margin-bottom: unset;
-        }
-
-        .setup-card {
-            display: unset;
-            flex-direction: unset;
-            justify-content: unset;
-        }
-
-        .setup-card ul {
-            gap: 0.5rem;
-            margin-bottom: unset;
-        }
-
-        .setup-card ul li {
-            gap: 6px;
-            justify-content: unset;
-            align-items: unset;
-        }
-
-        .setup-card ul li strong {
-            text-align: unset;
-        }
-    </style>
     <link rel="stylesheet" href="../css/responsivo.css">
 </head>
 <body>
@@ -75,7 +47,7 @@
         <!-- Painel Central -->
         <div class="main-chat">
             <div class="chat-header">
-                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu">☰</button>
+                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 4h11M2.5 8h11M2.5 12h11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
                 <span class="channel-symbol">#</span>
                 <span>meu setup</span>
                 <span class="channel-divider">|</span>
@@ -88,7 +60,7 @@
                 <div class="setup-grid">
                     <!-- Hardware Principal -->
                     <div class="setup-card">
-                        <h3>💻 Hardware Principal</h3>
+                        <h3><span class="card-icon">💻</span>Hardware Principal</h3>
                         <ul>
                             <li>Processador: <strong>AMD Ryzen 7 9800X3D</strong></li>
                             <li>Placa de Vídeo: <strong>RTX 4070 GALAX</strong></li>
@@ -103,7 +75,7 @@
 
                     <!-- Periféricos -->
                     <div class="setup-card">
-                        <h3>🖱️ Periféricos & Monitores</h3>
+                        <h3><span class="card-icon">🖱️</span>Periféricos & Monitores</h3>
                         <ul>
                             <li>Monitor 1: <strong>Alienware 360Hz AW2523HF</strong></li>
                             <li>Monitor 2: <strong>ASUS G-SYNC VG248QG 165Hz</strong></li>
@@ -117,7 +89,7 @@
 
                     <!-- Mesa e Estrutura -->
                     <div class="setup-card">
-                        <h3>🛠️ Mesa & Estrutura</h3>
+                        <h3><span class="card-icon">🛠️</span>Mesa & Estrutura</h3>
                         <ul>
                             <li>Tampo: <strong>Teca Maciça 180x70x3cm (Verniz Mel)</strong></li>
                             <li>Base: <strong>Aço Reforçado 180x70x72cm (300 Kg)</strong></li>

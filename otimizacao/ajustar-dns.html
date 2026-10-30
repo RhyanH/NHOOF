@@ -47,7 +47,7 @@
         <!-- Painel Central -->
         <div class="main-chat">
             <div class="chat-header">
-                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu">☰</button>
+                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 4h11M2.5 8h11M2.5 12h11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
                 <span class="channel-symbol">#</span>
                 <span>ajustar dns</span>
                 <span class="channel-divider">|</span>
@@ -60,7 +60,7 @@
                 <div class="setup-grid">
                     <div class="setup-card">
                         <div>
-                            <h3>⚙️ 1. Configuração</h3>
+                            <h3><span class="card-icon">⚙️</span>1. Configuração</h3>
                             <ul>
                                 <li><span>Win + R</span> <strong class="code-line">ncpa.cpl</strong></li>
                                 <li><span>Intel(R) Ethernet Controller I225-V</span> <strong>Propriedades</strong></li>
@@ -69,17 +69,17 @@
                                 <li><span>Servidor preferencial</span> <strong class="code-line">1.1.1.1</strong></li>
                                 <li><span>Servidor alternativo</span> <strong class="code-line">1.0.0.1</strong></li>
                             </ul>
-                            <h3 style="margin-top: 1.25rem;">💾 2. Para salvar e ativar</h3>
+                            <h3><span class="card-icon">💾</span>2. Para salvar e ativar</h3>
                             <ul>
                                 <li><span>Janelas</span> <strong>OK → Fechar</strong></li>
                                 <li><span>Prompt de Comando (CMD)</span> <strong class="code-line">ipconfig /flushdns</strong></li>
                             </ul>
-                            <h3 style="margin-top: 1.25rem;">🔎 3. Teste de conexão</h3>
+                            <h3><span class="card-icon">🔎</span>3. Teste de conexão</h3>
                             <ul>
                                 <li><span>Prompt de Comando (CMD)</span> <strong class="code-line">ping 1.1.1.1</strong></li>
                                 <li><span>Verifique a linha final</span> <strong>O resultado ideal deve apresentar 0% de perda e a menor Média em ms possível para a sua região. Esse teste mede a conexão até a Cloudflare, não o DNS.</strong></li>
                             </ul>
-                            <h3 style="margin-top: 1.25rem;">✅ 4. Como verificar se funcionou após aplicar</h3>
+                            <h3><span class="card-icon">✅</span>4. Como verificar se funcionou após aplicar</h3>
                             <ul>
                                 <li><span>Prompt de Comando (CMD)</span> <strong class="code-line">nslookup google.com</strong></li>
                                 <li><span>Resultado</span> <strong>Se nas primeiras linhas aparecer Server: one.one.one.one e Address: 1.1.1.1, o Windows está usando o DNS da Cloudflare</strong></li>

@@ -7,17 +7,6 @@
     <!-- Ícone da aba do navegador (Favicon) -->
     <link rel="icon" type="image/png" href="../imagens/logo.png">
     <link rel="stylesheet" href="../css/style.css">
-    <style>
-        /* Ajustes específicos desta página */
-        .setup-card ul li {
-            gap: 15px;
-            align-items: flex-start;
-        }
-
-        .setup-card ul li strong {
-            word-break: break-word;
-        }
-    </style>
     <link rel="stylesheet" href="../css/responsivo.css">
 </head>
 <body>
@@ -58,7 +47,7 @@
         <!-- Painel Central -->
         <div class="main-chat">
             <div class="chat-header">
-                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu">☰</button>
+                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 4h11M2.5 8h11M2.5 12h11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
                 <span class="channel-symbol">#</span>
                 <span>windows update</span>
                 <span class="channel-divider">|</span>
@@ -72,7 +61,7 @@
                     <!-- Apps e Ícones de Fabricantes -->
                     <div class="setup-card">
                         <div>
-                            <h3>🚫 Apps e Ícones de Fabricantes</h3>
+                            <h3><span class="card-icon">🚫</span>Apps e Ícones de Fabricantes</h3>
                             <ul>
                                 <li><span>Caminho</span> <strong>Win + R → sysdm.cpl → Hardware → Configurações de Instalação do Dispositivo</strong></li>
                                 <li><span>Instalação automática</span> <strong>Não</strong></li>
@@ -86,10 +75,10 @@
                     <!-- Otimização de Entrega -->
                     <div class="setup-card">
                         <div>
-                            <h3>📦 Otimização de Entrega</h3>
+                            <h3><span class="card-icon">📦</span>Otimização de Entrega</h3>
                             <ul>
                                 <li><span>Caminho</span> <strong>Configurações → Windows Update → Opções Avançadas → Otimização de Entrega</strong></li>
-                                <li><span>Permitir downloads de outros PCs</span> <strong>Desativado</strong></li>
+                                <li><span>Permitir downloads de outros PCs</span> <strong class="val val-off">Desativado</strong></li>
                             </ul>
                         </div>
                         <div class="card-description">

@@ -3,130 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NHOOF</title>
+    <title>NHOOF — Otimização de PC, bloco a bloco</title>
+    <meta name="description" content="Guias de BIOS, Windows, drivers e rede. Cada ajuste testado no meu próprio setup, explicado e com o caminho de volta.">
+    <meta name="theme-color" content="#09090b">
     <!-- Ícone da aba do navegador (Favicon) -->
     <link rel="icon" type="image/png" href="imagens/logo.png">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body, html {
-            width: 100%;
-            height: 100%;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #0b0b0b;
-            color: #ffffff;
-            overflow: hidden;
-        }
-
-        /* Contêiner do fundo animado */
-        #particles-js {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: #0b0b0b;
-            z-index: 1;
-        }
-
-        /* Cabeçalho com a navegação principal */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 85px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 3.5rem;
-            z-index: 10;
-            background: #000000;
-        }
-
-        /* Logo no topo esquerdo */
-        .logo-container a {
-            display: inline-block;
-        }
-
-        .logo-container img {
-            height: 3.8rem;
-            width: auto;
-            display: block;
-        }
-
-        /* Menu de navegação centralizado */
-        nav {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 1.8rem;
-            align-items: center;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: #a0a0a0;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: color 0.2s ease;
-        }
-
-        nav ul li a:hover {
-            color: #ffffff;
-        }
-
-        /* Espaçador à direita para equilibrar o layout */
-        .header-spacer {
-            width: 3.8rem;
-        }
-
-        /* Texto central da vitrine com efeito de brilho */
-        .conteudo-centro {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            pointer-events: none;
-        }
-
-        .texto-nhoof {
-            font-size: 6rem;
-            font-weight: 900;
-            letter-spacing: 6px;
-            color: #dcdcdc;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.15), 0 0 40px rgba(0, 0, 0, 0.9);
-            text-transform: uppercase;
-            transition: all 0.3s ease;
-        }
-    </style>
+    <link rel="preload" href="fontes/Geist-Variable.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/responsivo.css">
 </head>
-<body>
+<body class="home">
 
-    <!-- Fundo animado de partículas -->
-    <div id="particles-js"></div>
-
-    <!-- Cabeçalho com Logo na Esquerda e Menu Centralizado -->
-    <header>
+    <!-- Cabeçalho global (igual em todas as páginas) -->
+    <header class="global-header">
         <div class="logo-container">
-            <a href="index.html">
-                <img src="imagens/logo.png" alt="Logo">
+            <a href="index.html" aria-label="NHOOF — início">
+                <img src="imagens/logo.png" alt="Logo NHOOF">
             </a>
         </div>
-        
+
         <nav>
             <ul>
                 <li><a href="otimizacao/index.html">Otimização</a></li>
@@ -145,62 +41,203 @@
         <div class="header-spacer"></div>
     </header>
 
-    <!-- Vitrine Central -->
-    <div class="conteudo-centro">
-        <div class="texto-nhoof">NHOOF</div>
-    </div>
+    <main>
+        <!-- ===== Hero ===== -->
+        <section class="hero">
+            <canvas class="hero-canvas" aria-hidden="true"></canvas>
+            <div class="hero-grid" aria-hidden="true"></div>
+            <div class="hero-glow" aria-hidden="true"></div>
 
-    <!-- Script da biblioteca de partículas (CDN) -->
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script>
-        particlesJS("particles-js", {
-            "particles": {
-                "number": {
-                    "value": 110,
-                    "density": { "enable": true, "value_area": 800 }
-                },
-                "color": { "value": "#ffffff" },
-                "shape": { "type": "circle" },
-                "opacity": {
-                    "value": 0.4,
-                    "random": true
-                },
-                "size": {
-                    "value": 2.5,
-                    "random": true
-                },
-                "line_linked": {
-                    "enable": true,
-                    "distance": 150,
-                    "color": "#ffffff",
-                    "opacity": 0.25,
-                    "width": 1
-                },
-                "move": {
-                    "enable": true,
-                    "speed": 0.7,
-                    "direction": "none",
-                    "random": false,
-                    "straight": false,
-                    "out_mode": "out",
-                    "bounce": false
-                }
-            },
-            "interactivity": {
-                "detect_on": "canvas",
-                "events": {
-                    "onhover": { "enable": true, "mode": "grab" },
-                    "onclick": { "enable": true, "mode": "push" },
-                    "resize": true
-                },
-                "modes": {
-                    "grab": { "distance": 160, "line_linked": { "opacity": 0.5 } },
-                    "push": { "particles_nb": 3 }
-                }
-            },
-            "retina_detect": true
-        });
-    </script>
+            <div class="hero-inner">
+                <a class="hero-badge" href="otimizacao/meu-setup.html">
+                    <span class="pulse"></span>
+                    <span><b data-total-guias>59</b> guias testados no meu setup</span>
+                    <span class="hero-badge-arrow">→</span>
+                </a>
 
+                <h1 class="wordmark">NHOOF</h1>
+
+                <p class="hero-lead">
+                    Otimização de PC, <span>explicada bloco a bloco.</span>
+                </p>
+                <p class="hero-sub">
+                    BIOS, Windows, drivers, rede e periféricos. Cada ajuste mostra o valor que eu uso,
+                    o que ele faz e como voltar atrás.
+                </p>
+
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="otimizacao/index.html">
+                        Começar pela otimização
+                        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <a class="btn btn-ghost" href="otimizacao/meu-setup.html">Ver meu setup</a>
+                </div>
+
+                <dl class="hero-stats">
+                    <div><dt>Guias</dt><dd data-total-guias>59</dd></div>
+                    <div><dt>Categorias</dt><dd data-total-categorias>14</dd></div>
+                    <div><dt>Plataforma</dt><dd>AM5 · RTX</dd></div>
+                </dl>
+            </div>
+
+            <a class="scroll-hint" href="#acesso" aria-label="Rolar para o acesso rápido">
+                <span></span>
+            </a>
+        </section>
+
+        <!-- ===== Acesso rápido ===== -->
+        <section class="secao" id="acesso">
+            <header class="secao-topo">
+                <p class="eyebrow">Acesso rápido</p>
+                <h2>Vá direto ao que você quer ajustar</h2>
+                <p class="secao-desc">Os guias seguem a ordem de uma instalação limpa: da BIOS ao Windows, depois drivers, rede e testes.</p>
+            </header>
+
+            <div class="cards">
+                <!-- Destaque: por onde começar -->
+                <a class="card card-destaque" href="otimizacao/index.html">
+                    <div class="card-topo">
+                        <span class="card-icone">
+                            <svg viewBox="0 0 24 24"><path d="M12 3 3 7.5l9 4.5 9-4.5L12 3Z"/><path d="m3 12 9 4.5 9-4.5"/><path d="m3 16.5 9 4.5 9-4.5"/></svg>
+                        </span>
+                        <span class="card-tag">Comece aqui</span>
+                    </div>
+                    <h3>Antes de tudo</h3>
+                    <p>Avisos importantes, como criar o pen drive de instalação e preparar o chipset. Leia isto antes de mexer na BIOS.</p>
+                    <ul class="card-chips">
+                        <li>importante</li><li>criando pendrive</li><li>chipset amd</li>
+                    </ul>
+                    <span class="card-seta">Abrir guia →</span>
+                </a>
+
+                <a class="card" href="otimizacao/atualizacao-de-bios.html" data-categoria="[BIOS]">
+                    <div class="card-topo">
+                        <span class="card-icone"><svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><rect x="9.5" y="9.5" width="5" height="5" rx=".5"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></svg></span>
+                        <span class="card-num"><b data-qtd></b> guias</span>
+                    </div>
+                    <h3>BIOS</h3>
+                    <p>EXPO, PBO, Curve Optimizer, Re-Size BAR e perfis salvos.</p>
+                    <span class="card-seta">→</span>
+                </a>
+
+                <a class="card" href="otimizacao/debloat-e-limpeza.html" data-categoria="[WINDOWS 11]">
+                    <div class="card-topo">
+                        <span class="card-icone"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg></span>
+                        <span class="card-num"><b data-qtd></b> guias</span>
+                    </div>
+                    <h3>Windows 11</h3>
+                    <p>Debloat, plano de energia, VBS, modo de jogo e agendamento de GPU.</p>
+                    <span class="card-seta">→</span>
+                </a>
+
+                <a class="card" href="otimizacao/configuracoes-3d.html" data-categoria="[NVIDIA]">
+                    <div class="card-topo">
+                        <span class="card-icone"><svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="9" cy="12" r="3"/><circle cx="16.5" cy="12" r="1.5"/><path d="M6 18v2M18 18v2"/></svg></span>
+                        <span class="card-num"><b data-qtd></b> guias</span>
+                    </div>
+                    <h3>NVIDIA</h3>
+                    <p>Configurações 3D, cores, MSI Utility e Afterburner.</p>
+                    <span class="card-seta">→</span>
+                </a>
+
+                <a class="card" href="otimizacao/ajustar-dns.html" data-categoria="[REDE]">
+                    <div class="card-topo">
+                        <span class="card-icone"><svg viewBox="0 0 24 24"><path d="M2 8.5a15 15 0 0 1 20 0"/><path d="M5 12a10.5 10.5 0 0 1 14 0"/><path d="M8.5 15.5a5.5 5.5 0 0 1 7 0"/><circle cx="12" cy="19" r="1"/></svg></span>
+                        <span class="card-num"><b data-qtd></b> guias</span>
+                    </div>
+                    <h3>Rede</h3>
+                    <p>DNS, ajustes do adaptador e backup do Wi-Fi.</p>
+                    <span class="card-seta">→</span>
+                </a>
+
+                <a class="card" href="otimizacao/ponto-de-restauracao.html" data-categoria="[OTIMIZAÇÃO]">
+                    <div class="card-topo">
+                        <span class="card-icone"><svg viewBox="0 0 24 24"><path d="M12 14l4-4"/><path d="M3.3 17a10 10 0 1 1 17.4 0"/><path d="M6 17h12"/></svg></span>
+                        <span class="card-num"><b data-qtd></b> guias</span>
+                    </div>
+                    <h3>Otimização</h3>
+                    <p>Políticas de grupo, serviços, regedit e tweaks de sistema.</p>
+                    <span class="card-seta">→</span>
+                </a>
+
+                <a class="card" href="otimizacao/testmem5.html" data-categoria="[MONITORAMENTO]">
+                    <div class="card-topo">
+                        <span class="card-icone"><svg viewBox="0 0 24 24"><path d="M3 12h4l3-8 4 16 3-8h4"/></svg></span>
+                        <span class="card-num"><b data-qtd></b> guias</span>
+                    </div>
+                    <h3>Monitoramento</h3>
+                    <p>TestMem5, Cinebench, OCCT, Superposition e CrystalDiskMark.</p>
+                    <span class="card-seta">→</span>
+                </a>
+
+                <a class="card" href="otimizacao/windows-update.html" data-categoria="[PÓS-FORMATAÇÃO]">
+                    <div class="card-topo">
+                        <span class="card-icone"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-2.6-6.4"/><path d="M21 4v5h-5"/></svg></span>
+                        <span class="card-num"><b data-qtd></b> guias</span>
+                    </div>
+                    <h3>Pós-formatação</h3>
+                    <p>Windows Update, ordem de instalação, G HUB, L-Connect e SignalRGB.</p>
+                    <span class="card-seta">→</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- ===== Setup ===== -->
+        <section class="secao">
+            <div class="setup-faixa">
+                <div class="setup-texto">
+                    <p class="eyebrow">Testado de verdade</p>
+                    <h2>Todos os valores vêm desta máquina</h2>
+                    <p class="secao-desc">Caminhos de menu e números são os da minha placa-mãe. Se o seu hardware for diferente, use como referência e confira o equivalente.</p>
+                    <a class="btn btn-ghost" href="otimizacao/meu-setup.html">Especificações completas</a>
+                </div>
+                <ul class="specs">
+                    <li><span>CPU</span><strong>Ryzen 7 9800X3D</strong></li>
+                    <li><span>GPU</span><strong>RTX 4070 GALAX</strong></li>
+                    <li><span>Placa-mãe</span><strong>Gigabyte B650 Aero G</strong></li>
+                    <li><span>Memória</span><strong>6000 MT/s CL30</strong></li>
+                    <li><span>Monitor</span><strong>Alienware 360 Hz</strong></li>
+                    <li><span>Sistema</span><strong>Windows 11</strong></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- ===== Projetos ===== -->
+        <section class="secao">
+            <header class="secao-topo">
+                <p class="eyebrow">Projetos</p>
+                <h2>O que já está no ar</h2>
+            </header>
+
+            <div class="projetos">
+                <a class="projeto projeto-ativo" href="otimizacao/index.html">
+                    <span class="status"><span class="pulse"></span> Disponível</span>
+                    <h3>Otimização</h3>
+                    <p><span data-total-guias>59</span> guias organizados em <span data-total-categorias>14</span> categorias, da BIOS ao monitoramento.</p>
+                    <span class="card-seta">Explorar →</span>
+                </a>
+                <div class="projeto projeto-breve">
+                    <span class="status">Em breve</span>
+                    <h3>Próximos projetos</h3>
+                    <p>Novos projetos vão aparecer aqui e no menu superior.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="rodape">
+        <div class="rodape-inner">
+            <a class="rodape-marca" href="index.html">
+                <img src="imagens/logo.png" alt="">
+                <span>NHOOF</span>
+            </a>
+            <p>Faça cada ajuste por sua conta e risco. Sempre crie um ponto de restauração antes.</p>
+            <p class="rodape-ano">© <span data-ano>2026</span></p>
+        </div>
+    </footer>
+
+    <!-- Lista de guias (usada para os números) e efeitos da Home -->
+    <script src="js/sidebar.js"></script>
+    <script src="js/home.js"></script>
 </body>
 </html>

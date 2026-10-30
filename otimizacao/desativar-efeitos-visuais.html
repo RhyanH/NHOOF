@@ -7,26 +7,6 @@
     <!-- Ícone da aba do navegador (Favicon) -->
     <link rel="icon" type="image/png" href="../imagens/logo.png">
     <link rel="stylesheet" href="../css/style.css">
-    <style>
-        /* Ajustes específicos desta página */
-        .page-title {
-            text-transform: uppercase;
-        }
-
-        .setup-grid {
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            margin-bottom: 2rem;
-        }
-
-        .setup-card ul {
-            gap: 0.5rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .setup-card ul li {
-            gap: 15px;
-        }
-    </style>
     <link rel="stylesheet" href="../css/responsivo.css">
 </head>
 <body>
@@ -67,7 +47,7 @@
         <!-- Painel Central -->
         <div class="main-chat">
             <div class="chat-header">
-                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu">☰</button>
+                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 4h11M2.5 8h11M2.5 12h11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
                 <span class="channel-symbol">#</span>
                 <span>desativar-efeitos-visuais</span>
                 <span class="channel-divider">|</span>
@@ -82,14 +62,14 @@
                     <!-- Card: Desativar Efeitos Visuais -->
                     <div class="setup-card">
                         <div>
-                            <h3>✨ 1. Configuração</h3>
+                            <h3><span class="card-icon">✨</span>1. Configuração</h3>
                             <ul>
                                 <li><span>Win + R</span> <strong class="code-line">SystemPropertiesPerformance</strong></li>
                                 <li><span>Passo 1</span> <strong class="text-left-normal">Marque "Ajustar para obter um melhor desempenho" (isso desmarca todos os efeitos).</strong></li>
                                 <li><span>Passo 2</span> <strong class="text-left-normal">Marque de volta somente as opções da lista abaixo, depois Aplicar → OK.</strong></li>
                             </ul>
                             
-                            <h3 style="margin-top: 1.25rem;">📌 O que deixar ativado</h3>
+                            <h3><span class="card-icon">📌</span>O que deixar ativado</h3>
                             <ul>
                                 <li><span>Animações na barra de tarefas</span></li>
                                 <li><span>Animar janelas ao minimizar e maximizar</span></li>

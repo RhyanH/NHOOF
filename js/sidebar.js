@@ -131,6 +131,9 @@
     };
     // ---- FIM DA PARTE EDITÁVEL ----------------------------------------------
 
+    // A Home lê esta lista para mostrar a contagem de guias e categorias
+    window.NHOOF_MENUS = MENUS;
+
     function esc(s) {
         return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;')
             .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -149,6 +152,8 @@
     // arquivo da página aberta (a raiz da pasta equivale a index.html)
     var atual = location.pathname.split('/').pop() || 'index.html';
     if (atual.indexOf('.') === -1) atual += '.html';
+
+    var SETA = '<svg viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
     var PREFIXO = 'sidebar_cat_';
     var CHAVE_ROLAGEM = 'sidebarScrollTop';
@@ -174,7 +179,7 @@
         html += '<div class="category-header" data-category="' + esc(id) + '"' +
             (i ? ' style="margin-top: 0.75rem;"' : '') +
             '><span class="category-arrow"' + (recolhida ? ' style="transform: rotate(-90deg);"' : '') +
-            '>▼</span> ' + esc(cat.titulo) + '</div>';
+            '>' + SETA + '</span> ' + esc(cat.titulo) + '</div>';
         html += '<div class="' + classes + '">';
         cat.canais.forEach(function (c) {
             html += '<a href="' + esc(c[0]) + '" class="channel-item' + (c[0] === atual ? ' active' : '') +
