@@ -238,6 +238,12 @@ header nav ul li a.active {
     color: var(--text);
 }
 
+/* Nome do canal nunca quebra; só a descrição é cortada com "…" */
+.chat-header > span:not(.channel-topic) {
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
 .chat-header .channel-symbol {
     font-family: var(--font-mono);
     font-size: 0.95rem;
@@ -398,10 +404,15 @@ header nav ul li a.active {
 /* ---- 6. Cartões e listas -------------------------------------------------- */
 .setup-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
     align-items: start;
     gap: 1rem;
     margin-bottom: 1.5rem;
+}
+
+/* Cartão sozinho na página: largura de leitura confortável */
+.setup-grid > .setup-card:only-child {
+    max-width: 760px;
 }
 
 .setup-card {
@@ -464,7 +475,18 @@ header nav ul li a.active {
     border: 1px solid var(--line);
     border-radius: var(--radius-md);
     background: var(--inset);
-    overflow: hidden;
+}
+
+.setup-card ul li:first-child {
+    border-radius: calc(var(--radius-md) - 1px) calc(var(--radius-md) - 1px) 0 0;
+}
+
+.setup-card ul li:last-child {
+    border-radius: 0 0 calc(var(--radius-md) - 1px) calc(var(--radius-md) - 1px);
+}
+
+.setup-card ul li:only-child {
+    border-radius: calc(var(--radius-md) - 1px);
 }
 
 .setup-card ul li {
@@ -498,6 +520,30 @@ header nav ul li a.active {
     font-weight: 500;
     color: var(--text);
     overflow-wrap: anywhere;
+}
+
+/* Valor longo (caminho, aviso, comando): rótulo em cima, valor na largura toda */
+.setup-card ul li.li-longa {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 6px;
+    padding-top: 0.7rem;
+    padding-bottom: 0.75rem;
+}
+
+.setup-card ul li.li-longa > span:first-child {
+    font-size: 0.78rem;
+    color: var(--text-3);
+}
+
+.setup-card ul li.li-longa strong {
+    max-width: none;
+    text-align: left;
+}
+
+.setup-card ul li.li-longa strong.code-line {
+    align-self: flex-start;
 }
 
 .setup-card ul li strong.text-left-normal {
@@ -721,6 +767,7 @@ a[target="_blank"]:hover::after {
     font-size: 0.7rem;
     font-weight: 600;
     white-space: nowrap;
+    z-index: 5;
     animation: entrar 0.2s var(--ease) both;
     pointer-events: none;
 }

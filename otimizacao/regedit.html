@@ -30,7 +30,7 @@
                 <li><a href="#">Projeto 7</a></li>
                 <li><a href="#">Projeto 8</a></li>
                 <li><a href="#">Projeto 9</a></li>
-                <li><a href="sobre.html">Sobre</a></li>
+                <li><a href="#">Sobre</a></li>
             </ul>
         </nav>
 
@@ -62,30 +62,30 @@
                         <div>
                             <h3><span class="card-icon">⚠️</span>Antes de aplicar</h3>
                             <ul>
-                                <li><span>Aviso</span> <strong>Crie um ponto de restauração (veja o canal Ponto de Restauração). Mexer no registro errado pode quebrar o Windows. No fim da página estão os comandos para voltar aos valores padrão.</strong></li>
+                                <li class="li-longa"><span>Aviso</span> <strong>Crie um ponto de restauração (veja o canal Ponto de Restauração). Mexer no registro errado pode quebrar o Windows. No fim da página estão os comandos para voltar aos valores padrão.</strong></li>
                             </ul>
                             <h3><span class="card-icon">🔧</span>1. Como aplicar</h3>
                             <ul>
                                 <li><span>Prompt</span> <strong>Abrir o PowerShell como Administrador</strong></li>
-                                <li><span>Execução</span> <strong>Escolha o ajuste abaixo, copie o comando completo, cole no PowerShell e aperte Enter</strong></li>
-                                <li><span>Sistema</span> <strong>Reinicie o computador após aplicar para ativar as alterações</strong></li>
+                                <li class="li-longa"><span>Execução</span> <strong>Escolha o ajuste abaixo, copie o comando completo, cole no PowerShell e aperte Enter</strong></li>
+                                <li class="li-longa"><span>Sistema</span> <strong>Reinicie o computador após aplicar para ativar as alterações</strong></li>
                             </ul>
                             <h3><span class="card-icon">⌨️</span>2. Comandos (otimizações de registro)</h3>
                             <ul>
-                                <li><span>Desativar Otimização de Entrega (DOSvc)</span> <strong class="code-line">Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\DOSvc" -Name "Start" -Value 4</strong></li>
-                                <li><span>Forçar Tela Inteira Nativa (FSE)</span> <strong class="code-line">Set-ItemProperty -Path "HKCU:\System\GameConfigStore" -Name "GameDVR_FSEBehavior" -Value 2</strong></li>
-                                <li><span>Desativar Throttling de Rede (multimídia)</span> <strong class="code-line">Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" -Name "NetworkThrottlingIndex" -Value 0xffffffff</strong></li>
-                                <li><span>Reservar menos CPU para tarefas de segundo plano</span> <strong class="code-line">Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" -Name "SystemResponsiveness" -Value 10</strong></li>
-                                <li><span>Desativar Power Throttling da CPU</span> <strong><span class="code-line">New-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" -Force</span><br><span class="code-line">New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" -Name "PowerThrottlingOff" -PropertyType DWord -Value 1 -Force</span></strong></li>
+                                <li class="li-longa"><span>Desativar Otimização de Entrega (DOSvc)</span> <strong class="code-line">Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\DOSvc" -Name "Start" -Value 4</strong></li>
+                                <li class="li-longa"><span>Forçar Tela Inteira Nativa (FSE)</span> <strong class="code-line">Set-ItemProperty -Path "HKCU:\System\GameConfigStore" -Name "GameDVR_FSEBehavior" -Value 2</strong></li>
+                                <li class="li-longa"><span>Desativar Throttling de Rede (multimídia)</span> <strong class="code-line">Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" -Name "NetworkThrottlingIndex" -Value 0xffffffff</strong></li>
+                                <li class="li-longa"><span>Reservar menos CPU para tarefas de segundo plano</span> <strong class="code-line">Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" -Name "SystemResponsiveness" -Value 10</strong></li>
+                                <li class="li-longa"><span>Desativar Power Throttling da CPU</span> <strong><span class="code-line">New-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" -Force</span><br><span class="code-line">New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" -Name "PowerThrottlingOff" -PropertyType DWord -Value 1 -Force</span></strong></li>
                             </ul>
                             <h3><span class="card-icon">↩️</span>3. Como voltar ao padrão</h3>
                             <ul>
-                                <li><span>Passos</span> <strong>Mesmos passos (PowerShell como Administrador, depois reiniciar)</strong></li>
-                                <li><span>DOSvc</span> <strong class="code-line">Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\DOSvc" -Name "Start" -Value 3</strong></li>
-                                <li><span>GameDVR_FSEBehavior</span> <strong class="code-line">Set-ItemProperty -Path "HKCU:\System\GameConfigStore" -Name "GameDVR_FSEBehavior" -Value 0</strong></li>
-                                <li><span>NetworkThrottlingIndex</span> <strong class="code-line">Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" -Name "NetworkThrottlingIndex" -Value 10</strong></li>
-                                <li><span>SystemResponsiveness</span> <strong class="code-line">Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" -Name "SystemResponsiveness" -Value 20</strong></li>
-                                <li><span>PowerThrottlingOff</span> <strong class="code-line">Remove-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" -Name "PowerThrottlingOff"</strong></li>
+                                <li class="li-longa"><span>Passos</span> <strong>Mesmos passos (PowerShell como Administrador, depois reiniciar)</strong></li>
+                                <li class="li-longa"><span>DOSvc</span> <strong class="code-line">Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\DOSvc" -Name "Start" -Value 3</strong></li>
+                                <li class="li-longa"><span>GameDVR_FSEBehavior</span> <strong class="code-line">Set-ItemProperty -Path "HKCU:\System\GameConfigStore" -Name "GameDVR_FSEBehavior" -Value 0</strong></li>
+                                <li class="li-longa"><span>NetworkThrottlingIndex</span> <strong class="code-line">Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" -Name "NetworkThrottlingIndex" -Value 10</strong></li>
+                                <li class="li-longa"><span>SystemResponsiveness</span> <strong class="code-line">Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" -Name "SystemResponsiveness" -Value 20</strong></li>
+                                <li class="li-longa"><span>PowerThrottlingOff</span> <strong class="code-line">Remove-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" -Name "PowerThrottlingOff"</strong></li>
                             </ul>
                         </div>
                         <div class="card-description">
