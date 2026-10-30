@@ -51,11 +51,11 @@
                 <span class="channel-symbol">#</span>
                 <span>ajustar dns</span>
                 <span class="channel-divider">|</span>
-                <span class="channel-topic">DNS da Cloudflare configurado no adaptador de rede para reduzir a latência de rota.</span>
+                <span class="channel-topic">DNS da Cloudflare configurado no adaptador de rede para resolver os nomes de sites e serviços.</span>
             </div>
 
             <div class="chat-content">
-                <h1 class="page-title">AJUSTAR DNS (LATÊNCIA DE ROTA)</h1>
+                <h1 class="page-title">AJUSTAR DNS (CLOUDFLARE)</h1>
 
                 <div class="setup-grid">
                     <div class="setup-card">
@@ -74,16 +74,29 @@
                                 <li><span>Janelas</span> <strong>OK → Fechar</strong></li>
                                 <li><span>Prompt de Comando (CMD)</span> <strong class="code-line">ipconfig /flushdns</strong></li>
                             </ul>
-                            <h3 style="margin-top: 1.25rem;">🔎 3. Como testar</h3>
+                            <h3 style="margin-top: 1.25rem;">🔎 3. Teste de conexão</h3>
                             <ul>
                                 <li><span>Prompt de Comando (CMD)</span> <strong class="code-line">ping 1.1.1.1</strong></li>
-                                <li><span>Verifique a linha final</span> <strong>O resultado ideal deve apresentar 0% de perda e a menor Média em ms possível para a sua região</strong></li>
+                                <li><span>Verifique a linha final</span> <strong>O resultado ideal deve apresentar 0% de perda e a menor Média em ms possível para a sua região. Esse teste mede a conexão até a Cloudflare, não o DNS.</strong></li>
                             </ul>
                             <h3 style="margin-top: 1.25rem;">✅ 4. Como verificar se funcionou após aplicar</h3>
                             <ul>
-                                <li><span>Prompt de Comando (CMD)</span> <strong class="code-line">nslookup google.com 1.1.1.1</strong></li>
-                                <li><span>Resultado</span> <strong>Se nas primeiras linhas aparecer Server: one.one.one.one e Address: 1.1.1.1, o Windows já está navegando e jogando com a rota otimizada da Cloudflare</strong></li>
+                                <li><span>Prompt de Comando (CMD)</span> <strong class="code-line">nslookup google.com</strong></li>
+                                <li><span>Resultado</span> <strong>Se nas primeiras linhas aparecer Server: one.one.one.one e Address: 1.1.1.1, o Windows está usando o DNS da Cloudflare</strong></li>
                             </ul>
+                        </div>
+                        <div class="card-description">
+                            <strong>O que faz:</strong> O DNS traduz o nome de um site ou serviço (como google.com) no endereço numérico dele. Aqui o Windows passa a fazer essa consulta pelos servidores da Cloudflare. O DNS não muda a rota nem o ping dos jogos.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="alerts-container">
+                    <div class="alert-box warning">
+                        <div class="alert-icon">↩️</div>
+                        <div class="alert-text">
+                            <p><strong>Como voltar atrás:</strong><br>
+                            Na mesma janela do TCP/IPv4, volte a configuração do DNS para o modo automático e clique em OK.</p>
                         </div>
                     </div>
                 </div>

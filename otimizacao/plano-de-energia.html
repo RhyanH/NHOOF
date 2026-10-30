@@ -51,7 +51,7 @@
                 <span class="channel-symbol">#</span>
                 <span>plano de energia</span>
                 <span class="channel-divider">|</span>
-                <span class="channel-topic">Plano de energia em Desempenho Máximo para remover as limitações de economia de energia.</span>
+                <span class="channel-topic">Plano de energia em Desempenho Máximo para reduzir as economias de energia do processador.</span>
             </div>
 
             <div class="chat-content">
@@ -60,19 +60,20 @@
                 <div class="setup-grid">
                     <div class="setup-card">
                         <div>
-                            <h3>⚙️ 1. Configuração</h3>
-                            <ul>
-                                <li><span>Win + R</span> <strong class="code-line">control powercfg.cpl</strong></li>
-                                <li><span>Plano de Energia</span> <strong>Desempenho Máximo</strong></li>
-                            </ul>
-                            <h3 style="margin-top: 1.25rem;">💻 2. PowerShell</h3>
+                            <h3>💻 1. PowerShell (primeiro, para criar o plano)</h3>
                             <ul>
                                 <li><span>Executar como</span> <strong>Administrador</strong></li>
                                 <li><span>Comando</span> <strong class="code-line">powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61</strong></li>
                             </ul>
+                            <h3 style="margin-top: 1.25rem;">⚙️ 2. Configuração (depois, para escolher o plano)</h3>
+                            <ul>
+                                <li><span>Win + R</span> <strong class="code-line">control powercfg.cpl</strong></li>
+                                <li><span>Plano de Energia</span> <strong>Desempenho Máximo</strong></li>
+                            </ul>
                         </div>
                         <div class="card-description">
-                            <strong>O que faz:</strong> Desativa as restrições de economia de energia do Windows, garantindo que os componentes funcionem sem limitações e entreguem o potencial máximo de desempenho de forma contínua.
+                            <strong>O que faz:</strong> O plano Desempenho Máximo reduz as economias de energia do processador, mantendo as frequências altas em vez de baixá-las quando o PC está ocioso. O comando acima cria esse plano, que não vem visível por padrão em alguns PCs.<br><br>
+                            💡 <strong>Dica:</strong> se o plano não aparecer, clique em "Mostrar planos adicionais".
                         </div>
                     </div>
                 </div>

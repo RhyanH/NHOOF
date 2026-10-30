@@ -51,7 +51,7 @@
                 <span class="channel-symbol">#</span>
                 <span>islc</span>
                 <span class="channel-divider">|</span>
-                <span class="channel-topic">Intelligent Standby List Cleaner para limpar a lista de espera da RAM e fixar o cronômetro em 0.5ms.</span>
+                <span class="channel-topic">Intelligent Standby List Cleaner para limpar a lista de espera da RAM e manter o relógio do sistema em 0,5 ms.</span>
             </div>
 
             <div class="chat-content">
@@ -84,7 +84,7 @@
                             </ul>
                         </div>
                         <div class="card-description">
-                            <strong>O que isso faz:</strong><br>• Gerencia e limpa de forma automatizada a "Standby List" (lista de espera da memória RAM) do Windows, solucionando um problema crônico do sistema operacional que retém dados antigos em segundo plano, o que esgota a memória livre e gera engasgos e travadas (stutterings) em jogos.<br>• Sobrescreve a taxa de atualização global do relógio do Windows (Timer Resolution) cravando-a no limite estável de 0.5ms. Isso diminui consideravelmente o input lag do teclado e do mouse, resultando em uma jogabilidade muito mais fluida, responsiva e com frametimes consistentes.
+                            <strong>O que isso faz:</strong><br>• Limpa automaticamente a "Standby List" (lista de espera da memória RAM) do Windows, que guarda dados antigos em cache. Quando a lista chega a pelo menos 1024 MB e a memória livre cai abaixo de 16384 MB, o programa esvazia a lista. A ideia é evitar que a memória livre acabe e cause travadas (stutterings) em jogos.<br>• Pede ao Windows para manter o relógio do sistema (Timer Resolution) em 0,5 ms. No meu setup, sinto o mouse e o teclado mais responsivos; o efeito não é comprovado e o relógio mais preciso consome um pouco mais de energia.
                         </div>
                     </div>
                 </div>

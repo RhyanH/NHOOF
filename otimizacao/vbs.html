@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VBS - NHOOF</title>
+    <title>Integridade de Memória (HVCI) - NHOOF</title>
     <!-- Ícone da aba do navegador (Favicon) -->
     <link rel="icon" type="image/png" href="../imagens/logo.png">
     <link rel="stylesheet" href="../css/style.css">
@@ -74,25 +74,27 @@
                 <span class="channel-symbol">#</span>
                 <span>vbs</span>
                 <span class="channel-divider">|</span>
-                <span class="channel-topic">Desativação do VBS para reduzir a latência e recuperar desempenho em jogos.</span>
+                <span class="channel-topic">Desativação da Integridade de Memória (HVCI) para tentar reduzir a latência e recuperar desempenho em alguns jogos.</span>
             </div>
 
             <div class="chat-content">
-                <h1 class="page-title">VBS</h1>
+                <h1 class="page-title">INTEGRIDADE DE MEMÓRIA (HVCI)</h1>
 
                 <div class="setup-grid">
                     
-                    <!-- Card: Desativar VBS -->
+                    <!-- Card: Desativar Integridade de Memória -->
                     <div class="setup-card">
                         <div>
-                            <h3>🔒 1. Desativar Integridade de Memória (VBS)</h3>
+                            <h3>🔒 1. Desativar Integridade de Memória</h3>
                             <ul>
                                 <li><span>Caminho</span> <strong>Configurações &gt; Privacidade e Segurança &gt; Segurança do Windows &gt; Segurança do dispositivo &gt; Isolamento de núcleo</strong></li>
                                 <li><span>Opção</span> <strong>Integridade de Memória</strong></li>
                             </ul>
                         </div>
                         <div class="card-description">
-                            <strong>O que faz:</strong> Desativa a Segurança Baseada em Virtualização (VBS), eliminando o consumo excessivo de CPU e reduzindo micro-travamentos em jogos.<br><br>
+                            <strong>O que faz:</strong> Desativa a Integridade de Memória (HVCI), um recurso de segurança que roda sobre a virtualização do Windows (VBS). Pode reduzir a carga e os micro-travamentos em alguns jogos.<br><br>
+                            ⚠️ <strong>Aviso:</strong> isso reduz uma proteção de segurança do Windows, que impede a execução de drivers maliciosos ou vulneráveis no núcleo do sistema. Alguns anti-cheats, como o Vanguard (Valorant), podem exigir esse recurso ligado (modo Vanguard On-Demand).<br><br>
+                            <strong>Como reativar:</strong> o mesmo caminho acima, ligando a opção de novo.<br><br>
                             💡 <strong>Recomendação:</strong> Reinicie o PC após desativar para aplicar a alteração.
                         </div>
                     </div>

@@ -51,7 +51,7 @@
                 <span class="channel-symbol">#</span>
                 <span>regedit</span>
                 <span class="channel-divider">|</span>
-                <span class="channel-topic">Ajustes de registro aplicados por comando no PowerShell para reduzir latência e liberar o processador.</span>
+                <span class="channel-topic">Ajustes de registro aplicados por comando no PowerShell. O efeito varia de PC para PC e em vários casos é pequeno.</span>
             </div>
 
             <div class="chat-content">
@@ -60,7 +60,11 @@
                 <div class="setup-grid">
                     <div class="setup-card">
                         <div>
-                            <h3>🔧 1. Como aplicar</h3>
+                            <h3>⚠️ Antes de aplicar</h3>
+                            <ul>
+                                <li><span>Aviso</span> <strong>Crie um ponto de restauração (veja o canal Ponto de Restauração). Mexer no registro errado pode quebrar o Windows. No fim da página estão os comandos para voltar aos valores padrão.</strong></li>
+                            </ul>
+                            <h3 style="margin-top: 1.25rem;">🔧 1. Como aplicar</h3>
                             <ul>
                                 <li><span>Prompt</span> <strong>Abrir o PowerShell como Administrador</strong></li>
                                 <li><span>Execução</span> <strong>Escolha o ajuste abaixo, copie o comando completo, cole no PowerShell e aperte Enter</strong></li>
@@ -70,13 +74,22 @@
                             <ul>
                                 <li><span>Desativar Otimização de Entrega (DOSvc)</span> <strong class="code-line">Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\DOSvc" -Name "Start" -Value 4</strong></li>
                                 <li><span>Forçar Tela Inteira Nativa (FSE)</span> <strong class="code-line">Set-ItemProperty -Path "HKCU:\System\GameConfigStore" -Name "GameDVR_FSEBehavior" -Value 2</strong></li>
-                                <li><span>Desativar Throttling de Rede</span> <strong class="code-line">Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" -Name "NetworkThrottlingIndex" -Value 0xffffffff</strong></li>
-                                <li><span>Responsividade Máxima do Sistema</span> <strong class="code-line">Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" -Name "SystemResponsiveness" -Value 0</strong></li>
-                                <li><span>Desativar Power Throttling da CPU</span> <strong class="code-line">Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Power" -Name "PowerThrottlingOff" -Value 1</strong></li>
+                                <li><span>Desativar Throttling de Rede (multimídia)</span> <strong class="code-line">Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" -Name "NetworkThrottlingIndex" -Value 0xffffffff</strong></li>
+                                <li><span>Reservar menos CPU para tarefas de segundo plano</span> <strong class="code-line">Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" -Name "SystemResponsiveness" -Value 10</strong></li>
+                                <li><span>Desativar Power Throttling da CPU</span> <strong><span class="code-line">New-Item -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" -Force</span><br><span class="code-line">New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" -Name "PowerThrottlingOff" -PropertyType DWord -Value 1 -Force</span></strong></li>
+                            </ul>
+                            <h3 style="margin-top: 1.25rem;">↩️ 3. Como voltar ao padrão</h3>
+                            <ul>
+                                <li><span>Passos</span> <strong>Mesmos passos (PowerShell como Administrador, depois reiniciar)</strong></li>
+                                <li><span>DOSvc</span> <strong class="code-line">Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\DOSvc" -Name "Start" -Value 3</strong></li>
+                                <li><span>GameDVR_FSEBehavior</span> <strong class="code-line">Set-ItemProperty -Path "HKCU:\System\GameConfigStore" -Name "GameDVR_FSEBehavior" -Value 0</strong></li>
+                                <li><span>NetworkThrottlingIndex</span> <strong class="code-line">Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" -Name "NetworkThrottlingIndex" -Value 10</strong></li>
+                                <li><span>SystemResponsiveness</span> <strong class="code-line">Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" -Name "SystemResponsiveness" -Value 20</strong></li>
+                                <li><span>PowerThrottlingOff</span> <strong class="code-line">Remove-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" -Name "PowerThrottlingOff"</strong></li>
                             </ul>
                         </div>
                         <div class="card-description">
-                            <strong>O que faz:</strong><br>• <strong>DOSvc (Value 4):</strong> Desativa o serviço de Otimização de Entrega do Windows Update, impedindo que o sistema use sua conexão em segundo plano para enviar trechos de atualizações para outros computadores na internet (P2P), poupando banda e processamento.<br>• <strong>GameDVR_FSEBehavior (Value 2):</strong> Altera o comportamento do sistema para mitigar os problemas das Otimizações de Tela Inteira híbridas do Windows, facilitando o acionamento do modo Tela Inteira Exclusiva real nos jogos para reduzir o input lag e bugs de taxa de atualização.<br>• <strong>NetworkThrottlingIndex (Value 0xffffffff):</strong> Desliga por completo o mecanismo nativo do Windows que limita a velocidade de transferência de pacotes de rede não multimídia quando há processamento pesado em execução, garantindo a menor latência (ping) possível e eliminando perdas de pacotes.<br>• <strong>SystemResponsiveness (Value 0):</strong> Remove a reserva padrão do sistema que retém 20% dos recursos do processador para serviços secundários em segundo plano, liberando 100% da capacidade de processamento da CPU para priorizar o jogo que estiver aberto no momento.<br>• <strong>PowerThrottlingOff (Value 1):</strong> Desativa globalmente o estrangulamento energético de processos do Windows, impedindo que o sistema operacional reduza de forma artificial a frequência ou jogue threads ativas da CPU para estados de economia de energia, eliminando microgaguejos (stutterings).
+                            <strong>O que faz:</strong><br>• <strong>DOSvc (Value 4):</strong> Desativa o serviço de Otimização de Entrega do Windows, impedindo que o sistema use sua conexão em segundo plano para enviar trechos de atualizações para outros computadores (P2P), poupando banda e processamento.<br>• <strong>GameDVR_FSEBehavior (Value 2):</strong> Altera o comportamento das Otimizações de Tela Inteira do Windows, com a intenção de os jogos usarem tela inteira exclusiva real. Pode ajudar em jogos com problema de taxa de atualização; não há medição pública de menos input lag, e o efeito depende do jogo.<br>• <strong>NetworkThrottlingIndex (Value 0xffffffff):</strong> Desliga o limite de pacotes de rede por milissegundo que o Windows aplica quando há reprodução de mídia (multimídia) em andamento. Só atua nesse cenário; não reduz ping nem elimina perda de pacotes em jogos.<br>• <strong>SystemResponsiveness (Value 10):</strong> Define a parcela de CPU garantida a tarefas de baixa prioridade quando há programas multimídia/jogos rodando pelo agendador multimídia do Windows (MMCSS). O padrão é 20%; 10% é o menor valor com efeito (a Microsoft trata valores abaixo de 10 como 20). Não libera 100% da CPU.<br>• <strong>PowerThrottling (PowerThrottlingOff = 1):</strong> Desliga o Power Throttling, a economia de energia que o Windows aplica a processos em segundo plano. Foi pensado para notebooks na bateria; em desktop o efeito é pequeno.
                         </div>
                     </div>
                 </div>

@@ -51,11 +51,11 @@
                 <span class="channel-symbol">#</span>
                 <span>descompressão memória ram</span>
                 <span class="channel-divider">|</span>
-                <span class="channel-topic">Compressão de memória do Windows desativada para reduzir o uso da CPU e os microgaguejos.</span>
+                <span class="channel-topic">Compressão de memória do Windows desativada, para evitar o trabalho extra da CPU de comprimir e descomprimir dados.</span>
             </div>
 
             <div class="chat-content">
-                <h1 class="page-title">DESCOMPRESSÃO DE MEMÓRIA RAM</h1>
+                <h1 class="page-title">DESATIVAR COMPRESSÃO DE MEMÓRIA</h1>
 
                 <div class="setup-grid">
                     <div class="setup-card">
@@ -68,9 +68,19 @@
                                 <li><span>Execução</span> <strong>Pressione Enter</strong></li>
                                 <li><span>Sistema</span> <strong>Reinicie o computador após aplicar para ativar as alterações</strong></li>
                             </ul>
+                            <h3 style="margin-top: 1.25rem;">🔎 2. Como verificar</h3>
+                            <ul>
+                                <li><span>Código</span> <strong class="code-line">Get-MMAgent</strong></li>
+                                <li><span>Resultado</span> <strong>A linha MemoryCompression deve mostrar False</strong></li>
+                            </ul>
+                            <h3 style="margin-top: 1.25rem;">↩️ 3. Como reverter</h3>
+                            <ul>
+                                <li><span>Código</span> <strong class="code-line">Enable-MMAgent -MemoryCompression</strong></li>
+                                <li><span>Sistema</span> <strong>Reinicie o computador</strong></li>
+                            </ul>
                         </div>
                         <div class="card-description">
-                            <strong>O que isso faz:</strong><br>• Desativa o recurso nativo do Windows que compacta blocos de dados dentro da memória RAM para tentar economizar espaço físico (um recurso projetado originalmente para computadores antigos ou com pouca memória).<br>• Elimina o overhead (sobrecarga) de processamento da CPU que era desperdiçado compactando e descompactando dados em tempo real, o que reduz de forma drástica os picos latentes e os microgaguejos (stutterings) durante os jogos.<br>• Garante que o sistema e os jogos tenham acesso direto, bruto e sem atrasos digitais aos dados armazenados nos pentes de memória, otimizando a taxa de quadros e a estabilidade (altamente recomendado para setups modernos com 16GB, 32GB ou mais de RAM).
+                            <strong>O que isso faz:</strong><br>• Desativa o recurso do Windows que comprime blocos de dados dentro da memória RAM para economizar espaço físico (útil em computadores com pouca memória).<br>• Evita o processamento extra da CPU para comprimir e descomprimir dados em tempo real. No meu setup, com bastante RAM, deixo desativado e noto menos micro-travamentos nos jogos.<br>• Faz mais sentido em PCs com bastante RAM (por exemplo, 16 GB ou 32 GB ou mais); em PCs com pouca memória, o recurso pode ser útil.
                         </div>
                     </div>
                 </div>

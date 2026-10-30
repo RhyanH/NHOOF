@@ -51,11 +51,11 @@
                 <span class="channel-symbol">#</span>
                 <span>data e hora</span>
                 <span class="channel-divider">|</span>
-                <span class="channel-topic">Servidor de hora do NTP.br para corrigir o bug de sincronização do relógio do Windows.</span>
+                <span class="channel-topic">Servidor de hora do NTP.br no lugar do servidor padrão do Windows, para manter o relógio sincronizado.</span>
             </div>
 
             <div class="chat-content">
-                <h1 class="page-title">CORRIGIR RELÓGIO (BUG DE SINCRONIZAÇÃO)</h1>
+                <h1 class="page-title">SINCRONIZAR RELÓGIO COM O NTP.BR</h1>
 
                 <div class="setup-grid">
                     <div class="setup-card">
@@ -67,9 +67,15 @@
                                 <li><span>Servidor</span> <strong>Apagar o endereço antigo e digitar: pool.ntp.br</strong></li>
                                 <li><span>Sincronização</span> <strong>Clicar em Atualizar agora → OK</strong></li>
                             </ul>
+                            <h3 style="margin-top: 1.25rem;">🔎 2. Como verificar</h3>
+                            <ul>
+                                <li><span>Prompt</span> <strong>Abrir o Prompt de Comando ou o PowerShell</strong></li>
+                                <li><span>Código</span> <strong class="code-line">w32tm /query /status</strong></li>
+                                <li><span>Resultado</span> <strong>A linha "Origem" (Source) deve mostrar pool.ntp.br</strong></li>
+                            </ul>
                         </div>
                         <div class="card-description">
-                            <strong>O que isso faz:</strong><br>• Substitui o servidor de hora padrão da Microsoft (que frequentemente falha ou apresenta instabilidade de conexão no Brasil) pela infraestrutura oficial do projeto NTP.br.<br>• Corrige em definitivo o bug do relógio do Windows que fica atrasando, adiantando ou congelando, o que evita erros críticos de segurança (SSL/HTTPS) ao navegar na internet, falhas de login em launchers e bugs de autenticação em sistemas anti-cheat de jogos de perfil competitivo.
+                            <strong>O que isso faz:</strong><br>• Troca o servidor de hora padrão da Microsoft pelo do projeto NTP.br (NIC.br), servidor brasileiro de hora.<br>• Um relógio correto ajuda a evitar erros de certificado (SSL/HTTPS) ao navegar, falhas de login em launchers e problemas em alguns serviços e jogos online que dependem da hora certa.
                         </div>
                     </div>
                 </div>

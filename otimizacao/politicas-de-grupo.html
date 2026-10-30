@@ -51,7 +51,7 @@
                 <span class="channel-symbol">#</span>
                 <span>politicas de grupo</span>
                 <span class="channel-divider">|</span>
-                <span class="channel-topic">Políticas de Grupo Local para desativar telemetria, recursos de nuvem e atualizações automáticas.</span>
+                <span class="channel-topic">Políticas de Grupo Local para reduzir a telemetria, desativar recursos de nuvem e deixar as atualizações em modo manual.</span>
             </div>
 
             <div class="chat-content">
@@ -60,7 +60,11 @@
                 <div class="setup-grid">
                     <div class="setup-card">
                         <div>
-                            <h3>🔧 1. Acessando o editor</h3>
+                            <h3>⚠️ Antes de começar</h3>
+                            <ul>
+                                <li><span>Aviso</span> <strong>O gpedit.msc existe no Windows 11 Pro, Enterprise e Education. No Windows 11 Home ele não existe (o Windows diz que não encontra o arquivo). No Home, use o programa gratuito Policy Plus ou grave os mesmos valores direto no registro. Crie um ponto de restauração antes (veja o canal Ponto de Restauração) e anote o que alterou, para poder desfazer.</strong></li>
+                            </ul>
+                            <h3 style="margin-top: 1.25rem;">🔧 1. Acessando o editor</h3>
                             <ul>
                                 <li><span>Executar (Win + R)</span> <strong class="code-line">gpedit.msc</strong></li>
                             </ul>
@@ -80,7 +84,7 @@
                                 <li><span>Caminho</span> <strong>Configuração do Computador → Modelos Administrativos → Componentes do Windows → Compatibilidade de Aplicativos</strong></li>
                                 <li><span>Desativar a Telemetria de Aplicativos</span> <strong>Habilitado</strong></li>
                                 <li><span>Desativar o Mecanismo de Compatibilidade de Aplicativos</span> <strong>Habilitado</strong></li>
-                                <li><span>Desativar o Auxiliar de Compatibilidade de Programa</span> <strong>Habilitado</strong></li>
+                                <li><span>Desativar o Auxiliar de Compatibilidade de Programa</span> <strong>Habilitado <em>(Pular se joga FiveM)</em></strong></li>
                                 <li><span>Desativar o Coletor de Inventário</span> <strong>Habilitado</strong></li>
                                 <li><span>Desativar o Mecanismo de Compatibilidade de SwitchBack</span> <strong>Habilitado</strong></li>
                                 <li><span>Desativar o Gravador de Passos</span> <strong>Habilitado</strong></li>
@@ -103,6 +107,7 @@
                                 <li><span>Caminho</span> <strong>Configuração do Computador → Modelos Administrativos → Componentes do Windows → IA do Windows</strong></li>
                                 <li><span>Desabilitar Click to Do</span> <strong>Habilitado</strong></li>
                                 <li><span>Desabilitar a experiência de pesquisa agêntica de Configurações</span> <strong>Habilitado</strong></li>
+                                <li><span>Obs.</span> <strong><em>estes dois itens só aparecem em versões recentes do Windows 11 (24H2/25H2 com as últimas atualizações) e podem não ter efeito no Pro/Home.</em></strong></li>
                             </ul>
                             <h3 style="margin-top: 1.25rem;">📁 7. Explorador de Arquivos</h3>
                             <ul>
@@ -134,6 +139,7 @@
                             <ul>
                                 <li><span>Caminho</span> <strong>Configuração do Computador → Modelos Administrativos → Componentes do Windows → Loja</strong></li>
                                 <li><span>Desabilitar Download e Instalação Automáticos de Atualizações</span> <strong>Habilitado</strong></li>
+                                <li><span>Obs.</span> <strong><em>os aplicativos da Microsoft Store (inclusive Xbox App e jogos do Game Pass) deixam de atualizar sozinhos. Atualize-os manualmente pela própria Loja de vez em quando.</em></strong></li>
                             </ul>
                             <h3 style="margin-top: 1.25rem;">🌐 13. Microsoft Edge</h3>
                             <ul>
@@ -142,6 +148,13 @@
                                 <li><span>Configurar o pré-carregamento de guia</span> <strong>Impedir o pré-carregamento de guia</strong></li>
                                 <li><span>Permitir a pré-inicialização do Microsoft Edge na inicialização do Windows...</span> <strong>Habilitado</strong></li>
                                 <li><span>Configurar pré-inicialização</span> <strong>Impedir a pré-inicialização</strong></li>
+                                <li><span>Edge atual</span> <strong><em>as quatro políticas acima são do Edge antigo (EdgeHTML) e não afetam o Edge atual. Para desligar o "Aumento de velocidade na inicialização" (Startup Boost) e a execução em segundo plano do Edge atual, abra o PowerShell como Administrador e cole os comandos abaixo.</em></strong></li>
+                                <li><span>Criar a chave</span> <strong class="code-line">New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Edge" -Force</strong></li>
+                                <li><span>StartupBoostEnabled</span> <strong class="code-line">New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Edge" -Name "StartupBoostEnabled" -PropertyType DWord -Value 0 -Force</strong></li>
+                                <li><span>BackgroundModeEnabled</span> <strong class="code-line">New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Edge" -Name "BackgroundModeEnabled" -PropertyType DWord -Value 0 -Force</strong></li>
+                                <li><span>Verificar</span> <strong>Reinicie o Edge e abra edge://policy. As duas políticas devem aparecer com valor false. O Edge passa a mostrar "Gerenciado pela sua organização", o que é normal quando há política aplicada.</strong></li>
+                                <li><span>Reverter</span> <strong class="code-line">Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Edge" -Name "StartupBoostEnabled"; Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Edge" -Name "BackgroundModeEnabled"</strong></li>
+                                <li><span>Obs.</span> <strong><em>estes comandos funcionam em qualquer edição do Windows (Home, Pro etc.).</em></strong></li>
                             </ul>
                             <h3 style="margin-top: 1.25rem;">🐞 14. Relatórios de Erros do Windows</h3>
                             <ul>
@@ -165,6 +178,7 @@
                                 <li><span>Caminho</span> <strong>Configuração do Computador → Modelos Administrativos → Componentes do Windows → Windows Update → Gerenciar a Experiência do Usuário Final</strong></li>
                                 <li><span>Configurar Atualizações Automáticas</span> <strong>Habilitado</strong></li>
                                 <li><span>Configurar atualização automática</span> <strong>2 - Avisar antes de baixar e instalar automaticamente</strong></li>
+                                <li><span>Obs.</span> <strong><em>nesse modo o Windows não baixa nada sozinho. Verifique as atualizações do Windows de vez em quando (sugestão: uma vez por mês) para instalar as correções de segurança.</em></strong></li>
                             </ul>
                             <h3 style="margin-top: 1.25rem;">🖥️ 18. Sistema → Políticas do SO</h3>
                             <ul>
@@ -179,7 +193,7 @@
                             </ul>
                         </div>
                         <div class="card-description">
-                            <strong>O que faz:</strong><br>• Desativa profundamente a coleta de telemetria, rastreamento de dados de diagnóstico e envio de informações em segundo plano para servidores da Microsoft.<br>• Desliga recursos intrusivos de nuvem, widgets, publicidade oculta, tarefas agendadas de compatibilidade obsoleta e ferramentas de IA integradas do Windows para otimizar o consumo de hardware.<br>• Assume o controle total sobre as atualizações automáticas e o compartilhamento de arquivos na rede de fundo (P2P), além de liberar 100% da largura de banda reservada do sistema para priorizar jogos e downloads de forma direta.
+                            <strong>O que faz:</strong><br>• Reduz a coleta de diagnóstico ao mínimo que o Windows permite. No Home/Pro o nível mais baixo ("Necessário") continua ativo; só Enterprise/Education chegam a "Desativado". Várias políticas da seção 2 só têm efeito em PCs gerenciados por empresa. O foco é privacidade e menos ruído, não ganho de FPS.<br>• Desliga recursos de nuvem, dicas, widgets, tarefas de compatibilidade de aplicativos, relatórios de erro e ferramentas de IA do Windows, reduzindo processos e envio de dados em segundo plano.<br>• Deixa as atualizações automáticas em modo manual (você decide quando baixar e instalar) e mexe no compartilhamento de atualizações entre computadores (P2P) da Otimização de Entrega.<br>• Limite de largura de banda 0%: a reserva padrão de 20% do QoS só é usada quando algum programa pede prioridade de rede; do contrário, o Windows já deixa a banda livre. Deixar em 0% é inofensivo, mas não aumenta a sua velocidade.
                         </div>
                     </div>
                 </div>

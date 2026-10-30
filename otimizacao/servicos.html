@@ -70,10 +70,10 @@
                                 <li><span>Cartão inteligente</span> <strong>Desativado → Parar</strong></li>
                                 <li><span>Microsoft Edge Update Service (edgeupdate / edgeupdatem)</span> <strong>Desativado → Parar</strong></li>
                                 <li><span>Experiências do Usuário Conectado e Telemetria</span> <strong>Desativado → Parar</strong></li>
-                                <li><span>GIGABYTE Update Service</span> <strong>Desativado → Parar</strong></li>
+                                <li><span>GIGABYTE Update Service</span> <strong>Desativado → Parar <em>(só existe em PCs com o software da Gigabyte instalado; se não aparecer na lista, pule)</em></strong></li>
                                 <li><span>Registro remoto</span> <strong>Desativado → Parar</strong></li>
                                 <li><span>Salvar Jogos no Xbox Live</span> <strong>Desativado → Parar</strong></li>
-                                <li><span>Serviço Auxiliar de Compatibilidade de Programas</span> <strong>Desativado → Parar</strong></li>
+                                <li><span>Serviço Auxiliar de Compatibilidade de Programas</span> <strong>Desativado → Parar <em>(Pular se joga FiveM)</em></strong></li>
                                 <li><span>Serviço de Biometria do Windows</span> <strong>Desativado → Parar</strong></li>
                                 <li><span>Serviço de Compartilhamento de Rede do Windows Media Player</span> <strong>Desativado → Parar</strong></li>
                                 <li><span>Serviço de Experiência em Idiomas</span> <strong>Desativado → Parar</strong></li>
@@ -86,9 +86,24 @@
                                 <li><span>Telefonia</span> <strong>Desativado → Parar</strong></li>
                                 <li><span>Windows Search</span> <strong>Desativado → Parar</strong></li>
                             </ul>
+                            <h3 style="margin-top: 1.25rem;">⚠️ 3. Efeitos colaterais dos principais</h3>
+                            <ul>
+                                <li><span>Windows Search</span> <strong>a pesquisa do menu Iniciar e do Explorador de Arquivos fica lenta ou limitada, porque os arquivos deixam de ser indexados.</strong></li>
+                                <li><span>Spooler de Impressão</span> <strong>sem impressão (nem para PDF de impressora virtual que dependa dele). Religue se for imprimir.</strong></li>
+                                <li><span>Serviço de Biometria do Windows</span> <strong>o Windows Hello (digital e reconhecimento facial) deixa de funcionar.</strong></li>
+                                <li><span>Salvar Jogos no Xbox Live e Serviço de Rede Xbox Live</span> <strong>afetam o Xbox App e o Game Pass (salvamento de jogos na nuvem, party e chat de voz do Xbox). Pule os dois se usa esses recursos.</strong></li>
+                                <li><span>Serviço de Geolocalização</span> <strong>aplicativos que usam sua localização (mapas, clima) deixam de receber a posição automática.</strong></li>
+                                <li><span>Microsoft Edge Update Service</span> <strong>o Edge deixa de se atualizar sozinho; atualize manualmente de vez em quando para receber correções de segurança.</strong></li>
+                                <li><span>Cartão inteligente</span> <strong>leitores de cartão (por exemplo, certificado digital em cartão) deixam de funcionar.</strong></li>
+                            </ul>
+                            <h3 style="margin-top: 1.25rem;">↩️ 4. Como reverter</h3>
+                            <ul>
+                                <li><span>Executar (Win + R)</span> <strong class="code-line">services.msc</strong></li>
+                                <li><span>Ação</span> <strong>Dar dois cliques sobre o serviço → Alterar "Tipo de inicialização" para Automático (ou Manual) → Clicar em Iniciar</strong></li>
+                            </ul>
                         </div>
                         <div class="card-description">
-                            <strong>O que faz:</strong><br>• Encerra permanentemente rotinas de rastreamento de telemetria, relatórios de erros invisíveis e verificadores de updates em segundo plano, economizando ciclos de processamento da CPU.<br>• Desativa a indexação constante de arquivos (Windows Search) e o gerenciamento preditivo de memória (SysMain), eliminando picos abruptos de leitura/escrita em discos NVMe e reduzindo microgaguejos (stuttering) internos.<br>• Elimina drivers e recursos nativos irrelevantes para cenários de alta performance competitiva (como suporte a impressoras, cartões inteligentes, biometria e serviços legados de telefonia), deixando o Windows focado exclusivamente na execução do hardware principal.
+                            <strong>O que faz:</strong><br>• Desativa serviços de telemetria, relatórios de erro e atualização em segundo plano (Experiências do Usuário Conectado e Telemetria, Relatórios de Erro, Edge Update, GIGABYTE Update, Insider). Isso reduz processos e tráfego em segundo plano; o ganho de CPU é pequeno.<br>• Windows Search para a indexação de arquivos e SysMain para o pré-carregamento de aplicativos na memória. Em SSD NVMe o efeito costuma ser pequeno e varia de PC para PC.<br>• Desativar um serviço não remove o driver nem o recurso do Windows: só impede que ele inicie junto com o sistema. Recursos como impressão, cartão inteligente, biometria e telefonia deixam de funcionar enquanto o serviço estiver desativado.
                         </div>
                     </div>
                 </div>

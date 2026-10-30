@@ -51,11 +51,23 @@
                 <span class="channel-symbol">#</span>
                 <span>msi utility</span>
                 <span class="channel-divider">|</span>
-                <span class="channel-topic">MSI Utility V3 para ativar o modo MSI nos principais dispositivos e reduzir o input lag.</span>
+                <span class="channel-topic">MSI Utility V3 para ativar o modo MSI nos principais dispositivos.</span>
             </div>
 
             <div class="chat-content">
                 <h1 class="page-title">MSI UTILITY V3</h1>
+
+                <div class="alerts-container" style="margin-bottom: 1.5rem;">
+                    <div class="alert-box warning">
+                        <div class="alert-icon">⚠️</div>
+                        <div class="alert-text">
+                            <p><strong>Antes de começar:</strong><br>
+                            • <strong>Ferramenta de terceiros:</strong> o MSI Utility V3 não é da Microsoft nem da NVIDIA. Baixe sempre da fonte original.<br>
+                            • <strong>Segurança:</strong> crie um ponto de restauração do Windows antes de alterar.<br>
+                            • <strong>Observação:</strong> o Windows já usa o modo MSI em muitos dispositivos. Se a caixa "msi" já estiver marcada ao abrir o programa, não é preciso mudar nada nela.</p>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="setup-grid">
                     <div class="setup-card">
@@ -84,7 +96,7 @@
                             </ul>
                         </div>
                         <div class="card-description">
-                            <strong>O que faz:</strong> Altera a comunicação dos principais hardwares com o processador para o modo MSI (Message Signaled Interrupts), reorganizando a fila de tarefas do Windows para reduzir drasticamente o input lag do sistema e evitar microgaguejos de áudio ou vídeo.
+                            <strong>O que faz:</strong> Muda a comunicação dos principais dispositivos com o processador para o modo MSI (Message Signaled Interrupts), em que o dispositivo avisa o processador por interrupções sinalizadas por mensagem, em vez de usar linhas de interrupção compartilhadas. No meu setup, o sistema ficou mais fluido, com menos microgaguejos de áudio e vídeo.
                         </div>
                     </div>
                 </div>
@@ -96,6 +108,14 @@
                         <div class="alert-text">
                             <p><strong>Nota importante:</strong><br>
                             Atualizações de driver da NVIDIA resetam as chaves da GPU no Windows. Sempre reabra o programa após atualizar o driver de vídeo para refazer a configuração.</p>
+                        </div>
+                    </div>
+
+                    <div class="alert-box">
+                        <div class="alert-icon">↩️</div>
+                        <div class="alert-text">
+                            <p><strong>Como voltar atrás:</strong><br>
+                            Se aparecer tela preta ou travamento depois de reiniciar, abra o programa (pelo Modo de Segurança, se necessário), desmarque a caixa "msi" do dispositivo alterado e reinicie. Você também pode usar o ponto de restauração criado antes.</p>
                         </div>
                     </div>
                 </div>

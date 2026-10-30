@@ -79,7 +79,7 @@
                 <span class="channel-symbol">#</span>
                 <span>hibernação</span>
                 <span class="channel-divider">|</span>
-                <span class="channel-topic">Desativação da hibernação para liberar espaço no SSD e otimizar o sistema.</span>
+                <span class="channel-topic">Desativação da hibernação para liberar espaço no SSD.</span>
             </div>
 
             <div class="chat-content">
@@ -97,8 +97,10 @@
                             </ul>
                         </div>
                         <div class="card-description">
-                            <strong>O que faz:</strong> Desativa a hibernação do Windows.<br><br>
-                            <strong>Verificar se deu certo:</strong> Cole o comando <strong class="code-line">powercfg /a</strong> no terminal. Se aparecer a mensagem <em>"A hibernação não foi habilitada"</em>, deu certo!
+                            <strong>O que faz:</strong> Desativa a hibernação do Windows e apaga o arquivo <strong>hiberfil.sys</strong>, que por padrão ocupa cerca de 40% da sua RAM no SSD.<br><br>
+                            ⚠️ <strong>Atenção:</strong> desligar a hibernação também desliga a Inicialização Rápida do Windows (não confunda com o Fast Boot da BIOS).<br><br>
+                            <strong>Verificar se deu certo:</strong> Cole o comando <strong class="code-line">powercfg /a</strong> no terminal. Se aparecer a mensagem <em>"A hibernação não foi habilitada"</em>, deu certo!<br><br>
+                            <strong>Como reverter:</strong> <strong class="code-line">powercfg /hibernate on</strong>
                         </div>
                     </div>
 

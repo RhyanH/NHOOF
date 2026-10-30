@@ -62,24 +62,24 @@
                 <span class="channel-symbol">#</span>
                 <span>windows update</span>
                 <span class="channel-divider">|</span>
-                <span class="channel-topic">Configurações essenciais para evitar drivers genéricos e otimizar atualizações.</span>
+                <span class="channel-topic">Evita o download automático de apps de fabricantes e reduz o uso da sua internet pela Otimização de Entrega.</span>
             </div>
 
             <div class="chat-content">
                 <h1 class="page-title">Windows Update</h1>
 
                 <div class="setup-grid">
-                    <!-- Bloquear Drivers -->
+                    <!-- Apps e Ícones de Fabricantes -->
                     <div class="setup-card">
                         <div>
-                            <h3>🚫 Bloquear Drivers</h3>
+                            <h3>🚫 Apps e Ícones de Fabricantes</h3>
                             <ul>
                                 <li><span>Caminho</span> <strong>Win + R → sysdm.cpl → Hardware → Configurações de Instalação do Dispositivo</strong></li>
                                 <li><span>Instalação automática</span> <strong>Não</strong></li>
                             </ul>
                         </div>
                         <div class="card-description">
-                            <strong>O que faz:</strong> Impede que o Windows instale automaticamente drivers genéricos que possam causar instabilidade ou quedas de FPS.
+                            <strong>O que faz:</strong> Impede que o Windows baixe automaticamente aplicativos e ícones personalizados dos fabricantes dos seus dispositivos. <strong>Atenção:</strong> essa opção não impede o Windows Update de oferecer drivers; para isso, veja a dica extra abaixo.
                         </div>
                     </div>
 
@@ -93,7 +93,7 @@
                             </ul>
                         </div>
                         <div class="card-description">
-                            <strong>O que faz:</strong> Evita o uso oculto da sua largura de banda para transferir arquivos de atualização para computadores de terceiros.
+                            <strong>O que faz:</strong> Evita que o seu PC use a sua internet para enviar partes de atualizações para outros computadores (e receber delas). Com a opção desativada, o PC baixa direto da Microsoft.
                         </div>
                     </div>
                 </div>
@@ -104,7 +104,20 @@
                         <div class="alert-icon">💡</div>
                         <div class="alert-text">
                             <p><strong>Nota de transparência:</strong><br>
-                            O aviso da Microsoft "o dispositivo pode não funcionar" é apenas um alerta padrão.</p>
+                            Ao escolher <strong>Não</strong>, o Windows mostra o aviso "seu dispositivo pode não funcionar como esperado". É só um alerta padrão da Microsoft: a opção apenas bloqueia o download automático de apps e ícones de fabricantes, e o seu dispositivo continua funcionando normalmente. Os drivers continuam chegando pelo Windows Update.</p>
+                        </div>
+                    </div>
+                    <div class="alert-box warning">
+                        <div class="alert-icon">🛡️</div>
+                        <div class="alert-text">
+                            <p><strong>Dica extra: bloquear drivers de verdade</strong><br>
+                            Para impedir que o Windows Update inclua drivers nas atualizações, use um destes dois métodos:</p>
+                            <p><strong>Opção 1</strong> (Política de Grupo, não existe no Windows Home): <span class="code-line" style="overflow-wrap: anywhere;">Win + R → gpedit.msc → Configuração do Computador → Modelos Administrativos → Componentes do Windows → Windows Update → Gerenciar atualizações oferecidas pelo Windows Update → Não incluir drivers com as atualizações do Windows → Habilitada</span>.</p>
+                            <p><strong>Opção 2</strong> (registro, PowerShell como Administrador):<br>
+                            <span class="code-line" style="overflow-wrap: anywhere;">New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" -Force</span><br>
+                            <span class="code-line" style="overflow-wrap: anywhere;">New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" -Name "ExcludeWUDriversInQualityUpdate" -Value 1 -PropertyType DWord -Force</span><br>
+                            Para desfazer: <span class="code-line" style="overflow-wrap: anywhere;">Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" -Name "ExcludeWUDriversInQualityUpdate"</span></p>
+                            <p>Com isso ativo, os drivers passam a ser instalados só por você (pelos sites dos fabricantes).</p>
                         </div>
                     </div>
                 </div>

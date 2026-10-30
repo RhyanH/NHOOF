@@ -51,7 +51,7 @@
                 <span class="channel-symbol">#</span>
                 <span>disable paging executive</span>
                 <span class="channel-divider">|</span>
-                <span class="channel-topic">Mantém o núcleo do sistema na memória RAM para respostas mais rápidas e menos microgaguejos.</span>
+                <span class="channel-topic">Mantém drivers e o código do núcleo do sistema na memória RAM, em vez de enviá-los ao arquivo de paginação.</span>
             </div>
 
             <div class="chat-content">
@@ -68,9 +68,14 @@
                                 <li><span>Execução</span> <strong>Pressione Enter</strong></li>
                                 <li><span>Sistema</span> <strong>Reinicie o computador após aplicar para ativar as alterações</strong></li>
                             </ul>
+                            <h3 style="margin-top: 1.25rem;">↩️ 2. Como reverter</h3>
+                            <ul>
+                                <li><span>Código</span> <strong class="code-line">Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" -Name "DisablePagingExecutive" -Value 0</strong></li>
+                                <li><span>Sistema</span> <strong>Reinicie o computador</strong></li>
+                            </ul>
                         </div>
                         <div class="card-description">
-                            <strong>O que isso faz:</strong><br>• Força o Windows a manter os drivers do sistema e o código executável do kernel (núcleo do sistema operacional) residentes diretamente na memória RAM física, impedindo que o sistema envie esses arquivos essenciais para o arquivo de paginação (pagefile.sys) no SSD ou HD quando estiverem ociosos.<br>• Elimina os atrasos de leitura e os chamados "page faults" (falhas de página), que ocorrem quando o Windows precisa resgatar uma rotina do sistema de volta do disco de armazenamento, resultando em respostas de sistema muito mais rápidas e sem gargalos de comunicação.<br>• Reduz de forma drástica os microgaguejos (stutterings) e oscilações de quadros durante a jogatina, garantindo que o sistema operacional responda com a velocidade de transferência bruta e imediata das memórias RAM (altamente recomendado para máquinas com 16GB ou mais de RAM).
+                            <strong>O que isso faz:</strong><br>• Faz o Windows manter os drivers do sistema e o código executável do kernel (núcleo do sistema operacional) na memória RAM física, sem enviá-los ao arquivo de paginação (pagefile.sys) no SSD ou HD quando estão ociosos.<br>• Isso pode evitar a leitura desses dados do disco (falhas de página) quando o sistema precisa deles de volta. O benefício depende da carga e do quanto de RAM livre existe; no meu setup, deixo ativado.<br>• Usa um pouco mais de RAM física, por isso faz mais sentido em máquinas com bastante memória (por exemplo, 16 GB ou mais).
                         </div>
                     </div>
                 </div>
