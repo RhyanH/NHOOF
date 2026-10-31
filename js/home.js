@@ -1,7 +1,10 @@
 /* ============================================================================
-   NHOOF — fundo animado da Home
-   Partículas que andam sozinhas pela tela, desenhadas num <canvas>, sem
-   bibliotecas; linhas ligam as partículas próximas. O movimento é calculado
+   NHOOF — fundo animado da Home (cara de espaço)
+   - Céu de estrelas: pontinhos bem fracos desenhados uma vez e usados como
+     imagem de fundo do palco; alguns deles piscam devagar.
+   - Partículas que andam sozinhas, com profundidade: as maiores parecem
+     mais perto e andam mais rápido; linhas ligam as partículas próximas.
+   Tudo em <canvas>, sem bibliotecas. O movimento é calculado
    pelo tempo decorrido (não por quadro), então a velocidade é a mesma e
    suave em monitores de 60, 144 ou 240 Hz.
 
@@ -12,7 +15,7 @@
      estiver acompanhando, tira partículas aos poucos (uma por quadro, sem
      salto visível) até a animação ficar fluida. PCs bons não perdem nada.
 
-   A grade e o brilho são animados por CSS (css/home.css).
+   O brilho atrás do NHOOF é animado por CSS (css/home.css).
    Respeita a configuração da pessoa: com "reduzir movimento" ligado (no
    Windows, "Animar controles e elementos dentro das janelas" desligado), as
    partículas ficam paradas. Se a configuração mudar com a página aberta, a
@@ -25,6 +28,10 @@
     if (!canvas || !canvas.getContext) return;
 
     var ctx = canvas.getContext('2d');
+    var palco = canvas.parentNode;
+    var ceu = document.createElement('canvas');
+    var ctxCeu = ceu.getContext('2d');
+    var urlCeu = null;
     var preferencia = window.matchMedia ? window.matchMedia('(prefers-reduced-motion: reduce)') : null;
     function reduzir() { return !!(preferencia && preferencia.matches); }
 
@@ -41,6 +48,17 @@
     }
     // Três tamanhos de partícula, cada um com seu brilho
     var CORES_PONTO = ['rgba(255,255,255,0.47)', 'rgba(255,255,255,0.6)', 'rgba(255,255,255,0.72)'];
+    // Profundidade: as partículas pequenas (longe) andam mais devagar
+    var RITMO = [0.5, 0.8, 1.2];
+
+    // ---- Céu de estrelas -------------------------------------------------------
+    var AREA_ESTRELA = 2600;  // uma estrela a cada tantos px² de tela
+    var MAX_ESTRELAS = 800;
+    var FRACAO_PISCAM = 0.12; // parte das estrelas que pisca
+    var NIVEIS_BRILHO = 5;    // estrelas que piscam são agrupadas por brilho
+    var piscam = [];
+    var grupos = [];
+    for (var g = 0; g < NIVEIS_BRILHO; g++) grupos.push([]);
 
     // ---- Qualidade adaptativa --------------------------------------------------
     var NIVEIS = [1, 0.7, 0.5, 0.35]; // fração das partículas em cada nível
@@ -66,8 +84,73 @@
             y: Math.random() * altura,
             vx: (Math.random() - 0.5) * 2 * VELOCIDADE,
             vy: (Math.random() - 0.5) * 2 * VELOCIDADE,
-            t: Math.floor(Math.random() * 3) // tamanho: 0, 1 ou 2
+            t: Math.floor(Math.random() * 3) // tamanho: 0, 1 ou 2 (longe → perto)
         };
+    }
+
+    // Desenha as estrelas paradas uma vez só; guarda as que piscam
+    function montarCeu() {
+        piscam = [];
+        if (!ctxCeu || !largura || !altura) return;
+        var d = dprMaximo;
+        ceu.width = Math.round(largura * d);
+        ceu.height = Math.round(altura * d);
+        ctxCeu.setTransform(d, 0, 0, d, 0, 0);
+        ctxCeu.clearRect(0, 0, largura, altura);
+        var total = Math.round(Math.min(MAX_ESTRELAS, (largura * altura) / AREA_ESTRELA));
+        for (var i = 0; i < total; i++) {
+            var e = {
+                x: Math.random() * largura,
+                y: Math.random() * altura,
+                r: 0.35 + Math.random() * 0.55,
+                a: 0.12 + Math.random() * 0.4,
+                fase: Math.random() * Math.PI * 2,
+                ritmo: 0.6 + Math.random() * 1.4 // velocidade da piscada
+            };
+            if (Math.random() < FRACAO_PISCAM) {
+                piscam.push(e);
+            } else {
+                ctxCeu.fillStyle = 'rgba(220,226,255,' + e.a.toFixed(3) + ')';
+                ctxCeu.beginPath();
+                ctxCeu.arc(e.x, e.y, e.r, 0, Math.PI * 2);
+                ctxCeu.fill();
+            }
+        }
+        // vira imagem de fundo do palco
+        if (ceu.toBlob && window.URL) {
+            ceu.toBlob(function (blob) {
+                if (!blob) return;
+                if (urlCeu) URL.revokeObjectURL(urlCeu);
+                urlCeu = URL.createObjectURL(blob);
+                palco.style.backgroundImage = 'url(' + urlCeu + ')';
+            });
+        } else {
+            palco.style.backgroundImage = 'url(' + ceu.toDataURL() + ')';
+        }
+    }
+
+    // Estrelas que piscam: o brilho varia devagar (agrupado em poucos níveis)
+    function desenharPiscando(segundos) {
+        var i, e, n;
+        for (i = 0; i < NIVEIS_BRILHO; i++) grupos[i].length = 0;
+        for (i = 0; i < piscam.length; i++) {
+            e = piscam[i];
+            var luz = 0.5 + 0.5 * Math.sin(segundos * e.ritmo + e.fase); // 0..1
+            n = Math.min(NIVEIS_BRILHO - 1, Math.floor(luz * NIVEIS_BRILHO));
+            grupos[n].push(e);
+        }
+        for (n = 0; n < NIVEIS_BRILHO; n++) {
+            var lista = grupos[n];
+            if (!lista.length) continue;
+            ctx.fillStyle = 'rgba(220,226,255,' + (0.1 + 0.6 * (n + 0.5) / NIVEIS_BRILHO).toFixed(3) + ')';
+            ctx.beginPath();
+            for (i = 0; i < lista.length; i++) {
+                e = lista[i];
+                ctx.moveTo(e.x + e.r + 0.3, e.y);
+                ctx.arc(e.x, e.y, e.r + 0.3, 0, Math.PI * 2);
+            }
+            ctx.fill();
+        }
     }
 
     function ajustarCanvas() {
@@ -85,6 +168,7 @@
 
     function montar() {
         ajustarCanvas();
+        montarCeu();
         alvo = Math.round(quantidadeBase() * NIVEIS[nivel]);
         pontos = [];
         for (var i = 0; i < alvo; i++) pontos.push(novaParticula());
@@ -95,8 +179,9 @@
     function mover(dt) {
         for (var i = 0; i < pontos.length; i++) {
             var p = pontos[i];
-            p.x += p.vx * dt;
-            p.y += p.vy * dt;
+            var k = RITMO[p.t] * dt;
+            p.x += p.vx * k;
+            p.y += p.vy * k;
             if (p.x < -10) p.x = largura + 10; else if (p.x > largura + 10) p.x = -10;
             if (p.y < -10) p.y = altura + 10; else if (p.y > altura + 10) p.y = -10;
         }
@@ -106,7 +191,7 @@
     var faixas = [];
     for (var k = 0; k < FAIXAS; k++) faixas.push([]);
 
-    function desenhar() {
+    function desenhar(agora) {
         var i, j, p, q, dx, dy, d2, n = pontos.length;
         for (i = 0; i < FAIXAS; i++) faixas[i].length = 0;
 
@@ -128,6 +213,7 @@
         }
 
         ctx.clearRect(0, 0, largura, altura);
+        desenharPiscando((agora || 0) / 1000);
         ctx.lineWidth = 1;
         for (i = 0; i < FAIXAS; i++) {
             var l = faixas[i];
@@ -189,7 +275,7 @@
         if (pontos.length > alvo) pontos.pop();
         // limita o salto a 50 ms (ex.: depois de a aba ficar em segundo plano)
         mover(Math.min(ms, 50) / 1000);
-        desenhar();
+        desenhar(agora);
         requestAnimationFrame(quadro);
     }
 

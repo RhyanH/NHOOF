@@ -1,8 +1,8 @@
 /* ============================================================================
    NHOOF — Home
-   Só o NHOOF no centro, sobre um fundo animado:
-     - partículas conectadas que andam sozinhas (canvas, js/home.js)
-     - grade que desliza devagar
+   Só o NHOOF no centro, sobre um fundo animado com cara de espaço:
+     - céu de estrelas bem fracas, algumas piscando (js/home.js)
+     - partículas conectadas que andam sozinhas, com profundidade (js/home.js)
      - dois brilhos que flutuam e "respiram"
    Usa os tokens de css/style.css.
    ============================================================================ */
@@ -24,35 +24,19 @@ body.home {
 }
 
 /* ---- Partículas ------------------------------------------------------------- */
+/* As estrelas paradas são desenhadas uma vez por js/home.js e entram como
+   imagem de fundo do palco (sem camada extra para a placa de vídeo montar). */
+.home-palco {
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
 .hero-canvas {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
     z-index: -3;
-}
-
-/* ---- Grade -------------------------------------------------------------------- */
-/* A máscara (o "esfumado" das bordas) fica parada no elemento de fora;
-   a camada de dentro carrega as linhas e é só deslocada (transform),
-   que a placa de vídeo faz sem redesenhar nada: animação fluida. */
-.hero-grid {
-    position: absolute;
-    inset: 0;
-    z-index: -2;
-    overflow: hidden;
-    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, #000 20%, transparent 75%);
-    mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, #000 20%, transparent 75%);
-}
-
-.hero-grid span {
-    position: absolute;
-    inset: -64px 0 0 -64px; /* um quadrado a mais em cima e à esquerda, para o ciclo não mostrar borda */
-    background-image:
-        linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
-    background-size: 64px 64px;
-    will-change: transform;
 }
 
 /* ---- Brilho ------------------------------------------------------------------- */
@@ -120,11 +104,6 @@ body.home {
         animation: subir 0.9s var(--ease) both;
     }
 
-    /* a grade desliza na diagonal; 64px = um quadrado, então o ciclo é contínuo */
-    .hero-grid span {
-        animation: grade-deslizar 18s linear infinite;
-    }
-
     .hero-glow {
         animation: brilho-respirar 7s ease-in-out infinite alternate;
     }
@@ -146,15 +125,6 @@ body.home {
     to {
         opacity: 1;
         transform: none;
-    }
-}
-
-@keyframes grade-deslizar {
-    from {
-        transform: translate3d(0, 0, 0);
-    }
-    to {
-        transform: translate3d(64px, 64px, 0);
     }
 }
 
