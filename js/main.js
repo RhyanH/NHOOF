@@ -109,12 +109,42 @@
             new MutationObserver(function (mudancas) {
                 mudancas.forEach(function (m) {
                     m.addedNodes.forEach(function (n) {
-                        if (n.nodeType === 1 && n.classList.contains('chat-content')) organizarListas(n);
+                        if (n.nodeType === 1 && n.classList.contains('chat-content')) {
+                            organizarListas(n);
+                            preencherContagens(n);
+                        }
                     });
                 });
             }).observe(painel, { childList: true });
         }
     }
+
+    /* ------------------------------------------------------------------------
+       Página inicial da Otimização: números de guias por categoria lidos de
+       js/sidebar.js (window.NHOOF_MENUS) e luz que segue o mouse nos cartões.
+       ------------------------------------------------------------------------ */
+    function preencherContagens(raiz) {
+        var menu = window.NHOOF_MENUS && window.NHOOF_MENUS.otimizacao;
+        if (!menu) return;
+        (raiz || document).querySelectorAll('.card[data-categoria]').forEach(function (card) {
+            var titulo = card.getAttribute('data-categoria');
+            var cat = menu.filter(function (c) { return c.titulo === titulo; })[0];
+            var alvo = card.querySelector('.card-num');
+            if (!cat || !alvo) return;
+            var n = cat.canais.length;
+            alvo.innerHTML = '<b>' + n + '</b> ' + (n === 1 ? 'guia' : 'guias');
+        });
+    }
+
+    document.addEventListener('pointermove', function (e) {
+        var card = e.target && e.target.closest ? e.target.closest('.card') : null;
+        if (!card) return;
+        var r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+
+    preencherContagens();
 
     // Fecha a gaveta com Esc
     document.addEventListener('keydown', function (e) {

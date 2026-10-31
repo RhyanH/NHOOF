@@ -8,6 +8,8 @@ Site pessoal com guias de otimização de PC, publicado no GitHub Pages.
 |---|---|
 | `index.html` | Página inicial |
 | `sobre/index.html` | Página Sobre |
+| `otimizacao/index.html` | Início da Otimização: acesso rápido às categorias |
+| `otimizacao/importante.html` | Informações importantes |
 | `otimizacao/*.html` | Um arquivo por guia |
 | `css/style.css` | Design system: todas as cores, cartões, switches e alertas |
 | `css/responsivo.css` | Ajustes para tablet e celular |

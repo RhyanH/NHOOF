@@ -29,7 +29,8 @@
     var MENUS = {
         otimizacao: [
             { titulo: '[BEM VINDO]', canais: [
-                ['index.html', 'importante'],
+                ['index.html', 'início'],
+                ['importante.html', 'importante'],
                 ['meu-setup.html', 'meu setup'],
             ] },
 

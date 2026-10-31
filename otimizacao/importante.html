@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informações Importantes - NHOOF</title>
+    <!-- Ícone da aba do navegador (Favicon) -->
+    <link rel="icon" type="image/png" href="../imagens/logo.png">
+    <link rel="stylesheet" href="../css/style.css?v=202610310704">
+    <link rel="stylesheet" href="../css/responsivo.css?v=202610310704">
+</head>
+<body>
+
+    <!-- Cabeçalho Global do Site -->
+    <header class="global-header">
+        <div class="logo-container">
+            <a href="../index.html">
+                <img src="../imagens/logo.png" alt="Logo">
+            </a>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active">Otimização</a></li>
+                <li><a href="#">Projeto 2</a></li>
+                <li><a href="#">Projeto 3</a></li>
+                <li><a href="#">Projeto 4</a></li>
+                <li><a href="#">Projeto 5</a></li>
+                <li><a href="#">Projeto 6</a></li>
+                <li><a href="#">Projeto 7</a></li>
+                <li><a href="#">Projeto 8</a></li>
+                <li><a href="#">Projeto 9</a></li>
+                <li><a href="../sobre/index.html">Sobre</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-spacer"></div>
+    </header>
+
+    <!-- Contêiner principal: barra lateral e painel de conteúdo -->
+    <div class="discord-app">
+        
+        <!-- Barra Lateral Esquerda (montada por ../js/sidebar.js; para mudar canais, edite js/sidebar.js) -->
+        <div class="sidebar-channels" data-projeto="otimizacao"></div>
+        <script src="../js/sidebar.js?v=202610310704"></script>
+
+        <!-- Painel Central -->
+        <div class="main-chat">
+            <div class="chat-header">
+                <button class="mobile-menu-btn" type="button" aria-label="Abrir menu"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 4h11M2.5 8h11M2.5 12h11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+                <span class="channel-symbol">#</span>
+                <span>importante</span>
+                <span class="channel-divider">|</span>
+                <span class="channel-topic">Recomendações antes de iniciar os procedimentos.</span>
+            </div>
+
+            <div class="chat-content">
+                <h1 class="page-title">Informações Importantes</h1>
+
+                <div class="alert-box">
+                    <div class="alert-icon">⚠️</div>
+                    <div class="alert-text">
+                        <p>Todas as otimizações e modificações apresentadas foram testadas, personalizadas e ajustadas por mim, de acordo com a configuração da minha própria máquina. Os resultados podem variar dependendo do hardware e do sistema de cada usuário.</p>
+                        <p>Antes de aplicar qualquer alteração, certifique-se de entender o que ela faz e como revertê-la. Se não souber o que está fazendo, recomendo que não mexa. <strong>Atenção: faça por sua conta e risco!</strong></p>
+                    </div>
+                </div>
+
+                <div class="alert-box">
+                    <div class="alert-icon">🧰</div>
+                    <div class="alert-text">
+                        <p><strong>Antes de começar:</strong><br>
+                        • Crie um ponto de restauração do Windows.<br>
+                        • Anote ou fotografe os valores originais da BIOS antes de mudar qualquer opção.<br>
+                        • Saiba voltar ao padrão: na BIOS, a opção <strong>Load Optimized Defaults</strong> restaura os valores de fábrica.<br>
+                        • Confira se o seu hardware é compatível com o que está descrito (os caminhos e valores deste site são os da minha placa-mãe, a Gigabyte B650 Aero G).<br>
+                        • Atenção à garantia: a AMD informa que o PBO funciona fora da especificação do processador e pode invalidar a garantia. Overclock em geral também não é coberto.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Camada escura exibida atrás do menu lateral aberto em telas pequenas -->
+    <div class="sidebar-overlay"></div>
+
+    <!-- Scripts compartilhados (menu em telas pequenas e navegação sem recarregar) -->
+    <script src="../js/main.js?v=202610310704"></script>
+    <script src="../js/navegacao.js?v=202610310704"></script>
+</body>
+</html>

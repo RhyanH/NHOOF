@@ -166,55 +166,6 @@ body.home {
     animation: subir 0.8s 0.28s var(--ease) both;
 }
 
-.btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    height: 44px;
-    padding: 0 20px;
-    border-radius: 999px;
-    font-size: 0.92rem;
-    font-weight: 550;
-    letter-spacing: -0.01em;
-    transition: transform 0.2s var(--ease), background-color 0.2s var(--ease), border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
-}
-
-.btn svg {
-    width: 16px;
-    height: 16px;
-    transition: transform 0.2s var(--ease);
-}
-
-.btn-primary {
-    background: #fff;
-    color: #09090b;
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1), 0 8px 30px rgba(var(--accent-rgb), 0.25);
-}
-
-.btn-primary:hover {
-    color: #09090b;
-    transform: translateY(-1px);
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2), 0 12px 40px rgba(var(--accent-rgb), 0.4);
-}
-
-.btn-primary:hover svg {
-    transform: translateX(3px);
-}
-
-.btn-ghost {
-    border: 1px solid var(--line-strong);
-    background: rgba(255, 255, 255, 0.03);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    color: var(--text);
-}
-
-.btn-ghost:hover {
-    color: #fff;
-    border-color: rgba(255, 255, 255, 0.25);
-    background: rgba(255, 255, 255, 0.07);
-}
-
 .hero-stats {
     display: flex;
     margin-top: 3.5rem;
@@ -274,7 +225,7 @@ body.home {
     animation: rolar 1.8s var(--ease) infinite;
 }
 
-/* ---- Seções --------------------------------------------------------------- */
+/* ---- Seções (botões, rótulo e descrição estão em css/style.css) ------------ */
 .secao {
     max-width: 1180px;
     margin: 0 auto;
@@ -287,16 +238,6 @@ body.home {
     margin-bottom: 2.25rem;
 }
 
-.eyebrow {
-    margin-bottom: 0.8rem;
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    font-weight: 500;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--accent);
-}
-
 .secao h2 {
     font-size: clamp(1.6rem, 3.2vw, 2.4rem);
     font-weight: 650;
@@ -306,236 +247,17 @@ body.home {
     text-wrap: balance;
 }
 
-.secao-desc {
-    margin-top: 0.9rem;
-    font-size: 1rem;
-    line-height: 1.65;
-    color: var(--text-2);
-}
-
-/* ---- Cartões de acesso rápido (glass + luz que segue o mouse) --------------- */
+/* ---- Cartões de acesso rápido ------------------------------------------------ */
 .cards {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 14px;
 }
 
-.card,
-.projeto {
-    --mx: 50%;
-    --my: 0%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    padding: 1.4rem;
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    background:
-        radial-gradient(420px circle at var(--mx) var(--my), rgba(var(--accent-rgb), 0.08), transparent 45%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.01));
-    color: var(--text);
-    overflow: hidden;
-    transition: border-color 0.25s var(--ease), transform 0.25s var(--ease);
-}
-
-/* Borda iluminada sob o mouse */
-.card::before,
-.projeto::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    padding: 1px;
-    border-radius: inherit;
-    background: radial-gradient(260px circle at var(--mx) var(--my), rgba(var(--accent-rgb), 0.6), transparent 60%);
-    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
-    -webkit-mask-composite: xor;
-    mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
-    opacity: 0;
-    transition: opacity 0.3s var(--ease);
-    pointer-events: none;
-}
-
-a.card:hover,
-a.projeto:hover {
-    color: var(--text);
-    transform: translateY(-2px);
-}
-
-.card:hover::before,
-.projeto:hover::before {
-    opacity: 1;
-}
-
-.card-topo {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1.25rem;
-}
-
-.card-icone {
-    display: grid;
-    place-items: center;
-    width: 40px;
-    height: 40px;
-    border: 1px solid var(--line-strong);
-    border-radius: 11px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
-    color: var(--text);
-}
-
-.card-icone svg {
-    width: 19px;
-    height: 19px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 1.6;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.card-num,
-.card-tag {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--text-3);
-}
-
-.card-num b {
-    color: var(--text-2);
-    font-weight: 500;
-}
-
-.card-tag {
-    padding: 4px 9px;
-    border: 1px solid rgba(var(--ok-rgb), 0.3);
-    border-radius: 999px;
-    background: rgba(var(--ok-rgb), 0.08);
-    color: var(--ok);
-}
-
-.card h3,
-.projeto h3 {
-    font-size: 1.08rem;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    color: #fff;
-}
-
-.card p,
-.projeto p {
-    margin-top: 0.45rem;
-    font-size: 0.88rem;
-    line-height: 1.6;
-    color: var(--text-2);
-}
-
-.card-seta {
-    margin-top: auto;
-    padding-top: 1.25rem;
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: var(--text-3);
-    transition: color 0.2s var(--ease), transform 0.2s var(--ease);
-}
-
-a.card:hover .card-seta,
-a.projeto:hover .card-seta {
-    color: var(--accent);
-    transform: translateX(3px);
-}
-
+/* Cartão de destaque ocupa duas linhas na grade da Home
+   (o visual dos cartões está em css/style.css) */
 .card-destaque {
     grid-row: span 2;
-    background:
-        radial-gradient(420px circle at var(--mx) var(--my), rgba(var(--accent-rgb), 0.1), transparent 45%),
-        radial-gradient(120% 80% at 0% 0%, rgba(var(--accent-rgb), 0.14), transparent 60%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
-    border-color: rgba(var(--accent-rgb), 0.22);
-}
-
-.card-destaque h3 {
-    margin-top: auto;
-    font-size: 1.5rem;
-}
-
-.card-destaque p {
-    font-size: 0.95rem;
-}
-
-.card-chips {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 1.1rem;
-}
-
-.card-chips li {
-    padding: 4px 10px;
-    border: 1px solid var(--line);
-    border-radius: 999px;
-    background: rgba(0, 0, 0, 0.25);
-    font-family: var(--font-mono);
-    font-size: 0.72rem;
-    color: var(--text-2);
-}
-
-.card-chips li::before {
-    content: "# ";
-    color: var(--accent);
-}
-
-/* ---- Faixa do setup -------------------------------------------------------- */
-.setup-faixa {
-    display: grid;
-    grid-template-columns: 1fr 1.1fr;
-    gap: 3rem;
-    align-items: center;
-    padding: 2.5rem;
-    border: 1px solid var(--line);
-    border-radius: 20px;
-    background:
-        radial-gradient(80% 120% at 100% 0%, rgba(var(--ok-rgb), 0.06), transparent 60%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
-}
-
-.setup-texto .btn {
-    margin-top: 1.75rem;
-}
-
-.specs {
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
-}
-
-.specs li {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    padding: 0.85rem 1rem;
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    background: rgba(0, 0, 0, 0.25);
-}
-
-.specs span {
-    font-family: var(--font-mono);
-    font-size: 0.66rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--text-3);
-}
-
-.specs strong {
-    font-size: 0.95rem;
-    font-weight: 550;
-    letter-spacing: -0.01em;
-    color: var(--text);
 }
 
 /* ---- Projetos ------------------------------------------------------------- */
