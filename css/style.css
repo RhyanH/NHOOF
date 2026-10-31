@@ -194,9 +194,9 @@ header nav ul li a:hover {
     background: rgba(255, 255, 255, 0.05);
 }
 
-/* Item ativo: texto em degradê e contorno girando com as cores do site
-   (azul-violeta e verde). Anima apenas se a pessoa deixa animações
-   ligadas no sistema; caso contrário, as cores aparecem paradas. */
+/* Item ativo: texto azul em negrito com brilho leve e contorno girando em
+   tons de azul. O contorno anima apenas se a pessoa deixa animações ligadas
+   no sistema; caso contrário, aparece parado. */
 @property --nav-ang {
     syntax: "<angle>";
     inherits: false;
@@ -205,13 +205,10 @@ header nav ul li a:hover {
 
 header nav ul li a.active {
     position: relative;
-    color: #fff;
-    -webkit-text-fill-color: transparent;
-    background:
-        linear-gradient(90deg, var(--accent), #c3cbff, var(--ok), #a6f0cc, var(--accent)) 0 0 / 200% 100% text,
-        rgba(255, 255, 255, 0.07) padding-box;
-    -webkit-background-clip: text, padding-box;
-    background-clip: text, padding-box;
+    color: var(--accent);
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.05);
+    text-shadow: 0 0 12px rgba(var(--accent-rgb), 0.5);
 }
 
 /* contorno de 1px */
@@ -222,7 +219,7 @@ header nav ul li a.active::after {
     inset: 0;
     border-radius: inherit;
     pointer-events: none;
-    background: conic-gradient(from var(--nav-ang), var(--accent), var(--ok), var(--accent), var(--ok), var(--accent));
+    background: conic-gradient(from var(--nav-ang), var(--accent), #3f5bff, #c3cbff, var(--accent), #3f5bff, #c3cbff, var(--accent));
 }
 
 header nav ul li a.active::before {
@@ -240,18 +237,10 @@ header nav ul li a.active::after {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-    header nav ul li a.active {
-        animation: nav-texto 6s linear infinite;
-    }
-
     header nav ul li a.active::before,
     header nav ul li a.active::after {
         animation: nav-giro 5s linear infinite;
     }
-}
-
-@keyframes nav-texto {
-    to { background-position: -200% 0, 0 0; }
 }
 
 @keyframes nav-giro {
