@@ -1178,7 +1178,7 @@ a.projeto:hover .card-seta {
 
 /* aviso alinhado à largura dos cartões */
 .main-chat .inicio > .alert-box {
-    max-width: none;
+    max-width: 1200px;
 }
 
 .inicio-cards {

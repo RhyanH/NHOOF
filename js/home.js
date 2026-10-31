@@ -14,9 +14,7 @@
     var menu = window.NHOOF_MENUS && window.NHOOF_MENUS.otimizacao;
     if (menu) {
         var total = 0;
-        menu.forEach(function (cat) {
-            cat.canais.forEach(function (c) { if (c[0] !== 'index.html') total++; });
-        });
+        menu.forEach(function (cat) { total += cat.canais.length; });
         document.querySelectorAll('[data-total-guias]').forEach(function (el) { el.textContent = total; });
         document.querySelectorAll('[data-total-categorias]').forEach(function (el) { el.textContent = menu.length; });
         document.querySelectorAll('[data-categoria]').forEach(function (card) {
