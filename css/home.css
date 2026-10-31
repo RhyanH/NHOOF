@@ -1,7 +1,7 @@
 /* ============================================================================
    NHOOF — Home
    Só o NHOOF no centro, sobre um fundo animado:
-     - partículas conectadas (canvas, js/home.js)
+     - partículas conectadas que andam sozinhas (canvas, js/home.js)
      - grade que desliza devagar
      - dois brilhos que flutuam e "respiram"
    Usa os tokens de css/style.css.
@@ -33,17 +33,26 @@ body.home {
 }
 
 /* ---- Grade -------------------------------------------------------------------- */
+/* A máscara (o "esfumado" das bordas) fica parada no elemento de fora;
+   a camada de dentro carrega as linhas e é só deslocada (transform),
+   que a placa de vídeo faz sem redesenhar nada: animação fluida. */
 .hero-grid {
     position: absolute;
     inset: 0;
     z-index: -2;
+    overflow: hidden;
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, #000 20%, transparent 75%);
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, #000 20%, transparent 75%);
+}
+
+.hero-grid span {
+    position: absolute;
+    inset: -64px 0 0 -64px; /* um quadrado a mais em cima e à esquerda, para o ciclo não mostrar borda */
     background-image:
         linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
     background-size: 64px 64px;
-    background-position: center center;
-    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, #000 20%, transparent 75%);
-    mask-image: radial-gradient(ellipse 70% 60% at 50% 50%, #000 20%, transparent 75%);
+    will-change: transform;
 }
 
 /* ---- Brilho ------------------------------------------------------------------- */
@@ -64,6 +73,7 @@ body.home {
     position: absolute;
     inset: 0;
     border-radius: 50%;
+    will-change: transform;
 }
 
 /* brilho principal (azul/lilás); some aos poucos até a borda, sem "anel" */
@@ -108,7 +118,7 @@ body.home {
     }
 
     /* a grade desliza na diagonal; 64px = um quadrado, então o ciclo é contínuo */
-    .hero-grid {
+    .hero-grid span {
         animation: grade-deslizar 18s linear infinite;
     }
 
@@ -138,10 +148,10 @@ body.home {
 
 @keyframes grade-deslizar {
     from {
-        background-position: center center;
+        transform: translate3d(0, 0, 0);
     }
     to {
-        background-position: calc(50% + 64px) calc(50% + 64px);
+        transform: translate3d(64px, 64px, 0);
     }
 }
 
