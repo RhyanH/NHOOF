@@ -19,6 +19,16 @@ Site pessoal com guias de otimização de PC, publicado no GitHub Pages.
 | `js/home.js` | Partículas e efeitos da página inicial |
 | `fontes/` | Fontes Geist e Geist Mono (licença OFL, em `LICENSE-Geist.txt`) |
 
+## Antes de publicar
+
+Sempre que mudar um arquivo CSS ou JS, rode:
+
+```
+python atualizar-versao.py
+```
+
+Ele coloca um número de versão novo nos endereços (`style.css?v=...`) de todas as páginas, para o navegador não misturar o HTML novo com um CSS antigo guardado em cache.
+
 ## Como usar os componentes
 
 - **Mudar o visual:** altere os tokens em `:root`, no topo de `css/style.css`. As páginas não têm `<style>` próprio.
