@@ -57,7 +57,8 @@ NHOOF/
 │   ├── sidebar.js           ★ Menu lateral: ÚNICO lugar onde categorias e canais são escritos
 │   ├── navegacao.js         Troca de canal sem recarregar a página
 │   ├── main.js              Menu no celular, copiar comandos, formato das listas, contagem de guias
-│   └── home.js              Estrelas e partículas animadas da Home
+│   ├── home.js              Estrelas e partículas animadas da Home
+│   └── menu-topo.js         Posição do menu do topo no celular (não deixa o item atual sumir)
 ├── imagens/
 │   ├── logo.png             Logo (cabeçalho e ícone da aba)
 │   └── guias/               Imagens usadas dentro dos guias
@@ -208,7 +209,8 @@ Modelo mínimo de um guia (o que muda de um guia para outro está marcado com �
 </head>
 <body>
 
-    <!-- copie o <header class="global-header"> … </header> inteiro de outro guia -->
+    <!-- copie o <header class="global-header"> … </header> inteiro de outro guia,
+         junto com a linha <script src="../js/menu-topo.js"></script> logo abaixo dele -->
 
     <div class="discord-app">
         <div class="sidebar-channels" data-projeto="otimizacao"></div>
@@ -384,6 +386,7 @@ Comportamentos automáticos, para você saber que existem (e onde mexer se preci
 | **Formato das listas** | O navegador mede se algum valor quebraria a linha. Se todos cabem: formato tabela (opção à esquerda, valor à direita). Se algum não cabe: a lista inteira fica com opção em cima e valor embaixo. Linhas com switch ficam sempre em linha. | `js/main.js` |
 | **Contagem de guias** | Os cartões da entrada do Otimização contam os canais de cada categoria em `sidebar.js`. | `js/main.js` |
 | **Copiar comando** | Clicar num `code-line` copia o texto e mostra "Copiado ✓". | `js/main.js` |
+| **Menu do topo no celular** | Em telas estreitas o menu do topo rola de lado. Ao trocar de página, ele volta à posição em que a pessoa o deixou e, se o item da página atual estiver fora da tela, rola até ele (ex.: tocar em "Sobre" não faz o menu voltar ao começo). | `js/menu-topo.js` (carregado logo depois do `<header>` em todas as páginas) |
 | **Menu no celular** | Abaixo de 900 px o menu lateral vira uma gaveta (botão ☰ no cabeçalho do canal). | `js/main.js`, `css/responsivo.css` |
 | **Última modificação** | Gravada na hora de publicar (seção 4.1). | `atualizar-datas.py` |
 | **Versão do CSS/JS** | Gravada na hora de publicar (seção 4.2). | `atualizar-versao.py` |
