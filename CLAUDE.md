@@ -168,6 +168,7 @@ O endereço canônico do repositório é `https://github.com/RhyanH/NHOOF.git`. 
 7. Links externos com `target="_blank" rel="noopener noreferrer"`. Imagens com `alt`; nos guias, também `width` e `height` reais.
 8. Nada de bibliotecas externas, CDNs ou etapa de build: o site é HTML, CSS e JS puros, e as fontes ficam no próprio repositório.
 9. Não deixe arquivos temporários no repositório (`__pycache__` está no `.gitignore`; prints e testes ficam fora).
+10. Imagens leves: a `imagens/logo.png` tem **256×256 px (cerca de 19 KB)**, mais de 3 vezes o maior tamanho em que aparece (72 px). Não volte a uma versão maior (a original tinha 1024 px e 123 KB).
 
 ## 10. Conteúdo dos guias (voz e precisão)
 
@@ -186,9 +187,13 @@ O endereço canônico do repositório é `https://github.com/RhyanH/NHOOF.git`. 
 - **Conferidos pelo dono (estão certos, não marque como erro):**
   - "Intervalo de repetição" (ajuste teclado) e "Canal 2, 24-bit(s)" (a50x) estão escritos como aparecem no Windows dele;
   - os 80 °C do CrystalDiskMark são critério dele, testados no PC dele.
-- Nomes de políticas e opções que não deu para confirmar em fonte oficial em português ganham uma linha "Obs." explicando o efeito (ex.: Explorador de Arquivos e Modo de Download em politicas-de-grupo).
+  - em politicas-de-grupo, o nome "Desativar insights baseados em conta, arquivos recentes, favoritos e recomendados no Explorador de Arquivos" está igual ao gpedit dele.
+- Nomes de políticas e opções que não deu para confirmar em fonte oficial em português ganham uma linha "Obs." explicando o efeito (ex.: o Modo de Download em politicas-de-grupo).
+- **Títulos dos cartões ficam como estão** (o `<h3>` vem logo depois do `<h1>`, sem `<h2>`): decisão dele para o projeto Otimização. Não "corrija" os níveis de título.
 
 ## 11. Ideias em aberto (só com pedido dele)
+
+- **Descrição para buscadores e cartão de link** (`<meta name="description">` e afins): hoje nenhuma página tem. Ao colar o link no WhatsApp, Discord ou Google, aparece sem resumo. **Ele quer fazer depois**; não faça antes de ele pedir.
 
 - **Projetos 2 a 9:** ainda indefinidos. Quando existirem, cada um pode ter uma cor de neon própria trocando as variáveis do menu (como o Sobre) e, se tiver menu lateral, um bloco próprio em `MENUS` com `data-projeto`.
 - A automação de datas cobre só o Otimização. Para outro projeto, adapte `PASTA` em `atualizar-datas.py` e os `paths` do workflow.

@@ -62,7 +62,7 @@ NHOOF/
 │   ├── home.js              Estrelas e partículas animadas da Home
 │   └── menu-topo.js         Posição do menu do topo no celular (não deixa o item atual sumir)
 ├── imagens/
-│   ├── logo.png             Logo (cabeçalho e ícone da aba)
+│   ├── logo.png             Logo (cabeçalho, Sobre e ícone da aba), 256×256 px, ~19 KB
 │   └── guias/               Imagens usadas dentro dos guias
 ├── fontes/                  Fontes Geist e Geist Mono (licença em LICENSE-Geist.txt)
 ├── .github/workflows/
