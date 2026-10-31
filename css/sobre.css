@@ -156,3 +156,18 @@ body.sobre {
     }
 
 }
+
+/* ---- Menu do topo: "Sobre" ativo em cinza grafite (no lugar do azul) ------ */
+body.sobre header nav {
+    --neon-texto: #e2e8f0;
+    --neon-fundo: rgba(148, 163, 184, 0.14);
+    --neon-1: #cbd5e1;
+    --neon-2: #94a3b8;
+    --neon-3: rgba(148, 163, 184, 0.75);
+    --neon-4: rgba(100, 116, 139, 0.7);
+    --neon-4-fraco: rgba(100, 116, 139, 0.4);
+    --aro-1: #94a3b8;
+    --aro-2: #7d8ba1;
+    --aro-3: #cbd5e1;
+    --aro-brilho: 0.3;
+}

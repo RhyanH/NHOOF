@@ -387,7 +387,7 @@ Comportamentos automáticos, para você saber que existem (e onde mexer se preci
 | **Menu no celular** | Abaixo de 900 px o menu lateral vira uma gaveta (botão ☰ no cabeçalho do canal). | `js/main.js`, `css/responsivo.css` |
 | **Última modificação** | Gravada na hora de publicar (seção 4.1). | `atualizar-datas.py` |
 | **Versão do CSS/JS** | Gravada na hora de publicar (seção 4.2). | `atualizar-versao.py` |
-| **Neon do menu do topo** | O item da página atual (`class="active"`) tem letra em neon azul pulsando e contorno girando em tons de azul. | `css/style.css` (procure `Item ativo`) |
+| **Neon do menu do topo** | O item da página atual (`class="active"`) tem letra em neon pulsando e contorno girando: azul no Otimização, cinza grafite no Sobre. As cores são variáveis (`--neon-…`, `--aro-…`); para outra cor numa página, troque só elas (exemplo no fim de `css/sobre.css`). | `css/style.css` (procure `Item ativo`) |
 | **Fundo da Home** | Céu de estrelas (algumas piscam) + partículas com profundidade ligadas por linhas + brilho atrás do NHOOF. Pausa quando a aba fica em segundo plano. | `js/home.js`, `css/home.css` |
 | **Qualidade adaptativa da Home** | Se o PC não acompanhar a animação, o fundo tira partículas aos poucos até ficar fluido. PCs bons não perdem nada. | `js/home.js` |
 

@@ -203,16 +203,32 @@ header nav ul li a:hover {
     initial-value: 0deg;
 }
 
+/* Cores do item ativo (azul). Uma página pode trocar só estas variáveis
+   para ter outra cor (ex.: a página Sobre, em css/sobre.css). */
+header nav {
+    --neon-texto: #e8ecff;
+    --neon-fundo: rgba(47, 76, 255, 0.12);
+    --neon-1: #c9d3ff;
+    --neon-2: #6f8bff;
+    --neon-3: #3f5bff;
+    --neon-4: rgba(47, 76, 255, 0.85);
+    --neon-4-fraco: rgba(47, 76, 255, 0.45);
+    --aro-1: #2f4cff;
+    --aro-2: #1a2fd6;
+    --aro-3: #3b57ff;
+    --aro-brilho: 0.32;
+}
+
 header nav ul li a.active {
     position: relative;
-    color: #e8ecff;
+    color: var(--neon-texto);
     font-weight: 600;
-    background: rgba(47, 76, 255, 0.12);
+    background: var(--neon-fundo);
     text-shadow:
-        0 0 1px #c9d3ff,
-        0 0 4px #6f8bff,
-        0 0 9px #3f5bff,
-        0 0 16px rgba(47, 76, 255, 0.85);
+        0 0 1px var(--neon-1),
+        0 0 4px var(--neon-2),
+        0 0 9px var(--neon-3),
+        0 0 16px var(--neon-4);
 }
 
 /* contorno de 1px */
@@ -223,7 +239,7 @@ header nav ul li a.active::after {
     inset: 0;
     border-radius: inherit;
     pointer-events: none;
-    background: conic-gradient(from var(--nav-ang), #2f4cff, #1a2fd6, #3b57ff, #2f4cff, #1a2fd6, #3b57ff, #2f4cff);
+    background: conic-gradient(from var(--nav-ang), var(--aro-1), var(--aro-2), var(--aro-3), var(--aro-1), var(--aro-2), var(--aro-3), var(--aro-1));
 }
 
 header nav ul li a.active::before {
@@ -237,7 +253,7 @@ header nav ul li a.active::before {
 header nav ul li a.active::after {
     z-index: -1;
     filter: blur(7px);
-    opacity: 0.32;
+    opacity: var(--aro-brilho);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -254,16 +270,16 @@ header nav ul li a.active::after {
 /* o brilho do neon "respira", com uma leve piscada no meio */
 @keyframes nav-neon {
     0%, 100% {
-        text-shadow: 0 0 1px #c9d3ff, 0 0 4px #6f8bff, 0 0 9px #3f5bff, 0 0 16px rgba(47, 76, 255, 0.85);
+        text-shadow: 0 0 1px var(--neon-1), 0 0 4px var(--neon-2), 0 0 9px var(--neon-3), 0 0 16px var(--neon-4);
     }
     50% {
-        text-shadow: 0 0 1px #c9d3ff, 0 0 3px #6f8bff, 0 0 6px #3f5bff, 0 0 10px rgba(47, 76, 255, 0.55);
+        text-shadow: 0 0 1px var(--neon-1), 0 0 3px var(--neon-2), 0 0 6px var(--neon-3), 0 0 10px var(--neon-4-fraco);
     }
     53% {
-        text-shadow: 0 0 1px #c9d3ff, 0 0 2px #6f8bff, 0 0 4px #3f5bff, 0 0 6px rgba(47, 76, 255, 0.35);
+        text-shadow: 0 0 1px var(--neon-1), 0 0 2px var(--neon-2), 0 0 4px var(--neon-3), 0 0 6px var(--neon-4-fraco);
     }
     56% {
-        text-shadow: 0 0 1px #c9d3ff, 0 0 3px #6f8bff, 0 0 7px #3f5bff, 0 0 12px rgba(47, 76, 255, 0.65);
+        text-shadow: 0 0 1px var(--neon-1), 0 0 3px var(--neon-2), 0 0 7px var(--neon-3), 0 0 12px var(--neon-4-fraco);
     }
 }
 
