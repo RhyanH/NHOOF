@@ -148,7 +148,7 @@
             });
         }, { rootMargin: '0px 0px -60px 0px' });
 
-        document.querySelectorAll('.secao-topo, .card, .setup-faixa, .projeto').forEach(function (el, i) {
+        document.querySelectorAll('.secao-topo, .card, .setup-faixa, .projeto, .linha-tempo li, .proximos, .sobre-cta').forEach(function (el, i) {
             el.classList.add('revelar');
             if (el.classList.contains('card')) el.style.transitionDelay = (i % 7) * 50 + 'ms';
             obs.observe(el);

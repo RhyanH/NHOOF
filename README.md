@@ -7,10 +7,12 @@ Site pessoal com guias de otimização de PC, publicado no GitHub Pages.
 | Caminho | O que é |
 |---|---|
 | `index.html` | Página inicial |
+| `sobre/index.html` | Página Sobre |
 | `otimizacao/*.html` | Um arquivo por guia |
 | `css/style.css` | Design system: todas as cores, cartões, switches e alertas |
 | `css/responsivo.css` | Ajustes para tablet e celular |
-| `css/home.css` | Estilos exclusivos da página inicial |
+| `css/home.css` | Estilos da página inicial (também usados no Sobre) |
+| `css/sobre.css` | Estilos exclusivos da página Sobre |
 | `js/sidebar.js` | Menu lateral (categorias e guias); a Home lê a contagem daqui |
 | `js/navegacao.js` | Troca de página sem recarregar |
 | `js/main.js` | Menu no celular e "clique para copiar" nos comandos |
