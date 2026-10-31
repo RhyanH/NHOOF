@@ -111,27 +111,56 @@ body.home {
     user-select: none;
 }
 
-/* ---- Animações (só para quem não pediu para reduzir movimento) ----------------- */
+/* ---- Animações do fundo ---------------------------------------------------------
+   O fundo anima sempre, mesmo com "reduzir movimento" ligado no sistema:
+   no Windows esse aviso é ligado ao desmarcar "Animar controles e elementos
+   dentro das janelas" (guia Efeitos Visuais), um ajuste de desempenho.
+   O movimento é lento e suave. Só a entrada do NHOOF respeita o aviso.      */
+
+/* a grade desliza na diagonal; 64px = um quadrado, então o ciclo é contínuo */
+.hero-grid span {
+    animation: grade-deslizar 18s linear infinite;
+}
+
+.hero-glow {
+    animation: brilho-respirar 7s ease-in-out infinite alternate;
+}
+
+.hero-glow span:first-child {
+    animation: brilho-flutuar-a 16s ease-in-out infinite alternate;
+}
+
+.hero-glow span:last-child {
+    animation: brilho-flutuar-b 21s ease-in-out infinite alternate;
+}
+
+/* style.css reduz todas as animações quando o sistema pede; aqui o fundo
+   mantém a duração normal (seletores mais específicos + !important) */
+@media (prefers-reduced-motion: reduce) {
+    .home-palco .hero-grid span {
+        animation-duration: 18s !important;
+        animation-iteration-count: infinite !important;
+    }
+
+    .home-palco .hero-glow {
+        animation-duration: 7s !important;
+        animation-iteration-count: infinite !important;
+    }
+
+    .home-palco .hero-glow span:first-child {
+        animation-duration: 16s !important;
+        animation-iteration-count: infinite !important;
+    }
+
+    .home-palco .hero-glow span:last-child {
+        animation-duration: 21s !important;
+        animation-iteration-count: infinite !important;
+    }
+}
+
 @media (prefers-reduced-motion: no-preference) {
     .wordmark {
         animation: subir 0.9s var(--ease) both;
-    }
-
-    /* a grade desliza na diagonal; 64px = um quadrado, então o ciclo é contínuo */
-    .hero-grid span {
-        animation: grade-deslizar 18s linear infinite;
-    }
-
-    .hero-glow {
-        animation: brilho-respirar 7s ease-in-out infinite alternate;
-    }
-
-    .hero-glow span:first-child {
-        animation: brilho-flutuar-a 16s ease-in-out infinite alternate;
-    }
-
-    .hero-glow span:last-child {
-        animation: brilho-flutuar-b 21s ease-in-out infinite alternate;
     }
 }
 

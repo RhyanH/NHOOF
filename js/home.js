@@ -5,6 +5,8 @@
    pelo tempo decorrido (não por quadro), então a velocidade é a mesma e
    suave em monitores de 60, 144 ou 240 Hz.
    A grade e o brilho são animados por CSS (css/home.css).
+   O fundo anima mesmo com "reduzir movimento" ligado no sistema: no Windows
+   esse aviso vem de um ajuste de desempenho (guia Efeitos Visuais).
    ============================================================================ */
 (function () {
     'use strict';
@@ -13,7 +15,6 @@
     if (!canvas || !canvas.getContext) return;
 
     var ctx = canvas.getContext('2d');
-    var reduzir = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
 
     var VELOCIDADE = 28;    // pixels por segundo (no máximo, em cada eixo)
@@ -90,7 +91,7 @@
     }
 
     function iniciar() {
-        if (rodando || reduzir) return;
+        if (rodando) return;
         rodando = true;
         anterior = performance.now();
         requestAnimationFrame(quadro);
