@@ -23,13 +23,16 @@ Site pessoal com guias de otimização de PC, publicado no GitHub Pages.
 
 ## Antes de publicar
 
-Sempre que mudar um arquivo CSS ou JS, rode:
+Antes de cada publicação, rode:
 
 ```
 python atualizar-versao.py
 ```
 
-Ele coloca um número de versão novo nos endereços (`style.css?v=...`) de todas as páginas, para o navegador não misturar o HTML novo com um CSS antigo guardado em cache.
+Ele faz duas coisas:
+
+- grava em cada canal do Otimização a **última modificação** (canto direito do cabeçalho), só nos canais cujo conteúdo mudou desde o último commit (via `atualizar-datas.py`, horário de Brasília);
+- coloca um número de versão novo nos endereços (`style.css?v=...`) de todas as páginas, para o navegador não misturar o HTML novo com um CSS antigo guardado em cache.
 
 ## Como usar os componentes
 

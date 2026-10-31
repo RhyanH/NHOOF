@@ -146,6 +146,19 @@
         display: none;
     }
 
+    /* no celular, só o relógio e o dia; o nome do canal encurta com "…" se faltar espaço */
+    .chat-header .channel-update .rotulo,
+    .chat-header .channel-update .hora {
+        display: none;
+    }
+
+    .chat-header > span:not(.channel-symbol):not(.channel-divider):not(.channel-topic) {
+        flex-shrink: 1;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
     .setup-card {
         padding: 1rem;
     }
