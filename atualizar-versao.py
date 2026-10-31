@@ -23,6 +23,8 @@ RAIZ = os.path.dirname(os.path.abspath(__file__))
 
 # 1) data da última modificação de cada canal do Otimização
 import importlib.util
+import sys
+sys.dont_write_bytecode = True  # não cria a pasta __pycache__
 _spec = importlib.util.spec_from_file_location("atualizar_datas", os.path.join(RAIZ, "atualizar-datas.py"))
 _datas = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(_datas)

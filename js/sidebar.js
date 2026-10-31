@@ -14,9 +14,13 @@
      - Cuidado: mantenha as aspas simples ' ', as vírgulas e os colchetes.
 
    A página que está aberta é marcada sozinha (pelo nome do arquivo na barra de
-   endereço). Este arquivo também cuida de abrir/fechar as categorias e de
-   lembrar a posição de rolagem do menu, ambos aplicados antes da primeira
-   exibição da página, para o menu não mudar de posição ao carregar.
+   endereço). Este arquivo também cuida de abrir/fechar as categorias: as
+   categorias recolhidas ficam salvas no navegador da pessoa (localStorage);
+   nada mais é salvo. Ao abrir um guia direto (link ou F5), a lista rola até
+   o canal aberto. Tudo isso é aplicado antes da primeira exibição da página.
+
+   A página de entrada do Otimização (otimizacao/index.html) lê esta lista
+   para mostrar quantos guias cada categoria tem.
 
    NOVO PROJETO (2 a 9): crie outro bloco ao lado de "otimizacao" (por exemplo
    projeto2: [ ... ]) e use data-projeto="projeto2" no espaço reservado das
@@ -131,7 +135,7 @@
     };
     // ---- FIM DA PARTE EDITÁVEL ----------------------------------------------
 
-    // A Home lê esta lista para mostrar a contagem de guias e categorias
+    // A entrada do Otimização lê esta lista para mostrar a contagem de guias
     window.NHOOF_MENUS = MENUS;
 
     function esc(s) {

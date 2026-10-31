@@ -1,0 +1,3 @@
+# arquivos temporários do Python
+__pycache__/
+*.pyc
