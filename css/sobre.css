@@ -1,6 +1,6 @@
 /* ============================================================================
    NHOOF — Sobre
-   Um cartão único centralizado: logo, texto, três pontos e links.
+   Um cartão único centralizado: logo, título e texto.
    Usa só os tokens de css/style.css (independente da Home).
    ============================================================================ */
 
@@ -42,7 +42,7 @@ body.sobre {
     margin: 0 auto 1.25rem;
     border: 1px solid var(--line-strong);
     border-radius: 18px;
-    background: rgba(255, 255, 255, 0.04);
+    background: #000;
 }
 
 .sobre-logo img {
@@ -78,7 +78,7 @@ body.sobre {
 
 /* ---- Texto ------------------------------------------------------------------ */
 .sobre-texto {
-    margin: 1.75rem 0;
+    margin-top: 1.75rem;
     padding-top: 1.75rem;
     border-top: 1px solid var(--line);
     text-align: left;
@@ -99,73 +99,6 @@ body.sobre {
     font-weight: 600;
     letter-spacing: 0.03em;
     color: var(--text);
-}
-
-/* ---- Três pontos (mesmo estilo das tabelas dos guias) --------------------------- */
-.sobre-pontos {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    background: var(--inset);
-    text-align: left;
-}
-
-.sobre-pontos div {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    padding: 0.9rem 1rem;
-}
-
-.sobre-pontos div + div {
-    border-left: 1px solid var(--line);
-}
-
-.sobre-pontos strong {
-    font-size: 0.85rem;
-    font-weight: 550;
-    color: var(--text);
-}
-
-.sobre-pontos span {
-    font-size: 0.78rem;
-    line-height: 1.45;
-    color: var(--text-3);
-}
-
-/* ---- Nota e links -------------------------------------------------------------- */
-.sobre-nota {
-    margin-top: 1.25rem;
-    font-size: 0.85rem;
-    color: var(--text-3);
-}
-
-.sobre-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.75rem 1.75rem;
-    margin-top: 1.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--line);
-}
-
-.sobre-links a {
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: var(--text);
-}
-
-.sobre-links a span {
-    display: inline-block;
-    color: var(--text-3);
-    transition: transform 0.2s var(--ease), color 0.2s var(--ease);
-}
-
-.sobre-links a:hover span {
-    transform: translateX(3px);
-    color: var(--accent);
 }
 
 /* ---- Rodapé (mesmo da Home) ------------------------------------------------------ */
@@ -222,14 +155,6 @@ body.sobre {
         font-size: 1.65rem;
     }
 
-    .sobre-pontos {
-        grid-template-columns: 1fr;
-    }
-
-    .sobre-pontos div + div {
-        border-left: 0;
-        border-top: 1px solid var(--line);
-    }
 
     .rodape-inner {
         flex-wrap: wrap;
