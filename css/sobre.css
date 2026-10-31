@@ -155,13 +155,4 @@ body.sobre {
         font-size: 1.65rem;
     }
 
-
-    .rodape-inner {
-        flex-wrap: wrap;
-        gap: 0.75rem;
-    }
-
-    .rodape-ano {
-        margin-left: 0;
-    }
 }
