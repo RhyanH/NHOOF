@@ -156,7 +156,7 @@
     var SETA = '<svg viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 5 6.5 8 3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
     var PREFIXO = 'sidebar_cat_';
-    var CHAVE_ROLAGEM = 'sidebarScrollTop';
+    var CHAVE_ROLAGEM = 'sidebarScrollTop'; // usada só para limpar o valor antigo
 
     function ler(chave) {
         try { return localStorage.getItem(chave); } catch (e) { return null; }
@@ -164,6 +164,11 @@
     function gravar(chave, valor) {
         try { localStorage.setItem(chave, valor); } catch (e) { /* armazenamento indisponível */ }
     }
+
+    // Só as categorias recolhidas ficam salvas. A posição da lista não é
+    // guardada: ao entrar no projeto, ela começa do topo. (Apaga a posição
+    // que versões anteriores do site guardavam.)
+    try { localStorage.removeItem(CHAVE_ROLAGEM); } catch (e) { /* armazenamento indisponível */ }
 
     // identificador salvo de cada categoria (mesmo formato usado desde a primeira versão)
     function idCategoria(titulo) {
@@ -191,23 +196,11 @@
 
     alvo.innerHTML = html;
 
+    // Abrindo um guia direto (link ou F5), a lista mostra o canal aberto
     var lista = alvo.querySelector('.channels-list');
-
-    // Restaura a rolagem salva já na montagem, antes da primeira exibição
-    var salva = parseInt(ler(CHAVE_ROLAGEM), 10);
-    if (lista && salva > 0) lista.scrollTop = salva;
-
-    // Guarda a rolagem a cada movimento (no máximo uma vez por quadro)
-    var agendado = false;
-    if (lista) {
-        lista.addEventListener('scroll', function () {
-            if (agendado) return;
-            agendado = true;
-            requestAnimationFrame(function () {
-                agendado = false;
-                gravar(CHAVE_ROLAGEM, Math.round(lista.scrollTop));
-            });
-        });
+    var ativo = alvo.querySelector('.channel-item.active');
+    if (lista && ativo && ativo.offsetParent) {
+        lista.scrollTop = Math.max(0, ativo.offsetTop - lista.offsetTop - lista.clientHeight / 2 + ativo.offsetHeight / 2);
     }
 
     // Aplica o estado recolhido/aberto de uma categoria, mantendo visível o canal ativo
