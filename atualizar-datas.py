@@ -50,6 +50,27 @@ def git(*args):
     return subprocess.run(["git", *args], cwd=RAIZ, capture_output=True, text=True).stdout
 
 
+def historico_disponivel():
+    """O Git está instalado e esta pasta tem o histórico do repositório?
+
+    Sem isso não dá para saber o que mudou: sem a checagem, uma pasta baixada
+    como ZIP faria todas as datas virarem "agora".
+    """
+    try:
+        r = subprocess.run(["git", "rev-parse", "--is-inside-work-tree"], cwd=RAIZ,
+                           capture_output=True, text=True)
+    except (FileNotFoundError, OSError):
+        print("AVISO: o Git não está instalado, então as datas de modificação NÃO foram atualizadas.")
+        print("       Instale o Git (https://git-scm.com/download/win) e rode de novo.")
+        return False
+    if r.returncode != 0 or r.stdout.strip() != "true":
+        print("AVISO: esta pasta não tem o histórico do Git (por exemplo, foi baixada como ZIP),")
+        print("       então as datas de modificação NÃO foram atualizadas. Use uma cópia feita com")
+        print("       git clone https://github.com/RhyanH/NHOOF.git")
+        return False
+    return True
+
+
 def conteudo(texto):
     """Parte do arquivo que conta como conteúdo do canal, sem a própria data."""
     if texto is None:
@@ -128,6 +149,8 @@ def canais():
 
 def main_ci():
     """Modo do GitHub: completa as datas que uma edição sem o script deixou para trás."""
+    if not historico_disponivel():
+        return
     novas = 0
     for caminho, arquivo, texto in canais():
         achado = ultima_mudanca(arquivo)
@@ -144,6 +167,8 @@ def main_ci():
 
 
 def main():
+    if not historico_disponivel():
+        return
     agora = datetime.now(timezone.utc)
     novas = 0
     for caminho, arquivo, texto in canais():

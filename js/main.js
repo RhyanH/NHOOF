@@ -30,6 +30,24 @@
         }
     });
 
+    // Comandos copiáveis também funcionam pelo teclado (Tab até ele, Enter ou Espaço)
+    function prepararComandos(raiz) {
+        (raiz || document).querySelectorAll('.code-line').forEach(function (el) {
+            if (el.hasAttribute('tabindex')) return;
+            el.setAttribute('tabindex', '0');
+            el.setAttribute('role', 'button');
+            el.setAttribute('title', 'Clique para copiar');
+        });
+    }
+
+    document.addEventListener('keydown', function (e) {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        var el = e.target && e.target.closest ? e.target.closest('.code-line') : null;
+        if (!el) return;
+        e.preventDefault();
+        copiar(el);
+    });
+
     // Clique num comando (.code-line) copia o texto e mostra "Copiado ✓"
     function copiar(el) {
         var texto = (el.textContent || '').trim();
@@ -112,6 +130,7 @@
                         if (n.nodeType === 1 && n.classList.contains('chat-content')) {
                             organizarListas(n);
                             preencherContagens(n);
+                            prepararComandos(n);
                         }
                     });
                 });
@@ -145,6 +164,7 @@
     });
 
     preencherContagens();
+    prepararComandos();
 
     // Fecha a gaveta com Esc
     document.addEventListener('keydown', function (e) {

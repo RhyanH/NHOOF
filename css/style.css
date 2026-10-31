@@ -1032,22 +1032,6 @@ a[target="_blank"]:hover::after {
     transition: transform 0.2s var(--ease);
 }
 
-.btn-primary {
-    background: #fff;
-    color: #09090b;
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1), 0 8px 30px rgba(var(--accent-rgb), 0.25);
-}
-
-.btn-primary:hover {
-    color: #09090b;
-    transform: translateY(-1px);
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2), 0 12px 40px rgba(var(--accent-rgb), 0.4);
-}
-
-.btn-primary:hover svg {
-    transform: translateX(3px);
-}
-
 .btn-ghost {
     border: 1px solid var(--line-strong);
     background: rgba(255, 255, 255, 0.03);

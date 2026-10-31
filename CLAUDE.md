@@ -44,7 +44,7 @@ A instrução original dele vale sempre: *"faça as melhorias, confira tudo e fa
 ## 4. Estado atual: decisões já tomadas (não desfaça sem ele pedir)
 
 ### Menu do topo (todas as páginas)
-- Fixo no topo, com efeito de vidro: logo à esquerda e, no centro, uma pílula com **Otimização, Projeto 2 a 9 (ainda `href="#"`) e Sobre**. Deve continuar existindo em todas as páginas.
+- Fixo no topo, com efeito de vidro: logo à esquerda e, no centro, uma pílula com **Otimização, Projeto 2 a 9 e Sobre**. Os Projetos 2 a 9 ainda não levam a lugar nenhum (`href="#"`) **de propósito**: ele ainda vai criar essas partes, então não trate isso como erro. Deve continuar existindo em todas as páginas.
 - O **item ativo** tem um efeito **neon** e fica em **negrito**:
   - **Letra:** miolo quase branco com brilho colorido em camadas, que "respira" (pulsa) e dá uma piscadinha rápida, como uma lâmpada neon (animação `nav-neon`, 2,8 s).
   - **Contorno:** 1 px, girando (`nav-giro`, 5 s), com brilho suave por trás.
@@ -102,7 +102,7 @@ A instrução original dele vale sempre: *"faça as melhorias, confira tudo e fa
 2. **Leia** o `README.md` e os arquivos que vai mexer.
 3. **Edite.** Siga a seção 9 (regras que não podem ser quebradas).
 4. **Prepare a publicação:** `python atualizar-versao.py`. Ele grava as datas dos canais alterados e o número de versão `?v=` de CSS/JS em todas as páginas.
-5. **Verifique:** `python verificar-site.py` precisa terminar em **TUDO CERTO**. O aviso dos 17 links externos sem `rel="noopener noreferrer"` já é conhecido; complete esses links só quando ele pedir mudança naqueles guias, porque mexer neles muda a data.
+5. **Verifique:** `python verificar-site.py` precisa terminar em **TUDO CERTO**.
 6. **Teste no navegador** (seção 6). Se a mudança for visual, mande a prévia e **espere a aprovação**.
 7. **Confira as informações:** textos, valores e afirmações batem com o que ele disse ou com fonte oficial. Nada inventado.
 8. **Commit** com mensagem curta em português, no formato "Área: o que mudou" (ex.: `Menu: contorno do item ativo só em azuis fortes`). Se o ambiente exigir linhas de autoria ou atribuição, siga o ambiente.
@@ -179,6 +179,14 @@ O endereço canônico do repositório é `https://github.com/RhyanH/NHOOF.git`. 
 - Afirmações técnicas só com **fonte oficial** (Microsoft, AMD, NVIDIA, Gigabyte, fabricante do software) ou o que ele mesmo disse. Nunca invente benefícios ou números. Avisos de garantia e risco ficam como estão (ex.: PBO).
 - Referência de hardware (pública, em `meu-setup.html`): Ryzen 7 9800X3D, RTX 4070 GALAX, placa-mãe **Gigabyte B650 Aero G** (os caminhos de BIOS são dela), RAM Kingston Fury Beast 6000 MT/s CL30. Dois monitores: Alienware AW2523HF 360 Hz e ASUS VG248QG 165 Hz. Headset Astro A50 X.
 - A descrição do canal (`channel-topic`) é uma frase curta, terminada em ponto.
+- Padrões de escrita dos cartões:
+  - a caixa de explicação sempre começa com **"O que faz:"**;
+  - atalho do Executar: rótulo **"Win + R"** e o comando como `code-line` (ex.: `<li><span>Win + R</span> <strong class="code-line">ncpa.cpl</strong></li>`);
+  - caminhos com **"→"** entre as etapas.
+- **Conferidos pelo dono (estão certos, não marque como erro):**
+  - "Intervalo de repetição" (ajuste teclado) e "Canal 2, 24-bit(s)" (a50x) estão escritos como aparecem no Windows dele;
+  - os 80 °C do CrystalDiskMark são critério dele, testados no PC dele.
+- Nomes de políticas e opções que não deu para confirmar em fonte oficial em português ganham uma linha "Obs." explicando o efeito (ex.: Explorador de Arquivos e Modo de Download em politicas-de-grupo).
 
 ## 11. Ideias em aberto (só com pedido dele)
 

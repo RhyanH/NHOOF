@@ -159,6 +159,7 @@ Regras:
 - Canal sem mudança mantém a data que já tinha.
 - Canal novo, sem data ainda, recebe a data do histórico do git (o último commit que mudou o conteúdo dele) ou, se ainda não tiver commit, a data de agora.
 - **Não edite a linha `<time class="channel-update" …>` à mão**: o script cuida dela.
+- O script **precisa do Git e do histórico do repositório** (a pasta criada com `git clone`). Numa pasta baixada como ZIP, ou sem o Git instalado, ele só mostra um **AVISO** e não mexe em nenhuma data (o número de versão continua sendo atualizado).
 
 ### 4.2 Número de versão do CSS e JS (cache)
 
@@ -177,7 +178,7 @@ O script troca esse número (data e hora) em **todas** as páginas, obrigando o 
 Confere o site inteiro em poucos segundos, só com Python (não precisa instalar nada):
 
 - links e arquivos locais existem (CSS, JS, imagens, páginas);
-- links externos abrem em outra aba;
+- links externos abrem em outra aba com segurança (`target="_blank" rel="noopener noreferrer"`);
 - imagens têm `alt` (e, nos guias, `width`/`height`);
 - nenhuma página tem `<style>` próprio;
 - CSS/JS com `?v=` e todos com o mesmo número;
@@ -187,7 +188,7 @@ Confere o site inteiro em poucos segundos, só com Python (não precisa instalar
 - cada canal com a estrutura completa e uma data de "Última modificação";
 - switches com `val-on`/`val-off`.
 
-No fim aparece **TUDO CERTO** ou a lista de **PROBLEMAS** (arquivo e motivo). **AVISOS** são só para conferir e não impedem a publicação. Hoje existe um aviso conhecido: 17 links externos (em 5 guias) sem `rel="noopener noreferrer"`. Os navegadores atuais já protegem esses links; vale completar quando for editar esses guias.
+No fim aparece **TUDO CERTO** ou a lista de **PROBLEMAS** (arquivo e motivo). **AVISOS** são só para conferir e não impedem a publicação.
 
 ### 4.4 Automação do GitHub (`.github/workflows/datas.yml`)
 
@@ -415,11 +416,11 @@ Comportamentos automáticos, para você saber que existem (e onde mexer se preci
 | O quê | Como funciona | Onde |
 |---|---|---|
 | **Menu lateral** | Montado a partir da lista em `MENUS`. O canal aberto é marcado pelo nome do arquivo na barra de endereço. | `js/sidebar.js` |
-| **Categorias recolhidas** | Clicar no título da categoria recolhe/abre. **Só isso fica salvo** no navegador da pessoa. Ao voltar ao Otimização vindo de outra página, a lista começa do topo e sem canal selecionado. | `js/sidebar.js` |
+| **Categorias recolhidas** | Clicar no título da categoria (ou Tab + Enter pelo teclado) recolhe/abre. **Só isso fica salvo** no navegador da pessoa. Ao voltar ao Otimização vindo de outra página, a lista começa do topo e sem canal selecionado. | `js/sidebar.js` |
 | **Troca de canal sem recarregar** | Clicar num canal troca só o conteúdo (rápido, o menu não pisca). O endereço muda normalmente; F5, voltar/avançar e compartilhar link funcionam. Se algo falhar, abre a página do jeito normal. | `js/navegacao.js` |
 | **Formato das listas** | O navegador mede se algum valor quebraria a linha. Se todos cabem: formato tabela (opção à esquerda, valor à direita). Se algum não cabe: a lista inteira fica com opção em cima e valor embaixo. Linhas com switch ficam sempre em linha. | `js/main.js` |
 | **Contagem de guias** | Os cartões da entrada do Otimização contam os canais de cada categoria em `sidebar.js`. | `js/main.js` |
-| **Copiar comando** | Clicar num `code-line` copia o texto e mostra "Copiado ✓". | `js/main.js` |
+| **Copiar comando** | Clicar num `code-line` copia o texto e mostra "Copiado ✓". Também funciona pelo teclado (Tab até o comando + Enter). | `js/main.js` |
 | **Menu do topo no celular** | Em telas estreitas o menu do topo rola de lado. Ao trocar de página, ele volta à posição em que a pessoa o deixou e, se o item da página atual estiver fora da tela, rola até ele (ex.: tocar em "Sobre" não faz o menu voltar ao começo). | `js/menu-topo.js` (carregado logo depois do `<header>` em todas as páginas) |
 | **Menu no celular** | Abaixo de 900 px o menu lateral vira uma gaveta (botão ☰ no cabeçalho do canal). | `js/main.js`, `css/responsivo.css` |
 | **Última modificação** | Gravada na hora de publicar (seção 4.1). | `atualizar-datas.py` |

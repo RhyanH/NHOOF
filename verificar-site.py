@@ -8,7 +8,7 @@ Problemas impedem a publicação; avisos são só para conferir.
 
 O que é conferido:
   - links e arquivos locais (CSS, JS, imagens, páginas) existem;
-  - links externos abrem em outra aba (target="_blank"); sem rel="noopener noreferrer" vira aviso;
+  - links externos abrem em outra aba com segurança (target="_blank" rel="noopener noreferrer");
   - imagens têm texto alternativo (alt) e, nos guias, largura e altura;
   - nenhuma página tem <style> próprio (o visual fica todo em css/);
   - CSS e JS locais têm número de versão (?v=), todos iguais;
@@ -42,7 +42,6 @@ paginas = sorted(p for p in glob.glob(os.path.join(RAIZ, "**", "*.html"), recurs
 
 # ---- Todas as páginas --------------------------------------------------------
 versoes = {}
-sem_rel = {}  # links externos sem rel="noopener noreferrer", por página
 for caminho in paginas:
     nome = rel(caminho)
     texto = ler(caminho)
@@ -72,11 +71,8 @@ for caminho in paginas:
 
     # links externos
     for tag in re.findall(r'<a\b[^>]*href="https?://[^"]*"[^>]*>', texto):
-        if 'target="_blank"' not in tag:
-            problemas.append(f"{nome}: link externo sem target=\"_blank\" (deve abrir em outra aba): {tag[:90]}")
-        elif "noopener" not in tag:
-            sem_rel.setdefault(nome, 0)
-            sem_rel[nome] += 1
+        if 'target="_blank"' not in tag or "noopener" not in tag:
+            problemas.append(f"{nome}: link externo sem target=\"_blank\" rel=\"noopener noreferrer\": {tag[:90]}")
 
     # imagens
     for tag in re.findall(r"<img\b[^>]*>", texto):
@@ -101,10 +97,6 @@ for caminho in paginas:
         if "val" in partes and not ({"val-on", "val-off"} & set(partes)):
             problemas.append(f"{nome}: switch sem val-on/val-off: class=\"{classe}\"")
 
-if sem_rel:
-    avisos.append(f"{sum(sem_rel.values())} link(s) externo(s) sem rel=\"noopener noreferrer\" em "
-                  + ", ".join(f"{n} ({q})" for n, q in sorted(sem_rel.items()))
-                  + " — os navegadores atuais já protegem; complete quando for editar esses guias")
 if len(versoes) > 1:
     avisos.append("CSS/JS com números de versão diferentes entre as páginas: " + ", ".join(sorted(versoes))
                   + " — rode python atualizar-versao.py")

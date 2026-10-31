@@ -185,7 +185,8 @@
         var temAtivo = cat.canais.some(function (c) { return c[0] === atual; });
         var recolhida = ler(PREFIXO + id) === 'true';
         var classes = 'category-content' + (recolhida ? ' collapsed' + (temAtivo ? ' has-active' : '') : '');
-        html += '<div class="category-header" data-category="' + esc(id) + '"' +
+        html += '<div class="category-header" data-category="' + esc(id) + '" role="button" tabindex="0"' +
+            ' aria-expanded="' + (recolhida ? 'false' : 'true') + '"' +
             (i ? ' style="margin-top: 0.75rem;"' : '') +
             '><span class="category-arrow"' + (recolhida ? ' style="transform: rotate(-90deg);"' : '') +
             '>' + SETA + '</span> ' + esc(cat.titulo) + '</div>';
@@ -215,18 +216,35 @@
         var temAtivo = !!conteudo.querySelector('.channel-item.active');
         conteudo.classList.toggle('collapsed', recolhida);
         conteudo.classList.toggle('has-active', recolhida && temAtivo);
+        cabecalho.setAttribute('aria-expanded', recolhida ? 'false' : 'true');
         if (seta) seta.style.transform = recolhida ? 'rotate(-90deg)' : '';
     }
 
-    // Abre/fecha a categoria ao clicar no cabeçalho
-    alvo.addEventListener('click', function (e) {
-        var cabecalho = e.target.closest ? e.target.closest('.category-header') : null;
-        if (!cabecalho || !alvo.contains(cabecalho)) return;
+    // Abre/fecha a categoria ao clicar no cabeçalho (ou Enter/Espaço pelo teclado)
+    function alternarCategoria(cabecalho) {
         var conteudo = cabecalho.nextElementSibling;
         if (!conteudo) return;
         var recolher = !conteudo.classList.contains('collapsed');
         definirEstado(cabecalho, recolher);
         gravar(PREFIXO + cabecalho.getAttribute('data-category'), recolher);
+    }
+
+    function cabecalhoDoEvento(e) {
+        var cabecalho = e.target.closest ? e.target.closest('.category-header') : null;
+        return cabecalho && alvo.contains(cabecalho) ? cabecalho : null;
+    }
+
+    alvo.addEventListener('click', function (e) {
+        var cabecalho = cabecalhoDoEvento(e);
+        if (cabecalho) alternarCategoria(cabecalho);
+    });
+
+    alvo.addEventListener('keydown', function (e) {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        var cabecalho = cabecalhoDoEvento(e);
+        if (!cabecalho) return;
+        e.preventDefault();
+        alternarCategoria(cabecalho);
     });
 
     // Usado por js/navegacao.js: marca o canal da página exibida e reaplica as categorias
