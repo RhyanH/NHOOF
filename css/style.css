@@ -223,7 +223,7 @@ header nav ul li a.active::after {
     inset: 0;
     border-radius: inherit;
     pointer-events: none;
-    background: conic-gradient(from var(--nav-ang), #2f4cff, #5c7bff, #1f35c9, #2f4cff, #5c7bff, #1f35c9, #2f4cff);
+    background: conic-gradient(from var(--nav-ang), #2f4cff, #1a2fd6, #3b57ff, #2f4cff, #1a2fd6, #3b57ff, #2f4cff);
 }
 
 header nav ul li a.active::before {
