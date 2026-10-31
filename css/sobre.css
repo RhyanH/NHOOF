@@ -1,269 +1,207 @@
 /* ============================================================================
    NHOOF — Sobre
-   Usa os tokens de css/style.css e os componentes de css/home.css
-   (eyebrow, seções, cartões, botões, rodapé). Aqui só o que é desta página.
+   Página de leitura: uma coluna de texto, sem efeitos de fundo.
+   Usa só os tokens de css/style.css (independente da Home).
    ============================================================================ */
 
-/* ---- Abertura -------------------------------------------------------------- */
-.sobre-hero {
-    position: relative;
-    display: grid;
-    place-items: center;
-    padding: calc(var(--header-h) + 5rem) 1.5rem 3rem;
-    overflow: hidden;
-    isolation: isolate;
-}
-
-.sobre-hero .hero-glow {
-    top: 45%;
-}
-
-.sobre-hero-inner {
+body.sobre {
+    height: auto;
+    min-height: 100%;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    max-width: 720px;
-    text-align: center;
 }
 
-.sobre-avatar {
-    display: grid;
-    place-items: center;
-    width: 84px;
-    height: 84px;
-    margin-bottom: 1.75rem;
-    border: 1px solid var(--line-strong);
-    border-radius: 24px;
-    background:
-        radial-gradient(circle at 30% 20%, rgba(var(--accent-rgb), 0.25), transparent 60%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
-    box-shadow: 0 10px 40px rgba(var(--accent-rgb), 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-    animation: subir 0.7s var(--ease) both;
+.sobre-pagina {
+    flex: 1;
+    padding: calc(var(--header-h) + 4.5rem) 1.5rem 5rem;
 }
 
-.sobre-avatar img {
-    width: 92px;
-    height: 92px;
-    margin: -6px;
+.sobre-artigo {
+    max-width: 680px;
+    margin: 0 auto;
+    animation: entrar 0.4s var(--ease) both;
 }
 
-.sobre-hero .eyebrow {
-    animation: subir 0.7s 0.06s var(--ease) both;
+/* ---- Topo ----------------------------------------------------------------- */
+.sobre-topo {
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--line);
 }
 
-.sobre-hero h1 {
-    font-size: clamp(2.4rem, 6.5vw, 4.25rem);
-    font-weight: 700;
-    line-height: 1.05;
-    letter-spacing: -0.045em;
-    color: #fff;
-    animation: subir 0.8s 0.12s var(--ease) both;
-}
-
-.sobre-hero .destaque {
-    background: linear-gradient(90deg, #ffffff, var(--accent));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-}
-
-.sobre-lead {
-    max-width: 560px;
-    margin-top: 1.25rem;
-    font-size: clamp(1rem, 1.6vw, 1.15rem);
-    line-height: 1.65;
-    color: var(--text-2);
-    animation: subir 0.8s 0.18s var(--ease) both;
-}
-
-.sobre-lead b {
-    font-family: var(--font-mono);
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    color: var(--text);
-}
-
-/* ---- História: título fixo à esquerda, linha do tempo à direita ------------- */
-.historia {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.55fr);
-    gap: 3.5rem;
-    align-items: start;
-}
-
-.historia .secao-topo {
-    position: sticky;
-    top: calc(var(--header-h) + 2.5rem);
-    margin-bottom: 0;
-}
-
-/* ---- Linha do tempo ---------------------------------------------------------- */
-.linha-tempo {
-    list-style: none;
-    position: relative;
-    display: grid;
-    gap: 14px;
-    padding-left: 34px;
-}
-
-/* trilho vertical */
-.linha-tempo::before {
-    content: "";
-    position: absolute;
-    left: 9px;
-    top: 10px;
-    bottom: 10px;
-    width: 2px;
-    border-radius: 2px;
-    background: linear-gradient(180deg, rgba(var(--accent-rgb), 0.7), rgba(var(--accent-rgb), 0.08));
-}
-
-.linha-tempo li {
-    position: relative;
-    padding: 1.25rem 1.4rem;
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.01));
-}
-
-/* ponto no trilho */
-.linha-tempo li::before {
-    content: "";
-    position: absolute;
-    left: -31px;
-    top: 1.55rem;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    border: 2px solid var(--accent);
-    background: var(--bg);
-    box-shadow: 0 0 0 4px var(--bg), 0 0 14px rgba(var(--accent-rgb), 0.6);
-}
-
-.linha-tempo li:last-child::before {
-    background: var(--accent);
-}
-
-.marco {
+.eyebrow {
+    margin-bottom: 0.75rem;
     font-family: var(--font-mono);
     font-size: 0.7rem;
     font-weight: 500;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--accent);
 }
 
-.linha-tempo h3 {
-    margin-top: 0.4rem;
-    font-size: 1.1rem;
-    font-weight: 600;
-    letter-spacing: -0.02em;
+.sobre-topo h1 {
+    font-size: clamp(1.9rem, 4vw, 2.5rem);
+    font-weight: 650;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
     color: #fff;
 }
 
-.linha-tempo p {
-    margin-top: 0.45rem;
-    font-size: 0.93rem;
-    line-height: 1.7;
+.sobre-lead {
+    margin-top: 0.75rem;
+    font-size: 1.08rem;
+    line-height: 1.6;
     color: var(--text-2);
 }
 
-/* ---- Princípios ---------------------------------------------------------------- */
-.principios {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 14px;
+/* ---- Texto ---------------------------------------------------------------- */
+.sobre-texto p,
+.sobre-bloco > p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--text-2);
 }
 
-/* ---- O que vem por aí ---------------------------------------------------------- */
-.proximos {
-    display: grid;
-    grid-template-columns: 1.3fr 1fr;
-    gap: 2.5rem;
-    align-items: center;
-    padding: 2.5rem;
-    border: 1px dashed var(--line-strong);
-    border-radius: 20px;
+.sobre-texto p + p {
+    margin-top: 1.1rem;
 }
 
-.proximos-slots {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-}
-
-.proximos-slots span {
-    display: grid;
-    place-items: center;
-    aspect-ratio: 1;
-    border: 1px dashed var(--line-strong);
-    border-radius: 12px;
+.sobre-texto b {
     font-family: var(--font-mono);
-    font-size: 0.85rem;
-    color: var(--text-3);
-    background: rgba(255, 255, 255, 0.015);
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: var(--text);
 }
 
-/* ---- Chamada final --------------------------------------------------------------- */
-.sobre-cta {
+/* ---- Blocos ----------------------------------------------------------------- */
+.sobre-bloco {
+    margin-top: 3rem;
+}
+
+.sobre-bloco h2 {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: #fff;
+}
+
+/* Lista no mesmo estilo das tabelas dos guias: linhas finas, sem cartões */
+.sobre-pontos {
+    list-style: none;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--inset);
+}
+
+.sobre-pontos li {
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    gap: 1.25rem;
+    padding: 0.95rem 1.1rem;
+}
+
+.sobre-pontos li + li {
+    border-top: 1px solid var(--line);
+}
+
+.sobre-pontos strong {
+    font-size: 0.9rem;
+    font-weight: 550;
+    color: var(--text);
+}
+
+.sobre-pontos span {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text-2);
+}
+
+/* ---- Links finais -------------------------------------------------------------- */
+.sobre-links {
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1.75rem;
+    margin-top: 3rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--line);
+}
+
+.sobre-links a {
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--text);
+}
+
+.sobre-links a span {
+    display: inline-block;
+    color: var(--text-3);
+    transition: transform 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.sobre-links a:hover span {
+    transform: translateX(3px);
+    color: var(--accent);
+}
+
+/* ---- Rodapé (mesmo da Home) --------------------------------------------------- */
+.rodape {
+    border-top: 1px solid var(--line);
+}
+
+.rodape-inner {
+    display: flex;
     align-items: center;
-    padding: 3rem 1.5rem;
-    border: 1px solid rgba(var(--accent-rgb), 0.22);
-    border-radius: 20px;
-    background:
-        radial-gradient(70% 120% at 50% 0%, rgba(var(--accent-rgb), 0.14), transparent 70%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
-    text-align: center;
+    gap: 1.5rem;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 1.75rem 1.5rem;
+    font-size: 0.82rem;
+    color: var(--text-3);
 }
 
-.sobre-cta .hero-actions {
-    margin-top: 1.75rem;
-    animation: none;
+.rodape-marca {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text);
+    font-weight: 650;
+    letter-spacing: 0.04em;
 }
 
-/* ---- Responsivo ----------------------------------------------------------------- */
-@media (max-width: 900px) {
-    .historia {
-        grid-template-columns: 1fr;
-        gap: 0;
-    }
-
-    .historia .secao-topo {
-        position: static;
-        margin-bottom: 2.25rem;
-    }
-
-    .principios {
-        grid-template-columns: 1fr;
-    }
-
-    .proximos {
-        grid-template-columns: 1fr;
-        gap: 1.75rem;
-        padding: 1.75rem;
-    }
+.rodape-marca img {
+    width: 34px;
+    height: 34px;
+    margin: -6px -4px;
 }
 
+.rodape-marca:hover {
+    color: #fff;
+}
+
+.rodape-ano {
+    margin-left: auto;
+    font-family: var(--font-mono);
+}
+
+/* ---- Celular ------------------------------------------------------------------ */
 @media (max-width: 640px) {
-    .sobre-hero {
-        padding-top: calc(var(--header-h) + 3.5rem);
+    .sobre-pagina {
+        padding-top: calc(var(--header-h) + 3rem);
     }
 
-    .linha-tempo {
-        padding-left: 28px;
+    .sobre-pontos li {
+        grid-template-columns: 1fr;
+        gap: 0.3rem;
     }
 
-    .linha-tempo::before {
-        left: 6px;
+    .rodape-inner {
+        flex-wrap: wrap;
+        gap: 0.75rem;
     }
 
-    .linha-tempo li::before {
-        left: -28px;
-    }
-
-    .linha-tempo li {
-        padding: 1.1rem;
+    .rodape-ano {
+        margin-left: 0;
     }
 }
