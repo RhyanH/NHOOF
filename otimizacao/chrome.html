@@ -61,32 +61,32 @@
                     <div class="setup-card">
                         <div>
                             <h3><span class="card-icon">🎯</span>1. Objetivo</h3>
-                            <ul>
-                                <li class="li-longa"><span>Objetivo</span> <strong>Corrigir piscadas e telas pretas temporárias em navegadores e no Discord</strong></li>
+                            <ul class="lista-instrucoes">
+                                <li><span>Objetivo</span> <strong>Corrigir piscadas e telas pretas temporárias em navegadores e no Discord</strong></li>
                             </ul>
                             <h3><span class="card-icon">🛠️</span>2. Passo 1: Desativar a aceleração por hardware (teste primeiro)</h3>
-                            <ul>
-                                <li class="li-longa"><span>1. Chrome e Discord</span> <strong>Desligue a opção de aceleração de hardware nas configurações de cada programa e reinicie os dois</strong></li>
-                                <li class="li-longa"><span>2. Observação</span> <strong>Desligar a aceleração pode aumentar o uso da CPU em vídeos. Se as piscadas pararem, não precisa do Passo 2</strong></li>
+                            <ul class="lista-instrucoes">
+                                <li><span>1. Chrome e Discord</span> <strong>Desligue a opção de aceleração de hardware nas configurações de cada programa e reinicie os dois</strong></li>
+                                <li><span>2. Observação</span> <strong>Desligar a aceleração pode aumentar o uso da CPU em vídeos. Se as piscadas pararem, não precisa do Passo 2</strong></li>
                             </ul>
                             <h3><span class="card-icon">🛠️</span>3. Passo 2: Desativar o MPO (Multi-Plane Overlay) no Windows</h3>
-                            <ul>
+                            <ul class="lista-instrucoes">
                                 <li><span>Antes</span> <strong>Crie um ponto de restauração</strong></li>
                                 <li><span>1. Executar</span> <strong><span class="code-line">Windows + R</span>, digite <span class="code-line">regedit</span> e clique em OK</strong></li>
-                                <li class="li-longa"><span>2. Caminho</span> <strong>Cole o caminho abaixo na barra superior do Regedit e aperte Enter: <span class="code-line">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\DWM</span></strong></li>
-                                <li class="li-longa"><span>3. Novo valor</span> <strong>Clique com o botão direito em um espaço em branco no lado direito → Novo → Valor DWORD (32 bits)</strong></li>
-                                <li class="li-longa"><span>4. Nome</span> <strong>Renomeie o novo valor para: <span class="code-line">OverlayTestMode</span></strong></li>
-                                <li class="li-longa"><span>5. Dados do valor</span> <strong>Dê dois cliques em cima dele, mude os "Dados do valor" para <span class="code-line">5</span> e clique em OK</strong></li>
-                                <li class="li-longa"><span>6. Reinício</span> <strong>Reinicie o computador para salvar a alteração</strong></li>
+                                <li><span>2. Caminho</span> <strong>Cole o caminho abaixo na barra superior do Regedit e aperte Enter: <span class="code-line">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\DWM</span></strong></li>
+                                <li><span>3. Novo valor</span> <strong>Clique com o botão direito em um espaço em branco no lado direito → Novo → Valor DWORD (32 bits)</strong></li>
+                                <li><span>4. Nome</span> <strong>Renomeie o novo valor para: <span class="code-line">OverlayTestMode</span></strong></li>
+                                <li><span>5. Dados do valor</span> <strong>Dê dois cliques em cima dele, mude os "Dados do valor" para <span class="code-line">5</span> e clique em OK</strong></li>
+                                <li><span>6. Reinício</span> <strong>Reinicie o computador para salvar a alteração</strong></li>
                             </ul>
                             <h3><span class="card-icon">↩️</span>4. Como reverter</h3>
-                            <ul>
-                                <li class="li-longa"><span>Reverter</span> <strong>Apague o valor OverlayTestMode no mesmo caminho do Regedit e reinicie o computador</strong></li>
+                            <ul class="lista-instrucoes">
+                                <li><span>Reverter</span> <strong>Apague o valor OverlayTestMode no mesmo caminho do Regedit e reinicie o computador</strong></li>
                             </ul>
                             <h3><span class="card-icon">📝</span>5. Notas</h3>
-                            <ul>
-                                <li class="li-longa"><span>Aviso</span> <strong>Se o Passo 1 resolver, não tem necessidade do Passo 2</strong></li>
-                                <li class="li-longa"><span>Atenção</span> <strong>Em drivers e versões novas do Windows, relatos de 2025 indicam que o OverlayTestMode pode não ter mais efeito. Se continuar piscando, atualize o driver da placa de vídeo ou volte para uma versão anterior</strong></li>
+                            <ul class="lista-instrucoes">
+                                <li><span>Aviso</span> <strong>Se o Passo 1 resolver, não tem necessidade do Passo 2</strong></li>
+                                <li><span>Atenção</span> <strong>Em drivers e versões novas do Windows, relatos de 2025 indicam que o OverlayTestMode pode não ter mais efeito. Se continuar piscando, atualize o driver da placa de vídeo ou volte para uma versão anterior</strong></li>
                             </ul>
                         </div>
                     </div>

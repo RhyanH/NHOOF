@@ -161,7 +161,14 @@
         text-align: left;
     }
 
-    /* Switches são compactos: continuam ao lado do texto, como num app */
+    /* No celular toda linha empilhada usa o mesmo rótulo pequeno */
+    .setup-card ul li:not(:has(> .val)) > span:first-child {
+        font-size: 0.75rem;
+        color: var(--text-3);
+    }
+
+    /* Switches e passos numerados continuam em linha, como num app */
+    .setup-card ul.lista-passos li,
     .setup-card ul li:has(> .val) {
         flex-direction: row;
         align-items: center;

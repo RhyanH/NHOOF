@@ -522,28 +522,91 @@ header nav ul li a.active {
     overflow-wrap: anywhere;
 }
 
-/* Valor longo (caminho, aviso, comando): rótulo em cima, valor na largura toda */
-.setup-card ul li.li-longa {
+/* ---- Formatos de lista (definidos por lista inteira, nunca linha a linha) ----
+   sem classe          -> tabela: rótulo à esquerda, valor curto à direita
+   .lista-instrucoes   -> rótulo em cima, valor na largura toda (caminhos,
+                          instruções, comandos). Linhas com switch ficam em linha.
+   .lista-passos       -> passos numerados: número em círculo + texto           */
+.setup-card ul.lista-instrucoes li:not(:has(> .val)) {
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
-    gap: 6px;
+    gap: 5px;
     padding-top: 0.7rem;
     padding-bottom: 0.75rem;
 }
 
-.setup-card ul li.li-longa > span:first-child {
-    font-size: 0.78rem;
+.setup-card ul.lista-instrucoes li:not(:has(> .val)) > span:first-child {
+    font-size: 0.75rem;
     color: var(--text-3);
 }
 
-.setup-card ul li.li-longa strong {
+.setup-card ul.lista-instrucoes li:not(:has(> .val)) strong {
     max-width: none;
     text-align: left;
 }
 
-.setup-card ul li.li-longa strong.code-line {
+.setup-card ul.lista-instrucoes li:not(:has(> .val)) strong.code-line {
     align-self: flex-start;
+}
+
+/* "Caminho" no topo da lista: trilha de navegação até o ajuste */
+.setup-card ul li.li-caminho {
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 5px;
+    padding-top: 0.7rem;
+    padding-bottom: 0.75rem;
+    background: rgba(var(--accent-rgb), 0.035);
+}
+
+.setup-card ul li.li-caminho > span:first-child {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-3);
+}
+
+.setup-card ul li.li-caminho strong {
+    max-width: none;
+    text-align: left;
+    color: var(--text);
+}
+
+.setup-card ul.lista-passos li {
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 12px;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+}
+
+.passo-num {
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    margin-top: -1px;
+    border: 1px solid rgba(var(--accent-rgb), 0.3);
+    border-radius: 50%;
+    background: rgba(var(--accent-rgb), 0.1);
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.passo-texto {
+    color: var(--text);
+    font-weight: 500;
+}
+
+.passo-texto strong {
+    max-width: none !important;
+    text-align: left !important;
 }
 
 .setup-card ul li strong.text-left-normal {

@@ -65,7 +65,7 @@
                                 <li><span>Win + R</span> <strong class="code-line">ncpa.cpl</strong></li>
                                 <li><span>Intel(R) Ethernet Controller I225-V</span> <strong>Propriedades</strong></li>
                                 <li><span>Protocolo IP Versão 4 (TCP/IPv4)</span> <strong>Propriedades</strong></li>
-                                <li class="li-longa"><span>Selecione</span> <strong>Usar os seguintes endereços de servidor DNS</strong></li>
+                                <li><span>Selecione</span> <strong>Usar os seguintes endereços de servidor DNS</strong></li>
                                 <li><span>Servidor preferencial</span> <strong class="code-line">1.1.1.1</strong></li>
                                 <li><span>Servidor alternativo</span> <strong class="code-line">1.0.0.1</strong></li>
                             </ul>
@@ -75,14 +75,14 @@
                                 <li><span>Prompt de Comando (CMD)</span> <strong class="code-line">ipconfig /flushdns</strong></li>
                             </ul>
                             <h3><span class="card-icon">🔎</span>3. Teste de conexão</h3>
-                            <ul>
+                            <ul class="lista-instrucoes">
                                 <li><span>Prompt de Comando (CMD)</span> <strong class="code-line">ping 1.1.1.1</strong></li>
-                                <li class="li-longa"><span>Verifique a linha final</span> <strong>O resultado ideal deve apresentar 0% de perda e a menor Média em ms possível para a sua região. Esse teste mede a conexão até a Cloudflare, não o DNS.</strong></li>
+                                <li><span>Verifique a linha final</span> <strong>O resultado ideal deve apresentar 0% de perda e a menor Média em ms possível para a sua região. Esse teste mede a conexão até a Cloudflare, não o DNS.</strong></li>
                             </ul>
                             <h3><span class="card-icon">✅</span>4. Como verificar se funcionou após aplicar</h3>
-                            <ul>
+                            <ul class="lista-instrucoes">
                                 <li><span>Prompt de Comando (CMD)</span> <strong class="code-line">nslookup google.com</strong></li>
-                                <li class="li-longa"><span>Resultado</span> <strong>Se nas primeiras linhas aparecer Server: one.one.one.one e Address: 1.1.1.1, o Windows está usando o DNS da Cloudflare</strong></li>
+                                <li><span>Resultado</span> <strong>Se nas primeiras linhas aparecer Server: one.one.one.one e Address: 1.1.1.1, o Windows está usando o DNS da Cloudflare</strong></li>
                             </ul>
                         </div>
                         <div class="card-description">

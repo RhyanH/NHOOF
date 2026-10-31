@@ -22,7 +22,12 @@ Site pessoal com guias de otimização de PC, publicado no GitHub Pages.
 - **Mudar o visual:** altere os tokens em `:root`, no topo de `css/style.css`. As páginas não têm `<style>` próprio.
 - **Novo guia:** copie uma página de `otimizacao/` e adicione uma linha em `js/sidebar.js`.
 - **Switch ON/OFF:** `<strong class="val val-on">ON</strong>` ou `<strong class="val val-off">OFF</strong>`.
-- **Valor longo** (caminho, aviso, comando) numa lista: use `<li class="li-longa">` para o valor ocupar a largura toda.
+- **Formato da lista** é automático e vale para a lista inteira (`js/main.js` mede no navegador):
+  - tabela: todos os valores cabem numa linha (rótulo à esquerda, valor à direita);
+  - `lista-instrucoes`: algum valor quebraria a linha, então todos ficam com rótulo em cima e valor embaixo;
+  - `lista-passos`: passos numerados, com `<li><span class="passo-num">1</span><span class="passo-texto">texto</span></li>`;
+  - linhas com switch ON/OFF ficam sempre em linha;
+  - uma linha `Caminho` no topo da lista vira a trilha de navegação (`<li class="li-caminho">`).
 - **Comando copiável:** `<strong class="code-line">comando</strong>`.
 - **Alertas:** `alert-box`, `alert-box warning` ou `alert-box danger`.
 - **Ícone do título:** `<h3><span class="card-icon">⚙️</span>Título</h3>`.

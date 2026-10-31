@@ -61,39 +61,39 @@
                     <div class="setup-card">
                         <div>
                             <h3><span class="card-icon">⚠️</span>Antes de aplicar</h3>
-                            <ul>
-                                <li class="li-longa"><span>Aviso</span> <strong>Crie um ponto de restauração (veja o canal Ponto de Restauração). Reversão de cada item no fim da página.</strong></li>
+                            <ul class="lista-instrucoes">
+                                <li><span>Aviso</span> <strong>Crie um ponto de restauração (veja o canal Ponto de Restauração). Reversão de cada item no fim da página.</strong></li>
                             </ul>
                             <h3><span class="card-icon">⌨️</span>1. Passo 1: Comandos de terminal (PowerShell como Admin)</h3>
-                            <ul>
-                                <li class="li-longa"><span>Armazenamento Reservado</span> <strong><span class="code-line">Set-WindowsReservedStorageState -State Disabled</span></strong></li>
-                                <li class="li-longa"><span>Rastreamento de Uso de Dados (DusmSvc)</span> <strong><span class="code-line">sc.exe stop DusmSvc</span> → <span class="code-line">sc.exe config DusmSvc start= disabled</span></strong></li>
-                                <li class="li-longa"><span>Assistente de Compatibilidade (PcaSvc)</span> <strong><span class="code-line">sc.exe stop PcaSvc</span> → <span class="code-line">sc.exe config PcaSvc start= disabled</span> <em>(Pular se joga FiveM)</em></strong></li>
-                                <li class="li-longa"><span>Protocolo Teredo</span> <strong><span class="code-line">netsh interface teredo set state disabled</span> <em>(Pular se usa Party/Voice do Xbox App ou Game Pass)</em></strong></li>
-                                <li class="li-longa"><span>Túneis IPv6 (ISATAP &amp; 6to4)</span> <strong><span class="code-line">netsh int isatap set state disabled</span> → <span class="code-line">netsh int ipv6 6to4 set state disabled</span></strong></li>
+                            <ul class="lista-instrucoes">
+                                <li><span>Armazenamento Reservado</span> <strong><span class="code-line">Set-WindowsReservedStorageState -State Disabled</span></strong></li>
+                                <li><span>Rastreamento de Uso de Dados (DusmSvc)</span> <strong><span class="code-line">sc.exe stop DusmSvc</span> → <span class="code-line">sc.exe config DusmSvc start= disabled</span></strong></li>
+                                <li><span>Assistente de Compatibilidade (PcaSvc)</span> <strong><span class="code-line">sc.exe stop PcaSvc</span> → <span class="code-line">sc.exe config PcaSvc start= disabled</span> <em>(Pular se joga FiveM)</em></strong></li>
+                                <li><span>Protocolo Teredo</span> <strong><span class="code-line">netsh interface teredo set state disabled</span> <em>(Pular se usa Party/Voice do Xbox App ou Game Pass)</em></strong></li>
+                                <li><span>Túneis IPv6 (ISATAP &amp; 6to4)</span> <strong><span class="code-line">netsh int isatap set state disabled</span> → <span class="code-line">netsh int ipv6 6to4 set state disabled</span></strong></li>
                             </ul>
                             <h3><span class="card-icon">🧬</span>2. Passo 2: Ajustes no registro</h3>
-                            <ul>
-                                <li class="li-longa"><span>Priorização de Threads da CPU (Win32PrioritySeparation)</span> <strong><span class="code-line">HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\PriorityControl</span></strong></li>
-                                <li class="li-longa"><span>Alterar (DWORD 32 bits)</span> <strong><span class="code-line">Win32PrioritySeparation</span> = 26 <em>(Hexadecimal)</em> ou 38 <em>(Decimal)</em></strong></li>
-                                <li class="li-longa"><span>Atraso de ACK &amp; Algoritmo de Nagle (TcpAckFrequency &amp; TCPNoDelay)</span> <strong><span class="code-line">HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\{ID-DA-SUA-PLACA-DE-REDE}</span></strong></li>
+                            <ul class="lista-instrucoes">
+                                <li><span>Priorização de Threads da CPU (Win32PrioritySeparation)</span> <strong><span class="code-line">HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\PriorityControl</span></strong></li>
+                                <li><span>Alterar (DWORD 32 bits)</span> <strong><span class="code-line">Win32PrioritySeparation</span> = 26 <em>(Hexadecimal)</em> ou 38 <em>(Decimal)</em></strong></li>
+                                <li><span>Atraso de ACK &amp; Algoritmo de Nagle (TcpAckFrequency &amp; TCPNoDelay)</span> <strong><span class="code-line">HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces\{ID-DA-SUA-PLACA-DE-REDE}</span></strong></li>
                                 <li><span>Criar/Alterar (DWORD 32 bits)</span> <strong><span class="code-line">TcpAckFrequency</span> = 1</strong></li>
                                 <li><span>Criar/Alterar (DWORD 32 bits)</span> <strong><span class="code-line">TCPNoDelay</span> = 1</strong></li>
-                                <li class="li-longa"><span>Nota</span> <strong><em>Dentro da pasta Interfaces existem várias pastas com nome em código ({...}). Abra a que tiver o seu endereço de IP (campo IPAddress ou DhcpIPAddress) igual ao do seu computador: essa é a sua placa de rede ativa. O código é diferente em cada computador.</em></strong></li>
-                                <li class="li-longa"><span>Otimização de Entrega (Windows Update em Segundo Plano)</span> <strong><span class="code-line">HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization</span></strong></li>
+                                <li><span>Nota</span> <strong><em>Dentro da pasta Interfaces existem várias pastas com nome em código ({...}). Abra a que tiver o seu endereço de IP (campo IPAddress ou DhcpIPAddress) igual ao do seu computador: essa é a sua placa de rede ativa. O código é diferente em cada computador.</em></strong></li>
+                                <li><span>Otimização de Entrega (Windows Update em Segundo Plano)</span> <strong><span class="code-line">HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization</span></strong></li>
                                 <li><span>Criar/Alterar (DWORD 32 bits)</span> <strong><span class="code-line">DODownloadMode</span> = 0</strong></li>
                             </ul>
                             <h3><span class="card-icon">↩️</span>3. Como reverter</h3>
-                            <ul>
+                            <ul class="lista-instrucoes">
                                 <li><span>Passo 1 (PowerShell como Admin)</span> <strong>Comandos abaixo</strong></li>
-                                <li class="li-longa"><span>Armazenamento Reservado</span> <strong><span class="code-line">Set-WindowsReservedStorageState -State Enabled</span></strong></li>
-                                <li class="li-longa"><span>DusmSvc</span> <strong><span class="code-line">sc.exe config DusmSvc start= auto</span> → <span class="code-line">sc.exe start DusmSvc</span></strong></li>
-                                <li class="li-longa"><span>PcaSvc</span> <strong><span class="code-line">sc.exe config PcaSvc start= auto</span> → <span class="code-line">sc.exe start PcaSvc</span></strong></li>
+                                <li><span>Armazenamento Reservado</span> <strong><span class="code-line">Set-WindowsReservedStorageState -State Enabled</span></strong></li>
+                                <li><span>DusmSvc</span> <strong><span class="code-line">sc.exe config DusmSvc start= auto</span> → <span class="code-line">sc.exe start DusmSvc</span></strong></li>
+                                <li><span>PcaSvc</span> <strong><span class="code-line">sc.exe config PcaSvc start= auto</span> → <span class="code-line">sc.exe start PcaSvc</span></strong></li>
                                 <li><span>Teredo</span> <strong><span class="code-line">netsh interface teredo set state default</span></strong></li>
-                                <li class="li-longa"><span>ISATAP e 6to4</span> <strong><span class="code-line">netsh int isatap set state default</span> → <span class="code-line">netsh int ipv6 6to4 set state default</span></strong></li>
+                                <li><span>ISATAP e 6to4</span> <strong><span class="code-line">netsh int isatap set state default</span> → <span class="code-line">netsh int ipv6 6to4 set state default</span></strong></li>
                                 <li><span>Passo 2 (registro)</span> <strong>Valores abaixo</strong></li>
                                 <li><span>Win32PrioritySeparation</span> <strong>volte o valor para 2 (padrão do Windows)</strong></li>
-                                <li class="li-longa"><span>TcpAckFrequency e TCPNoDelay</span> <strong>apague os dois valores na pasta da sua placa de rede</strong></li>
+                                <li><span>TcpAckFrequency e TCPNoDelay</span> <strong>apague os dois valores na pasta da sua placa de rede</strong></li>
                                 <li><span>DODownloadMode</span> <strong>apague o valor</strong></li>
                                 <li><span>Final</span> <strong>Reinicie o computador.</strong></li>
                             </ul>
