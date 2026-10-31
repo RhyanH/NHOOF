@@ -15,6 +15,13 @@ Como funciona, para cada otimizacao/*.html (menos a página de entrada):
                                             último commit que mudou o conteúdo.
 
 Roda sozinho dentro de atualizar-versao.py (o passo de antes de publicar).
+
+Modo automático do GitHub (python atualizar-datas.py --ci), usado por
+.github/workflows/datas.yml a cada envio: grava a data dos canais cujo
+conteúdo foi mudado num commit que NÃO atualizou a data junto (por exemplo,
+uma edição feita direto pelo site do GitHub). A data gravada é a do commit
+que mudou o conteúdo. Canais publicados pelo script acima já vêm com a data
+certa e não são tocados.
 """
 import glob
 import os
@@ -59,15 +66,33 @@ def versao_no_git(commit, arquivo):
     return r.stdout if r.returncode == 0 else None
 
 
-def data_no_historico(arquivo):
-    """Data do commit mais recente que mudou o conteúdo do canal."""
+def ultima_mudanca(arquivo):
+    """Commit mais recente que mudou o conteúdo do canal.
+
+    Devolve (data do commit, versão do arquivo nesse commit, versão anterior)
+    ou None se o arquivo ainda não tem histórico.
+    """
     commits = [l.split(" ", 1) for l in git("log", "--format=%H %cI", "--", arquivo).splitlines() if l]
     for k, (h, quando) in enumerate(commits):
-        atual = conteudo(versao_no_git(h, arquivo))
-        anterior = conteudo(versao_no_git(commits[k + 1][0], arquivo)) if k + 1 < len(commits) else None
-        if atual != anterior:
-            return datetime.fromisoformat(quando)
+        texto = versao_no_git(h, arquivo)
+        anterior = versao_no_git(commits[k + 1][0], arquivo) if k + 1 < len(commits) else None
+        if conteudo(texto) != conteudo(anterior):
+            return datetime.fromisoformat(quando), texto, anterior
     return None
+
+
+def data_no_historico(arquivo):
+    """Data do commit mais recente que mudou o conteúdo do canal."""
+    achado = ultima_mudanca(arquivo)
+    return achado[0] if achado else None
+
+
+def data_gravada(texto):
+    """A linha de data que está no arquivo (ou None)."""
+    if texto is None:
+        return None
+    m = DATA.search(texto)
+    return m.group(0).strip() if m else None
 
 
 def marcador(quando):
@@ -77,19 +102,51 @@ def marcador(quando):
             f'{RELOGIO}<span class="rotulo">Última modificação:</span> <b>{q:%d/%m/%Y}<span class="hora"> às {q:%H:%M}</span></b></time>')
 
 
-def main():
-    agora = datetime.now(timezone.utc)
-    novas = 0
+def gravar(caminho, texto, quando):
+    """Coloca a data como último item do cabeçalho do canal. Devolve True se mudou o arquivo."""
+    sem_data = DATA.sub("", texto)
+    i = sem_data.index('<div class="chat-header">')
+    fim = sem_data.index("\n            </div>", i)
+    novo = sem_data[:fim] + marcador(quando) + sem_data[fim:]
+    if novo == texto:
+        return False
+    with open(caminho, "w", encoding="utf-8") as f:
+        f.write(novo)
+    return True
+
+
+def canais():
     for caminho in sorted(glob.glob(os.path.join(RAIZ, PASTA, "*.html"))):
         nome = os.path.basename(caminho)
         if nome in IGNORAR:
             continue
-        arquivo = f"{PASTA}/{nome}"
         with open(caminho, encoding="utf-8") as f:
             texto = f.read()
-        if '<div class="chat-header">' not in texto:
-            continue
+        if '<div class="chat-header">' in texto:
+            yield caminho, f"{PASTA}/{nome}", texto
 
+
+def main_ci():
+    """Modo do GitHub: completa as datas que uma edição sem o script deixou para trás."""
+    novas = 0
+    for caminho, arquivo, texto in canais():
+        achado = ultima_mudanca(arquivo)
+        if not achado:
+            continue
+        quando, versao, anterior = achado
+        # o commit que mudou o conteúdo também mudou a data? então já está certo
+        if data_gravada(versao) and data_gravada(versao) != data_gravada(anterior):
+            continue
+        if gravar(caminho, texto, quando):
+            novas += 1
+            print(f"  {arquivo}: {quando.astimezone(BRASILIA):%d/%m/%Y %H:%M:%S}")
+    print(f"datas de modificação completadas em {novas} canais")
+
+
+def main():
+    agora = datetime.now(timezone.utc)
+    novas = 0
+    for caminho, arquivo, texto in canais():
         existente = ATRIBUTO.search(texto)
         mudou = conteudo(texto) != conteudo(versao_no_git("HEAD", arquivo))
         if mudou:
@@ -98,18 +155,11 @@ def main():
             continue
         else:
             quando = data_no_historico(arquivo) or agora
-
-        # coloca a data como último item do cabeçalho do canal
-        sem_data = DATA.sub("", texto)
-        i = sem_data.index('<div class="chat-header">')
-        fim = sem_data.index("\n            </div>", i)
-        novo = sem_data[:fim] + marcador(quando) + sem_data[fim:]
-        if novo != texto:
-            with open(caminho, "w", encoding="utf-8") as f:
-                f.write(novo)
+        if gravar(caminho, texto, quando):
             novas += 1
     print(f"datas de modificação atualizadas em {novas} canais")
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+    main_ci() if "--ci" in sys.argv else main()

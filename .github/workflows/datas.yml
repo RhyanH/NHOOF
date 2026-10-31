@@ -1,0 +1,67 @@
+# Completa a "Última modificação" dos canais do Otimização quando uma mudança
+# chega ao GitHub sem passar pelo script (por exemplo, editada direto pelo site).
+#
+# Como funciona: a cada envio para a main que mexe em otimizacao/, roda
+# "python atualizar-datas.py --ci". Se algum canal teve o conteúdo mudado num
+# commit que não atualizou a data junto, grava a data desse commit (horário de
+# Brasília), cria um commit "Datas de modificação atualizadas automaticamente"
+# e pede ao GitHub Pages para publicar de novo.
+# Mudanças publicadas com "python atualizar-versao.py" já vêm com a data certa:
+# nesse caso a automação não faz nada.
+#
+# Também dá para rodar à mão: aba Actions → "Datas de modificação" → Run workflow.
+
+name: Datas de modificação
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "otimizacao/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: datas-de-modificacao
+  cancel-in-progress: false
+
+jobs:
+  datas:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o repositório (com o histórico completo)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Preparar o Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Completar as datas que faltam
+        run: python atualizar-datas.py --ci
+
+      - name: Enviar as datas (se mudou algo)
+        id: envio
+        run: |
+          if git diff --quiet; then
+            echo "Nenhuma data para atualizar."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "Datas de modificação atualizadas automaticamente"
+          git pull --rebase
+          git push
+          echo "enviou=sim" >> "$GITHUB_OUTPUT"
+
+      - name: Publicar o site de novo
+        if: steps.envio.outputs.enviou == 'sim'
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds"

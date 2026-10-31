@@ -7,6 +7,8 @@ Site pessoal com guias de otimização de PC (BIOS, Windows, NVIDIA, rede, áudi
 
 Este documento explica como o site funciona e como mantê-lo sozinho: editar um guia, criar guias e categorias, mudar cores, publicar e resolver problemas.
 
+> **Usando o Claude?** O arquivo `CLAUDE.md` tem as regras de trabalho e todas as decisões de design já tomadas. O Claude o lê sozinho ao abrir o repositório. Para usar outra IA, peça para ela ler o `CLAUDE.md` e este README antes de mexer.
+
 ---
 
 ## Sumário
@@ -63,9 +65,13 @@ NHOOF/
 │   ├── logo.png             Logo (cabeçalho e ícone da aba)
 │   └── guias/               Imagens usadas dentro dos guias
 ├── fontes/                  Fontes Geist e Geist Mono (licença em LICENSE-Geist.txt)
+├── .github/workflows/
+│   └── datas.yml            Automação do GitHub: completa a "Última modificação" de edições feitas pelo site
 ├── atualizar-versao.py      ★ Rode antes de publicar (ver seção 4)
 ├── atualizar-datas.py       Grava a "Última modificação" dos canais (chamado pelo script acima)
+├── verificar-site.py        ★ Confere o site inteiro antes de publicar (ver seção 4.3)
 ├── .gitignore               Arquivos que o git ignora (temporários do Python)
+├── CLAUDE.md                Instruções e decisões de design para o Claude (lido automaticamente por ele)
 └── README.md                Este arquivo
 ```
 
@@ -82,11 +88,9 @@ Bom para corrigir um texto ou trocar um valor.
 3. Faça a mudança e clique em **Commit changes…** → **Commit changes**.
 4. Espere ~1 minuto e recarregue o site.
 
-⚠️ **Limitação:** editando pelo site, os scripts da seção 4 **não rodam**. Então:
-- a **"Última modificação"** daquele canal **não muda**;
-- se você mudou algum **CSS ou JS**, o navegador de quem já visitou pode continuar com o arquivo antigo em cache por alguns minutos.
+✅ **A "Última modificação" se atualiza sozinha** também nas edições feitas pelo site: cerca de 1 minuto depois, a automação do GitHub (seção 4.4) grava a data e cria um commit "Datas de modificação atualizadas automaticamente". Por isso, antes de editar no PC depois de uma edição pelo site, rode `git pull`.
 
-O script compara cada canal com o **último commit**, então uma edição que já foi enviada pelo site não é detectada depois. Se a data importa para aquela mudança, edite pelo PC (forma B).
+⚠️ **Limitação:** pelo site, o número de versão do CSS/JS (seção 4.2) **não** é atualizado. Se você mudar algum **CSS ou JS** pelo site, quem já visitou pode ver o arquivo antigo em cache por alguns minutos (`Ctrl + F5` resolve). Para CSS/JS, prefira a forma B.
 
 ### B) No seu PC (recomendado para mudanças maiores)
 
@@ -110,10 +114,12 @@ Precisa de: **Git**, **Python 3** e um editor (sugestão: **VS Code**).
 6. **Publique:**
    ```
    python atualizar-versao.py
+   python verificar-site.py
    git add -A
    git commit -m "Descreva aqui o que mudou"
    git push
    ```
+   Só faça o `git add` se o `verificar-site.py` terminar com **TUDO CERTO**. Se o `git push` for recusado, rode `git pull --rebase` e depois `git push` de novo.
 
 #### Ver o site no seu PC antes de publicar
 
@@ -133,9 +139,10 @@ Sempre que publicar pelo PC, rode **antes do commit**:
 
 ```
 python atualizar-versao.py
+python verificar-site.py
 ```
 
-Ele faz duas coisas, nesta ordem:
+O primeiro grava as datas e o número de versão (4.1 e 4.2); o segundo confere se está tudo certo (4.3). O `atualizar-versao.py` faz duas coisas, nesta ordem:
 
 ### 4.1 Última modificação de cada canal (`atualizar-datas.py`)
 
@@ -164,6 +171,33 @@ Por isso todo link local de CSS/JS tem um número de versão no fim:
 ```
 
 O script troca esse número (data e hora) em **todas** as páginas, obrigando o navegador a baixar a versão nova. Não precisa mexer nesses números à mão.
+
+### 4.3 Verificação (`verificar-site.py`)
+
+Confere o site inteiro em poucos segundos, só com Python (não precisa instalar nada):
+
+- links e arquivos locais existem (CSS, JS, imagens, páginas);
+- links externos abrem em outra aba;
+- imagens têm `alt` (e, nos guias, `width`/`height`);
+- nenhuma página tem `<style>` próprio;
+- CSS/JS com `?v=` e todos com o mesmo número;
+- menu do topo: `menu-topo.js` depois do `<header>` e um item ativo por página;
+- menu lateral (`js/sidebar.js`) e arquivos de `otimizacao/` batem, sem repetidos;
+- cartões da entrada (`data-categoria`) com o mesmo nome das categorias;
+- cada canal com a estrutura completa e uma data de "Última modificação";
+- switches com `val-on`/`val-off`.
+
+No fim aparece **TUDO CERTO** ou a lista de **PROBLEMAS** (arquivo e motivo). **AVISOS** são só para conferir e não impedem a publicação. Hoje existe um aviso conhecido: 17 links externos (em 5 guias) sem `rel="noopener noreferrer"`. Os navegadores atuais já protegem esses links; vale completar quando for editar esses guias.
+
+### 4.4 Automação do GitHub (`.github/workflows/datas.yml`)
+
+A cada envio para a `main` que mexe em `otimizacao/`, o GitHub roda `python atualizar-datas.py --ci`:
+
+- se algum canal teve o conteúdo mudado **sem** a data ser atualizada junto (ex.: edição pelo site do GitHub), grava a data do commit daquela mudança (horário de Brasília);
+- cria o commit **"Datas de modificação atualizadas automaticamente"** e pede ao GitHub Pages para publicar de novo;
+- mudanças publicadas pelo PC com o script já vêm com a data certa, e então a automação não faz nada.
+
+Para acompanhar: aba **Actions** → **Datas de modificação**. Também dá para rodar à mão por lá (**Run workflow**).
 
 ---
 
@@ -434,9 +468,10 @@ Se o fundo da Home aparecer parado no seu PC, é essa opção (o guia *desativar
 | Canal novo não aparece no menu | Faltou a linha em `js/sidebar.js`, ou há erro de digitação ali (aspas, vírgula, colchete). Abra o site, aperte `F12` → aba **Console**: um erro em `sidebar.js` aparece em vermelho. |
 | Menu lateral sumiu em todas as páginas | Quase sempre é vírgula/aspas faltando em `js/sidebar.js`. Desfaça a última mudança nesse arquivo. |
 | Contagem de guias de uma categoria não aparece | O `data-categoria` do cartão em `otimizacao/index.html` precisa ser idêntico ao título em `sidebar.js`, com colchetes. |
-| "Última modificação" não mudou | O guia foi editado pelo site do GitHub (o script não roda lá) ou o script não foi rodado antes do commit. |
+| "Última modificação" não mudou | Pelo site do GitHub: espere ~1 min e veja **Actions → Datas de modificação** (verde = gravou). Pelo PC: confira se rodou `python atualizar-versao.py` antes do commit. |
+| `verificar-site.py` mostra PROBLEMA | Cada linha diz o arquivo e o motivo. Corrija e rode de novo até aparecer **TUDO CERTO**. |
 | `python` não é reconhecido no terminal | Reinstale o Python marcando "Add python.exe to PATH", ou use `py atualizar-versao.py`. |
-| `git push` recusado ("rejected", "fetch first") | Alguém (ou você pelo site) mudou algo antes. Rode `git pull` e depois `git push` de novo. |
+| `git push` recusado ("rejected", "fetch first") | Alguém mudou algo antes: você pelo site ou a automação de datas. Rode `git pull --rebase` e depois `git push` de novo. |
 | Quebrei algo e quero voltar | No GitHub, abra o histórico do arquivo (**History**) para ver versões antigas. Pelo PC: `git log` lista as mudanças e `git revert <código>` desfaz uma delas criando uma mudança nova. |
 
 ---
@@ -448,7 +483,7 @@ Se o fundo da Home aparecer parado no seu PC, é essa opção (o guia *desativar
 3. **Nomes de arquivo** em minúsculas, sem acentos e sem espaços (`novo-guia.html`).
 4. **Mantenha a estrutura** `chat-header` + `chat-content` nos guias: a troca de canal sem recarregar e a data dependem dela.
 5. **Não edite** os `?v=…` nem a linha `<time class="channel-update">`: os scripts cuidam deles.
-6. **Rode `python atualizar-versao.py` antes de cada publicação feita pelo PC.**
+6. **Rode `python atualizar-versao.py` e `python verificar-site.py` antes de cada publicação feita pelo PC.**
 7. **Teste no seu PC** (`python -m http.server 8000`) antes de publicar mudanças grandes, olhando também em tela de celular (`F12` → ícone de celular no topo do painel).
 
 ---
