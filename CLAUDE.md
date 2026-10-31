@@ -27,6 +27,13 @@ Este arquivo é lido automaticamente pelo Claude ao abrir este repositório. Ele
 
 A instrução original dele vale sempre: *"faça as melhorias, confira tudo e faça o upload no GitHub quando tiver 100% de certeza de que está tudo certo, tanto as informações quanto o código."*
 
+### Manter este arquivo (e o README) sempre em dia
+
+- Sempre que uma decisão nova for tomada, uma antiga mudar ou algo aqui deixar de valer, **atualize o `CLAUDE.md`**: acrescente, corrija ou remova o trecho. Isso vale para cores, regras, comportamento do site, preferências do dono e coisas recusadas.
+- Faça o mesmo com o **`README.md`** quando mudar algo que uma pessoa precise saber para manter o site.
+- **Antes de mexer nesses arquivos, avise o dono:** diga **o que** vai mudar e **por quê**, em uma ou duas linhas. Só então faça a mudança.
+- Publique a atualização junto com a mudança que a motivou. Na resposta final, diga em uma linha o que mudou nesses arquivos.
+
 ## 3. Direção de design (a "persona")
 
 - Atue como **especialista sênior em UI/UX e front-end**: interfaces escuras, limpas, minimalistas e polidas, no estilo de painéis tech de alto padrão (Vercel, Supabase, Stripe, Linear).
@@ -104,7 +111,7 @@ A instrução original dele vale sempre: *"faça as melhorias, confira tudo e fa
     ```
     gh api "repos/RhyanH/NHOOF/actions/runs?per_page=5" --jq '.workflow_runs[] | "\(.name) | \(.head_sha[0:7]) | \(.status) | \(.conclusion)"'
     ```
-11. **Responda** com o resumo (seção 1).
+11. **Responda** com o resumo (seção 1). Se alguma decisão nova surgiu, atualize o `CLAUDE.md` e o `README.md`, avisando antes (seção 2).
 
 O endereço canônico do repositório é `https://github.com/RhyanH/NHOOF.git`. O aviso "This repository moved" no push é inofensivo.
 
