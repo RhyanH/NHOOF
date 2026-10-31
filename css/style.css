@@ -194,9 +194,9 @@ header nav ul li a:hover {
     background: rgba(255, 255, 255, 0.05);
 }
 
-/* Item ativo: texto azul em negrito com brilho leve e contorno girando em
-   tons de azul. O contorno anima apenas se a pessoa deixa animações ligadas
-   no sistema; caso contrário, aparece parado. */
+/* Item ativo: letra de neon azul (miolo claro e brilho azul que pulsa) e
+   contorno girando em tons de azul. O neon e o contorno animam apenas se a pessoa
+   deixa animações ligadas no sistema; caso contrário, aparecem parados. */
 @property --nav-ang {
     syntax: "<angle>";
     inherits: false;
@@ -205,10 +205,14 @@ header nav ul li a:hover {
 
 header nav ul li a.active {
     position: relative;
-    color: var(--accent);
+    color: #e8ecff;
     font-weight: 600;
-    background: rgba(255, 255, 255, 0.05);
-    text-shadow: 0 0 12px rgba(var(--accent-rgb), 0.5);
+    background: rgba(47, 76, 255, 0.12);
+    text-shadow:
+        0 0 1px #c9d3ff,
+        0 0 4px #6f8bff,
+        0 0 9px #3f5bff,
+        0 0 16px rgba(47, 76, 255, 0.85);
 }
 
 /* contorno de 1px */
@@ -219,7 +223,7 @@ header nav ul li a.active::after {
     inset: 0;
     border-radius: inherit;
     pointer-events: none;
-    background: conic-gradient(from var(--nav-ang), var(--accent), #3f5bff, #c3cbff, var(--accent), #3f5bff, #c3cbff, var(--accent));
+    background: conic-gradient(from var(--nav-ang), #2f4cff, #5c7bff, #1f35c9, #2f4cff, #5c7bff, #1f35c9, #2f4cff);
 }
 
 header nav ul li a.active::before {
@@ -237,9 +241,29 @@ header nav ul li a.active::after {
 }
 
 @media (prefers-reduced-motion: no-preference) {
+    header nav ul li a.active {
+        animation: nav-neon 2.8s ease-in-out infinite;
+    }
+
     header nav ul li a.active::before,
     header nav ul li a.active::after {
         animation: nav-giro 5s linear infinite;
+    }
+}
+
+/* o brilho do neon "respira", com uma leve piscada no meio */
+@keyframes nav-neon {
+    0%, 100% {
+        text-shadow: 0 0 1px #c9d3ff, 0 0 4px #6f8bff, 0 0 9px #3f5bff, 0 0 16px rgba(47, 76, 255, 0.85);
+    }
+    50% {
+        text-shadow: 0 0 1px #c9d3ff, 0 0 3px #6f8bff, 0 0 6px #3f5bff, 0 0 10px rgba(47, 76, 255, 0.55);
+    }
+    53% {
+        text-shadow: 0 0 1px #c9d3ff, 0 0 2px #6f8bff, 0 0 4px #3f5bff, 0 0 6px rgba(47, 76, 255, 0.35);
+    }
+    56% {
+        text-shadow: 0 0 1px #c9d3ff, 0 0 3px #6f8bff, 0 0 7px #3f5bff, 0 0 12px rgba(47, 76, 255, 0.65);
     }
 }
 
