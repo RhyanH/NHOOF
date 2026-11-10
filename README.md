@@ -377,6 +377,8 @@ Todo guia é feito com os mesmos blocos. Use sempre estas classes; **não** crie
 
 O texto dentro de `val-on`/`val-off` pode ser qualquer um (ON, Ativado, Habilitado, Desmarcar…); a cor vem da classe.
 
+**Ordem do cartão:** o caminho vem primeiro (linha `li-caminho`) e as opções logo embaixo; não repita a opção num passo "Como fazer". Um comando pode ficar dentro do caminho: `<strong>Win + R → <span class="code-line">main.cpl</span> → aba Opções do Ponteiro</strong>`. Nos textos, **o lugar vem antes da ação** ("Na aba Geral, clique em Avançado", não "Clique em Avançado na aba Geral").
+
 ### Passos numerados
 
 ```html

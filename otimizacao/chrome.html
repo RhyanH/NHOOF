@@ -6,8 +6,8 @@
     <title>Chrome - NHOOF</title>
     <!-- Ícone da aba do navegador (Favicon) -->
     <link rel="icon" type="image/png" href="../imagens/logo.png">
-    <link rel="stylesheet" href="../css/style.css?v=202611101541">
-    <link rel="stylesheet" href="../css/responsivo.css?v=202611101541">
+    <link rel="stylesheet" href="../css/style.css?v=202611101554">
+    <link rel="stylesheet" href="../css/responsivo.css?v=202611101554">
 </head>
 <body>
 
@@ -36,14 +36,14 @@
 
         <div class="header-spacer"></div>
     </header>
-    <script src="../js/menu-topo.js?v=202611101541"></script>
+    <script src="../js/menu-topo.js?v=202611101554"></script>
 
     <!-- Contêiner principal: barra lateral e painel de conteúdo -->
     <div class="discord-app">
         
         <!-- Barra Lateral Esquerda (montada por ../js/sidebar.js; para mudar canais, edite js/sidebar.js) -->
         <div class="sidebar-channels" data-projeto="otimizacao"></div>
-        <script src="../js/sidebar.js?v=202611101541"></script>
+        <script src="../js/sidebar.js?v=202611101554"></script>
 
         <!-- Painel Central -->
         <div class="main-chat">
@@ -53,7 +53,7 @@
                 <span>chrome</span>
                 <span class="channel-divider">|</span>
                 <span class="channel-topic">Correção de piscadas e telas pretas no navegador e no Discord: primeiro a aceleração por hardware, depois o MPO (Multi-Plane Overlay).</span>
-                <time class="channel-update" datetime="2026-10-31T10:52:25-03:00" title="Última modificação: 31/10/2026 às 10:52:25 (horário de Brasília)"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 4.8V8l2.2 1.4" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg><span class="rotulo">Última modificação:</span> <b>31/10/2026<span class="hora"> às 10:52</span></b></time>
+                <time class="channel-update" datetime="2026-11-10T12:54:12-03:00" title="Última modificação: 10/11/2026 às 12:54:12 (horário de Brasília)"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8 4.8V8l2.2 1.4" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg><span class="rotulo">Última modificação:</span> <b>10/11/2026<span class="hora"> às 12:54</span></b></time>
             </div>
 
             <div class="chat-content">
@@ -68,22 +68,22 @@
                             </ul>
                             <h3><span class="card-icon">🛠️</span>2. Passo 1: Desativar a aceleração por hardware (teste primeiro)</h3>
                             <ul class="lista-instrucoes">
-                                <li><span>1. Chrome e Discord</span> <strong>Desligue a opção de aceleração de hardware nas configurações de cada programa e reinicie os dois</strong></li>
+                                <li><span>1. Chrome e Discord</span> <strong>Nas configurações de cada programa, desligue a opção de aceleração de hardware e reinicie os dois</strong></li>
                                 <li><span>2. Observação</span> <strong>Desligar a aceleração pode aumentar o uso da CPU em vídeos. Se as piscadas pararem, não precisa do Passo 2</strong></li>
                             </ul>
                             <h3><span class="card-icon">🛠️</span>3. Passo 2: Desativar o MPO (Multi-Plane Overlay) no Windows</h3>
                             <ul class="lista-instrucoes">
                                 <li><span>Antes</span> <strong>Crie um ponto de restauração</strong></li>
                                 <li><span>1. Executar</span> <strong><span class="code-line">Win + R</span>, digite <span class="code-line">regedit</span> e clique em OK</strong></li>
-                                <li><span>2. Caminho</span> <strong>Cole o caminho abaixo na barra superior do Regedit e aperte Enter: <span class="code-line">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\DWM</span></strong></li>
-                                <li><span>3. Novo valor</span> <strong>Clique com o botão direito em um espaço em branco no lado direito → Novo → Valor DWORD (32 bits)</strong></li>
+                                <li><span>2. Caminho</span> <strong>Na barra superior do Regedit, cole o caminho abaixo e aperte Enter: <span class="code-line">HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\DWM</span></strong></li>
+                                <li><span>3. Novo valor</span> <strong>No lado direito, clique com o botão direito em um espaço em branco → Novo → Valor DWORD (32 bits)</strong></li>
                                 <li><span>4. Nome</span> <strong>Renomeie o novo valor para: <span class="code-line">OverlayTestMode</span></strong></li>
                                 <li><span>5. Dados do valor</span> <strong>Dê dois cliques em cima dele, mude os "Dados do valor" para <span class="code-line">5</span> e clique em OK</strong></li>
                                 <li><span>6. Reinício</span> <strong>Reinicie o computador para salvar a alteração</strong></li>
                             </ul>
                             <h3><span class="card-icon">↩️</span>4. Como reverter</h3>
                             <ul class="lista-instrucoes">
-                                <li><span>Reverter</span> <strong>Apague o valor OverlayTestMode no mesmo caminho do Regedit e reinicie o computador</strong></li>
+                                <li><span>Reverter</span> <strong>No mesmo caminho do Regedit, apague o valor OverlayTestMode e reinicie o computador</strong></li>
                             </ul>
                             <h3><span class="card-icon">📝</span>5. Notas</h3>
                             <ul class="lista-instrucoes">
@@ -102,7 +102,7 @@
     <div class="sidebar-overlay"></div>
 
     <!-- Scripts compartilhados (menu em telas pequenas e navegação sem recarregar) -->
-    <script src="../js/main.js?v=202611101541"></script>
-    <script src="../js/navegacao.js?v=202611101541"></script>
+    <script src="../js/main.js?v=202611101554"></script>
+    <script src="../js/navegacao.js?v=202611101554"></script>
 </body>
 </html>

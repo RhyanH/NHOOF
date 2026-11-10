@@ -184,6 +184,8 @@ O endereço canônico do repositório é `https://github.com/RhyanH/NHOOF.git`. 
   - a caixa de explicação sempre começa com **"O que faz:"**;
   - atalho do Executar: rótulo **"Win + R"** e o comando como `code-line` (ex.: `<li><span>Win + R</span> <strong class="code-line">ncpa.cpl</strong></li>`);
   - caminhos com **"→"** entre as etapas.
+  - **o lugar vem antes da ação:** escreva "Vá em X → Y e ative Z" ou "Na aba X, marque Y", nunca "Ative Z indo em X". Vale para listas, caixas "O que faz:", "Como voltar atrás" e observações.
+  - **caminho no topo do cartão:** a linha `li-caminho` (ou `Win + R` com o comando) vem primeiro, e logo embaixo a opção com o switch ou o valor. Não crie um passo "Como fazer" que repita a opção já mostrada.
 - **Conferidos pelo dono (estão certos, não marque como erro):**
   - "Intervalo de repetição" (ajuste teclado) e "Canal 2, 24-bit(s)" (a50x) estão escritos como aparecem no Windows dele;
   - os 80 °C do CrystalDiskMark são critério dele, testados no PC dele.
