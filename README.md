@@ -320,6 +320,7 @@ Modelo mínimo de um guia (o que muda de um guia para outro está marcado com �
    <img class="guia-imagem" src="../imagens/guias/occt.png" width="553" height="277" alt="Descrição da imagem">
    ```
    `width` e `height` são o tamanho real da imagem em pixels (evitam que a página "pule" ao carregar). O `alt` descreve a imagem.
+3. A imagem nunca passa da largura do cartão (o CSS já cuida disso). Para ficar nítida em telas Retina e 4K, o print precisa ser feito maior (por exemplo, com o Windows em 200% de escala): esticar um print pequeno não ganha nitidez.
 
 ### 5.6 Mudar o menu do topo (Otimização, Projeto 2…, Sobre)
 
@@ -457,7 +458,16 @@ Se o fundo da Home aparecer parado no seu PC, é essa opção (o guia *desativar
 
   Cada cor de destaque tem um par `-rgb` (ex.: `--accent-rgb: 139, 156, 255`). **Se mudar a cor, mude o par também**, com os mesmos valores em números.
 - **Fontes:** Geist (texto) e Geist Mono (códigos, categorias), salvas em `fontes/` (não dependem do Google Fonts).
-- **Tamanhos de tela** (`css/responsivo.css`): até 1180 px o menu do topo fica compacto; até 1020 px o menu do topo rola de lado; até 900 px o menu lateral vira gaveta; até 600 px as listas empilham e a descrição do canal some.
+- **Medidas em `rem`:** tamanhos de letra, larguras, ícones e espaçamentos importantes usam `rem` (1rem = tamanho base da letra). Use `rem` também em estilos novos; `px` só para bordas, sombras e o que precisar ficar fixo.
+- **Tamanho base da letra** (`html` no `css/style.css`): 16 px (ou o tamanho escolhido no navegador) até telas Full HD; em 2K e 4K cresce aos poucos, até 25% maior, e o site inteiro cresce junto. Usa a menor entre largura e altura da janela, para monitores ultra-wide não exagerarem.
+- **Tamanhos de tela** (`css/responsivo.css`):
+  - acima de 1920 px: o menu lateral continua na esquerda e o conteúdo vira uma coluna centralizada no espaço à direita, na largura do próprio guia (aos poucos entre 1920 e 2560 px);
+  - até 1180 px o menu do topo fica compacto; até 1020 px ele rola de lado;
+  - até 900 px o menu lateral vira gaveta;
+  - até 600 px as listas empilham e a descrição do canal some;
+  - até 480 px e até 360 px (celulares pequenos e antigos) as margens diminuem.
+- **Toque (celular e tablet):** botões e links respondem numa área de pelo menos 44 × 44 px. No menu do topo a área extra é uma borda transparente (a pílula e o neon não mudam); no botão ☰, nos comandos e nos links das listas é uma camada invisível (`::before`). No PC com mouse nada disso se aplica.
+- **Altura do cabeçalho fixa** (`--header-h`: 64 px no PC, 56 px no celular), de propósito: um cabeçalho mais alto deixa a animação da Home mais pesada em 2K e 4K.
 
 ---
 
@@ -487,7 +497,7 @@ Se o fundo da Home aparecer parado no seu PC, é essa opção (o guia *desativar
 4. **Mantenha a estrutura** `chat-header` + `chat-content` nos guias: a troca de canal sem recarregar e a data dependem dela.
 5. **Não edite** os `?v=…` nem a linha `<time class="channel-update">`: os scripts cuidam deles.
 6. **Rode `python atualizar-versao.py` e `python verificar-site.py` antes de cada publicação feita pelo PC.**
-7. **Teste no seu PC** (`python -m http.server 8000`) antes de publicar mudanças grandes, olhando também em tela de celular (`F12` → ícone de celular no topo do painel).
+7. **Teste no seu PC** (`python -m http.server 8000`) antes de publicar mudanças grandes, olhando também em tela de celular (`F12` → ícone de celular no topo do painel) e em tela grande (no mesmo painel, digite uma largura como 2560 ou 3840).
 
 ---
 

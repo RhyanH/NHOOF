@@ -53,6 +53,15 @@ A instrução original dele vale sempre: *"faça as melhorias, confira tudo e fa
   - **Sobre (cinza grafite)**, em `css/sobre.css`: texto `#e2e8f0`, contorno `#94a3b8`/`#7d8ba1`/`#cbd5e1`.
 - **No celular** o menu rola de lado. O `js/menu-topo.js` (logo depois do `</header>` em todas as páginas) mantém a posição em que a pessoa deixou e garante que o item ativo apareça.
 
+### Tamanhos de tela (responsividade)
+- **Até 1920 px no PC, o site é idêntico ao de antes** (comparado pixel a pixel). Qualquer mudança nova precisa manter isso, ou ser mostrada a ele.
+- **Letra base fluida** (`html` em `css/style.css`): 16 px até Full HD; em 2K e 4K cresce até 25% (`clamp` com a menor entre largura e altura, para o ultra-wide não exagerar). Quase todas as medidas são em `rem` e crescem junto. Use `rem` em estilos novos.
+- **Telas grandes (acima de 1920 px):** o menu lateral continua **encostado na esquerda** e o fundo é contínuo. O conteúdo vira uma **coluna centralizada** no espaço à direita do menu, com a largura do próprio guia (`--coluna`: 47,5rem para guia de um cartão, 75rem para vários). A centralização entra aos poucos entre 1920 e 2560 px.
+- **Cabeçalho com altura fixa em px** (`--header-h`: 64 px / 56 px no celular). Em `rem`, ele crescia em 2K/4K e a Home ficava até 20% mais lenta (o efeito de vidro numa área maior). Não converta para `rem`.
+- **Toque (`pointer: coarse`):** área mínima de 44 px. Menu do topo: borda transparente com `background-clip: padding-box` (o neon e a pílula ficam iguais). Botão ☰, comandos e links das listas: camada invisível `::before`. Itens do menu lateral: 44 px de altura.
+- **Celulares pequenos:** ajustes em 480 px e 360 px (margens menores, título menor).
+- **Imagens dos guias:** `max-width: 100%`. Não há `srcset` porque os prints originais são do tamanho real; versão nítida para Retina/4K só com prints maiores feitos por ele.
+
 ### Home (`index.html`)
 - Só a palavra **"NHOOF"** no centro (degradê branco), sobre um **fundo de espaço** animado:
   - **Céu de estrelas** bem fracas, desenhado uma vez e usado como imagem de fundo do palco; 12% das estrelas piscam devagar.
@@ -95,6 +104,7 @@ A instrução original dele vale sempre: *"faça as melhorias, confira tudo e fa
 - A entrada do Otimização como canal do menu lateral.
 - Salvar a posição de rolagem do menu lateral.
 - Segundos visíveis na data.
+- Em telas grandes, uma "área central" com o menu lateral e o conteúdo no meio e faixas vazias dos lados: parecia uma resolução menor que a do monitor.
 
 ## 5. Fluxo de trabalho (sempre nesta ordem)
 
@@ -121,7 +131,9 @@ O endereço canônico do repositório é `https://github.com/RhyanH/NHOOF.git`. 
 - **Navegador automatizado** (se houver Playwright e Chromium no ambiente): tire prints nestas telas:
   - **1920×910** (PC);
   - **1366×768** (notebook);
-  - **390×844 com escala 2** (celular).
+  - **390×844 com escala 2** (celular);
+  - em mudanças de layout, também **320×568** e **360×740** (celulares pequenos, com `hasTouch`/`isMobile`) e **2560×1300**, **3440×1300** (ultra-wide) e **3840×1980** (4K).
+  - Para conferir que até Full HD nada mudou, compare prints da versão publicada e da nova pixel a pixel (1024 a 1920 px de largura).
   - Para elementos pequenos, recorte e amplie o trecho.
 - **Antes e depois:** sirva o arquivo antigo com `git show HEAD:css/style.css` (por exemplo, interceptando a requisição no Playwright) e junte "ANTES" e "DEPOIS" numa imagem só, com rótulos. **Animações vão em GIF** (40 a 50 quadros).
 - **Sempre teste os dois estados de animação:** `reduced_motion="no-preference"` (anima) e `"reduce"` (parado, mas visível).
@@ -135,6 +147,7 @@ O endereço canônico do repositório é `https://github.com/RhyanH/NHOOF.git`. 
 
 ## 7. Desempenho e animações (regras técnicas)
 
+- **Desempenho da Home em telas grandes:** meça também em 2560×1300 e 3840×1980, comparando com a versão publicada (3 medições alternadas). Mudanças no cabeçalho ou no tamanho base da letra afetam a Home.
 - Anime só `transform` e `opacity`. Animar `background-position` derrubou a grade antiga para cerca de 30 fps.
 - **Não crie camadas extras de tela cheia.** Um segundo `<canvas>` de tela inteira custou cerca de 25% de fluidez; por isso as estrelas paradas viraram imagem de fundo do palco.
 - No canvas, desenhe em lote: agrupe as linhas por intensidade, um `stroke()` por grupo, e os pontos por tamanho. O movimento é calculado pelo tempo decorrido, não por quadro.

@@ -65,6 +65,8 @@
     --radius-lg: 14px;
     --radius-md: 10px;
     --radius-sm: 6px;
+    /* altura fixa de propósito (não cresce com a letra em telas grandes):
+       um cabeçalho mais alto deixa a animação da Home mais pesada em 2K/4K */
     --header-h: 64px;
 
     --font-sans: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -82,6 +84,15 @@
     box-sizing: border-box;
 }
 
+/* Tamanho base da letra (1rem). Fica em 16 px (ou no tamanho escolhido no
+   navegador) até telas Full HD e cresce aos poucos em 2K e 4K, até 25% maior.
+   O crescimento usa a menor entre largura e altura da janela, para que
+   monitores ultra-wide (muito largos, mas da altura de um 2K) não exagerem.
+   Como quase todas as medidas do site são em rem, o layout cresce junto. */
+html {
+    font-size: clamp(1rem, calc(0.75rem + min(0.2083vw, 0.421vh)), 1.25rem);
+}
+
 html,
 body {
     width: 100%;
@@ -89,11 +100,17 @@ body {
     background-color: var(--bg);
     color: var(--text);
     font-family: var(--font-sans);
-    font-size: 16px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;
     font-feature-settings: "ss01", "cv11";
+}
+
+/* Nada passa da largura da tela (sem rolagem lateral em telas pequenas) */
+body {
+    font-size: 1rem;
+    overflow-x: hidden;
+    overflow-x: clip;
 }
 
 /* Páginas-guia: a rolagem acontece dentro do painel, não na janela */
@@ -148,9 +165,9 @@ body > header {
 
 .logo-container img {
     /* a imagem tem bastante margem transparente: escala maior, recorte visual menor */
-    height: 46px;
-    width: 46px;
-    margin: -4px;
+    height: 2.875rem;
+    width: 2.875rem;
+    margin: -0.25rem;
     display: block;
     transition: transform 0.3s var(--ease), filter 0.3s var(--ease);
 }
@@ -171,7 +188,7 @@ header nav ul {
     display: flex;
     gap: 2px;
     align-items: center;
-    padding: 4px;
+    padding: 0.25rem;
     border: 1px solid var(--line);
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.02);
@@ -180,7 +197,7 @@ header nav ul {
 header nav ul li a {
     display: block;
     white-space: nowrap;
-    padding: 6px 13px;
+    padding: 0.375rem 0.8125rem;
     border-radius: 999px;
     color: var(--text-2);
     font-size: 0.85rem;
@@ -288,7 +305,7 @@ header nav ul li a.active::after {
 }
 
 .header-spacer {
-    width: 38px;
+    width: 2.375rem;
     flex-shrink: 0;
 }
 
@@ -315,7 +332,7 @@ header nav ul li a.active::after {
 
 .chat-header {
     flex-shrink: 0;
-    height: 52px;
+    height: 3.25rem;
     padding: 0 2.5rem;
     display: flex;
     align-items: center;
@@ -341,7 +358,7 @@ header nav ul li a.active::after {
 
 .chat-header .channel-divider {
     width: 1px;
-    height: 16px;
+    height: 1rem;
     background: var(--line-strong);
     color: transparent;
     overflow: hidden;
@@ -373,8 +390,8 @@ header nav ul li a.active::after {
 }
 
 .chat-header .channel-update svg {
-    width: 13px;
-    height: 13px;
+    width: 0.8125rem;
+    height: 0.8125rem;
     opacity: 0.8;
 }
 
@@ -386,12 +403,19 @@ header nav ul li a.active::after {
 .chat-content {
     flex: 1;
     padding: 2.75rem 2.5rem 5rem;
+    overflow-x: hidden;
     overflow-y: auto;
     animation: entrar 0.35s var(--ease) both;
 }
 
 .main-chat .chat-content > * {
-    max-width: 1200px;
+    max-width: 75rem;
+}
+
+/* Imagens do conteúdo nunca passam da largura disponível */
+.chat-content img {
+    max-width: 100%;
+    height: auto;
 }
 
 .page-title {
@@ -420,7 +444,7 @@ header nav ul li a.active::after {
 /* ---- 5. Menu lateral -------------------------------------------------------- */
 .sidebar-channels {
     flex-shrink: 0;
-    width: 272px;
+    width: 17rem;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -457,8 +481,8 @@ header nav ul li a.active::after {
 
 .category-arrow {
     display: inline-flex;
-    width: 10px;
-    height: 10px;
+    width: 0.625rem;
+    height: 0.625rem;
     transition: transform 0.2s var(--ease);
 }
 
@@ -518,7 +542,7 @@ header nav ul li a.active::after {
 /* ---- 6. Cartões e listas -------------------------------------------------- */
 .setup-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 22.5rem), 1fr));
     align-items: start;
     gap: 1rem;
     margin-bottom: 1.5rem;
@@ -526,7 +550,7 @@ header nav ul li a.active::after {
 
 /* Cartão sozinho na página: largura de leitura confortável */
 .setup-grid > .setup-card:only-child {
-    max-width: 760px;
+    max-width: 47.5rem;
 }
 
 .setup-card {
@@ -571,8 +595,8 @@ header nav ul li a.active::after {
     flex-shrink: 0;
     display: grid;
     place-items: center;
-    width: 30px;
-    height: 30px;
+    width: 1.875rem;
+    height: 1.875rem;
     border-radius: 8px;
     border: 1px solid var(--line);
     background: rgba(255, 255, 255, 0.035);
@@ -608,7 +632,7 @@ header nav ul li a.active::after {
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
-    min-height: 42px;
+    min-height: 2.625rem;
     padding: 0.55rem 0.85rem;
     font-size: 0.85rem;
     line-height: 1.45;
@@ -701,8 +725,8 @@ header nav ul li a.active::after {
     flex-shrink: 0;
     display: grid;
     place-items: center;
-    width: 22px;
-    height: 22px;
+    width: 1.375rem;
+    height: 1.375rem;
     margin-top: -1px;
     border: 1px solid rgba(var(--accent-rgb), 0.3);
     border-radius: 50%;
@@ -775,8 +799,8 @@ a[target="_blank"]:hover::after {
 .val::before {
     content: "";
     flex-shrink: 0;
-    width: 28px;
-    height: 16px;
+    width: 1.75rem;
+    height: 1rem;
     border-radius: 999px;
     transition: background 0.2s var(--ease);
 }
@@ -787,7 +811,7 @@ a[target="_blank"]:hover::after {
 
 .val-on::before {
     background:
-        radial-gradient(circle 6px at 20px 50%, #fff 92%, transparent 100%),
+        radial-gradient(circle 0.375rem at 1.25rem 50%, #fff 92%, transparent 100%),
         var(--ok);
     box-shadow: 0 0 12px rgba(var(--ok-rgb), 0.35);
 }
@@ -798,7 +822,7 @@ a[target="_blank"]:hover::after {
 
 .val-off::before {
     background:
-        radial-gradient(circle 6px at 8px 50%, #8a8a94 92%, transparent 100%),
+        radial-gradient(circle 0.375rem at 0.5rem 50%, #8a8a94 92%, transparent 100%),
         #26262c;
     box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
@@ -869,7 +893,7 @@ a[target="_blank"]:hover::after {
 }
 
 .chat-content > .alert-box {
-    max-width: 880px;
+    max-width: 55rem;
 }
 
 .chat-content > .alert-box + .alert-box {
@@ -880,8 +904,8 @@ a[target="_blank"]:hover::after {
     flex-shrink: 0;
     display: grid;
     place-items: center;
-    width: 32px;
-    height: 32px;
+    width: 2rem;
+    height: 2rem;
     border-radius: 8px;
     background: rgba(var(--tone), 0.12);
     border: 1px solid rgba(var(--tone), 0.2);
@@ -910,7 +934,7 @@ a[target="_blank"]:hover::after {
 .setup-card ul li strong.code-line {
     position: relative;
     display: inline-block;
-    padding: 3px 8px;
+    padding: 0.1875rem 0.5rem;
     border: 1px solid rgba(var(--accent-rgb), 0.22);
     border-radius: var(--radius-sm);
     background: rgba(var(--accent-rgb), 0.08);
@@ -1017,8 +1041,8 @@ a[target="_blank"]:hover::after {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    height: 44px;
-    padding: 0 20px;
+    height: 2.75rem;
+    padding: 0 1.25rem;
     border-radius: 999px;
     font-size: 0.92rem;
     font-weight: 550;
@@ -1027,8 +1051,8 @@ a[target="_blank"]:hover::after {
 }
 
 .btn svg {
-    width: 16px;
-    height: 16px;
+    width: 1rem;
+    height: 1rem;
     transition: transform 0.2s var(--ease);
 }
 
@@ -1102,8 +1126,8 @@ a.projeto:hover {
 .card-icone {
     display: grid;
     place-items: center;
-    width: 40px;
-    height: 40px;
+    width: 2.5rem;
+    height: 2.5rem;
     border: 1px solid var(--line-strong);
     border-radius: 11px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.02));
@@ -1111,8 +1135,8 @@ a.projeto:hover {
 }
 
 .card-icone svg {
-    width: 19px;
-    height: 19px;
+    width: 1.1875rem;
+    height: 1.1875rem;
     fill: none;
     stroke: currentColor;
     stroke-width: 1.6;
@@ -1234,7 +1258,7 @@ a.projeto:hover .card-seta {
 .specs {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
     gap: 10px;
 }
 
@@ -1266,7 +1290,7 @@ a.projeto:hover .card-seta {
 /* Página inicial da Otimização (otimizacao/index.html) */
 /* seletores com .main-chat para vencer a largura padrão do painel */
 .main-chat .chat-content > .inicio-lead {
-    max-width: 760px;
+    max-width: 47.5rem;
     margin: -1rem 0 1.5rem;
     font-size: 1rem;
     line-height: 1.65;
@@ -1275,12 +1299,12 @@ a.projeto:hover .card-seta {
 
 /* aviso alinhado à largura dos cartões */
 .main-chat .inicio > .alert-box {
-    max-width: 1200px;
+    max-width: 75rem;
 }
 
 .inicio-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr));
     gap: 14px;
     margin: 1.5rem 0 2rem;
 }
@@ -1313,10 +1337,6 @@ a.projeto:hover .card-seta {
 @media (max-width: 600px) {
     .inicio .setup-faixa {
         padding: 1.25rem;
-    }
-
-    .inicio .specs {
-        grid-template-columns: 1fr;
     }
 }
 

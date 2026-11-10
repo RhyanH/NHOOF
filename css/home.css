@@ -44,7 +44,7 @@ body.home {
     position: absolute;
     left: 50%;
     top: 50%;
-    width: min(1000px, 130vw);
+    width: min(1000px, 130vw); /* fixo de propósito: brilho maior pesa no desempenho em 4K */
     aspect-ratio: 2 / 1;
     transform: translate(-50%, -50%);
     z-index: -1;
